@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Split · half-marathon build</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{
+    --ink:#12100e; --paper:#f6f4ee; --card:#fffdf8; --line:#d8d3c6;
+    --mut:#8a8578; --sub:#5f5a4f;
+    --track:#1f6f3a;         /* deep track-green, the signature */
+    --track-soft:#e5efe4;
+    --warn:#c0491f;          /* clay warning */
+    --cool:#2f6ea6;
+    --s-hi:#1f6f3a; --s-mid:#c9a227; --s-lo:#c0491f; --s-null:#e4e0d5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
+  /* header */
+  header.top{display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:8px;flex-wrap:wrap;gap:12px}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand h1{font-family:Fraunces,serif;font-weight:900;font-size:40px;letter-spacing:-.02em;margin:0;line-height:.9}
+  .brand .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+  .countdown{text-align:right;font-family:'IBM Plex Mono',monospace}
+  .countdown .n{font-size:30px;font-weight:600;color:var(--track);line-height:1}
+  .countdown .l{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.12em}
+  /* prediction ribbon */
+  .ribbon{display:flex;gap:0;margin:18px 0 22px;border:1px solid var(--line);background:var(--card);border-radius:10px;overflow:hidden;flex-wrap:wrap}
+  .ribbon .cell{flex:1;min-width:130px;padding:14px 16px;border-right:1px solid var(--line)}
+  .ribbon .cell:last-child{border-right:none}
+  .ribbon .k{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px}
+  .ribbon .v{font-family:Fraunces,serif;font-size:26px;font-weight:600;letter-spacing:-.01em}
+  .ribbon .v small{font-size:13px;color:var(--sub);font-family:'IBM Plex Mono',monospace;font-weight:400}
+  /* tabs */
+  .tabs{display:flex;gap:4px;margin-bottom:20px}
+  .tab{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    padding:8px 16px;border:1px solid var(--line);background:transparent;cursor:pointer;border-radius:7px;color:var(--sub)}
+  .tab[aria-selected=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  /* calendar */
+  .calhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .calhead h2{font-family:Fraunces,serif;font-weight:600;font-size:22px;margin:0}
+  .navbtn{font-family:'IBM Plex Mono',monospace;border:1px solid var(--line);background:var(--card);
+    width:34px;height:34px;border-radius:7px;cursor:pointer;font-size:15px;color:var(--sub)}
+  .navbtn:hover{border-color:var(--ink)}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
+  .dow span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mut);text-align:center;text-transform:uppercase;letter-spacing:.08em}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+  .cell-day{min-height:96px;border:1px solid var(--line);border-radius:9px;background:var(--card);
+    padding:6px 7px 6px 10px;position:relative;cursor:pointer;transition:transform .08s,box-shadow .08s;overflow:hidden;display:flex;flex-direction:column;gap:1px}
+  .cell-day.prescribed{border-style:dashed;border-color:var(--cool);background:rgba(47,110,166,.04)}
+  .cell-day .chd{display:flex;justify-content:space-between;align-items:center}
+  .cell-day .score{font-family:Fraunces,serif;font-weight:900;font-size:21px;line-height:1;margin:1px 0}
+  .cell-day .ptag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--cool);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin:1px 0}
+  .cell-day .mrun{font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.35;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cell-day .mrun .dist{font-weight:600;color:var(--ink)}
+  .cell-day .mrun .hr{color:var(--warn)} .cell-day .mrun .pc{color:var(--track)}
+  .cell-day .mrec{font-family:'IBM Plex Mono',monospace;font-size:9px;line-height:1.3;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cell-day .mplan{font-family:'IBM Plex Mono',monospace;font-size:9px;line-height:1.25;color:var(--cool);white-space:normal;overflow:hidden;max-height:24px}
+  .cell-day:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.09);z-index:2}
+  .cell-day.empty{background:transparent;border:none;cursor:default}
+  .cell-day.nodata{cursor:default}
+  .cell-day .dnum{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub);font-weight:500}
+  .cell-day .rail{position:absolute;left:0;top:0;bottom:0;width:4px}
+  .cell-day .rev{position:absolute;top:6px;right:6px;font-size:8px;color:var(--warn)}
+  .swatch-hi{background:var(--s-hi)} .swatch-mid{background:var(--s-mid)} .swatch-lo{background:var(--s-lo)} .swatch-null{background:var(--s-null)}
+  /* legend */
+  .legend{display:flex;gap:16px;align-items:center;margin-top:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mut)}
+  .legend .it{display:flex;align-items:center;gap:5px}
+  .legend .dot{width:11px;height:11px;border-radius:3px}
+  /* detail panel */
+  .scrim{position:fixed;inset:0;background:rgba(18,16,14,.42);opacity:0;pointer-events:none;transition:opacity .16s;z-index:40}
+  .scrim.on{opacity:1;pointer-events:auto}
+  .panel{position:fixed;top:0;right:0;height:100%;width:min(460px,92vw);background:var(--paper);
+    border-left:2px solid var(--ink);transform:translateX(100%);z-index:50;
+    transition:transform .22s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:24px 24px 60px}
+  .panel.on{transform:translateX(0)}
+  .panel .x{position:absolute;top:18px;right:18px;border:1px solid var(--line);background:var(--card);
+    width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:16px;color:var(--sub)}
+  .panel .pdate{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.1em}
+  .panel .pscore{font-family:Fraunces,serif;font-weight:900;font-size:64px;line-height:.9;margin:4px 0 2px;letter-spacing:-.02em}
+  .panel .pscore small{font-size:20px;color:var(--mut);font-weight:400}
+  .panel h3{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--mut);margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .comp{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:13px}
+  .comp .cd{font-family:'IBM Plex Mono',monospace;font-weight:600;flex-shrink:0}
+  .comp .pos{color:var(--track)} .comp .neg{color:var(--warn)}
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .metrics .m{background:var(--card);padding:9px 11px}
+  .metrics .mk{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+  .metrics .mv{font-family:Fraunces,serif;font-size:17px;font-weight:600;margin-top:1px}
+  .entry-txt{font-size:14px;color:var(--sub);line-height:1.62}
+  .planned-txt{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--sub);background:var(--track-soft);
+    padding:9px 11px;border-radius:7px;line-height:1.5}
+  .next-txt{font-size:13px;color:var(--sub);border-left:3px solid var(--track);padding-left:11px;line-height:1.55}
+  .revflag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;
+    letter-spacing:.1em;color:var(--warn);border:1px solid var(--warn);border-radius:4px;padding:2px 6px;margin-left:8px;vertical-align:middle}
+  /* dashboard */
+  .dash-grid{display:grid;gap:18px}
+  .chartcard{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:18px}
+  .chartcard h3{font-family:Fraunces,serif;font-weight:600;font-size:17px;margin:0 0 3px}
+  .chartcard .sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mut);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+  .chartbox{position:relative;height:230px}
+  .statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:4px}
+  .statbox{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .statbox .sk{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.1em}
+  .statbox .sv{font-family:Fraunces,serif;font-size:27px;font-weight:600;margin-top:3px;letter-spacing:-.01em}
+  .statbox .sv small{font-size:13px;color:var(--sub);font-weight:400}
+  .hidden{display:none}
+  @media (max-width:560px){.brand h1{font-size:30px}.wrap{padding:18px 13px 60px}.panel{padding:20px 18px 50px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>Split</h1>
+      <span class="tag">half&nbsp;marathon&nbsp;·&nbsp;oct&nbsp;31</span>
+    </div>
+    <div class="countdown">
+      <div class="n" id="cd-days">–</div>
+      <div class="l">days to race</div>
+    </div>
+  </header>
+
+  <div class="ribbon" id="ribbon"></div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-view="cal">Calendar</button>
+    <button class="tab" role="tab" aria-selected="false" data-view="dash">Dashboard</button>
+  </div>
+
+  <!-- CALENDAR VIEW -->
+  <section id="view-cal">
+    <div class="calhead">
+      <button class="navbtn" id="prevM">‹</button>
+      <h2 id="monthLabel"></h2>
+      <button class="navbtn" id="nextM">›</button>
+    </div>
+    <div class="dow"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+    <div class="grid" id="calGrid"></div>
+    <div class="legend">
+      <span>did the day move P(1:20)?</span>
+      <div class="it"><span class="dot swatch-hi"></span> raised the odds (75–100)</div>
+      <div class="it"><span class="dot swatch-mid"></span> held ~neutral (50–74)</div>
+      <div class="it"><span class="dot swatch-lo"></span> lowered the odds (&lt;50)</div>
+      <div class="it"><span class="dot swatch-null"></span> no run / no data</div>
+      <div class="it"><span class="dot" style="border:1.5px dashed var(--cool);background:transparent"></span> prescribed (today\'s plan)</div>
+      <div class="it">● unreviewed = auto-draft</div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD VIEW -->
+  <section id="view-dash" class="hidden">
+    <div class="statrow" id="statrow"></div>
+    <div class="dash-grid">
+      <div class="chartcard"><h3>If you raced today <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mut);font-weight:400;text-transform:uppercase;letter-spacing:.08em">current fitness</span></h3><div class="sub">P(sub-1:20) &amp; P(sub-1:25) at today's fitness &middot; ~0% now, climbs as fitness climbs</div><div class="chartbox"><canvas id="cProb"></canvas></div></div>
+      <div class="chartcard"><h3>Fitness &amp; fatigue</h3><div class="sub">CTL (fitness) vs ATL (fatigue) · form = the gap</div><div class="chartbox"><canvas id="cFit"></canvas></div></div>
+      <div class="chartcard"><h3>Weekly volume</h3><div class="sub">miles per week · since return-to-run (Nov 2024)</div><div class="chartbox"><canvas id="cVol"></canvas></div></div>
+      <div class="chartcard"><h3>Half-marathon prediction</h3><div class="sub">projected finish, tracked daily</div><div class="chartbox"><canvas id="cPred"></canvas></div></div>
+      <div class="chartcard"><h3>Day-score trend</h3><div class="sub">goal-contribution · green vs 1:20 bar, blue line vs 1:25</div><div class="chartbox"><canvas id="cScore"></canvas></div></div>
+    </div>
+  </section>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="panel" id="panel" aria-hidden="true">
+  <button class="x" id="closeP">×</button>
+  <div id="panelBody"></div>
+</aside>
+
+<script>
+const RACE = new Date('2026-10-31T00:00:00');
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+let LOG={days:[]}, ACT={activities:[],weekly:[]}, byDate={}, actByDate={};
+let curY, curM;
+
+function fmtSec(s){if(!s)return'–';const m=Math.floor(s/60),ss=s%60;return m+':'+String(ss).padStart(2,'0');}
+function scoreColor(s){if(s==null)return'var(--s-null)';if(s>=72)return'var(--s-hi)';if(s>=48)return'var(--s-mid)';return'var(--s-lo)';}
+
+Promise.all([
+  fetch('./daily_log.json').then(r=>r.json()).catch(()=>({days:[]})),
+  fetch('./activities.json').then(r=>r.json()).catch(()=>({activities:[],weekly:[]}))
+]).then(([log,act])=>{
+  LOG=log; ACT=act;
+  (LOG.days||[]).forEach(d=>byDate[d.date]=d);
+  (ACT.activities||[]).forEach(a=>{(actByDate[a.date]=actByDate[a.date]||[]).push(a);});
+  boot();
+});
+
+function boot(){
+  const days=Math.max(0,Math.ceil((RACE-new Date())/864e5));
+  document.getElementById('cd-days').textContent=days;
+  renderRibbon();
+  const last=(LOG.days||[]).slice(-1)[0];
+  const d=last?new Date(last.date):new Date();
+  curY=d.getFullYear(); curM=d.getMonth();
+  renderCal();
+  wireTabs(); wirePanel();
+}
+
+function lastScored(){const ss=(LOG.days||[]).filter(d=>d.status!=='prescribed'&&d.score!=null);return ss.length?ss[ss.length-1]:((LOG.days||[]).slice(-1)[0]||{});}
+function lastPrescribed(){const ps=(LOG.days||[]).filter(d=>d.status==='prescribed');return ps.length?ps[ps.length-1]:null;}
+function renderRibbon(){
+  const last=lastScored();
+  const w=last.wellness||{};
+  const cells=[
+    ['current call', last.prediction||'–', 'HM projection'],
+    ['fitness (CTL)', (w.ctl!=null?w.ctl.toFixed(1):'–'), 'form '+(w.form!=null?(w.form>0?'+':'')+w.form.toFixed(0):'–')],
+    ['last day score', (last.score!=null?(last.score+' / '+(last.score_committed!=null?last.score_committed:'–')):'–'), 'vs 1:20 / 1:25 · '+(last.date||'')],
+    ['weight', (w.weight!=null?w.weight+' kg':'not logged'), 'target ~128–130 lb'],
+    ['P(goal) if raced today', (last.p_125!=null?(Math.round(last.p_120*100)+'% / '+Math.round(last.p_125*100)+'%'):'–'), 'P(1:20) / P(1:25) · current fitness']
+  ];
+  document.getElementById('ribbon').innerHTML=cells.map(c=>
+    `<div class="cell"><div class="k">${c[0]}</div><div class="v">${c[1]}</div><div class="k" style="margin-top:5px;letter-spacing:.06em">${c[2]||''}</div></div>`
+  ).join('');
+}
+
+function renderCal(){
+  document.getElementById('monthLabel').textContent=MONTHS[curM]+' '+curY;
+  const first=new Date(curY,curM,1);
+  let start=(first.getDay()+6)%7; // Mon=0
+  const dim=new Date(curY,curM+1,0).getDate();
+  const g=document.getElementById('calGrid'); g.innerHTML='';
+  for(let i=0;i<start;i++){const e=document.createElement('div');e.className='cell-day empty';g.appendChild(e);}
+  for(let day=1;day<=dim;day++){
+    const ds=`${curY}-${String(curM+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const rec=byDate[ds]; const acts=actByDate[ds]||[];
+    const mi=acts.reduce((s,a)=>s+(a.mi||0),0);
+    const cell=document.createElement('div');
+    const prescribed = rec && rec.status==='prescribed';
+    const score = (rec && rec.status!=='prescribed') ? rec.score : null;
+    cell.className='cell-day'+(rec?'':(acts.length?'':' nodata'))+(prescribed?' prescribed':'');
+    // metric lines, Intervals-style
+    const a = (rec&&rec.activity)?rec.activity : (acts[0]||null);
+    const w = (rec&&rec.wellness)?rec.wellness : null;
+    let runLine='', recLine='', planLine='';
+    if(a){
+      const pace=a.pace_per_km?`${a.pace_per_km}`:'';
+      runLine=`<div class="mrun"><span class="dist">${(a.mi!=null?a.mi.toFixed(1):(a.km||mi).toFixed(1))}mi</span>${a.hr?` <span class="hr">♥${a.hr}</span>`:''}${pace?` <span class="pc">${pace}</span>`:''}</div>`;
+    } else if(mi>0){
+      runLine=`<div class="mrun"><span class="dist">${mi.toFixed(1)}mi</span></div>`;
+    }
+    if(w){
+      const sl=w.sleepSecs?`${(w.sleepSecs/3600).toFixed(1)}h`:'';
+      recLine=`<div class="mrec">${sl?`<span title="sleep">☾${sl}</span>`:''}${w.hrv!=null?` <span title="HRV">${w.hrv}ms</span>`:''}${a&&a.load!=null?` <span title="load">L${a.load}</span>`:''}</div>`;
+    }
+    if(prescribed){
+      planLine=`<div class="mplan">${rec.planned?rec.planned.replace(/ \(.*/,''):'planned'}</div>`;
+    }
+    cell.innerHTML=`
+      <span class="rail" style="background:${prescribed?'repeating-linear-gradient(45deg,var(--cool),var(--cool) 3px,transparent 3px,transparent 6px)':scoreColor(score)}"></span>
+      <div class="chd"><span class="dnum">${day}</span>${rec&&rec.reviewed===false?'<span class="rev" title="unreviewed">●</span>':''}</div>
+      ${score!=null?`<span class="score" style="color:${scoreColor(score)}">${score}</span>`:(prescribed?'<span class="ptag">plan</span>':'')}
+      ${runLine}${recLine}${planLine}
+      ${(!a&&!prescribed&&rec)?'<div class="mrun" style="color:var(--mut)">rest</div>':''}
+    `;
+    if(rec||acts.length) cell.onclick=()=>openDay(ds);
+    g.appendChild(cell);
+  }
+}
+
+function openDay(ds){
+  const rec=byDate[ds]; const acts=actByDate[ds]||[];
+  const dt=new Date(ds+'T00:00:00');
+  const head=dt.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  let html=`<div class="pdate">${head}</div>`;
+  if(rec&&rec.status==='prescribed'){
+    html+=`<div class="pscore" style="color:var(--cool);font-size:30px">Prescribed<span class="revflag" style="border-color:var(--cool);color:var(--cool)">plan for today</span></div>`;
+  } else if(rec&&rec.score!=null){
+    html+=`<div class="pscore" style="color:${scoreColor(rec.score)}">${rec.score}<small>/100 vs 1:20 line</small>`
+        + (rec.reviewed===false?'<span class="revflag">unreviewed</span>':'')+`</div>`;
+    if(rec.score_committed!=null){
+      html+=`<div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--sub);margin:-6px 0 2px">${rec.score_committed}/100 vs 1:25 realistic line${rec.bar_phase?` · ${rec.bar_phase} phase`:''}</div>`;
+    }
+    if(rec.delta_p){
+      const dpc=/rais|posit/.test(rec.delta_p)?'var(--track)':/lower|negat/.test(rec.delta_p)?'var(--warn)':'var(--mut)';
+      html+=`<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;margin:6px 0 2px;color:${dpc}">day moved the odds: ${rec.delta_p}</div>`;
+    }
+    if(rec.p_125!=null){
+      html+=`<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;margin:2px 0;color:var(--sub)">if raced today: <b style="color:var(--track)">${Math.round(rec.p_120*100)}%</b> sub-1:20 · <b style="color:#9a7d1a">${Math.round(rec.p_125*100)}%</b> sub-1:25${rec.pred_half?` · proj <b>${rec.pred_half}</b>`:''}</div>`;
+    }
+  }else{
+    html+=`<div class="pscore" style="color:var(--mut);font-size:34px">no score</div>`;
+  }
+  if(rec&&rec.prediction){
+    html+=`<div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--sub);margin-bottom:4px">HM projection <b style="color:var(--track)">${rec.prediction}</b>`
+        +(rec.prediction_prev&&rec.prediction_prev!==rec.prediction?` <span style="color:var(--mut)">(was ${rec.prediction_prev})</span>`:'')+`</div>`;
+  }
+  if(rec&&rec.planned) html+=`<h3>${rec.status==='prescribed'?'Today\'s plan':'Planned'}</h3><div class="planned-txt">${rec.planned}</div>`;
+  if(rec&&rec.plan_rationale) html+=`<div style="font-size:12.5px;color:var(--sub);line-height:1.55;margin-top:8px">${rec.plan_rationale}</div>`;
+  if(rec&&rec.components&&rec.components.length){
+    html+=`<h3>Score breakdown</h3>`;
+    rec.components.forEach(c=>{
+      const pos=c.delta>=0;
+      html+=`<div class="comp"><span>${c.label}</span><span class="cd ${pos?'pos':'neg'}">${pos?'+':''}${c.delta}</span></div>`;
+    });
+    html+=`<div class="comp" style="border-bottom:none;margin-top:4px"><span style="color:var(--mut);font-family:'IBM Plex Mono',monospace;font-size:11px">base 60 + deltas</span><span class="cd">${rec.score}</span></div>`;
+  }
+  // metrics grid
+  const w=rec&&rec.wellness?rec.wellness:{};
+  const a=(rec&&rec.activity)?rec.activity:(acts[0]||null);
+  let mrows=[];
+  if(a){
+    mrows.push(['distance',(a.mi!=null?a.mi+' mi':(a.km+' km'))]);
+    mrows.push(['moving',a.pace_per_km?(fmtSec(a.sec)+' · '+a.pace_per_km+'/km'):fmtSec(a.sec)]);
+    if(a.hr)mrows.push(['avg HR',a.hr+(a.max_hr?(' / '+a.max_hr+' max'):'')]);
+    if(a.intensity)mrows.push(['intensity',a.intensity+'%']);
+    if(a.load!=null)mrows.push(['load',a.load]);
+    if(a.cadence)mrows.push(['cadence',a.cadence+' spm']);
+    if(a.decoupling_pct!=null)mrows.push(['decoupling',a.decoupling_pct+'%']);
+    if(a.elev_gain_m!=null)mrows.push(['elev gain',a.elev_gain_m+' m']);
+  }
+  if(w.ctl!=null){
+    mrows.push(['CTL / ATL',w.ctl.toFixed(1)+' / '+w.atl.toFixed(1)]);
+    mrows.push(['form',(w.form>0?'+':'')+w.form.toFixed(1)]);
+    if(w.hrv!=null)mrows.push(['HRV',w.hrv+' ms']);
+    if(w.restingHR!=null)mrows.push(['resting HR',w.restingHR]);
+    if(w.sleepSecs)mrows.push(['sleep',(w.sleepSecs/3600).toFixed(1)+' h'+(w.sleepScore?(' · '+w.sleepScore):'')]);
+    if(w.vo2max)mrows.push(['VO2max',w.vo2max]);
+    if(w.rampRate!=null)mrows.push(['ramp','+'+w.rampRate.toFixed(1)+'/wk']);
+    if(w.weight!=null)mrows.push(['weight',w.weight+' kg']);
+  }
+  if(mrows.length){
+    html+=`<h3>Metrics</h3><div class="metrics">`+mrows.map(m=>`<div class="m"><div class="mk">${m[0]}</div><div class="mv">${m[1]}</div></div>`).join('')+`</div>`;
+  }
+  if(rec&&rec.entry) html+=`<h3>Notes</h3><div class="entry-txt">${rec.entry}</div>`;
+  if(rec&&rec.note_next) html+=`<h3>Tomorrow</h3><div class="next-txt">${rec.note_next}</div>`;
+  if(!rec&&acts.length){
+    html+=`<h3>Notes</h3><div class="entry-txt" style="color:var(--mut)">Activity synced from Intervals.icu; no coaching entry generated for this day.</div>`;
+  }
+  document.getElementById('panelBody').innerHTML=html;
+  document.getElementById('panel').classList.add('on');
+  document.getElementById('panel').setAttribute('aria-hidden','false');
+  document.getElementById('scrim').classList.add('on');
+}
+
+function wirePanel(){
+  const close=()=>{document.getElementById('panel').classList.remove('on');
+    document.getElementById('panel').setAttribute('aria-hidden','true');
+    document.getElementById('scrim').classList.remove('on');};
+  document.getElementById('closeP').onclick=close;
+  document.getElementById('scrim').onclick=close;
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+}
+
+function wireTabs(){
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.onclick=()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected','false'));
+      t.setAttribute('aria-selected','true');
+      const v=t.dataset.view;
+      document.getElementById('view-cal').classList.toggle('hidden',v!=='cal');
+      document.getElementById('view-dash').classList.toggle('hidden',v!=='dash');
+      if(v==='dash')renderDash();
+    };
+  });
+  document.getElementById('prevM').onclick=()=>{curM--;if(curM<0){curM=11;curY--;}renderCal();};
+  document.getElementById('nextM').onclick=()=>{curM++;if(curM>11){curM=0;curY++;}renderCal();};
+}
+
+let dashDone=false;
+function renderDash(){
+  // stats
+  const last=(LOG.days||[]).slice(-1)[0]||{}; const w=last.wellness||{};
+  const wk=ACT.weekly||[];
+  const recent=wk.slice(-4); const avg4=recent.length?recent.reduce((s,x)=>s+x.mi,0)/recent.length:0;
+  // goal-relevant stats only — no deep-history vanity metrics
+  const formNow=w.form!=null?((w.form>0?'+':'')+w.form.toFixed(0)):'–';
+  const stats=[
+    ['current call',last.prediction||'–'],
+    ['fitness CTL',w.ctl!=null?w.ctl.toFixed(1):'–'],
+    ['form',formNow],
+    ['4-wk avg',avg4.toFixed(1)+' mi'],
+    ['last day score',last.score!=null?(last.score+' / '+last.score_committed):'–']
+  ];
+  document.getElementById('statrow').innerHTML=stats.map(s=>`<div class="statbox"><div class="sk">${s[0]}</div><div class="sv">${s[1]}</div></div>`).join('');
+  if(dashDone)return; dashDone=true;
+  const mono="'IBM Plex Mono',monospace";
+  const gsub=getComputedStyle(document.documentElement).getPropertyValue('--mut').trim();
+  Chart.defaults.font.family=mono; Chart.defaults.font.size=10; Chart.defaults.color=gsub;
+
+  // Fitness: build a CTL/ATL daily series from the log days we have (will grow over time)
+  const ld=(LOG.days||[]);
+  const fL=ld.map(d=>d.date), fC=ld.map(d=>d.wellness?d.wellness.ctl:null), fA=ld.map(d=>d.wellness?d.wellness.atl:null);
+  new Chart(document.getElementById('cFit'),{type:'line',
+    data:{labels:fL,datasets:[
+      {label:'CTL',data:fC,borderColor:'#1f6f3a',backgroundColor:'rgba(31,111,58,.10)',fill:true,tension:.3,pointRadius:2,borderWidth:2},
+      {label:'ATL',data:fA,borderColor:'#c0491f',borderDash:[4,3],tension:.3,pointRadius:2,borderWidth:2}
+    ]},options:cOpts(true)});
+
+  // Volume: full weekly history (sample for density)
+  // focus on the training-relevant window (post-injury rebuild → now), not the full 4.5-yr archive
+  const wkAll=ACT.weekly||[];
+  const cutoff='2024-11-01';
+  const wkA=wkAll.filter(x=>x.week>=cutoff);
+  new Chart(document.getElementById('cVol'),{type:'bar',
+    data:{labels:wkA.map(x=>x.week),datasets:[{data:wkA.map(x=>x.mi),backgroundColor:'#2f6ea6',borderRadius:2}]},
+    options:cOpts(false,'mi')});
+
+  // Prediction over time
+  const pd=ld.filter(d=>d.prediction).map(d=>({x:d.date,y:predToMin(d.prediction)}));
+  new Chart(document.getElementById('cPred'),{type:'line',
+    data:{labels:pd.map(p=>p.x),datasets:[{data:pd.map(p=>p.y),borderColor:'#1f6f3a',backgroundColor:'rgba(31,111,58,.12)',fill:true,tension:.3,pointRadius:3,borderWidth:2}]},
+    options:cOpts(false,'pred')});
+
+  // Score trend
+  // Probability chart — the headline
+  const pdd=ld.filter(d=>d.p_125!=null&&d.status!=='prescribed');
+  const probOpts=cOpts(true,'prob');
+  new Chart(document.getElementById('cProb'),{type:'line',
+    data:{labels:pdd.map(d=>d.date),datasets:[
+      {label:'P(sub-1:20) today',data:pdd.map(d=>Math.round(d.p_120*100)),borderColor:'#1f6f3a',
+       backgroundColor:'rgba(31,111,58,.10)',fill:true,tension:.3,pointRadius:3,borderWidth:2},
+      {label:'P(sub-1:25) today',data:pdd.map(d=>Math.round(d.p_125*100)),borderColor:'#c9a227',
+       backgroundColor:'rgba(201,162,39,.10)',fill:true,tension:.3,pointRadius:3,borderWidth:2}
+    ]},
+    options:probOpts});
+
+  const sd=ld.filter(d=>d.score!=null);
+  const scoreOpts=cOpts(true,'score');
+  // neutral reference band at 60
+  scoreOpts.plugins.annotation=undefined;
+  new Chart(document.getElementById('cScore'),{type:'line',
+    data:{labels:sd.map(d=>d.date),datasets:[
+      {label:'vs 1:20 (dream)',data:sd.map(d=>d.score),borderColor:'#1f6f3a',
+       backgroundColor:'rgba(31,111,58,.10)',fill:true,tension:.3,pointRadius:3,pointBackgroundColor:'#1f6f3a',borderWidth:2},
+      {label:'vs 1:25 (realistic)',data:sd.map(d=>d.score_committed),borderColor:'#2f6ea6',
+       borderDash:[5,3],tension:.3,pointRadius:3,pointBackgroundColor:'#2f6ea6',borderWidth:2,fill:false}
+    ]},
+    options:scoreOpts});
+}
+function predToMin(p){const m=p.split(':');return +m[0]*60+ +m[1]+(+m[2]||0)/60;}
+function cOpts(legend,kind){
+  const y={grid:{color:'rgba(137,133,120,.14)'}};
+  if(kind==='pred'){y.reverse=false;y.ticks={callback:v=>{const h=Math.floor(v/60),mm=Math.round(v%60);return h+':'+String(mm).padStart(2,'0');}};}
+  if(kind==='score'){y.min=0;y.max=100;y.ticks={stepSize:20,callback:v=>v==60?'60 · neutral':v};}
+  if(kind==='prob'){y.min=0;y.max=100;y.ticks={callback:v=>v+'%'};}
+  return{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:!!legend,labels:{boxWidth:10,boxHeight:10}},
+      tooltip:{callbacks:kind==='pred'?{label:c=>{const v=c.parsed.y,h=Math.floor(v/60),mm=Math.round(v%60);return 'HM '+h+':'+String(mm).padStart(2,'0');}}:{}}},
+    scales:{x:{grid:{display:false},ticks:{maxTicksLimit:9,autoSkip:true}},y}};
+}
+</script>
+</body>
+</html>

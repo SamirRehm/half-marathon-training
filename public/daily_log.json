@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "athlete": "half-marathon build to 2026-10-31",
+    "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
+    "race_date": "2026-10-31",
+    "schema_note": "One object per day. `wellness` and `activity` are raw-ish pulled metrics; `score`+`components` from DAY_SCORE.md; `entry` is the prose; `prediction` is the HM time; reviewed=false means routine-drafted and not yet human-amended.",
+    "last_updated": "2026-07-06",
+    "scoring": "probability-change model v5 (see DAY_SCORE.md): score=\u0394P(1:20), score_committed=\u0394P(1:25) \u2014 INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; breakthrough/illness/cross-train channels; decoupling by run type; Pacific tz",
+    "timezone": "athlete US Pacific (UTC-8/-7); Intervals UTC but start_date_local is Pacific; evening runs cross midnight UTC",
+    "prob_model": "absolute P(1:20)/P(1:25) per DAY_SCORE.md \u2014 transparent model estimate, not measured; watch the trend",
+    "model_version": "v7: two-invocation; probability = current-fitness raced-TODAY readout (~0% now, climbs with fitness); no forward-dated plans; Pacific tz"
+  },
+  "days": [
+    {
+      "date": "2026-07-05",
+      "dow": "Sun",
+      "reviewed": true,
+      "prediction": "1:37:45",
+      "prediction_prev": "1:38:00",
+      "planned": "Easy long run 65 min @ 5:45/km flat (~11.3 km), optional 4x20s strides",
+      "wellness": {
+        "ctl": 20.3,
+        "atl": 33.5,
+        "form": -13.2,
+        "rampRate": 2.7,
+        "hrv": 95,
+        "restingHR": 47,
+        "sleepSecs": 28500,
+        "sleepScore": 86,
+        "sleepQuality": 2,
+        "vo2max": 54,
+        "weight": null
+      },
+      "activity": {
+        "name": "San Mateo Running",
+        "km": 12.04,
+        "mi": 7.48,
+        "sec": 3900,
+        "pace_per_km": "5:24",
+        "hr": 156,
+        "max_hr": 174,
+        "intensity": 84.3,
+        "load": 77,
+        "cadence": 172,
+        "stride_m": 1.07,
+        "elev_gain_m": 54,
+        "decoupling_pct": 6.0,
+        "hr_zone_sec": [
+          377,
+          783,
+          1864,
+          860,
+          16,
+          0,
+          0
+        ]
+      },
+      "score": 70,
+      "components": [
+        {
+          "label": "Long run \u2014 longest since Mar 22; base is exactly what 1:20 lacks",
+          "delta": 16,
+          "cat": "raiser"
+        },
+        {
+          "label": "vs 1:25: helps, but smaller \u0394P (1:25 needs less base, already closer)",
+          "delta": 0,
+          "cat": "note"
+        },
+        {
+          "label": "Ran hotter than prescribed (5:24 vs 5:45, drift to 167)",
+          "delta": -5,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Decoupling ~6% mostly the negative split (progression) \u2014 weighted lightly",
+          "delta": -1,
+          "cat": "context"
+        },
+        {
+          "label": "Recovery green; ramp +3.3/wk hot",
+          "delta": 0,
+          "cat": "context"
+        }
+      ],
+      "entry": "Longest run since March 22 \u2014 and here the two lines separate in a way that's actually informative. Against the 1:20 dream it's a clear raiser (70): aerobic base is precisely what that goal is short on, so banking it moves the hard-goal odds up. Against the realistic 1:25 (66) it helps less \u2014 you're already closer to on-track for 1:25, so the same run buys a smaller probability gain. That 1:20-above-1:25 split is the signature of base work: it disproportionately helps the goal starving for base. Ran hotter than prescribed (5:24 vs 5:45, HR\u2192167), which costs a little; I'm weighting the ~6% decoupling lightly since this was a progression (rising HR is mostly the negative split, not base deficit). Recovery green, cadence steady 172-174.",
+      "note_next": "Mon Jul 6: OFF or \u226425 min true jog (load-77 bill). Tue intervals conditional on quiet Monday.",
+      "score_committed": 66,
+      "bar_phase": "base",
+      "delta_p": "raised 1:20 more than 1:25 (base work)",
+      "p_120": 0.0,
+      "p_125": 0.0,
+      "prob_note": "current-fitness readout (raced-today odds). ~0% now \u2014 projected half ~1:37 vs 1:20/1:25 targets; the gap is fitness, not build risk. Rises as fitness improves.",
+      "status": "scored",
+      "plan_rationale": "Base-phase long run: build the aerobic base the 1:20 lacks, at easy effort. (Prescribed the night before under the old model; going forward, plans are set the morning-of.)",
+      "pred_half": "1:37:45"
+    },
+    {
+      "date": "2026-07-06",
+      "dow": "Mon",
+      "reviewed": true,
+      "prediction": "1:37:45",
+      "prediction_prev": "1:37:45",
+      "planned": "OFF or <=25 min TRUE jog",
+      "wellness": {
+        "ctl": 20.5,
+        "atl": 32.6,
+        "form": -12.1,
+        "rampRate": 3.3,
+        "hrv": 89,
+        "restingHR": 46,
+        "sleepSecs": 27634,
+        "sleepScore": 95,
+        "sleepQuality": 1,
+        "vo2max": 54,
+        "weight": null
+      },
+      "activity": {
+        "name": "San Mateo Running",
+        "km": 4.88,
+        "mi": 3.03,
+        "sec": 1516,
+        "pace_per_km": "5:10",
+        "hr": 150,
+        "max_hr": null,
+        "intensity": 79.2,
+        "load": 27,
+        "cadence": 172,
+        "stride_m": null,
+        "elev_gain_m": 21,
+        "decoupling_pct": null,
+        "hr_zone_sec": null
+      },
+      "score": 58,
+      "components": [
+        {
+          "label": "Short 5 km on a fresh, well-recovered body \u2014 banks some aerobic time",
+          "delta": 2,
+          "cat": "raiser"
+        },
+        {
+          "label": "Recovery green (sleep excellent, HRV 89 \u2265 baseline, RHR 46 floor)",
+          "delta": 2,
+          "cat": "raiser"
+        },
+        {
+          "label": "Ran hotter than a recovery slot ideally wants \u2014 didn't help as much as easy would have",
+          "delta": -4,
+          "cat": "context"
+        },
+        {
+          "label": "Green-recovery floor: a rested short run has NOT lowered the odds",
+          "delta": 0,
+          "cat": "note"
+        },
+        {
+          "label": "vs 1:25 slightly higher: tighter 1:20 is marginally less forgiving",
+          "delta": 0,
+          "cat": "note"
+        }
+      ],
+      "entry": "Short 5 km on a well-recovered body (sleep excellent, HRV 89 above baseline, RHR 46 at floor). ~Neutral against both goals \u2014 a rested, willing short run has not lowered the 1:20 odds (58 vs 1:20, 61 vs 1:25). It was run hotter than a pure recovery slot ideally wants, so it 'didn't help as much as truly easy would have' \u2014 a neutral, not a negative; the green-recovery floor prevents the model from ever scoring a fresh short-run day into the 40s (an earlier version wrongly did). The two lines sit close today with 1:25 a hair higher, since the tighter 1:20 is marginally less forgiving of the extra intensity. Logged correctly to July 6 Pacific.",
+      "note_next": "Tue Jul 7: FULLY OFF \u2014 Monday-quiet condition not met, so intervals move to Wed Jul 8. Tue homework: first weighted calf session. Protect sleep.",
+      "score_committed": 61,
+      "bar_phase": "base",
+      "delta_p": "~neutral (held both; 1:25 slightly more secure)",
+      "p_120": 0.0,
+      "p_125": 0.0,
+      "prob_note": "current-fitness readout (raced-today odds). ~0% now \u2014 projected half ~1:37 vs 1:20/1:25 targets; the gap is fitness, not build risk. Rises as fitness improves.",
+      "status": "scored",
+      "plan_rationale": "Prescribed OFF/true-jog to absorb the prior long run; recovery was green but the day did not call for intensity.",
+      "pred_half": "1:37:45"
+    }
+  ]
+}

@@ -13,3 +13,12 @@ desktop.ini
 
 # Logs
 *.log
+
+# Claude Code local overrides (user-specific; never shared)
+.claude/settings.local.json
+
+# Dependencies
+node_modules/
+
+# Routine (research-preview error breadcrumb, not source)
+routine/LAST_RUN_ERROR.txt

@@ -1,0 +1,11935 @@
+{
+"activities": [
+{
+"date": "2022-01-01",
+"km": 11.07,
+"mi": 6.88,
+"sec": 3043,
+"hr": 168,
+"intensity": 98.5,
+"load": 82,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-01-05",
+"km": 2.27,
+"mi": 1.41,
+"sec": 1413,
+"hr": 102,
+"intensity": 42.1,
+"load": 7,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-01-10",
+"km": 1.35,
+"mi": 0.84,
+"sec": 378,
+"hr": 137,
+"intensity": null,
+"load": 5,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-10",
+"km": 1.76,
+"mi": 1.09,
+"sec": 463,
+"hr": 154,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-11",
+"km": 2.59,
+"mi": 1.61,
+"sec": 502,
+"hr": 150,
+"intensity": null,
+"load": 13,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-01-11",
+"km": 1.78,
+"mi": 1.11,
+"sec": 608,
+"hr": 162,
+"intensity": 90.3,
+"load": 14,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-01-11",
+"km": 2.79,
+"mi": 1.73,
+"sec": 745,
+"hr": 152,
+"intensity": 85.1,
+"load": 15,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-01-12",
+"km": 12.98,
+"mi": 8.07,
+"sec": 3361,
+"hr": 163,
+"intensity": 92.4,
+"load": 81,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-13",
+"km": 13.88,
+"mi": 8.62,
+"sec": 3773,
+"hr": 160,
+"intensity": 88.9,
+"load": 85,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-18",
+"km": 2.73,
+"mi": 1.7,
+"sec": 731,
+"hr": 153,
+"intensity": 84.9,
+"load": 15,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-01-18",
+"km": 3.15,
+"mi": 1.96,
+"sec": 614,
+"hr": 158,
+"intensity": 90.3,
+"load": 14,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-01-18",
+"km": 1.77,
+"mi": 1.1,
+"sec": 564,
+"hr": 160,
+"intensity": null,
+"load": 13,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-01-19",
+"km": 7.14,
+"mi": 4.44,
+"sec": 1893,
+"hr": 160,
+"intensity": 89.3,
+"load": 42,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-20",
+"km": 13.01,
+"mi": 8.08,
+"sec": 3327,
+"hr": 173,
+"intensity": 103.4,
+"load": 101,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-21",
+"km": 2.22,
+"mi": 1.38,
+"sec": 690,
+"hr": 133,
+"intensity": 68.2,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-24",
+"km": 1.12,
+"mi": 0.7,
+"sec": 308,
+"hr": 124,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-25",
+"km": 2.77,
+"mi": 1.72,
+"sec": 728,
+"hr": 144,
+"intensity": 76.3,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-01-25",
+"km": 3.12,
+"mi": 1.94,
+"sec": 586,
+"hr": 151,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-01-25",
+"km": 1.8,
+"mi": 1.12,
+"sec": 578,
+"hr": 155,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-01-26",
+"km": 13.01,
+"mi": 8.08,
+"sec": 3382,
+"hr": 160,
+"intensity": 88.3,
+"load": 75,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-27",
+"km": 13.95,
+"mi": 8.67,
+"sec": 3787,
+"hr": 161,
+"intensity": 88.7,
+"load": 84,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-28",
+"km": 2.87,
+"mi": 1.78,
+"sec": 1093,
+"hr": 113,
+"intensity": 53.6,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-29",
+"km": 1.92,
+"mi": 1.19,
+"sec": 539,
+"hr": 157,
+"intensity": null,
+"load": 12,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-29",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2452,
+"hr": 177,
+"intensity": 107.0,
+"load": 78,
+"name": "San Mateo - 10k progression"
+},
+{
+"date": "2022-01-29",
+"km": 1.91,
+"mi": 1.19,
+"sec": 545,
+"hr": 163,
+"intensity": null,
+"load": 13,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-01-30",
+"km": 13.41,
+"mi": 8.33,
+"sec": 3395,
+"hr": 174,
+"intensity": 102.9,
+"load": 102,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-02-01",
+"km": 3.16,
+"mi": 1.96,
+"sec": 579,
+"hr": 153,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-02-01",
+"km": 2.79,
+"mi": 1.73,
+"sec": 712,
+"hr": 145,
+"intensity": 76.3,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-02-01",
+"km": 1.77,
+"mi": 1.1,
+"sec": 665,
+"hr": 167,
+"intensity": 95.1,
+"load": 17,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-02-02",
+"km": 15.09,
+"mi": 9.38,
+"sec": 3814,
+"hr": 161,
+"intensity": 89.4,
+"load": 86,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-02-03",
+"km": 13.98,
+"mi": 8.69,
+"sec": 4178,
+"hr": 145,
+"intensity": 73.5,
+"load": 64,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-02-04",
+"km": 2.02,
+"mi": 1.26,
+"sec": 580,
+"hr": 130,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-02-05",
+"km": 1.79,
+"mi": 1.11,
+"sec": 513,
+"hr": 153,
+"intensity": null,
+"load": 10,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-02-05",
+"km": 3.85,
+"mi": 2.39,
+"sec": 1242,
+"hr": 151,
+"intensity": 81.6,
+"load": 23,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-02-05",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1112,
+"hr": 172,
+"intensity": 101.6,
+"load": 32,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-02-05",
+"km": 2.61,
+"mi": 1.62,
+"sec": 696,
+"hr": 155,
+"intensity": 84.7,
+"load": 14,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-02-05",
+"km": 1.09,
+"mi": 0.68,
+"sec": 350,
+"hr": 150,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-02-08",
+"km": 2.37,
+"mi": 1.47,
+"sec": 438,
+"hr": 157,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-02-08",
+"km": 1.77,
+"mi": 1.1,
+"sec": 538,
+"hr": 161,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-02-08",
+"km": 2.76,
+"mi": 1.71,
+"sec": 691,
+"hr": 137,
+"intensity": 72.1,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-02-09",
+"km": 2.51,
+"mi": 1.56,
+"sec": 687,
+"hr": 140,
+"intensity": 70.7,
+"load": 10,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-02-09",
+"km": 8.35,
+"mi": 5.19,
+"sec": 2008,
+"hr": 155,
+"intensity": 85.8,
+"load": 43,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-02-09",
+"km": 2.48,
+"mi": 1.54,
+"sec": 660,
+"hr": 169,
+"intensity": 95.5,
+"load": 17,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-02-10",
+"km": 13.88,
+"mi": 8.62,
+"sec": 3719,
+"hr": 155,
+"intensity": 84.9,
+"load": 76,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-02-10",
+"km": 0.58,
+"mi": 0.36,
+"sec": 99,
+"hr": 117,
+"intensity": null,
+"load": 1,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-02-12",
+"km": 1.21,
+"mi": 0.75,
+"sec": 218,
+"hr": 160,
+"intensity": null,
+"load": 5,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-02-12",
+"km": 4.61,
+"mi": 2.86,
+"sec": 1649,
+"hr": 147,
+"intensity": 76.8,
+"load": 27,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-02-12",
+"km": 0.41,
+"mi": 0.25,
+"sec": 104,
+"hr": 133,
+"intensity": null,
+"load": 1,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-02-15",
+"km": 0.81,
+"mi": 0.5,
+"sec": 235,
+"hr": 141,
+"intensity": null,
+"load": 3,
+"name": "Burlingame Track Running"
+},
+{
+"date": "2022-02-15",
+"km": 1.61,
+"mi": 1.0,
+"sec": 291,
+"hr": 156,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Track Running"
+},
+{
+"date": "2022-02-16",
+"km": 1.61,
+"mi": 1.0,
+"sec": 712,
+"hr": 129,
+"intensity": 59.3,
+"load": 7,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-02-18",
+"km": 8.02,
+"mi": 4.98,
+"sec": 2079,
+"hr": 158,
+"intensity": 87.7,
+"load": 45,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-02-19",
+"km": 15.05,
+"mi": 9.35,
+"sec": 3754,
+"hr": 166,
+"intensity": 94.9,
+"load": 94,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-02-21",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2549,
+"hr": 163,
+"intensity": 93.2,
+"load": 62,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-02-26",
+"km": 8.01,
+"mi": 4.98,
+"sec": 2209,
+"hr": 161,
+"intensity": 91.2,
+"load": 51,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-03-01",
+"km": 2.8,
+"mi": 1.74,
+"sec": 752,
+"hr": 143,
+"intensity": 75.7,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-01",
+"km": 4.7,
+"mi": 2.92,
+"sec": 968,
+"hr": 160,
+"intensity": 90.3,
+"load": 22,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-01",
+"km": 3.45,
+"mi": 2.14,
+"sec": 1078,
+"hr": 162,
+"intensity": 90.5,
+"load": 25,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-02",
+"km": 2.37,
+"mi": 1.47,
+"sec": 659,
+"hr": 160,
+"intensity": 88.9,
+"load": 15,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-03",
+"km": 13.86,
+"mi": 8.61,
+"sec": 3797,
+"hr": 153,
+"intensity": 81.3,
+"load": 72,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-05",
+"km": 4.84,
+"mi": 3.01,
+"sec": 1751,
+"hr": 128,
+"intensity": 60.7,
+"load": 18,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-05",
+"km": 6.01,
+"mi": 3.73,
+"sec": 1367,
+"hr": 165,
+"intensity": 94.2,
+"load": 34,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-03-05",
+"km": 0.79,
+"mi": 0.49,
+"sec": 227,
+"hr": 142,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-06",
+"km": 9.55,
+"mi": 5.93,
+"sec": 2390,
+"hr": 151,
+"intensity": 80.8,
+"load": 44,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-06",
+"km": 2.46,
+"mi": 1.53,
+"sec": 735,
+"hr": 160,
+"intensity": 87.3,
+"load": 16,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-08",
+"km": 4.45,
+"mi": 2.77,
+"sec": 1344,
+"hr": 159,
+"intensity": 88.1,
+"load": 29,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-08",
+"km": 2.17,
+"mi": 1.35,
+"sec": 580,
+"hr": 142,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-08",
+"km": 1.74,
+"mi": 1.08,
+"sec": 424,
+"hr": 132,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-08",
+"km": 4.94,
+"mi": 3.07,
+"sec": 1075,
+"hr": 170,
+"intensity": 98.5,
+"load": 29,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-10",
+"km": 13.67,
+"mi": 8.49,
+"sec": 3660,
+"hr": 153,
+"intensity": 82.4,
+"load": 71,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-12",
+"km": 2.81,
+"mi": 1.75,
+"sec": 625,
+"hr": 151,
+"intensity": 83.1,
+"load": 12,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-03-12",
+"km": 4.01,
+"mi": 2.49,
+"sec": 1059,
+"hr": 150,
+"intensity": 82.5,
+"load": 20,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-12",
+"km": 5.31,
+"mi": 3.3,
+"sec": 1728,
+"hr": 140,
+"intensity": 70.6,
+"load": 24,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-13",
+"km": 17.01,
+"mi": 10.57,
+"sec": 4212,
+"hr": 166,
+"intensity": 95.2,
+"load": 108,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-16",
+"km": 2.59,
+"mi": 1.61,
+"sec": 714,
+"hr": 143,
+"intensity": 74.3,
+"load": 11,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-16",
+"km": 7.15,
+"mi": 4.44,
+"sec": 1736,
+"hr": 147,
+"intensity": 77.3,
+"load": 29,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-16",
+"km": 4.32,
+"mi": 2.68,
+"sec": 1176,
+"hr": 159,
+"intensity": 89.2,
+"load": 26,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-17",
+"km": 13.9,
+"mi": 8.64,
+"sec": 3780,
+"hr": 150,
+"intensity": 79.9,
+"load": 68,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-19",
+"km": 1.94,
+"mi": 1.21,
+"sec": 509,
+"hr": 150,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-19",
+"km": 3.85,
+"mi": 2.39,
+"sec": 1180,
+"hr": 148,
+"intensity": 76.1,
+"load": 19,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-19",
+"km": 1.93,
+"mi": 1.2,
+"sec": 531,
+"hr": 145,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-19",
+"km": 6.01,
+"mi": 3.73,
+"sec": 1374,
+"hr": 168,
+"intensity": 97.0,
+"load": 36,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-03-20",
+"km": 13.3,
+"mi": 8.26,
+"sec": 3380,
+"hr": 161,
+"intensity": 90.4,
+"load": 78,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-22",
+"km": 2.38,
+"mi": 1.48,
+"sec": 650,
+"hr": 143,
+"intensity": 74.4,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-22",
+"km": 7.61,
+"mi": 4.73,
+"sec": 1663,
+"hr": 178,
+"intensity": 109.1,
+"load": 55,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-22",
+"km": 3.71,
+"mi": 2.31,
+"sec": 1194,
+"hr": 147,
+"intensity": 75.2,
+"load": 19,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-23",
+"km": 2.46,
+"mi": 1.53,
+"sec": 746,
+"hr": 133,
+"intensity": 65.8,
+"load": 9,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-23",
+"km": 8.98,
+"mi": 5.58,
+"sec": 2565,
+"hr": 134,
+"intensity": 67.9,
+"load": 33,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-23",
+"km": 2.58,
+"mi": 1.6,
+"sec": 809,
+"hr": 149,
+"intensity": 78.1,
+"load": 14,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-03-24",
+"km": 13.92,
+"mi": 8.65,
+"sec": 3766,
+"hr": 149,
+"intensity": 79.8,
+"load": 67,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-26",
+"km": 1.2,
+"mi": 0.75,
+"sec": 334,
+"hr": 145,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-26",
+"km": 6.01,
+"mi": 3.73,
+"sec": 1381,
+"hr": 161,
+"intensity": 89.7,
+"load": 31,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-03-27",
+"km": 12.94,
+"mi": 8.04,
+"sec": 3326,
+"hr": 156,
+"intensity": 85.0,
+"load": 68,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-03-29",
+"km": 2.78,
+"mi": 1.73,
+"sec": 719,
+"hr": 141,
+"intensity": 74.1,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-29",
+"km": 3.2,
+"mi": 1.99,
+"sec": 617,
+"hr": 163,
+"intensity": 96.1,
+"load": 16,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-29",
+"km": 1.56,
+"mi": 0.97,
+"sec": 358,
+"hr": 153,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-29",
+"km": 3.86,
+"mi": 2.4,
+"sec": 1196,
+"hr": 150,
+"intensity": 79.2,
+"load": 21,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-03-31",
+"km": 13.87,
+"mi": 8.62,
+"sec": 3604,
+"hr": 156,
+"intensity": 84.3,
+"load": 74,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-04-02",
+"km": 1.9,
+"mi": 1.18,
+"sec": 496,
+"hr": 149,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-04-02",
+"km": 6.0,
+"mi": 3.73,
+"sec": 1362,
+"hr": 178,
+"intensity": 108.9,
+"load": 45,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-04-02",
+"km": 1.89,
+"mi": 1.17,
+"sec": 543,
+"hr": 157,
+"intensity": null,
+"load": 11,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-04-05",
+"km": 1.75,
+"mi": 1.09,
+"sec": 519,
+"hr": 128,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-04-05",
+"km": 3.51,
+"mi": 2.18,
+"sec": 1105,
+"hr": 161,
+"intensity": 89.4,
+"load": 25,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-04-05",
+"km": 4.93,
+"mi": 3.06,
+"sec": 990,
+"hr": 161,
+"intensity": 90.6,
+"load": 23,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-04-05",
+"km": 2.14,
+"mi": 1.33,
+"sec": 533,
+"hr": 124,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-04-07",
+"km": 0.9,
+"mi": 0.56,
+"sec": 182,
+"hr": 148,
+"intensity": null,
+"load": 3,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-04-07",
+"km": 13.82,
+"mi": 8.59,
+"sec": 3647,
+"hr": 161,
+"intensity": 90.5,
+"load": 86,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-04-10",
+"km": 2.0,
+"mi": 1.24,
+"sec": 586,
+"hr": 123,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-04-11",
+"km": 5.58,
+"mi": 3.47,
+"sec": 1739,
+"hr": 140,
+"intensity": 70.5,
+"load": 24,
+"name": "San Mateo County Running"
+},
+{
+"date": "2022-04-19",
+"km": 0.97,
+"mi": 0.6,
+"sec": 377,
+"hr": 144,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-04-19",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1089,
+"hr": 163,
+"intensity": 92.5,
+"load": 26,
+"name": "Burlingame Track Running"
+},
+{
+"date": "2022-04-19",
+"km": 0.58,
+"mi": 0.36,
+"sec": 179,
+"hr": 151,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-04-19",
+"km": 0.91,
+"mi": 0.57,
+"sec": 284,
+"hr": 128,
+"intensity": null,
+"load": 3,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-02",
+"km": 6.18,
+"mi": 3.84,
+"sec": 1689,
+"hr": 165,
+"intensity": 94.6,
+"load": 42,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-03",
+"km": 2.43,
+"mi": 1.51,
+"sec": 674,
+"hr": 147,
+"intensity": 78.9,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-03",
+"km": 4.82,
+"mi": 3.0,
+"sec": 1022,
+"hr": 167,
+"intensity": 96.6,
+"load": 28,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-03",
+"km": 3.48,
+"mi": 2.16,
+"sec": 1026,
+"hr": 163,
+"intensity": 91.8,
+"load": 24,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-04",
+"km": 2.53,
+"mi": 1.57,
+"sec": 729,
+"hr": 159,
+"intensity": 84.6,
+"load": 15,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-04",
+"km": 9.46,
+"mi": 5.88,
+"sec": 2308,
+"hr": 160,
+"intensity": 90.9,
+"load": 54,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-04",
+"km": 2.56,
+"mi": 1.59,
+"sec": 722,
+"hr": 147,
+"intensity": 77.3,
+"load": 12,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-05",
+"km": 1.23,
+"mi": 0.76,
+"sec": 391,
+"hr": 135,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-05",
+"km": 8.66,
+"mi": 5.38,
+"sec": 2235,
+"hr": 163,
+"intensity": 91.1,
+"load": 53,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-05",
+"km": 1.27,
+"mi": 0.79,
+"sec": 394,
+"hr": 142,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-07",
+"km": 5.44,
+"mi": 3.38,
+"sec": 1511,
+"hr": 153,
+"intensity": 85.5,
+"load": 31,
+"name": "Treadmill Running"
+},
+{
+"date": "2022-05-08",
+"km": 10.41,
+"mi": 6.47,
+"sec": 2744,
+"hr": 163,
+"intensity": 90.9,
+"load": 65,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-08",
+"km": 4.71,
+"mi": 2.93,
+"sec": 1552,
+"hr": 138,
+"intensity": 69.4,
+"load": 21,
+"name": "Palo Alto Running"
+},
+{
+"date": "2022-05-10",
+"km": 3.25,
+"mi": 2.02,
+"sec": 1008,
+"hr": 152,
+"intensity": 81.1,
+"load": 19,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-10",
+"km": 4.2,
+"mi": 2.61,
+"sec": 861,
+"hr": 157,
+"intensity": 86.2,
+"load": 18,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-10",
+"km": 1.74,
+"mi": 1.08,
+"sec": 515,
+"hr": 143,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-11",
+"km": 2.61,
+"mi": 1.62,
+"sec": 655,
+"hr": 149,
+"intensity": 84.5,
+"load": 13,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-11",
+"km": 8.44,
+"mi": 5.24,
+"sec": 2041,
+"hr": 151,
+"intensity": 80.0,
+"load": 39,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-11",
+"km": 2.61,
+"mi": 1.62,
+"sec": 694,
+"hr": 158,
+"intensity": 87.9,
+"load": 15,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-12",
+"km": 1.26,
+"mi": 0.78,
+"sec": 381,
+"hr": 122,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-12",
+"km": 8.68,
+"mi": 5.39,
+"sec": 2218,
+"hr": 154,
+"intensity": 82.5,
+"load": 42,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-12",
+"km": 1.31,
+"mi": 0.81,
+"sec": 400,
+"hr": 134,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-14",
+"km": 0.35,
+"mi": 0.22,
+"sec": 117,
+"hr": 120,
+"intensity": null,
+"load": 1,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-14",
+"km": 4.86,
+"mi": 3.02,
+"sec": 1669,
+"hr": 140,
+"intensity": 70.4,
+"load": 23,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-14",
+"km": 1.28,
+"mi": 0.8,
+"sec": 358,
+"hr": 129,
+"intensity": null,
+"load": 4,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-14",
+"km": 7.79,
+"mi": 4.84,
+"sec": 2100,
+"hr": null,
+"intensity": null,
+"load": 0,
+"name": "Late night treadmill"
+},
+{
+"date": "2022-05-15",
+"km": 1.35,
+"mi": 0.84,
+"sec": 357,
+"hr": 155,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-15",
+"km": 8.4,
+"mi": 5.22,
+"sec": 2250,
+"hr": 160,
+"intensity": 90.5,
+"load": 52,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-17",
+"km": 3.41,
+"mi": 2.12,
+"sec": 1041,
+"hr": 154,
+"intensity": 83.0,
+"load": 20,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-17",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2237,
+"hr": 173,
+"intensity": 102.9,
+"load": 66,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-17",
+"km": 2.82,
+"mi": 1.75,
+"sec": 752,
+"hr": 150,
+"intensity": 81.6,
+"load": 14,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-18",
+"km": 2.51,
+"mi": 1.56,
+"sec": 679,
+"hr": 146,
+"intensity": 74.9,
+"load": 11,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-18",
+"km": 5.27,
+"mi": 3.27,
+"sec": 1208,
+"hr": 163,
+"intensity": 100.2,
+"load": 34,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-18",
+"km": 6.52,
+"mi": 4.05,
+"sec": 1731,
+"hr": 165,
+"intensity": 92.7,
+"load": 42,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-19",
+"km": 11.66,
+"mi": 7.25,
+"sec": 3377,
+"hr": 140,
+"intensity": 70.8,
+"load": 48,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-20",
+"km": 1.04,
+"mi": 0.65,
+"sec": 311,
+"hr": 134,
+"intensity": null,
+"load": 4,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-21",
+"km": 1.76,
+"mi": 1.09,
+"sec": 483,
+"hr": 152,
+"intensity": null,
+"load": 10,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-21",
+"km": 1.21,
+"mi": 0.75,
+"sec": 280,
+"hr": 164,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-05-21",
+"km": 2.24,
+"mi": 1.39,
+"sec": 612,
+"hr": 158,
+"intensity": 87.4,
+"load": 13,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-05-21",
+"km": 1.83,
+"mi": 1.14,
+"sec": 502,
+"hr": 151,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-22",
+"km": 12.92,
+"mi": 8.03,
+"sec": 3281,
+"hr": 169,
+"intensity": 98.0,
+"load": 90,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-24",
+"km": 1.8,
+"mi": 1.12,
+"sec": 557,
+"hr": 147,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-24",
+"km": 4.22,
+"mi": 2.62,
+"sec": 885,
+"hr": 163,
+"intensity": 102.3,
+"load": 26,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-24",
+"km": 2.39,
+"mi": 1.49,
+"sec": 684,
+"hr": 146,
+"intensity": 76.0,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-25",
+"km": 2.51,
+"mi": 1.56,
+"sec": 673,
+"hr": 149,
+"intensity": 78.4,
+"load": 12,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-25",
+"km": 9.53,
+"mi": 5.92,
+"sec": 2245,
+"hr": 158,
+"intensity": 87.6,
+"load": 50,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-25",
+"km": 2.58,
+"mi": 1.6,
+"sec": 670,
+"hr": 164,
+"intensity": 91.6,
+"load": 16,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-26",
+"km": 13.87,
+"mi": 8.62,
+"sec": 3718,
+"hr": 151,
+"intensity": 79.7,
+"load": 68,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-28",
+"km": 5.23,
+"mi": 3.25,
+"sec": 1766,
+"hr": 131,
+"intensity": 63.1,
+"load": 20,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-05-28",
+"km": 1.75,
+"mi": 1.09,
+"sec": 481,
+"hr": 147,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-28",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1134,
+"hr": 170,
+"intensity": 99.1,
+"load": 31,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-05-28",
+"km": 3.53,
+"mi": 2.19,
+"sec": 966,
+"hr": 155,
+"intensity": 84.1,
+"load": 19,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-29",
+"km": 14.28,
+"mi": 8.87,
+"sec": 3618,
+"hr": 163,
+"intensity": 92.4,
+"load": 88,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-29",
+"km": 2.73,
+"mi": 1.7,
+"sec": 765,
+"hr": 157,
+"intensity": 81.3,
+"load": 15,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-05-31",
+"km": 1.77,
+"mi": 1.1,
+"sec": 545,
+"hr": 153,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-31",
+"km": 6.28,
+"mi": 3.9,
+"sec": 1213,
+"hr": 160,
+"intensity": 95.0,
+"load": 31,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-05-31",
+"km": 1.83,
+"mi": 1.14,
+"sec": 517,
+"hr": 136,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-01",
+"km": 2.52,
+"mi": 1.57,
+"sec": 667,
+"hr": 144,
+"intensity": 73.4,
+"load": 10,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-06-01",
+"km": 7.42,
+"mi": 4.61,
+"sec": 2029,
+"hr": 144,
+"intensity": 74.0,
+"load": 31,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-06-02",
+"km": 8.67,
+"mi": 5.39,
+"sec": 2377,
+"hr": 144,
+"intensity": 75.3,
+"load": 38,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-04",
+"km": 4.73,
+"mi": 2.94,
+"sec": 1488,
+"hr": 146,
+"intensity": 76.1,
+"load": 24,
+"name": "Redwood City Running"
+},
+{
+"date": "2022-06-05",
+"km": 1.08,
+"mi": 0.67,
+"sec": 302,
+"hr": 148,
+"intensity": null,
+"load": 5,
+"name": "San Carlos Running"
+},
+{
+"date": "2022-06-05",
+"km": 4.69,
+"mi": 2.91,
+"sec": 974,
+"hr": 180,
+"intensity": 112.0,
+"load": 34,
+"name": "San Carlos Running"
+},
+{
+"date": "2022-06-05",
+"km": 3.2,
+"mi": 1.99,
+"sec": 1094,
+"hr": 138,
+"intensity": 67.9,
+"load": 14,
+"name": "San Carlos Running"
+},
+{
+"date": "2022-06-14",
+"km": 0.35,
+"mi": 0.22,
+"sec": 137,
+"hr": 136,
+"intensity": null,
+"load": 2,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-14",
+"km": 0.42,
+"mi": 0.26,
+"sec": 163,
+"hr": 140,
+"intensity": null,
+"load": 2,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-14",
+"km": 0.55,
+"mi": 0.34,
+"sec": 127,
+"hr": 164,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-14",
+"km": 0.96,
+"mi": 0.6,
+"sec": 189,
+"hr": 179,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-14",
+"km": 5.04,
+"mi": 3.13,
+"sec": 1053,
+"hr": 183,
+"intensity": 116.7,
+"load": 40,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-14",
+"km": 1.84,
+"mi": 1.14,
+"sec": 524,
+"hr": 144,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-15",
+"km": 2.57,
+"mi": 1.6,
+"sec": 700,
+"hr": 150,
+"intensity": 80.3,
+"load": 13,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-06-15",
+"km": 9.37,
+"mi": 5.82,
+"sec": 2176,
+"hr": 151,
+"intensity": 82.1,
+"load": 42,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-06-15",
+"km": 2.52,
+"mi": 1.57,
+"sec": 682,
+"hr": 153,
+"intensity": 82.8,
+"load": 13,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-06-16",
+"km": 13.83,
+"mi": 8.59,
+"sec": 4036,
+"hr": 148,
+"intensity": 74.9,
+"load": 66,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-06-19",
+"km": 0.76,
+"mi": 0.47,
+"sec": 333,
+"hr": 75,
+"intensity": null,
+"load": 1,
+"name": "Nanaimo District Running"
+},
+{
+"date": "2022-06-19",
+"km": 2.13,
+"mi": 1.32,
+"sec": 966,
+"hr": null,
+"intensity": null,
+"load": 0,
+"name": "Nanaimo District Running"
+},
+{
+"date": "2022-06-22",
+"km": 4.88,
+"mi": 3.03,
+"sec": 1292,
+"hr": 154,
+"intensity": 85.0,
+"load": 26,
+"name": "Nanaimo District Running"
+},
+{
+"date": "2022-06-25",
+"km": 16.14,
+"mi": 10.03,
+"sec": 4272,
+"hr": 170,
+"intensity": 99.2,
+"load": 118,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-06-26",
+"km": 8.35,
+"mi": 5.19,
+"sec": 2254,
+"hr": 157,
+"intensity": 87.9,
+"load": 49,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-06-28",
+"km": 3.98,
+"mi": 2.47,
+"sec": 783,
+"hr": 160,
+"intensity": 90.5,
+"load": 18,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-28",
+"km": 1.77,
+"mi": 1.1,
+"sec": 543,
+"hr": 158,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-06-29",
+"km": 2.89,
+"mi": 1.8,
+"sec": 793,
+"hr": 142,
+"intensity": 71.2,
+"load": 12,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-06-29",
+"km": 7.07,
+"mi": 4.39,
+"sec": 1723,
+"hr": 145,
+"intensity": 71.4,
+"load": 28,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-06-29",
+"km": 4.32,
+"mi": 2.68,
+"sec": 1133,
+"hr": 165,
+"intensity": 93.3,
+"load": 28,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-06-30",
+"km": 13.92,
+"mi": 8.65,
+"sec": 3806,
+"hr": 154,
+"intensity": 82.7,
+"load": 74,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-07-03",
+"km": 17.02,
+"mi": 10.58,
+"sec": 4551,
+"hr": 164,
+"intensity": 92.7,
+"load": 109,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-07-05",
+"km": 2.0,
+"mi": 1.24,
+"sec": 594,
+"hr": 140,
+"intensity": 72.0,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-07-05",
+"km": 7.45,
+"mi": 4.63,
+"sec": 1701,
+"hr": 169,
+"intensity": 99.5,
+"load": 47,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-07-05",
+"km": 3.86,
+"mi": 2.4,
+"sec": 1180,
+"hr": 153,
+"intensity": 81.6,
+"load": 22,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-07-05",
+"km": 7.84,
+"mi": 4.87,
+"sec": 6645,
+"hr": 86,
+"intensity": 31.6,
+"load": 19,
+"name": "San Mateo County Running"
+},
+{
+"date": "2022-07-06",
+"km": 2.7,
+"mi": 1.68,
+"sec": 738,
+"hr": 143,
+"intensity": 73.2,
+"load": 11,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-06",
+"km": 3.02,
+"mi": 1.88,
+"sec": 785,
+"hr": 168,
+"intensity": 95.7,
+"load": 20,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-06",
+"km": 8.64,
+"mi": 5.37,
+"sec": 2067,
+"hr": 151,
+"intensity": 77.2,
+"load": 39,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-07",
+"km": 13.84,
+"mi": 8.6,
+"sec": 3816,
+"hr": 151,
+"intensity": 79.4,
+"load": 69,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-07-09",
+"km": 1.75,
+"mi": 1.09,
+"sec": 467,
+"hr": 145,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-07-09",
+"km": 0.81,
+"mi": 0.5,
+"sec": 470,
+"hr": 108,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-07-09",
+"km": 8.01,
+"mi": 4.98,
+"sec": 1992,
+"hr": 172,
+"intensity": 101.4,
+"load": 57,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-07-09",
+"km": 1.93,
+"mi": 1.2,
+"sec": 511,
+"hr": 158,
+"intensity": null,
+"load": 11,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-07-10",
+"km": 7.48,
+"mi": 4.65,
+"sec": 1996,
+"hr": 151,
+"intensity": 80.6,
+"load": 37,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-07-12",
+"km": 1.84,
+"mi": 1.14,
+"sec": 501,
+"hr": 140,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-07-12",
+"km": 4.02,
+"mi": 2.5,
+"sec": 770,
+"hr": 154,
+"intensity": 85.7,
+"load": 16,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-07-12",
+"km": 3.47,
+"mi": 2.16,
+"sec": 1099,
+"hr": 154,
+"intensity": 82.8,
+"load": 21,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-07-13",
+"km": 2.53,
+"mi": 1.57,
+"sec": 680,
+"hr": 143,
+"intensity": 76.3,
+"load": 11,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-13",
+"km": 9.2,
+"mi": 5.72,
+"sec": 2102,
+"hr": 154,
+"intensity": 86.4,
+"load": 44,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-13",
+"km": 2.56,
+"mi": 1.59,
+"sec": 669,
+"hr": 154,
+"intensity": 83.0,
+"load": 13,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-14",
+"km": 16.16,
+"mi": 10.04,
+"sec": 4191,
+"hr": 160,
+"intensity": 89.1,
+"load": 95,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-07-16",
+"km": 2.51,
+"mi": 1.56,
+"sec": 589,
+"hr": 161,
+"intensity": null,
+"load": 14,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-16",
+"km": 2.5,
+"mi": 1.55,
+"sec": 560,
+"hr": 171,
+"intensity": null,
+"load": 16,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-18",
+"km": 4.24,
+"mi": 2.63,
+"sec": 1103,
+"hr": 151,
+"intensity": 78.1,
+"load": 20,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-07-20",
+"km": 1.31,
+"mi": 0.81,
+"sec": 342,
+"hr": 153,
+"intensity": null,
+"load": 7,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-24",
+"km": 0.71,
+"mi": 0.44,
+"sec": 202,
+"hr": 141,
+"intensity": null,
+"load": 3,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-24",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1027,
+"hr": 175,
+"intensity": 104.0,
+"load": 31,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-07-28",
+"km": 13.9,
+"mi": 8.64,
+"sec": 3468,
+"hr": 156,
+"intensity": 85.5,
+"load": 72,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-07-30",
+"km": 4.91,
+"mi": 3.05,
+"sec": 1835,
+"hr": 133,
+"intensity": 63.5,
+"load": 21,
+"name": "Alameda County Running"
+},
+{
+"date": "2022-07-31",
+"km": 17.91,
+"mi": 11.13,
+"sec": 4668,
+"hr": 164,
+"intensity": 93.6,
+"load": 114,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-08-02",
+"km": 1.77,
+"mi": 1.1,
+"sec": 590,
+"hr": 154,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-02",
+"km": 1.93,
+"mi": 1.2,
+"sec": 547,
+"hr": 133,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-02",
+"km": 4.67,
+"mi": 2.9,
+"sec": 909,
+"hr": 145,
+"intensity": 76.6,
+"load": 15,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-05",
+"km": 4.3,
+"mi": 2.67,
+"sec": 1156,
+"hr": 148,
+"intensity": 79.4,
+"load": 21,
+"name": "Ealing Running"
+},
+{
+"date": "2022-08-09",
+"km": 2.67,
+"mi": 1.66,
+"sec": 739,
+"hr": 160,
+"intensity": 91.2,
+"load": 18,
+"name": "Ealing Running"
+},
+{
+"date": "2022-08-09",
+"km": 7.7,
+"mi": 4.78,
+"sec": 1904,
+"hr": 171,
+"intensity": 102.3,
+"load": 56,
+"name": "City of London Running"
+},
+{
+"date": "2022-08-18",
+"km": 9.43,
+"mi": 5.86,
+"sec": 2700,
+"hr": 157,
+"intensity": 84.9,
+"load": 57,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-08-19",
+"km": 4.98,
+"mi": 3.09,
+"sec": 1810,
+"hr": 147,
+"intensity": 75.7,
+"load": 30,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-08-20",
+"km": 1.92,
+"mi": 1.19,
+"sec": 524,
+"hr": 158,
+"intensity": null,
+"load": 11,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-08-20",
+"km": 4.0,
+"mi": 2.49,
+"sec": 1886,
+"hr": 178,
+"intensity": 108.6,
+"load": 62,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-08-20",
+"km": 2.01,
+"mi": 1.25,
+"sec": 460,
+"hr": 184,
+"intensity": null,
+"load": 17,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-08-20",
+"km": 2.71,
+"mi": 1.68,
+"sec": 735,
+"hr": 169,
+"intensity": 99.0,
+"load": 20,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-08-21",
+"km": 18.55,
+"mi": 11.53,
+"sec": 4865,
+"hr": 163,
+"intensity": 92.8,
+"load": 119,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-08-23",
+"km": 3.4,
+"mi": 2.11,
+"sec": 1005,
+"hr": 156,
+"intensity": 84.5,
+"load": 20,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-23",
+"km": 3.41,
+"mi": 2.12,
+"sec": 666,
+"hr": 145,
+"intensity": 76.7,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-23",
+"km": 1.91,
+"mi": 1.19,
+"sec": 541,
+"hr": 140,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-24",
+"km": 2.52,
+"mi": 1.57,
+"sec": 677,
+"hr": 147,
+"intensity": 79.5,
+"load": 12,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-08-24",
+"km": 8.23,
+"mi": 5.11,
+"sec": 1920,
+"hr": 146,
+"intensity": 77.7,
+"load": 33,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-08-24",
+"km": 2.57,
+"mi": 1.6,
+"sec": 718,
+"hr": 150,
+"intensity": 79.7,
+"load": 13,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-08-25",
+"km": 13.84,
+"mi": 8.6,
+"sec": 3743,
+"hr": 156,
+"intensity": 84.2,
+"load": 76,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-08-27",
+"km": 5.53,
+"mi": 3.44,
+"sec": 1708,
+"hr": 151,
+"intensity": 79.5,
+"load": 30,
+"name": "Oakland Running"
+},
+{
+"date": "2022-08-28",
+"km": 1.65,
+"mi": 1.03,
+"sec": 473,
+"hr": 126,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-28",
+"km": 0.8,
+"mi": 0.5,
+"sec": 208,
+"hr": 140,
+"intensity": null,
+"load": 3,
+"name": "Burlingame Track Running"
+},
+{
+"date": "2022-08-28",
+"km": 13.22,
+"mi": 8.21,
+"sec": 3005,
+"hr": 169,
+"intensity": 102.6,
+"load": 88,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-28",
+"km": 4.8,
+"mi": 2.98,
+"sec": 1356,
+"hr": 164,
+"intensity": 93.6,
+"load": 33,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-29",
+"km": 4.84,
+"mi": 3.01,
+"sec": 1577,
+"hr": 131,
+"intensity": 63.6,
+"load": 18,
+"name": "Palo Alto Running"
+},
+{
+"date": "2022-08-30",
+"km": 3.44,
+"mi": 2.14,
+"sec": 978,
+"hr": 160,
+"intensity": 89.9,
+"load": 22,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-30",
+"km": 1.81,
+"mi": 1.12,
+"sec": 506,
+"hr": 135,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-08-30",
+"km": 4.4,
+"mi": 2.73,
+"sec": 910,
+"hr": 149,
+"intensity": 79.3,
+"load": 16,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-01",
+"km": 13.82,
+"mi": 8.59,
+"sec": 3525,
+"hr": 152,
+"intensity": 81.3,
+"load": 66,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-03",
+"km": 4.82,
+"mi": 3.0,
+"sec": 1429,
+"hr": 149,
+"intensity": 79.3,
+"load": 25,
+"name": "San Mateo County Running"
+},
+{
+"date": "2022-09-03",
+"km": 1.77,
+"mi": 1.1,
+"sec": 488,
+"hr": 144,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-03",
+"km": 2.4,
+"mi": 1.49,
+"sec": 574,
+"hr": 157,
+"intensity": null,
+"load": 12,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-09-03",
+"km": 1.95,
+"mi": 1.21,
+"sec": 538,
+"hr": 140,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-04",
+"km": 7.58,
+"mi": 4.71,
+"sec": 2041,
+"hr": 152,
+"intensity": 82.6,
+"load": 39,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-05",
+"km": 4.86,
+"mi": 3.02,
+"sec": 1963,
+"hr": 122,
+"intensity": 57.3,
+"load": 18,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-06",
+"km": 1.79,
+"mi": 1.11,
+"sec": 531,
+"hr": 127,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-06",
+"km": 1.75,
+"mi": 1.09,
+"sec": 443,
+"hr": 131,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-06",
+"km": 3.27,
+"mi": 2.03,
+"sec": 634,
+"hr": 160,
+"intensity": 91.6,
+"load": 15,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-06",
+"km": 1.81,
+"mi": 1.12,
+"sec": 564,
+"hr": 148,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-07",
+"km": 11.06,
+"mi": 6.87,
+"sec": 2815,
+"hr": 153,
+"intensity": 84.6,
+"load": 57,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-08",
+"km": 13.86,
+"mi": 8.61,
+"sec": 3709,
+"hr": 156,
+"intensity": 86.2,
+"load": 77,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-10",
+"km": 5.02,
+"mi": 3.12,
+"sec": 1120,
+"hr": 170,
+"intensity": 99.6,
+"load": 31,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-09-10",
+"km": 3.93,
+"mi": 2.44,
+"sec": 1091,
+"hr": 154,
+"intensity": 83.2,
+"load": 21,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-10",
+"km": 4.93,
+"mi": 3.06,
+"sec": 1406,
+"hr": 150,
+"intensity": 80.0,
+"load": 25,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-09-10",
+"km": 1.78,
+"mi": 1.11,
+"sec": 475,
+"hr": 148,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-11",
+"km": 22.02,
+"mi": 13.68,
+"sec": 5871,
+"hr": 163,
+"intensity": 90.8,
+"load": 136,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-12",
+"km": 4.89,
+"mi": 3.04,
+"sec": 1573,
+"hr": 140,
+"intensity": 71.0,
+"load": 22,
+"name": "Santa Clara Running"
+},
+{
+"date": "2022-09-13",
+"km": 1.75,
+"mi": 1.09,
+"sec": 482,
+"hr": 139,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-13",
+"km": 7.84,
+"mi": 4.87,
+"sec": 1625,
+"hr": 162,
+"intensity": 92.7,
+"load": 39,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-13",
+"km": 1.74,
+"mi": 1.08,
+"sec": 535,
+"hr": 147,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-14",
+"km": 2.43,
+"mi": 1.51,
+"sec": 664,
+"hr": 141,
+"intensity": 73.4,
+"load": 10,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-09-14",
+"km": 9.01,
+"mi": 5.6,
+"sec": 2112,
+"hr": 151,
+"intensity": 81.9,
+"load": 40,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-09-14",
+"km": 2.52,
+"mi": 1.57,
+"sec": 746,
+"hr": 156,
+"intensity": 83.3,
+"load": 15,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-09-15",
+"km": 13.89,
+"mi": 8.63,
+"sec": 3756,
+"hr": 147,
+"intensity": 77.5,
+"load": 64,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-17",
+"km": 1.13,
+"mi": 0.7,
+"sec": 313,
+"hr": 135,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-17",
+"km": 4.77,
+"mi": 2.96,
+"sec": 1698,
+"hr": 144,
+"intensity": 72.7,
+"load": 25,
+"name": "Alameda County Running"
+},
+{
+"date": "2022-09-17",
+"km": 12.72,
+"mi": 7.9,
+"sec": 2950,
+"hr": 167,
+"intensity": 96.3,
+"load": 76,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-18",
+"km": 17.31,
+"mi": 10.76,
+"sec": 4479,
+"hr": 162,
+"intensity": 91.7,
+"load": 106,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-18",
+"km": 2.02,
+"mi": 1.26,
+"sec": 581,
+"hr": 159,
+"intensity": null,
+"load": 13,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-19",
+"km": 4.17,
+"mi": 2.59,
+"sec": 1082,
+"hr": 143,
+"intensity": 72.2,
+"load": 16,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-20",
+"km": 1.76,
+"mi": 1.09,
+"sec": 516,
+"hr": 137,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-20",
+"km": 6.81,
+"mi": 4.23,
+"sec": 1476,
+"hr": 165,
+"intensity": 96.2,
+"load": 38,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-20",
+"km": 0.62,
+"mi": 0.39,
+"sec": 127,
+"hr": 158,
+"intensity": null,
+"load": 3,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-20",
+"km": 4.18,
+"mi": 2.6,
+"sec": 1411,
+"hr": 138,
+"intensity": 67.7,
+"load": 18,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-21",
+"km": 2.55,
+"mi": 1.58,
+"sec": 700,
+"hr": 146,
+"intensity": 75.2,
+"load": 11,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-09-21",
+"km": 2.39,
+"mi": 1.49,
+"sec": 648,
+"hr": 147,
+"intensity": 77.3,
+"load": 11,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-09-21",
+"km": 9.56,
+"mi": 5.94,
+"sec": 2222,
+"hr": 160,
+"intensity": 91.1,
+"load": 52,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-09-22",
+"km": 13.91,
+"mi": 8.64,
+"sec": 3815,
+"hr": 145,
+"intensity": 74.3,
+"load": 60,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-24",
+"km": 1.84,
+"mi": 1.14,
+"sec": 537,
+"hr": 135,
+"intensity": null,
+"load": 7,
+"name": "Redwood City Running"
+},
+{
+"date": "2022-09-24",
+"km": 11.25,
+"mi": 6.99,
+"sec": 2487,
+"hr": 169,
+"intensity": 97.7,
+"load": 66,
+"name": "Redwood City Running"
+},
+{
+"date": "2022-09-24",
+"km": 2.26,
+"mi": 1.4,
+"sec": 524,
+"hr": 165,
+"intensity": null,
+"load": 13,
+"name": "Redwood City Running"
+},
+{
+"date": "2022-09-24",
+"km": 3.04,
+"mi": 1.89,
+"sec": 842,
+"hr": 160,
+"intensity": 87.7,
+"load": 18,
+"name": "Redwood City Running"
+},
+{
+"date": "2022-09-24",
+"km": 3.26,
+"mi": 2.03,
+"sec": 1380,
+"hr": 131,
+"intensity": 62.6,
+"load": 15,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-25",
+"km": 10.86,
+"mi": 6.75,
+"sec": 2931,
+"hr": 150,
+"intensity": 79.5,
+"load": 52,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-25",
+"km": 1.6,
+"mi": 0.99,
+"sec": 424,
+"hr": 154,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-27",
+"km": 7.78,
+"mi": 4.83,
+"sec": 1666,
+"hr": 157,
+"intensity": 86.7,
+"load": 35,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-27",
+"km": 1.76,
+"mi": 1.09,
+"sec": 528,
+"hr": 139,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-27",
+"km": 1.77,
+"mi": 1.1,
+"sec": 709,
+"hr": 146,
+"intensity": 78.1,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-09-28",
+"km": 3.8,
+"mi": 2.36,
+"sec": 2337,
+"hr": 92,
+"intensity": 34.5,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-09-29",
+"km": 8.66,
+"mi": 5.38,
+"sec": 2564,
+"hr": 149,
+"intensity": 78.5,
+"load": 44,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-01",
+"km": 0.77,
+"mi": 0.48,
+"sec": 203,
+"hr": 130,
+"intensity": null,
+"load": 2,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-01",
+"km": 6.46,
+"mi": 4.01,
+"sec": 1418,
+"hr": 170,
+"intensity": 101.0,
+"load": 42,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-01",
+"km": 10.06,
+"mi": 6.25,
+"sec": 8955,
+"hr": 95,
+"intensity": 37.5,
+"load": 37,
+"name": "El Dorado County Trail Running"
+},
+{
+"date": "2022-10-02",
+"km": 14.0,
+"mi": 8.7,
+"sec": 11663,
+"hr": 97,
+"intensity": 36.1,
+"load": 46,
+"name": "El Dorado County Trail Running"
+},
+{
+"date": "2022-10-04",
+"km": 1.73,
+"mi": 1.07,
+"sec": 507,
+"hr": 138,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-04",
+"km": 3.3,
+"mi": 2.05,
+"sec": 705,
+"hr": 166,
+"intensity": 95.5,
+"load": 18,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-04",
+"km": 1.81,
+"mi": 1.12,
+"sec": 538,
+"hr": 144,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-06",
+"km": 8.69,
+"mi": 5.4,
+"sec": 2458,
+"hr": 152,
+"intensity": 80.2,
+"load": 45,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-08",
+"km": 3.26,
+"mi": 2.03,
+"sec": 1423,
+"hr": 121,
+"intensity": 54.9,
+"load": 12,
+"name": "San Jose Running"
+},
+{
+"date": "2022-10-09",
+"km": 0.77,
+"mi": 0.48,
+"sec": 223,
+"hr": 157,
+"intensity": null,
+"load": 5,
+"name": "San Jose Running"
+},
+{
+"date": "2022-10-09",
+"km": 0.83,
+"mi": 0.52,
+"sec": 220,
+"hr": 159,
+"intensity": null,
+"load": 5,
+"name": "San Jose Running"
+},
+{
+"date": "2022-10-09",
+"km": 13.06,
+"mi": 8.12,
+"sec": 2964,
+"hr": 171,
+"intensity": 99.8,
+"load": 82,
+"name": "San Jose Running"
+},
+{
+"date": "2022-10-10",
+"km": 6.84,
+"mi": 4.25,
+"sec": 2241,
+"hr": 132,
+"intensity": 61.7,
+"load": 25,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-10",
+"km": 1.76,
+"mi": 1.09,
+"sec": 493,
+"hr": 120,
+"intensity": null,
+"load": 4,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-11",
+"km": 6.33,
+"mi": 3.93,
+"sec": 1268,
+"hr": 157,
+"intensity": 87.3,
+"load": 27,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-11",
+"km": 3.39,
+"mi": 2.11,
+"sec": 1076,
+"hr": 152,
+"intensity": 81.3,
+"load": 20,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-11",
+"km": 1.79,
+"mi": 1.11,
+"sec": 482,
+"hr": 143,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-12",
+"km": 12.8,
+"mi": 7.95,
+"sec": 3876,
+"hr": 136,
+"intensity": 71.0,
+"load": 56,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-10-15",
+"km": 4.89,
+"mi": 3.04,
+"sec": 1696,
+"hr": 132,
+"intensity": 61.7,
+"load": 18,
+"name": "Fremont Running"
+},
+{
+"date": "2022-10-16",
+"km": 21.13,
+"mi": 13.13,
+"sec": 5340,
+"hr": 165,
+"intensity": 93.9,
+"load": 131,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-16",
+"km": 1.3,
+"mi": 0.81,
+"sec": 375,
+"hr": 156,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-18",
+"km": 1.76,
+"mi": 1.09,
+"sec": 554,
+"hr": 147,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-18",
+"km": 1.8,
+"mi": 1.12,
+"sec": 479,
+"hr": 144,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-18",
+"km": 5.97,
+"mi": 3.71,
+"sec": 1308,
+"hr": 176,
+"intensity": 106.2,
+"load": 41,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-18",
+"km": 3.14,
+"mi": 1.95,
+"sec": 694,
+"hr": 177,
+"intensity": 106.8,
+"load": 22,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-19",
+"km": 2.57,
+"mi": 1.6,
+"sec": 671,
+"hr": 139,
+"intensity": 73.2,
+"load": 10,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-10-19",
+"km": 7.36,
+"mi": 4.57,
+"sec": 1667,
+"hr": 148,
+"intensity": 78.3,
+"load": 31,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-10-19",
+"km": 1.23,
+"mi": 0.76,
+"sec": 325,
+"hr": 144,
+"intensity": null,
+"load": 5,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-10-20",
+"km": 8.65,
+"mi": 5.37,
+"sec": 2564,
+"hr": 139,
+"intensity": 69.9,
+"load": 35,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-22",
+"km": 3.02,
+"mi": 1.88,
+"sec": 678,
+"hr": 156,
+"intensity": 89.2,
+"load": 15,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-22",
+"km": 1.5,
+"mi": 0.93,
+"sec": 424,
+"hr": 144,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-22",
+"km": 4.85,
+"mi": 3.01,
+"sec": 1370,
+"hr": 152,
+"intensity": 84.1,
+"load": 27,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-10-22",
+"km": 1.52,
+"mi": 0.94,
+"sec": 406,
+"hr": 140,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-23",
+"km": 17.5,
+"mi": 10.87,
+"sec": 4606,
+"hr": 161,
+"intensity": 89.6,
+"load": 104,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-23",
+"km": 2.74,
+"mi": 1.7,
+"sec": 750,
+"hr": 155,
+"intensity": 84.0,
+"load": 15,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-24",
+"km": 4.85,
+"mi": 3.01,
+"sec": 1685,
+"hr": 131,
+"intensity": 63.6,
+"load": 19,
+"name": "Campbell Running"
+},
+{
+"date": "2022-10-25",
+"km": 1.72,
+"mi": 1.07,
+"sec": 515,
+"hr": 133,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-25",
+"km": 2.66,
+"mi": 1.65,
+"sec": 647,
+"hr": 124,
+"intensity": 56.4,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-25",
+"km": 4.19,
+"mi": 2.6,
+"sec": 854,
+"hr": 146,
+"intensity": 76.5,
+"load": 14,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-25",
+"km": 1.83,
+"mi": 1.14,
+"sec": 579,
+"hr": 142,
+"intensity": 68.9,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-10-26",
+"km": 9.66,
+"mi": 6.0,
+"sec": 2491,
+"hr": 154,
+"intensity": 83.9,
+"load": 50,
+"name": "San Mateo County Running"
+},
+{
+"date": "2022-10-26",
+"km": 5.43,
+"mi": 3.37,
+"sec": 3133,
+"hr": 116,
+"intensity": 51.1,
+"load": 38,
+"name": "San Jose Running"
+},
+{
+"date": "2022-10-27",
+"km": 0.81,
+"mi": 0.5,
+"sec": 263,
+"hr": 135,
+"intensity": null,
+"load": 3,
+"name": "San Francisco Track Running"
+},
+{
+"date": "2022-10-27",
+"km": 0.4,
+"mi": 0.25,
+"sec": 165,
+"hr": 100,
+"intensity": null,
+"load": 1,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-10-30",
+"km": 21.13,
+"mi": 13.13,
+"sec": 5490,
+"hr": 153,
+"intensity": 84.3,
+"load": 109,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-10-30",
+"km": 2.35,
+"mi": 1.46,
+"sec": 650,
+"hr": 152,
+"intensity": 80.7,
+"load": 12,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-01",
+"km": 1.81,
+"mi": 1.12,
+"sec": 523,
+"hr": 128,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-01",
+"km": 6.26,
+"mi": 3.89,
+"sec": 1237,
+"hr": 154,
+"intensity": 87.7,
+"load": 27,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-01",
+"km": 1.77,
+"mi": 1.1,
+"sec": 571,
+"hr": 152,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-02",
+"km": 17.16,
+"mi": 10.66,
+"sec": 4541,
+"hr": 148,
+"intensity": 77.0,
+"load": 77,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-02",
+"km": 8.58,
+"mi": 5.33,
+"sec": 2915,
+"hr": 134,
+"intensity": 64.9,
+"load": 35,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-05",
+"km": 0.85,
+"mi": 0.53,
+"sec": 233,
+"hr": 144,
+"intensity": null,
+"load": 4,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-05",
+"km": 10.02,
+"mi": 6.23,
+"sec": 2322,
+"hr": 164,
+"intensity": 94.0,
+"load": 57,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-11-05",
+"km": 0.81,
+"mi": 0.5,
+"sec": 218,
+"hr": 115,
+"intensity": null,
+"load": 2,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-11-05",
+"km": 3.27,
+"mi": 2.03,
+"sec": 1408,
+"hr": 111,
+"intensity": 48.0,
+"load": 9,
+"name": "Santa Clara Running"
+},
+{
+"date": "2022-11-06",
+"km": 7.86,
+"mi": 4.88,
+"sec": 2078,
+"hr": 143,
+"intensity": 73.9,
+"load": 32,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-08",
+"km": 1.76,
+"mi": 1.09,
+"sec": 512,
+"hr": 141,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-08",
+"km": 5.05,
+"mi": 3.14,
+"sec": 1068,
+"hr": 160,
+"intensity": 89.9,
+"load": 24,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-08",
+"km": 3.5,
+"mi": 2.17,
+"sec": 1170,
+"hr": 155,
+"intensity": 83.7,
+"load": 23,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-09",
+"km": 17.02,
+"mi": 10.58,
+"sec": 4381,
+"hr": 154,
+"intensity": 84.0,
+"load": 87,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-10",
+"km": 3.75,
+"mi": 2.33,
+"sec": 1375,
+"hr": 127,
+"intensity": 58.9,
+"load": 14,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-10",
+"km": 13.9,
+"mi": 8.64,
+"sec": 3799,
+"hr": 142,
+"intensity": 72.5,
+"load": 57,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-12",
+"km": 4.79,
+"mi": 2.98,
+"sec": 1720,
+"hr": 119,
+"intensity": 54.0,
+"load": 14,
+"name": "Redwood City Running"
+},
+{
+"date": "2022-11-12",
+"km": 0.81,
+"mi": 0.5,
+"sec": 220,
+"hr": 130,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-11-12",
+"km": 0.27,
+"mi": 0.17,
+"sec": 84,
+"hr": 126,
+"intensity": null,
+"load": 1,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-11-12",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1150,
+"hr": 164,
+"intensity": 93.5,
+"load": 28,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-11-13",
+"km": 24.23,
+"mi": 15.06,
+"sec": 6355,
+"hr": 159,
+"intensity": 86.7,
+"load": 134,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-15",
+"km": 7.04,
+"mi": 4.37,
+"sec": 1507,
+"hr": 163,
+"intensity": 93.8,
+"load": 37,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-15",
+"km": 1.75,
+"mi": 1.09,
+"sec": 500,
+"hr": 130,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-15",
+"km": 4.64,
+"mi": 2.88,
+"sec": 1799,
+"hr": 133,
+"intensity": 64.3,
+"load": 21,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-15",
+"km": 1.07,
+"mi": 0.66,
+"sec": 352,
+"hr": 152,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-17",
+"km": 13.81,
+"mi": 8.58,
+"sec": 3745,
+"hr": 146,
+"intensity": 75.6,
+"load": 62,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-19",
+"km": 4.95,
+"mi": 3.08,
+"sec": 1672,
+"hr": 132,
+"intensity": 63.9,
+"load": 19,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-11-21",
+"km": 4.87,
+"mi": 3.03,
+"sec": 1201,
+"hr": 150,
+"intensity": 81.2,
+"load": 22,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-22",
+"km": 5.02,
+"mi": 3.12,
+"sec": 1212,
+"hr": 157,
+"intensity": 85.3,
+"load": 25,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-23",
+"km": 5.0,
+"mi": 3.11,
+"sec": 3518,
+"hr": 88,
+"intensity": 31.9,
+"load": 10,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-24",
+"km": 1.28,
+"mi": 0.8,
+"sec": 346,
+"hr": 153,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-24",
+"km": 4.93,
+"mi": 3.06,
+"sec": 994,
+"hr": 169,
+"intensity": 100.7,
+"load": 28,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-24",
+"km": 2.47,
+"mi": 1.53,
+"sec": 976,
+"hr": 136,
+"intensity": 64.7,
+"load": 12,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-27",
+"km": 4.19,
+"mi": 2.6,
+"sec": 1144,
+"hr": 146,
+"intensity": 77.1,
+"load": 19,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-11-28",
+"km": 0.8,
+"mi": 0.5,
+"sec": 348,
+"hr": 121,
+"intensity": null,
+"load": 3,
+"name": "Campbell Running"
+},
+{
+"date": "2022-11-28",
+"km": 3.21,
+"mi": 1.99,
+"sec": 679,
+"hr": 141,
+"intensity": 75.9,
+"load": 11,
+"name": "Campbell Running"
+},
+{
+"date": "2022-11-29",
+"km": 1.06,
+"mi": 0.66,
+"sec": 363,
+"hr": 142,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-29",
+"km": 1.74,
+"mi": 1.08,
+"sec": 515,
+"hr": 140,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-11-29",
+"km": 6.31,
+"mi": 3.92,
+"sec": 1356,
+"hr": 141,
+"intensity": 74.0,
+"load": 21,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-01",
+"km": 13.43,
+"mi": 8.35,
+"sec": 3635,
+"hr": 155,
+"intensity": 82.3,
+"load": 70,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-03",
+"km": 4.87,
+"mi": 3.03,
+"sec": 1669,
+"hr": 135,
+"intensity": 67.3,
+"load": 21,
+"name": "Alameda County Running"
+},
+{
+"date": "2022-12-04",
+"km": 14.39,
+"mi": 8.94,
+"sec": 3751,
+"hr": 167,
+"intensity": 98.6,
+"load": 102,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-05",
+"km": 2.13,
+"mi": 1.32,
+"sec": 868,
+"hr": 124,
+"intensity": 55.9,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-05",
+"km": 5.66,
+"mi": 3.52,
+"sec": 1488,
+"hr": 151,
+"intensity": 80.7,
+"load": 27,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2022-12-06",
+"km": 1.75,
+"mi": 1.09,
+"sec": 479,
+"hr": 136,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-06",
+"km": 4.93,
+"mi": 3.06,
+"sec": 940,
+"hr": 149,
+"intensity": 82.3,
+"load": 18,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-06",
+"km": 0.62,
+"mi": 0.39,
+"sec": 147,
+"hr": 166,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-06",
+"km": 1.77,
+"mi": 1.1,
+"sec": 596,
+"hr": 156,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-08",
+"km": 13.46,
+"mi": 8.36,
+"sec": 3712,
+"hr": 159,
+"intensity": 87.4,
+"load": 81,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-09",
+"km": 5.72,
+"mi": 3.55,
+"sec": 1494,
+"hr": 140,
+"intensity": 70.6,
+"load": 21,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-10",
+"km": 14.8,
+"mi": 9.2,
+"sec": 3737,
+"hr": 148,
+"intensity": 76.3,
+"load": 62,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-11",
+"km": 24.51,
+"mi": 15.23,
+"sec": 6432,
+"hr": 160,
+"intensity": 88.0,
+"load": 140,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-12",
+"km": 0.8,
+"mi": 0.5,
+"sec": 291,
+"hr": 119,
+"intensity": null,
+"load": 3,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-12-12",
+"km": 4.81,
+"mi": 2.99,
+"sec": 1030,
+"hr": 155,
+"intensity": 87.4,
+"load": 22,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-12-13",
+"km": 1.84,
+"mi": 1.14,
+"sec": 520,
+"hr": 149,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-13",
+"km": 2.18,
+"mi": 1.35,
+"sec": 547,
+"hr": 127,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-13",
+"km": 1.6,
+"mi": 0.99,
+"sec": 299,
+"hr": 157,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-13",
+"km": 2.34,
+"mi": 1.45,
+"sec": 714,
+"hr": 134,
+"intensity": 67.4,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-13",
+"km": 1.61,
+"mi": 1.0,
+"sec": 318,
+"hr": 140,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2022-12-14",
+"km": 14.02,
+"mi": 8.71,
+"sec": 3695,
+"hr": 144,
+"intensity": 74.7,
+"load": 58,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-15",
+"km": 13.43,
+"mi": 8.35,
+"sec": 3786,
+"hr": 145,
+"intensity": 73.4,
+"load": 59,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-16",
+"km": 13.28,
+"mi": 8.25,
+"sec": 3516,
+"hr": 151,
+"intensity": 80.2,
+"load": 64,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-17",
+"km": 4.72,
+"mi": 2.93,
+"sec": 1410,
+"hr": 146,
+"intensity": 76.6,
+"load": 23,
+"name": "San Francisco Running"
+},
+{
+"date": "2022-12-20",
+"km": 7.03,
+"mi": 4.37,
+"sec": 1857,
+"hr": 151,
+"intensity": 80.4,
+"load": 34,
+"name": "San Mateo Running"
+},
+{
+"date": "2022-12-25",
+"km": 7.88,
+"mi": 4.9,
+"sec": 2375,
+"hr": 153,
+"intensity": 83.1,
+"load": 46,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-12-26",
+"km": 3.29,
+"mi": 2.04,
+"sec": 864,
+"hr": 163,
+"intensity": 93.5,
+"load": 21,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-12-28",
+"km": 1.38,
+"mi": 0.86,
+"sec": 1139,
+"hr": 83,
+"intensity": 28.6,
+"load": 3,
+"name": "Chilliwack Running"
+},
+{
+"date": "2022-12-29",
+"km": 2.0,
+"mi": 1.24,
+"sec": 1593,
+"hr": 84,
+"intensity": 30.0,
+"load": 4,
+"name": "Chilliwack Running"
+},
+{
+"date": "2023-01-01",
+"km": 6.82,
+"mi": 4.24,
+"sec": 2483,
+"hr": 136,
+"intensity": 67.2,
+"load": 32,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-03",
+"km": 1.84,
+"mi": 1.14,
+"sec": 527,
+"hr": 142,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-03",
+"km": 8.52,
+"mi": 5.29,
+"sec": 1989,
+"hr": 168,
+"intensity": 97.0,
+"load": 52,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-03",
+"km": 1.76,
+"mi": 1.09,
+"sec": 610,
+"hr": 154,
+"intensity": 82.7,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-05",
+"km": 11.06,
+"mi": 6.87,
+"sec": 3301,
+"hr": 148,
+"intensity": 75.9,
+"load": 55,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-09",
+"km": 4.01,
+"mi": 2.49,
+"sec": 1074,
+"hr": 148,
+"intensity": 78.7,
+"load": 19,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-10",
+"km": 1.66,
+"mi": 1.03,
+"sec": 499,
+"hr": 140,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-10",
+"km": 5.28,
+"mi": 3.28,
+"sec": 1180,
+"hr": 162,
+"intensity": 90.6,
+"load": 27,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-10",
+"km": 1.82,
+"mi": 1.13,
+"sec": 579,
+"hr": 153,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-11",
+"km": 1.94,
+"mi": 1.21,
+"sec": 533,
+"hr": 138,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-11",
+"km": 0.25,
+"mi": 0.16,
+"sec": 82,
+"hr": 120,
+"intensity": null,
+"load": 1,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-13",
+"km": 7.08,
+"mi": 4.4,
+"sec": 1818,
+"hr": 148,
+"intensity": 78.1,
+"load": 31,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-14",
+"km": 5.21,
+"mi": 3.24,
+"sec": 1207,
+"hr": 173,
+"intensity": 102.0,
+"load": 35,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-14",
+"km": 1.51,
+"mi": 0.94,
+"sec": 385,
+"hr": 149,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-14",
+"km": 0.8,
+"mi": 0.5,
+"sec": 445,
+"hr": 115,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-14",
+"km": 1.21,
+"mi": 0.75,
+"sec": 224,
+"hr": 140,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-14",
+"km": 2.72,
+"mi": 1.69,
+"sec": 711,
+"hr": 163,
+"intensity": 92.5,
+"load": 17,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-17",
+"km": 1.6,
+"mi": 0.99,
+"sec": 323,
+"hr": 169,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-17",
+"km": 3.77,
+"mi": 2.34,
+"sec": 778,
+"hr": 148,
+"intensity": 80.1,
+"load": 14,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-17",
+"km": 2.18,
+"mi": 1.35,
+"sec": 671,
+"hr": 156,
+"intensity": 86.3,
+"load": 14,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-17",
+"km": 1.75,
+"mi": 1.09,
+"sec": 465,
+"hr": 137,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-18",
+"km": 17.73,
+"mi": 11.02,
+"sec": 4631,
+"hr": 154,
+"intensity": 83.3,
+"load": 90,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-19",
+"km": 13.42,
+"mi": 8.34,
+"sec": 3839,
+"hr": 148,
+"intensity": 77.3,
+"load": 66,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-21",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2315,
+"hr": 172,
+"intensity": 101.2,
+"load": 66,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-21",
+"km": 0.81,
+"mi": 0.5,
+"sec": 231,
+"hr": 124,
+"intensity": null,
+"load": 2,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-21",
+"km": 0.81,
+"mi": 0.5,
+"sec": 232,
+"hr": 151,
+"intensity": null,
+"load": 4,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-21",
+"km": 4.91,
+"mi": 3.05,
+"sec": 1448,
+"hr": 150,
+"intensity": 80.4,
+"load": 26,
+"name": "San Jose Running"
+},
+{
+"date": "2023-01-22",
+"km": 5.32,
+"mi": 3.31,
+"sec": 4757,
+"hr": 78,
+"intensity": 22.0,
+"load": 8,
+"name": "Santa Cruz County Trail Running"
+},
+{
+"date": "2023-01-22",
+"km": 20.26,
+"mi": 12.59,
+"sec": 5214,
+"hr": 161,
+"intensity": 89.0,
+"load": 117,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-23",
+"km": 0.82,
+"mi": 0.51,
+"sec": 308,
+"hr": 126,
+"intensity": null,
+"load": 3,
+"name": "San Francisco Track Running"
+},
+{
+"date": "2023-01-23",
+"km": 1.6,
+"mi": 0.99,
+"sec": 408,
+"hr": 163,
+"intensity": null,
+"load": 10,
+"name": "San Francisco Track Running"
+},
+{
+"date": "2023-01-24",
+"km": 1.79,
+"mi": 1.11,
+"sec": 668,
+"hr": 159,
+"intensity": 87.9,
+"load": 15,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-24",
+"km": 2.26,
+"mi": 1.4,
+"sec": 585,
+"hr": 128,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-24",
+"km": 1.62,
+"mi": 1.01,
+"sec": 601,
+"hr": 126,
+"intensity": 60.0,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-25",
+"km": 17.3,
+"mi": 10.75,
+"sec": 4496,
+"hr": 154,
+"intensity": 83.1,
+"load": 87,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-26",
+"km": 13.77,
+"mi": 8.56,
+"sec": 3769,
+"hr": 146,
+"intensity": 75.6,
+"load": 62,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-27",
+"km": 3.04,
+"mi": 1.89,
+"sec": 904,
+"hr": 138,
+"intensity": 68.9,
+"load": 12,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-28",
+"km": 3.01,
+"mi": 1.87,
+"sec": 622,
+"hr": 165,
+"intensity": 96.2,
+"load": 16,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-28",
+"km": 4.64,
+"mi": 2.88,
+"sec": 1655,
+"hr": 129,
+"intensity": 61.1,
+"load": 18,
+"name": "Contra Costa County Running"
+},
+{
+"date": "2023-01-28",
+"km": 0.81,
+"mi": 0.5,
+"sec": 211,
+"hr": 144,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-01-28",
+"km": 3.62,
+"mi": 2.25,
+"sec": 924,
+"hr": 163,
+"intensity": 92.5,
+"load": 22,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-29",
+"km": 21.14,
+"mi": 13.14,
+"sec": 5431,
+"hr": 158,
+"intensity": 86.5,
+"load": 114,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-01-31",
+"km": 1.81,
+"mi": 1.12,
+"sec": 497,
+"hr": 128,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-31",
+"km": 3.14,
+"mi": 1.95,
+"sec": 634,
+"hr": 133,
+"intensity": 66.8,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-31",
+"km": 3.16,
+"mi": 1.96,
+"sec": 698,
+"hr": 154,
+"intensity": 84.9,
+"load": 14,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-01-31",
+"km": 1.77,
+"mi": 1.1,
+"sec": 590,
+"hr": 147,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-02-02",
+"km": 9.93,
+"mi": 6.17,
+"sec": 2704,
+"hr": 149,
+"intensity": 80.6,
+"load": 49,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-02-05",
+"km": 10.03,
+"mi": 6.23,
+"sec": 2136,
+"hr": 172,
+"intensity": 102.2,
+"load": 62,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-02-11",
+"km": 1.57,
+"mi": 0.98,
+"sec": 1250,
+"hr": 88,
+"intensity": 33.9,
+"load": 4,
+"name": "Chilliwack Running"
+},
+{
+"date": "2023-02-15",
+"km": 1.23,
+"mi": 0.76,
+"sec": 348,
+"hr": 142,
+"intensity": null,
+"load": 5,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-02-15",
+"km": 5.66,
+"mi": 3.52,
+"sec": 1354,
+"hr": 151,
+"intensity": 82.4,
+"load": 26,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-02-16",
+"km": 13.83,
+"mi": 8.59,
+"sec": 3759,
+"hr": 155,
+"intensity": 85.4,
+"load": 78,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-02-18",
+"km": 1.01,
+"mi": 0.63,
+"sec": 265,
+"hr": 143,
+"intensity": null,
+"load": 4,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-02-18",
+"km": 4.76,
+"mi": 2.96,
+"sec": 1513,
+"hr": 144,
+"intensity": 73.6,
+"load": 23,
+"name": "Redwood City Running"
+},
+{
+"date": "2023-02-19",
+"km": 1.73,
+"mi": 1.07,
+"sec": 961,
+"hr": 156,
+"intensity": 73.7,
+"load": 19,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-02-19",
+"km": 6.29,
+"mi": 3.91,
+"sec": 4748,
+"hr": 90,
+"intensity": 33.1,
+"load": 15,
+"name": "Marin County Running"
+},
+{
+"date": "2023-02-21",
+"km": 3.39,
+"mi": 2.11,
+"sec": 749,
+"hr": 160,
+"intensity": 90.4,
+"load": 17,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-02-21",
+"km": 1.83,
+"mi": 1.14,
+"sec": 548,
+"hr": 136,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-02-25",
+"km": 4.83,
+"mi": 3.0,
+"sec": 1410,
+"hr": 138,
+"intensity": 69.5,
+"load": 19,
+"name": "Berkeley Running"
+},
+{
+"date": "2023-02-27",
+"km": 0.65,
+"mi": 0.4,
+"sec": 162,
+"hr": 134,
+"intensity": null,
+"load": 2,
+"name": "Campbell Running"
+},
+{
+"date": "2023-02-27",
+"km": 3.23,
+"mi": 2.01,
+"sec": 707,
+"hr": 151,
+"intensity": 81.2,
+"load": 13,
+"name": "Campbell Running"
+},
+{
+"date": "2023-02-27",
+"km": 0.85,
+"mi": 0.53,
+"sec": 281,
+"hr": 149,
+"intensity": null,
+"load": 5,
+"name": "Campbell Running"
+},
+{
+"date": "2023-02-27",
+"km": 1.65,
+"mi": 1.03,
+"sec": 417,
+"hr": 121,
+"intensity": null,
+"load": 4,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-03-04",
+"km": 4.85,
+"mi": 3.01,
+"sec": 1481,
+"hr": 148,
+"intensity": 77.9,
+"load": 25,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-03-07",
+"km": 1.62,
+"mi": 1.01,
+"sec": 515,
+"hr": 138,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-03-07",
+"km": 2.71,
+"mi": 1.68,
+"sec": 633,
+"hr": 146,
+"intensity": 78.4,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-03-07",
+"km": 3.14,
+"mi": 1.95,
+"sec": 656,
+"hr": 159,
+"intensity": 90.3,
+"load": 15,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-03-07",
+"km": 1.84,
+"mi": 1.14,
+"sec": 561,
+"hr": 155,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-03-09",
+"km": 10.15,
+"mi": 6.31,
+"sec": 2810,
+"hr": 144,
+"intensity": 72.4,
+"load": 43,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-03-11",
+"km": 4.97,
+"mi": 3.09,
+"sec": 1528,
+"hr": 143,
+"intensity": 72.3,
+"load": 23,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-03-16",
+"km": 13.45,
+"mi": 8.36,
+"sec": 3712,
+"hr": 163,
+"intensity": 91.8,
+"load": 89,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-03-18",
+"km": 5.05,
+"mi": 3.14,
+"sec": 1497,
+"hr": 141,
+"intensity": 70.9,
+"load": 21,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-03-28",
+"km": 1.85,
+"mi": 1.15,
+"sec": 531,
+"hr": 123,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-03-28",
+"km": 6.32,
+"mi": 3.93,
+"sec": 1470,
+"hr": 144,
+"intensity": 73.3,
+"load": 22,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-03-28",
+"km": 1.8,
+"mi": 1.12,
+"sec": 595,
+"hr": 140,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-03-30",
+"km": 13.76,
+"mi": 8.55,
+"sec": 3786,
+"hr": 161,
+"intensity": 88.3,
+"load": 85,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-01",
+"km": 4.46,
+"mi": 2.77,
+"sec": 3677,
+"hr": 92,
+"intensity": 31.4,
+"load": 12,
+"name": "Contra Costa County Trail Running"
+},
+{
+"date": "2023-04-02",
+"km": 4.23,
+"mi": 2.63,
+"sec": 3692,
+"hr": 78,
+"intensity": 24.9,
+"load": 7,
+"name": "San Mateo Trail Running"
+},
+{
+"date": "2023-04-03",
+"km": 6.78,
+"mi": 4.21,
+"sec": 2354,
+"hr": 148,
+"intensity": 74.6,
+"load": 39,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-04",
+"km": 1.06,
+"mi": 0.66,
+"sec": 288,
+"hr": 119,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-04",
+"km": 1.7,
+"mi": 1.06,
+"sec": 549,
+"hr": 127,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-04-04",
+"km": 2.16,
+"mi": 1.34,
+"sec": 524,
+"hr": 125,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-04-04",
+"km": 2.46,
+"mi": 1.53,
+"sec": 485,
+"hr": 149,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-04-04",
+"km": 1.82,
+"mi": 1.13,
+"sec": 561,
+"hr": 154,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-04-07",
+"km": 5.02,
+"mi": 3.12,
+"sec": 1849,
+"hr": 118,
+"intensity": 51.2,
+"load": 14,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-10",
+"km": 5.26,
+"mi": 3.27,
+"sec": 1339,
+"hr": 175,
+"intensity": 106.1,
+"load": 42,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-04-10",
+"km": 0.87,
+"mi": 0.54,
+"sec": 233,
+"hr": 144,
+"intensity": null,
+"load": 4,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-04-16",
+"km": 9.68,
+"mi": 6.01,
+"sec": 2536,
+"hr": 170,
+"intensity": 101.4,
+"load": 74,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-17",
+"km": 3.7,
+"mi": 2.3,
+"sec": 984,
+"hr": 149,
+"intensity": 80.5,
+"load": 18,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-18",
+"km": 1.82,
+"mi": 1.13,
+"sec": 545,
+"hr": 144,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-04-18",
+"km": 2.47,
+"mi": 1.53,
+"sec": 547,
+"hr": 156,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-04-18",
+"km": 2.59,
+"mi": 1.61,
+"sec": 602,
+"hr": 120,
+"intensity": 54.1,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-04-18",
+"km": 1.75,
+"mi": 1.09,
+"sec": 554,
+"hr": 129,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-04-23",
+"km": 5.06,
+"mi": 3.14,
+"sec": 1443,
+"hr": 152,
+"intensity": 81.9,
+"load": 27,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-23",
+"km": 1.72,
+"mi": 1.07,
+"sec": 474,
+"hr": 145,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-27",
+"km": 4.17,
+"mi": 2.59,
+"sec": 1134,
+"hr": 141,
+"intensity": 68.8,
+"load": 16,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-28",
+"km": 9.07,
+"mi": 5.64,
+"sec": 2447,
+"hr": 162,
+"intensity": 91.1,
+"load": 59,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-04-29",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1521,
+"hr": 149,
+"intensity": 77.5,
+"load": 26,
+"name": "Berkeley Running"
+},
+{
+"date": "2023-05-01",
+"km": 2.73,
+"mi": 1.7,
+"sec": 810,
+"hr": 141,
+"intensity": 72.3,
+"load": 12,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-05-03",
+"km": 10.02,
+"mi": 6.23,
+"sec": 2672,
+"hr": 160,
+"intensity": 88.4,
+"load": 61,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-04",
+"km": 13.82,
+"mi": 8.59,
+"sec": 3814,
+"hr": 160,
+"intensity": 87.7,
+"load": 84,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-06",
+"km": 4.84,
+"mi": 3.01,
+"sec": 1587,
+"hr": 135,
+"intensity": 69.0,
+"load": 21,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-09",
+"km": 1.77,
+"mi": 1.1,
+"sec": 562,
+"hr": 163,
+"intensity": null,
+"load": 14,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-05-09",
+"km": 4.72,
+"mi": 2.93,
+"sec": 964,
+"hr": 147,
+"intensity": 79.4,
+"load": 17,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-05-09",
+"km": 1.77,
+"mi": 1.1,
+"sec": 502,
+"hr": 131,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-05-10",
+"km": 8.17,
+"mi": 5.08,
+"sec": 2067,
+"hr": 148,
+"intensity": 77.5,
+"load": 35,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-11",
+"km": 13.77,
+"mi": 8.56,
+"sec": 3662,
+"hr": 151,
+"intensity": 79.2,
+"load": 66,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-13",
+"km": 4.93,
+"mi": 3.06,
+"sec": 1415,
+"hr": 145,
+"intensity": 78.0,
+"load": 24,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-05-15",
+"km": 0.86,
+"mi": 0.53,
+"sec": 345,
+"hr": 129,
+"intensity": null,
+"load": 4,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-05-15",
+"km": 3.24,
+"mi": 2.01,
+"sec": 671,
+"hr": 156,
+"intensity": 91.9,
+"load": 16,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-05-15",
+"km": 0.87,
+"mi": 0.54,
+"sec": 402,
+"hr": 153,
+"intensity": null,
+"load": 8,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-05-17",
+"km": 10.02,
+"mi": 6.23,
+"sec": 2533,
+"hr": 153,
+"intensity": 82.5,
+"load": 49,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-18",
+"km": 13.89,
+"mi": 8.63,
+"sec": 3716,
+"hr": 157,
+"intensity": 86.8,
+"load": 80,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-21",
+"km": 11.21,
+"mi": 6.97,
+"sec": 3055,
+"hr": 156,
+"intensity": 84.9,
+"load": 63,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-23",
+"km": 1.13,
+"mi": 0.7,
+"sec": 336,
+"hr": 122,
+"intensity": null,
+"load": 3,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-05-23",
+"km": 1.62,
+"mi": 1.01,
+"sec": 313,
+"hr": 133,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Track Running"
+},
+{
+"date": "2023-05-23",
+"km": 1.61,
+"mi": 1.0,
+"sec": 327,
+"hr": 177,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Track Running"
+},
+{
+"date": "2023-05-23",
+"km": 1.09,
+"mi": 0.68,
+"sec": 358,
+"hr": 155,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-05-24",
+"km": 13.14,
+"mi": 8.16,
+"sec": 3431,
+"hr": 162,
+"intensity": 90.2,
+"load": 80,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-25",
+"km": 13.88,
+"mi": 8.62,
+"sec": 3771,
+"hr": 162,
+"intensity": 92.4,
+"load": 90,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-27",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1365,
+"hr": 155,
+"intensity": 86.7,
+"load": 29,
+"name": "Alameda Running"
+},
+{
+"date": "2023-05-28",
+"km": 12.52,
+"mi": 7.78,
+"sec": 3275,
+"hr": 167,
+"intensity": 96.6,
+"load": 85,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-05-30",
+"km": 1.76,
+"mi": 1.09,
+"sec": 513,
+"hr": 134,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-05-30",
+"km": 5.87,
+"mi": 3.65,
+"sec": 1225,
+"hr": 151,
+"intensity": 81.8,
+"load": 23,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-05-30",
+"km": 1.83,
+"mi": 1.14,
+"sec": 549,
+"hr": 161,
+"intensity": null,
+"load": 13,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-05-31",
+"km": 13.0,
+"mi": 8.08,
+"sec": 3554,
+"hr": 154,
+"intensity": 83.3,
+"load": 70,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-06-02",
+"km": 10.31,
+"mi": 6.41,
+"sec": 2674,
+"hr": 149,
+"intensity": 77.1,
+"load": 46,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-06-03",
+"km": 5.34,
+"mi": 3.32,
+"sec": 1321,
+"hr": 154,
+"intensity": 81.7,
+"load": 26,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-06-03",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1577,
+"hr": 160,
+"intensity": 89.2,
+"load": 35,
+"name": "Foster City Running"
+},
+{
+"date": "2023-06-04",
+"km": 10.13,
+"mi": 6.29,
+"sec": 2724,
+"hr": 158,
+"intensity": 87.7,
+"load": 59,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-06-06",
+"km": 4.08,
+"mi": 2.54,
+"sec": 922,
+"hr": 167,
+"intensity": 96.8,
+"load": 24,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-06",
+"km": 1.77,
+"mi": 1.1,
+"sec": 490,
+"hr": 139,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-10",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1661,
+"hr": 133,
+"intensity": 64.7,
+"load": 20,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-06-12",
+"km": 15.81,
+"mi": 9.82,
+"sec": 4320,
+"hr": 160,
+"intensity": 88.1,
+"load": 96,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-06-13",
+"km": 1.72,
+"mi": 1.07,
+"sec": 467,
+"hr": 142,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-13",
+"km": 4.78,
+"mi": 2.97,
+"sec": 942,
+"hr": 156,
+"intensity": 90.8,
+"load": 22,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-13",
+"km": 1.77,
+"mi": 1.1,
+"sec": 551,
+"hr": 151,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-14",
+"km": 12.96,
+"mi": 8.05,
+"sec": 3666,
+"hr": 146,
+"intensity": 74.6,
+"load": 59,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-06-17",
+"km": 4.84,
+"mi": 3.01,
+"sec": 1378,
+"hr": 143,
+"intensity": 74.0,
+"load": 21,
+"name": "Berkeley Running"
+},
+{
+"date": "2023-06-18",
+"km": 1.0,
+"mi": 0.62,
+"sec": 418,
+"hr": 134,
+"intensity": null,
+"load": 5,
+"name": "Foster City Running"
+},
+{
+"date": "2023-06-18",
+"km": 6.65,
+"mi": 4.13,
+"sec": 1744,
+"hr": 158,
+"intensity": 88.5,
+"load": 38,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-06-20",
+"km": 1.71,
+"mi": 1.06,
+"sec": 513,
+"hr": 131,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-20",
+"km": 5.2,
+"mi": 3.23,
+"sec": 1082,
+"hr": 143,
+"intensity": 74.8,
+"load": 17,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-20",
+"km": 1.85,
+"mi": 1.15,
+"sec": 544,
+"hr": 159,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-22",
+"km": 13.87,
+"mi": 8.62,
+"sec": 3800,
+"hr": 156,
+"intensity": 84.0,
+"load": 78,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-06-24",
+"km": 4.86,
+"mi": 3.02,
+"sec": 1413,
+"hr": 150,
+"intensity": 79.8,
+"load": 25,
+"name": "Santa Clara Running"
+},
+{
+"date": "2023-06-25",
+"km": 12.9,
+"mi": 8.02,
+"sec": 3426,
+"hr": 166,
+"intensity": 96.1,
+"load": 88,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-06-27",
+"km": 1.81,
+"mi": 1.12,
+"sec": 593,
+"hr": 133,
+"intensity": 68.5,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-27",
+"km": 3.22,
+"mi": 2.0,
+"sec": 706,
+"hr": 160,
+"intensity": 90.1,
+"load": 16,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-06-27",
+"km": 0.97,
+"mi": 0.6,
+"sec": 283,
+"hr": 129,
+"intensity": null,
+"load": 3,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-07-01",
+"km": 4.85,
+"mi": 3.01,
+"sec": 1324,
+"hr": 161,
+"intensity": 90.1,
+"load": 30,
+"name": "Foster City Running"
+},
+{
+"date": "2023-07-02",
+"km": 12.27,
+"mi": 7.62,
+"sec": 3297,
+"hr": 171,
+"intensity": 100.7,
+"load": 93,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-07-11",
+"km": 1.72,
+"mi": 1.07,
+"sec": 525,
+"hr": 139,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-07-11",
+"km": 0.37,
+"mi": 0.23,
+"sec": 83,
+"hr": 126,
+"intensity": null,
+"load": 1,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-07-11",
+"km": 4.01,
+"mi": 2.49,
+"sec": 799,
+"hr": 157,
+"intensity": 86.1,
+"load": 17,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-07-11",
+"km": 1.18,
+"mi": 0.73,
+"sec": 392,
+"hr": 144,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-07-12",
+"km": 9.29,
+"mi": 5.77,
+"sec": 2374,
+"hr": 157,
+"intensity": 87.4,
+"load": 51,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-07-13",
+"km": 8.21,
+"mi": 5.1,
+"sec": 2238,
+"hr": 159,
+"intensity": 88.5,
+"load": 49,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-07-15",
+"km": 4.51,
+"mi": 2.8,
+"sec": 1042,
+"hr": 144,
+"intensity": 74.3,
+"load": 16,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-07-16",
+"km": 12.51,
+"mi": 7.77,
+"sec": 3238,
+"hr": 165,
+"intensity": 94.3,
+"load": 80,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-07-19",
+"km": 2.95,
+"mi": 1.83,
+"sec": 629,
+"hr": 165,
+"intensity": 95.4,
+"load": 16,
+"name": "San Francisco Track Running"
+},
+{
+"date": "2023-07-19",
+"km": 0.6,
+"mi": 0.37,
+"sec": 154,
+"hr": 152,
+"intensity": null,
+"load": 3,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-07-22",
+"km": 3.01,
+"mi": 1.87,
+"sec": 1128,
+"hr": 133,
+"intensity": 64.4,
+"load": 13,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-07-23",
+"km": 5.08,
+"mi": 3.16,
+"sec": 1103,
+"hr": 169,
+"intensity": 100.4,
+"load": 31,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-07-25",
+"km": 2.39,
+"mi": 1.49,
+"sec": 688,
+"hr": 169,
+"intensity": 99.3,
+"load": 19,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-07-25",
+"km": 5.28,
+"mi": 3.28,
+"sec": 1122,
+"hr": 159,
+"intensity": 89.4,
+"load": 25,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-07-25",
+"km": 2.76,
+"mi": 1.71,
+"sec": 744,
+"hr": 139,
+"intensity": 72.3,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-07-27",
+"km": 8.62,
+"mi": 5.36,
+"sec": 2368,
+"hr": 158,
+"intensity": 88.8,
+"load": 52,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-07-27",
+"km": 1.11,
+"mi": 0.69,
+"sec": 317,
+"hr": 134,
+"intensity": null,
+"load": 4,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-07-29",
+"km": 4.87,
+"mi": 3.03,
+"sec": 1499,
+"hr": 144,
+"intensity": 75.9,
+"load": 24,
+"name": "Fremont Running"
+},
+{
+"date": "2023-07-30",
+"km": 14.93,
+"mi": 9.28,
+"sec": 3892,
+"hr": 170,
+"intensity": 99.9,
+"load": 108,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-07-31",
+"km": 5.46,
+"mi": 3.39,
+"sec": 2084,
+"hr": 137,
+"intensity": 67.5,
+"load": 27,
+"name": "Fremont Running"
+},
+{
+"date": "2023-08-01",
+"km": 1.75,
+"mi": 1.09,
+"sec": 477,
+"hr": 140,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-01",
+"km": 6.41,
+"mi": 3.98,
+"sec": 1355,
+"hr": 140,
+"intensity": 72.6,
+"load": 20,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-01",
+"km": 1.83,
+"mi": 1.14,
+"sec": 570,
+"hr": 150,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-02",
+"km": 9.4,
+"mi": 5.84,
+"sec": 2605,
+"hr": 154,
+"intensity": 82.5,
+"load": 50,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-08-03",
+"km": 8.67,
+"mi": 5.39,
+"sec": 2393,
+"hr": 150,
+"intensity": 80.3,
+"load": 43,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-06",
+"km": 12.88,
+"mi": 8.0,
+"sec": 3350,
+"hr": 168,
+"intensity": 98.7,
+"load": 91,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-08-07",
+"km": 0.79,
+"mi": 0.49,
+"sec": 302,
+"hr": 120,
+"intensity": null,
+"load": 3,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-08-07",
+"km": 3.35,
+"mi": 2.08,
+"sec": 670,
+"hr": 151,
+"intensity": 83.0,
+"load": 13,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-08-08",
+"km": 2.68,
+"mi": 1.67,
+"sec": 714,
+"hr": 134,
+"intensity": 66.1,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-08",
+"km": 5.8,
+"mi": 3.6,
+"sec": 1232,
+"hr": 154,
+"intensity": 85.4,
+"load": 25,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-08",
+"km": 1.56,
+"mi": 0.97,
+"sec": 325,
+"hr": 172,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-08",
+"km": 1.78,
+"mi": 1.11,
+"sec": 569,
+"hr": 154,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-10",
+"km": 8.1,
+"mi": 5.03,
+"sec": 2449,
+"hr": 139,
+"intensity": 69.6,
+"load": 34,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-08-12",
+"km": 3.29,
+"mi": 2.04,
+"sec": 1235,
+"hr": 125,
+"intensity": 59.1,
+"load": 12,
+"name": "San Mateo County Running"
+},
+{
+"date": "2023-08-13",
+"km": 12.01,
+"mi": 7.46,
+"sec": 3120,
+"hr": 169,
+"intensity": 99.0,
+"load": 85,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-08-15",
+"km": 2.81,
+"mi": 1.75,
+"sec": 799,
+"hr": 134,
+"intensity": 66.0,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-15",
+"km": 5.8,
+"mi": 3.6,
+"sec": 1198,
+"hr": 137,
+"intensity": 68.9,
+"load": 16,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-15",
+"km": 1.83,
+"mi": 1.14,
+"sec": 601,
+"hr": 148,
+"intensity": 77.4,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-16",
+"km": 9.01,
+"mi": 5.6,
+"sec": 2281,
+"hr": 159,
+"intensity": 88.8,
+"load": 50,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-08-17",
+"km": 8.68,
+"mi": 5.39,
+"sec": 2396,
+"hr": 160,
+"intensity": 89.9,
+"load": 54,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-19",
+"km": 5.2,
+"mi": 3.23,
+"sec": 1771,
+"hr": 129,
+"intensity": 61.5,
+"load": 19,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-08-20",
+"km": 12.4,
+"mi": 7.71,
+"sec": 3142,
+"hr": 166,
+"intensity": 95.7,
+"load": 80,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-08-24",
+"km": 0.87,
+"mi": 0.54,
+"sec": 225,
+"hr": 141,
+"intensity": null,
+"load": 4,
+"name": "Oakland Running"
+},
+{
+"date": "2023-08-24",
+"km": 5.1,
+"mi": 3.17,
+"sec": 1073,
+"hr": 152,
+"intensity": 114.3,
+"load": 39,
+"name": "Oakland Running"
+},
+{
+"date": "2023-08-24",
+"km": 0.51,
+"mi": 0.32,
+"sec": 167,
+"hr": 145,
+"intensity": null,
+"load": 3,
+"name": "Oakland Running"
+},
+{
+"date": "2023-08-25",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1969,
+"hr": 147,
+"intensity": 77.0,
+"load": 33,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-08-26",
+"km": 4.77,
+"mi": 2.96,
+"sec": 1331,
+"hr": 152,
+"intensity": 80.5,
+"load": 24,
+"name": "Fremont Running"
+},
+{
+"date": "2023-08-27",
+"km": 12.88,
+"mi": 8.0,
+"sec": 3385,
+"hr": 161,
+"intensity": 89.9,
+"load": 76,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-08-29",
+"km": 2.42,
+"mi": 1.5,
+"sec": 699,
+"hr": 133,
+"intensity": 67.9,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-29",
+"km": 4.67,
+"mi": 2.9,
+"sec": 1021,
+"hr": 173,
+"intensity": 104.5,
+"load": 31,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-29",
+"km": 1.8,
+"mi": 1.12,
+"sec": 349,
+"hr": 170,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-08-29",
+"km": 1.75,
+"mi": 1.09,
+"sec": 562,
+"hr": 150,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-09-02",
+"km": 1.86,
+"mi": 1.16,
+"sec": 493,
+"hr": 144,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-02",
+"km": 3.0,
+"mi": 1.86,
+"sec": 670,
+"hr": 162,
+"intensity": 89.5,
+"load": 15,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-02",
+"km": 2.13,
+"mi": 1.32,
+"sec": 595,
+"hr": 149,
+"intensity": 76.9,
+"load": 10,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-02",
+"km": 4.83,
+"mi": 3.0,
+"sec": 1330,
+"hr": 155,
+"intensity": 83.8,
+"load": 26,
+"name": "San Jose Running"
+},
+{
+"date": "2023-09-03",
+"km": 9.75,
+"mi": 6.06,
+"sec": 3530,
+"hr": 132,
+"intensity": 63.8,
+"load": 40,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-05",
+"km": 1.79,
+"mi": 1.11,
+"sec": 525,
+"hr": 155,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-09-05",
+"km": 2.39,
+"mi": 1.49,
+"sec": 671,
+"hr": 129,
+"intensity": 61.1,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-09-05",
+"km": 6.34,
+"mi": 3.94,
+"sec": 1316,
+"hr": 144,
+"intensity": 75.5,
+"load": 21,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-09-06",
+"km": 6.43,
+"mi": 4.0,
+"sec": 1721,
+"hr": 147,
+"intensity": 77.7,
+"load": 29,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-07",
+"km": 8.72,
+"mi": 5.42,
+"sec": 2323,
+"hr": 156,
+"intensity": 84.9,
+"load": 48,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-09",
+"km": 6.58,
+"mi": 4.09,
+"sec": 1789,
+"hr": 148,
+"intensity": 77.7,
+"load": 30,
+"name": "San Francisco Running"
+},
+{
+"date": "2023-09-10",
+"km": 12.51,
+"mi": 7.77,
+"sec": 3146,
+"hr": 167,
+"intensity": 96.0,
+"load": 81,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-12",
+"km": 2.75,
+"mi": 1.71,
+"sec": 782,
+"hr": 141,
+"intensity": 69.5,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-09-12",
+"km": 4.75,
+"mi": 2.95,
+"sec": 945,
+"hr": 150,
+"intensity": 82.0,
+"load": 18,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-09-12",
+"km": 1.89,
+"mi": 1.17,
+"sec": 515,
+"hr": 157,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-09-13",
+"km": 8.82,
+"mi": 5.48,
+"sec": 2385,
+"hr": 158,
+"intensity": 85.6,
+"load": 50,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-17",
+"km": 10.07,
+"mi": 6.26,
+"sec": 3965,
+"hr": 134,
+"intensity": 65.3,
+"load": 47,
+"name": "New York Running"
+},
+{
+"date": "2023-09-22",
+"km": 8.79,
+"mi": 5.46,
+"sec": 2361,
+"hr": 155,
+"intensity": 85.8,
+"load": 49,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-24",
+"km": 12.88,
+"mi": 8.0,
+"sec": 3335,
+"hr": 174,
+"intensity": 104.3,
+"load": 101,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-24",
+"km": 1.33,
+"mi": 0.83,
+"sec": 523,
+"hr": 144,
+"intensity": null,
+"load": 8,
+"name": "Foster City Running"
+},
+{
+"date": "2023-09-25",
+"km": 0.83,
+"mi": 0.52,
+"sec": 297,
+"hr": 119,
+"intensity": null,
+"load": 3,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-09-25",
+"km": 1.65,
+"mi": 1.03,
+"sec": 353,
+"hr": 135,
+"intensity": null,
+"load": 5,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-09-28",
+"km": 7.55,
+"mi": 4.69,
+"sec": 2029,
+"hr": 156,
+"intensity": 84.3,
+"load": 41,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-29",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1828,
+"hr": 147,
+"intensity": 77.9,
+"load": 31,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-30",
+"km": 0.54,
+"mi": 0.34,
+"sec": 162,
+"hr": 122,
+"intensity": null,
+"load": 2,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-09-30",
+"km": 4.19,
+"mi": 2.6,
+"sec": 1495,
+"hr": 151,
+"intensity": 80.6,
+"load": 27,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-01",
+"km": 16.14,
+"mi": 10.03,
+"sec": 4276,
+"hr": 168,
+"intensity": 98.3,
+"load": 115,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-03",
+"km": 1.83,
+"mi": 1.14,
+"sec": 514,
+"hr": 136,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-03",
+"km": 4.92,
+"mi": 3.06,
+"sec": 986,
+"hr": 153,
+"intensity": 86.9,
+"load": 21,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-03",
+"km": 1.79,
+"mi": 1.11,
+"sec": 556,
+"hr": 150,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-04",
+"km": 7.6,
+"mi": 4.72,
+"sec": 2062,
+"hr": 156,
+"intensity": 84.2,
+"load": 41,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-07",
+"km": 4.65,
+"mi": 2.89,
+"sec": 1496,
+"hr": 146,
+"intensity": 77.4,
+"load": 25,
+"name": "San Jose Running"
+},
+{
+"date": "2023-10-08",
+"km": 16.09,
+"mi": 10.0,
+"sec": 4087,
+"hr": 166,
+"intensity": 94.7,
+"load": 102,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-10",
+"km": 1.67,
+"mi": 1.04,
+"sec": 510,
+"hr": 137,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-10",
+"km": 1.64,
+"mi": 1.02,
+"sec": 384,
+"hr": 126,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-10",
+"km": 2.57,
+"mi": 1.6,
+"sec": 708,
+"hr": 133,
+"intensity": 67.6,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-10",
+"km": 4.41,
+"mi": 2.74,
+"sec": 1044,
+"hr": 163,
+"intensity": 92.6,
+"load": 25,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-12",
+"km": 8.65,
+"mi": 5.37,
+"sec": 2514,
+"hr": 148,
+"intensity": 78.0,
+"load": 43,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-13",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1812,
+"hr": 158,
+"intensity": 87.1,
+"load": 39,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-14",
+"km": 4.23,
+"mi": 2.63,
+"sec": 1545,
+"hr": 123,
+"intensity": 59.0,
+"load": 15,
+"name": "Fremont Running"
+},
+{
+"date": "2023-10-15",
+"km": 16.11,
+"mi": 10.01,
+"sec": 4285,
+"hr": 169,
+"intensity": 98.2,
+"load": 115,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-17",
+"km": 1.81,
+"mi": 1.12,
+"sec": 551,
+"hr": 128,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-17",
+"km": 7.11,
+"mi": 4.42,
+"sec": 1575,
+"hr": 160,
+"intensity": 91.8,
+"load": 37,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-17",
+"km": 2.15,
+"mi": 1.34,
+"sec": 597,
+"hr": 156,
+"intensity": 87.8,
+"load": 13,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-19",
+"km": 8.69,
+"mi": 5.4,
+"sec": 2461,
+"hr": 151,
+"intensity": 80.8,
+"load": 45,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-20",
+"km": 6.4,
+"mi": 3.98,
+"sec": 1750,
+"hr": 150,
+"intensity": 80.4,
+"load": 32,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-21",
+"km": 4.45,
+"mi": 2.77,
+"sec": 1173,
+"hr": 157,
+"intensity": 89.3,
+"load": 26,
+"name": "San Mateo County Running"
+},
+{
+"date": "2023-10-25",
+"km": 16.12,
+"mi": 10.02,
+"sec": 4263,
+"hr": 163,
+"intensity": 93.5,
+"load": 105,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-26",
+"km": 8.68,
+"mi": 5.39,
+"sec": 2406,
+"hr": 150,
+"intensity": 80.1,
+"load": 43,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-10-28",
+"km": 4.72,
+"mi": 2.93,
+"sec": 1118,
+"hr": 167,
+"intensity": 98.3,
+"load": 30,
+"name": "San Mateo County Running"
+},
+{
+"date": "2023-10-29",
+"km": 16.12,
+"mi": 10.02,
+"sec": 4105,
+"hr": 169,
+"intensity": 99.0,
+"load": 112,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-30",
+"km": 0.82,
+"mi": 0.51,
+"sec": 149,
+"hr": 136,
+"intensity": null,
+"load": 2,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-10-30",
+"km": 0.81,
+"mi": 0.5,
+"sec": 237,
+"hr": 122,
+"intensity": null,
+"load": 2,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-10-31",
+"km": 1.77,
+"mi": 1.1,
+"sec": 633,
+"hr": 139,
+"intensity": 71.4,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-10-31",
+"km": 5.64,
+"mi": 3.5,
+"sec": 1155,
+"hr": 139,
+"intensity": 71.9,
+"load": 17,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-10-31",
+"km": 2.12,
+"mi": 1.32,
+"sec": 637,
+"hr": 139,
+"intensity": 68.5,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-11-04",
+"km": 7.33,
+"mi": 4.55,
+"sec": 3149,
+"hr": 72,
+"intensity": 18.7,
+"load": 5,
+"name": "Mohave County Running"
+},
+{
+"date": "2023-11-06",
+"km": 0.81,
+"mi": 0.5,
+"sec": 309,
+"hr": 114,
+"intensity": null,
+"load": 2,
+"name": "Santa Clara County Running"
+},
+{
+"date": "2023-11-06",
+"km": 3.59,
+"mi": 2.23,
+"sec": 796,
+"hr": 154,
+"intensity": 84.3,
+"load": 16,
+"name": "Santa Clara County Track Running"
+},
+{
+"date": "2023-11-06",
+"km": 0.41,
+"mi": 0.25,
+"sec": 158,
+"hr": 138,
+"intensity": null,
+"load": 2,
+"name": "Santa Clara County Track Running"
+},
+{
+"date": "2023-11-07",
+"km": 2.19,
+"mi": 1.36,
+"sec": 657,
+"hr": 127,
+"intensity": 60.7,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-11-07",
+"km": 7.22,
+"mi": 4.49,
+"sec": 1565,
+"hr": 169,
+"intensity": 100.3,
+"load": 44,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2023-11-07",
+"km": 1.44,
+"mi": 0.89,
+"sec": 449,
+"hr": 152,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2023-11-11",
+"km": 4.87,
+"mi": 3.03,
+"sec": 1290,
+"hr": 161,
+"intensity": 91.5,
+"load": 30,
+"name": "Santa Clara Running"
+},
+{
+"date": "2023-11-16",
+"km": 8.68,
+"mi": 5.39,
+"sec": 2458,
+"hr": 156,
+"intensity": 83.7,
+"load": 49,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-11-24",
+"km": 8.63,
+"mi": 5.36,
+"sec": 2184,
+"hr": 175,
+"intensity": 104.4,
+"load": 67,
+"name": "Orange Running"
+},
+{
+"date": "2023-11-25",
+"km": 10.16,
+"mi": 6.31,
+"sec": 3743,
+"hr": 152,
+"intensity": 82.1,
+"load": 70,
+"name": "New York Running"
+},
+{
+"date": "2023-11-28",
+"km": 1.77,
+"mi": 1.1,
+"sec": 650,
+"hr": 142,
+"intensity": 73.1,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-11-28",
+"km": 1.81,
+"mi": 1.12,
+"sec": 563,
+"hr": 133,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-11-28",
+"km": 4.75,
+"mi": 2.95,
+"sec": 1052,
+"hr": 158,
+"intensity": 88.4,
+"load": 23,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-11-30",
+"km": 8.7,
+"mi": 5.41,
+"sec": 2371,
+"hr": 159,
+"intensity": 89.4,
+"load": 53,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-02",
+"km": 5.25,
+"mi": 3.26,
+"sec": 1415,
+"hr": 167,
+"intensity": 96.9,
+"load": 37,
+"name": "Alameda County Running"
+},
+{
+"date": "2023-12-05",
+"km": 1.79,
+"mi": 1.11,
+"sec": 505,
+"hr": 142,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-05",
+"km": 4.79,
+"mi": 2.98,
+"sec": 950,
+"hr": 162,
+"intensity": 93.1,
+"load": 23,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-05",
+"km": 1.78,
+"mi": 1.11,
+"sec": 572,
+"hr": 158,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-07",
+"km": 8.72,
+"mi": 5.42,
+"sec": 2381,
+"hr": 159,
+"intensity": 90.2,
+"load": 54,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-09",
+"km": 7.02,
+"mi": 4.36,
+"sec": 2553,
+"hr": 134,
+"intensity": 66.0,
+"load": 31,
+"name": "Chilliwack Running"
+},
+{
+"date": "2023-12-12",
+"km": 1.79,
+"mi": 1.11,
+"sec": 543,
+"hr": 157,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-12",
+"km": 1.7,
+"mi": 1.06,
+"sec": 344,
+"hr": 173,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-12",
+"km": 1.31,
+"mi": 0.81,
+"sec": 305,
+"hr": 149,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-12",
+"km": 3.97,
+"mi": 2.47,
+"sec": 866,
+"hr": 152,
+"intensity": 84.0,
+"load": 17,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-12",
+"km": 2.82,
+"mi": 1.75,
+"sec": 784,
+"hr": 149,
+"intensity": 80.2,
+"load": 14,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-14",
+"km": 8.74,
+"mi": 5.43,
+"sec": 2347,
+"hr": 160,
+"intensity": 90.6,
+"load": 54,
+"name": "Burlingame Running"
+},
+{
+"date": "2023-12-16",
+"km": 4.84,
+"mi": 3.01,
+"sec": 1656,
+"hr": 138,
+"intensity": 68.6,
+"load": 22,
+"name": "San Jose Running"
+},
+{
+"date": "2023-12-20",
+"km": 5.98,
+"mi": 3.72,
+"sec": 2507,
+"hr": 130,
+"intensity": 59.9,
+"load": 27,
+"name": "Maui County Running"
+},
+{
+"date": "2023-12-22",
+"km": 6.25,
+"mi": 3.88,
+"sec": 2725,
+"hr": 130,
+"intensity": 61.6,
+"load": 30,
+"name": "Maui County Running"
+},
+{
+"date": "2023-12-25",
+"km": 8.65,
+"mi": 5.37,
+"sec": 2495,
+"hr": 161,
+"intensity": 90.6,
+"load": 57,
+"name": "Orange Running"
+},
+{
+"date": "2023-12-26",
+"km": 8.65,
+"mi": 5.37,
+"sec": 2260,
+"hr": 169,
+"intensity": 100.6,
+"load": 64,
+"name": "Orange Running"
+},
+{
+"date": "2023-12-27",
+"km": 8.6,
+"mi": 5.34,
+"sec": 2254,
+"hr": 166,
+"intensity": 97.8,
+"load": 60,
+"name": "Orange Running"
+},
+{
+"date": "2023-12-28",
+"km": 8.6,
+"mi": 5.34,
+"sec": 2233,
+"hr": 167,
+"intensity": 98.2,
+"load": 60,
+"name": "Orange Running"
+},
+{
+"date": "2023-12-29",
+"km": 8.63,
+"mi": 5.36,
+"sec": 2191,
+"hr": 169,
+"intensity": 100.1,
+"load": 61,
+"name": "Orange Running"
+},
+{
+"date": "2023-12-30",
+"km": 8.65,
+"mi": 5.37,
+"sec": 2217,
+"hr": 162,
+"intensity": 91.9,
+"load": 52,
+"name": "Orange Running"
+},
+{
+"date": "2023-12-31",
+"km": 5.03,
+"mi": 3.13,
+"sec": 1250,
+"hr": 155,
+"intensity": 84.1,
+"load": 25,
+"name": "Orange Running"
+},
+{
+"date": "2024-01-06",
+"km": 4.86,
+"mi": 3.02,
+"sec": 1461,
+"hr": 153,
+"intensity": 84.3,
+"load": 29,
+"name": "San Francisco Running"
+},
+{
+"date": "2024-01-09",
+"km": 2.55,
+"mi": 1.58,
+"sec": 753,
+"hr": 146,
+"intensity": 78.8,
+"load": 13,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-01-09",
+"km": 5.06,
+"mi": 3.14,
+"sec": 1098,
+"hr": 163,
+"intensity": 93.6,
+"load": 27,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-01-09",
+"km": 1.69,
+"mi": 1.05,
+"sec": 526,
+"hr": 158,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-01-11",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2597,
+"hr": 166,
+"intensity": 95.6,
+"load": 67,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-01-13",
+"km": 4.9,
+"mi": 3.04,
+"sec": 1847,
+"hr": 137,
+"intensity": 68.4,
+"load": 24,
+"name": "Foster City Running"
+},
+{
+"date": "2024-01-14",
+"km": 12.9,
+"mi": 8.02,
+"sec": 3418,
+"hr": 172,
+"intensity": 102.0,
+"load": 99,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-01-17",
+"km": 10.03,
+"mi": 6.23,
+"sec": 2686,
+"hr": 160,
+"intensity": 90.7,
+"load": 62,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-01-20",
+"km": 5.11,
+"mi": 3.18,
+"sec": 1726,
+"hr": 142,
+"intensity": 73.6,
+"load": 26,
+"name": "Oakland Running"
+},
+{
+"date": "2024-01-21",
+"km": 0.81,
+"mi": 0.5,
+"sec": 232,
+"hr": 158,
+"intensity": null,
+"load": 5,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-01-21",
+"km": 6.45,
+"mi": 4.01,
+"sec": 1631,
+"hr": 168,
+"intensity": 100.6,
+"load": 46,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-01-24",
+"km": 10.02,
+"mi": 6.23,
+"sec": 2630,
+"hr": 165,
+"intensity": 93.7,
+"load": 66,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-01-25",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2559,
+"hr": 162,
+"intensity": 90.5,
+"load": 60,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-01-26",
+"km": 5.24,
+"mi": 3.26,
+"sec": 1510,
+"hr": 149,
+"intensity": 78.2,
+"load": 26,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-01-27",
+"km": 4.84,
+"mi": 3.01,
+"sec": 1172,
+"hr": 169,
+"intensity": 100.7,
+"load": 33,
+"name": "Santa Clara Running"
+},
+{
+"date": "2024-01-28",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2609,
+"hr": 169,
+"intensity": 99.7,
+"load": 72,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-01-28",
+"km": 2.19,
+"mi": 1.36,
+"sec": 619,
+"hr": 163,
+"intensity": 93.4,
+"load": 15,
+"name": "Foster City Running"
+},
+{
+"date": "2024-01-30",
+"km": 2.4,
+"mi": 1.49,
+"sec": 756,
+"hr": 137,
+"intensity": 69.0,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-01-30",
+"km": 6.66,
+"mi": 4.14,
+"sec": 1447,
+"hr": 160,
+"intensity": 91.1,
+"load": 34,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-01-30",
+"km": 1.82,
+"mi": 1.13,
+"sec": 559,
+"hr": 159,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-01",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2621,
+"hr": 157,
+"intensity": 86.7,
+"load": 56,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-02-06",
+"km": 0.62,
+"mi": 0.39,
+"sec": 148,
+"hr": 147,
+"intensity": null,
+"load": 3,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-06",
+"km": 1.79,
+"mi": 1.11,
+"sec": 693,
+"hr": 140,
+"intensity": 71.1,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-06",
+"km": 2.37,
+"mi": 1.47,
+"sec": 763,
+"hr": 145,
+"intensity": 75.2,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-06",
+"km": 4.26,
+"mi": 2.65,
+"sec": 933,
+"hr": 174,
+"intensity": 105.7,
+"load": 29,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-09",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2537,
+"hr": 160,
+"intensity": 90.4,
+"load": 59,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-02-10",
+"km": 4.92,
+"mi": 3.06,
+"sec": 1542,
+"hr": 147,
+"intensity": 77.9,
+"load": 26,
+"name": "Foster City Running"
+},
+{
+"date": "2024-02-10",
+"km": 2.72,
+"mi": 1.69,
+"sec": 2327,
+"hr": 101,
+"intensity": 39.8,
+"load": 11,
+"name": "Saratoga Trail Running"
+},
+{
+"date": "2024-02-11",
+"km": 13.71,
+"mi": 8.52,
+"sec": 3764,
+"hr": 159,
+"intensity": 90.7,
+"load": 86,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-02-13",
+"km": 2.64,
+"mi": 1.64,
+"sec": 760,
+"hr": 154,
+"intensity": 83.6,
+"load": 15,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-13",
+"km": 4.78,
+"mi": 2.97,
+"sec": 953,
+"hr": 151,
+"intensity": 82.0,
+"load": 18,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-13",
+"km": 1.77,
+"mi": 1.1,
+"sec": 534,
+"hr": 156,
+"intensity": null,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-17",
+"km": 5.81,
+"mi": 3.61,
+"sec": 1678,
+"hr": 160,
+"intensity": 89.1,
+"load": 37,
+"name": "Fremont Running"
+},
+{
+"date": "2024-02-19",
+"km": 11.06,
+"mi": 6.87,
+"sec": 2868,
+"hr": 157,
+"intensity": 87.0,
+"load": 61,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-02-19",
+"km": 1.32,
+"mi": 0.82,
+"sec": 378,
+"hr": 161,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-02-20",
+"km": 1.77,
+"mi": 1.1,
+"sec": 556,
+"hr": 155,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-20",
+"km": 1.75,
+"mi": 1.09,
+"sec": 536,
+"hr": 150,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-20",
+"km": 5.32,
+"mi": 3.31,
+"sec": 1116,
+"hr": 146,
+"intensity": 76.0,
+"load": 18,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-02-22",
+"km": 0.78,
+"mi": 0.48,
+"sec": 453,
+"hr": 137,
+"intensity": 67.5,
+"load": 10,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-02-24",
+"km": 5.04,
+"mi": 3.13,
+"sec": 1971,
+"hr": 138,
+"intensity": 68.7,
+"load": 26,
+"name": "Redwood City Running"
+},
+{
+"date": "2024-02-25",
+"km": 6.45,
+"mi": 4.01,
+"sec": 1689,
+"hr": 163,
+"intensity": 95.7,
+"load": 43,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-02-28",
+"km": 8.85,
+"mi": 5.5,
+"sec": 2431,
+"hr": 155,
+"intensity": 83.8,
+"load": 48,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-03-01",
+"km": 5.77,
+"mi": 3.59,
+"sec": 2717,
+"hr": 122,
+"intensity": 55.3,
+"load": 24,
+"name": "Portland Running"
+},
+{
+"date": "2024-03-05",
+"km": 2.54,
+"mi": 1.58,
+"sec": 704,
+"hr": 146,
+"intensity": 75.0,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-05",
+"km": 5.73,
+"mi": 3.56,
+"sec": 1209,
+"hr": 154,
+"intensity": 84.3,
+"load": 24,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-05",
+"km": 1.79,
+"mi": 1.11,
+"sec": 615,
+"hr": 151,
+"intensity": 80.2,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-07",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2645,
+"hr": 162,
+"intensity": 90.2,
+"load": 61,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-03-09",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1710,
+"hr": 139,
+"intensity": 69.6,
+"load": 23,
+"name": "San Francisco Running"
+},
+{
+"date": "2024-03-12",
+"km": 5.54,
+"mi": 3.44,
+"sec": 1175,
+"hr": 139,
+"intensity": 69.8,
+"load": 16,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-12",
+"km": 1.07,
+"mi": 0.66,
+"sec": 349,
+"hr": 153,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-12",
+"km": 1.74,
+"mi": 1.08,
+"sec": 503,
+"hr": 130,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-17",
+"km": 6.76,
+"mi": 4.2,
+"sec": 1756,
+"hr": 164,
+"intensity": 95.8,
+"load": 46,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-03-19",
+"km": 1.77,
+"mi": 1.1,
+"sec": 536,
+"hr": 136,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-19",
+"km": 5.39,
+"mi": 3.35,
+"sec": 1221,
+"hr": 145,
+"intensity": 76.4,
+"load": 20,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-19",
+"km": 1.83,
+"mi": 1.14,
+"sec": 546,
+"hr": 158,
+"intensity": null,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-26",
+"km": 1.8,
+"mi": 1.12,
+"sec": 514,
+"hr": 143,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-26",
+"km": 1.76,
+"mi": 1.09,
+"sec": 562,
+"hr": 146,
+"intensity": null,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-26",
+"km": 3.95,
+"mi": 2.45,
+"sec": 820,
+"hr": 143,
+"intensity": 75.0,
+"load": 13,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-03-28",
+"km": 6.37,
+"mi": 3.96,
+"sec": 1525,
+"hr": 162,
+"intensity": 93.4,
+"load": 37,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-04-11",
+"km": 8.17,
+"mi": 5.08,
+"sec": 2329,
+"hr": 166,
+"intensity": 94.2,
+"load": 59,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-04-12",
+"km": 8.17,
+"mi": 5.08,
+"sec": 2208,
+"hr": 168,
+"intensity": 97.3,
+"load": 59,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-04-20",
+"km": 4.84,
+"mi": 3.01,
+"sec": 1406,
+"hr": 152,
+"intensity": 84.5,
+"load": 28,
+"name": "Redwood City Running"
+},
+{
+"date": "2024-05-07",
+"km": 1.8,
+"mi": 1.12,
+"sec": 545,
+"hr": 143,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-05-07",
+"km": 4.8,
+"mi": 2.98,
+"sec": 1091,
+"hr": 154,
+"intensity": 86.3,
+"load": 23,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-05-11",
+"km": 5.4,
+"mi": 3.36,
+"sec": 1886,
+"hr": 153,
+"intensity": 77.2,
+"load": 35,
+"name": "Oakland Running"
+},
+{
+"date": "2024-05-18",
+"km": 4.75,
+"mi": 2.95,
+"sec": 1758,
+"hr": 142,
+"intensity": 73.2,
+"load": 27,
+"name": "Contra Costa County Running"
+},
+{
+"date": "2024-05-21",
+"km": 0.94,
+"mi": 0.58,
+"sec": 291,
+"hr": 142,
+"intensity": null,
+"load": 5,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-05-21",
+"km": 1.59,
+"mi": 0.99,
+"sec": 352,
+"hr": 148,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-05-21",
+"km": 1.63,
+"mi": 1.01,
+"sec": 339,
+"hr": 171,
+"intensity": null,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-05-21",
+"km": 0.96,
+"mi": 0.6,
+"sec": 314,
+"hr": 152,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-05-23",
+"km": 2.51,
+"mi": 1.56,
+"sec": 709,
+"hr": 156,
+"intensity": 87.2,
+"load": 15,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-05-25",
+"km": 4.02,
+"mi": 2.5,
+"sec": 1040,
+"hr": 168,
+"intensity": 100.5,
+"load": 30,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-05-27",
+"km": 5.2,
+"mi": 3.23,
+"sec": 1394,
+"hr": 158,
+"intensity": 89.7,
+"load": 32,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-05-28",
+"km": 1.79,
+"mi": 1.11,
+"sec": 570,
+"hr": 138,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-05-28",
+"km": 5.72,
+"mi": 3.55,
+"sec": 1282,
+"hr": 152,
+"intensity": 83.4,
+"load": 25,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-05-28",
+"km": 1.85,
+"mi": 1.15,
+"sec": 578,
+"hr": 156,
+"intensity": 81.2,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2024-07-28",
+"km": 0.05,
+"mi": 0.03,
+"sec": 82,
+"hr": 92,
+"intensity": null,
+"load": 0,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-11-14",
+"km": 0.61,
+"mi": 0.38,
+"sec": 326,
+"hr": 123,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-11-15",
+"km": 0.6,
+"mi": 0.37,
+"sec": 293,
+"hr": 124,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-11-16",
+"km": 0.59,
+"mi": 0.37,
+"sec": 282,
+"hr": 120,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-11-17",
+"km": 0.6,
+"mi": 0.37,
+"sec": 267,
+"hr": 131,
+"intensity": null,
+"load": 3,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-11-18",
+"km": 1.03,
+"mi": 0.64,
+"sec": 450,
+"hr": 133,
+"intensity": null,
+"load": 5,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-11-20",
+"km": 1.01,
+"mi": 0.63,
+"sec": 402,
+"hr": 150,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-11-23",
+"km": 1.11,
+"mi": 0.69,
+"sec": 406,
+"hr": 160,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-11-26",
+"km": 1.1,
+"mi": 0.68,
+"sec": 403,
+"hr": 142,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-11-28",
+"km": 0.8,
+"mi": 0.5,
+"sec": 450,
+"hr": 126,
+"intensity": null,
+"load": 4,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2024-11-28",
+"km": 2.01,
+"mi": 1.25,
+"sec": 634,
+"hr": 175,
+"intensity": 103.7,
+"load": 19,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2024-11-29",
+"km": 2.01,
+"mi": 1.25,
+"sec": 614,
+"hr": 167,
+"intensity": 96.7,
+"load": 16,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2024-12-03",
+"km": 1.86,
+"mi": 1.16,
+"sec": 555,
+"hr": 144,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-04",
+"km": 1.62,
+"mi": 1.01,
+"sec": 493,
+"hr": 148,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2024-12-07",
+"km": 1.69,
+"mi": 1.05,
+"sec": 459,
+"hr": 150,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-08",
+"km": 2.67,
+"mi": 1.66,
+"sec": 779,
+"hr": 171,
+"intensity": 104.9,
+"load": 24,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-11",
+"km": 1.89,
+"mi": 1.17,
+"sec": 595,
+"hr": 157,
+"intensity": 87.2,
+"load": 13,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-13",
+"km": 2.11,
+"mi": 1.31,
+"sec": 612,
+"hr": 168,
+"intensity": 97.3,
+"load": 17,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-15",
+"km": 2.07,
+"mi": 1.29,
+"sec": 599,
+"hr": 156,
+"intensity": 84.7,
+"load": 13,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-18",
+"km": 2.45,
+"mi": 1.52,
+"sec": 692,
+"hr": 163,
+"intensity": 92.8,
+"load": 17,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-19",
+"km": 1.14,
+"mi": 0.71,
+"sec": 353,
+"hr": 141,
+"intensity": null,
+"load": 5,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-21",
+"km": 2.81,
+"mi": 1.75,
+"sec": 758,
+"hr": 160,
+"intensity": 92.3,
+"load": 18,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2024-12-22",
+"km": 2.84,
+"mi": 1.76,
+"sec": 1082,
+"hr": 141,
+"intensity": 72.4,
+"load": 16,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-25",
+"km": 2.24,
+"mi": 1.39,
+"sec": 602,
+"hr": 166,
+"intensity": 94.9,
+"load": 16,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-27",
+"km": 3.09,
+"mi": 1.92,
+"sec": 849,
+"hr": 167,
+"intensity": 93.2,
+"load": 23,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-29",
+"km": 3.67,
+"mi": 2.28,
+"sec": 1040,
+"hr": 171,
+"intensity": 101.6,
+"load": 30,
+"name": "San Mateo Running"
+},
+{
+"date": "2024-12-31",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1379,
+"hr": 178,
+"intensity": 109.5,
+"load": 46,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2025-01-05",
+"km": 3.29,
+"mi": 2.04,
+"sec": 919,
+"hr": 171,
+"intensity": 102.8,
+"load": 27,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-08",
+"km": 4.21,
+"mi": 2.62,
+"sec": 1186,
+"hr": 168,
+"intensity": 97.1,
+"load": 32,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-12",
+"km": 4.02,
+"mi": 2.5,
+"sec": 1114,
+"hr": 167,
+"intensity": 97.6,
+"load": 30,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-13",
+"km": 3.0,
+"mi": 1.86,
+"sec": 898,
+"hr": 156,
+"intensity": 83.4,
+"load": 18,
+"name": "Treadmill Running"
+},
+{
+"date": "2025-01-15",
+"km": 4.54,
+"mi": 2.82,
+"sec": 1294,
+"hr": 152,
+"intensity": 80.3,
+"load": 24,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-16",
+"km": 3.25,
+"mi": 2.02,
+"sec": 892,
+"hr": 160,
+"intensity": 91.7,
+"load": 21,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-18",
+"km": 5.53,
+"mi": 3.44,
+"sec": 1534,
+"hr": 173,
+"intensity": 102.8,
+"load": 45,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-21",
+"km": 6.52,
+"mi": 4.05,
+"sec": 1861,
+"hr": 164,
+"intensity": 94.0,
+"load": 46,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-23",
+"km": 6.54,
+"mi": 4.06,
+"sec": 1825,
+"hr": 168,
+"intensity": 95.5,
+"load": 48,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-25",
+"km": 4.08,
+"mi": 2.54,
+"sec": 1116,
+"hr": 128,
+"intensity": 58.8,
+"load": 11,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-27",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1963,
+"hr": 172,
+"intensity": 102.2,
+"load": 57,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-01-30",
+"km": 5.05,
+"mi": 3.14,
+"sec": 1691,
+"hr": 141,
+"intensity": 70.4,
+"load": 24,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-02-01",
+"km": 7.31,
+"mi": 4.54,
+"sec": 2010,
+"hr": 173,
+"intensity": 101.0,
+"load": 60,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-04",
+"km": 8.06,
+"mi": 5.01,
+"sec": 2213,
+"hr": 146,
+"intensity": 74.7,
+"load": 35,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-07",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1901,
+"hr": 174,
+"intensity": 102.6,
+"load": 57,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-09",
+"km": 6.5,
+"mi": 4.04,
+"sec": 1740,
+"hr": 154,
+"intensity": 83.8,
+"load": 34,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-11",
+"km": 8.13,
+"mi": 5.05,
+"sec": 2237,
+"hr": 169,
+"intensity": 97.9,
+"load": 60,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-14",
+"km": 7.4,
+"mi": 4.6,
+"sec": 1978,
+"hr": 168,
+"intensity": 100.9,
+"load": 56,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-16",
+"km": 7.5,
+"mi": 4.66,
+"sec": 2076,
+"hr": 162,
+"intensity": 90.7,
+"load": 49,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-18",
+"km": 9.02,
+"mi": 5.6,
+"sec": 2535,
+"hr": 163,
+"intensity": 91.8,
+"load": 60,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-22",
+"km": 0.82,
+"mi": 0.51,
+"sec": 243,
+"hr": 158,
+"intensity": null,
+"load": 5,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-22",
+"km": 7.32,
+"mi": 4.55,
+"sec": 1967,
+"hr": 168,
+"intensity": 98.0,
+"load": 53,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-23",
+"km": 3.31,
+"mi": 2.06,
+"sec": 855,
+"hr": 165,
+"intensity": 96.2,
+"load": 22,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-25",
+"km": 9.01,
+"mi": 5.6,
+"sec": 2495,
+"hr": 167,
+"intensity": 95.3,
+"load": 64,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-02-27",
+"km": 9.02,
+"mi": 5.6,
+"sec": 2426,
+"hr": 169,
+"intensity": 97.9,
+"load": 66,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-03-03",
+"km": 9.01,
+"mi": 5.6,
+"sec": 2619,
+"hr": 162,
+"intensity": 90.7,
+"load": 61,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-03-05",
+"km": 7.32,
+"mi": 4.55,
+"sec": 1941,
+"hr": 167,
+"intensity": 98.2,
+"load": 52,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-03-09",
+"km": 2.42,
+"mi": 1.5,
+"sec": 647,
+"hr": 149,
+"intensity": 76.5,
+"load": 12,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-03-11",
+"km": 10.02,
+"mi": 6.23,
+"sec": 2747,
+"hr": 172,
+"intensity": 103.1,
+"load": 82,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-03-15",
+"km": 10.02,
+"mi": 6.23,
+"sec": 2703,
+"hr": 171,
+"intensity": 101.6,
+"load": 78,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-03-21",
+"km": 10.03,
+"mi": 6.23,
+"sec": 2739,
+"hr": 164,
+"intensity": 95.2,
+"load": 69,
+"name": "San Mateo County Running"
+},
+{
+"date": "2025-03-24",
+"km": 2.08,
+"mi": 1.29,
+"sec": 527,
+"hr": 131,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-03-30",
+"km": 4.97,
+"mi": 3.09,
+"sec": 2229,
+"hr": 129,
+"intensity": 60.3,
+"load": 23,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-04-03",
+"km": 4.07,
+"mi": 2.53,
+"sec": 1126,
+"hr": 152,
+"intensity": 83.7,
+"load": 22,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-04-06",
+"km": 5.75,
+"mi": 3.57,
+"sec": 2004,
+"hr": 145,
+"intensity": 74.1,
+"load": 32,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-04-09",
+"km": 11.36,
+"mi": 7.06,
+"sec": 3206,
+"hr": 167,
+"intensity": 97.9,
+"load": 86,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-04-10",
+"km": 4.7,
+"mi": 2.92,
+"sec": 1600,
+"hr": 147,
+"intensity": 76.4,
+"load": 26,
+"name": "Menlo Park Running"
+},
+{
+"date": "2025-04-13",
+"km": 2.87,
+"mi": 1.78,
+"sec": 868,
+"hr": 171,
+"intensity": 98.7,
+"load": 24,
+"name": "Foster City Running"
+},
+{
+"date": "2025-04-15",
+"km": 2.79,
+"mi": 1.73,
+"sec": 842,
+"hr": 151,
+"intensity": 80.0,
+"load": 15,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-04-15",
+"km": 0.95,
+"mi": 0.59,
+"sec": 198,
+"hr": 156,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-04-15",
+"km": 0.79,
+"mi": 0.49,
+"sec": 169,
+"hr": 153,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-04-15",
+"km": 1.06,
+"mi": 0.66,
+"sec": 346,
+"hr": 131,
+"intensity": null,
+"load": 4,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-04-17",
+"km": 8.02,
+"mi": 4.98,
+"sec": 2180,
+"hr": 164,
+"intensity": 93.6,
+"load": 54,
+"name": "Menlo Park Running"
+},
+{
+"date": "2025-04-19",
+"km": 12.09,
+"mi": 7.51,
+"sec": 3247,
+"hr": 163,
+"intensity": 94.0,
+"load": 81,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-04-22",
+"km": 13.04,
+"mi": 8.1,
+"sec": 3570,
+"hr": 166,
+"intensity": 95.4,
+"load": 91,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-04-26",
+"km": 2.19,
+"mi": 1.36,
+"sec": 691,
+"hr": 145,
+"intensity": 72.6,
+"load": 11,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-04-26",
+"km": 9.25,
+"mi": 5.75,
+"sec": 2464,
+"hr": 166,
+"intensity": 94.9,
+"load": 63,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-04-28",
+"km": 13.04,
+"mi": 8.1,
+"sec": 3569,
+"hr": 166,
+"intensity": 94.8,
+"load": 92,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-05-04",
+"km": 5.68,
+"mi": 3.53,
+"sec": 1525,
+"hr": 167,
+"intensity": 96.0,
+"load": 40,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-05-05",
+"km": 3.75,
+"mi": 2.33,
+"sec": 1536,
+"hr": 128,
+"intensity": 60.4,
+"load": 16,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-05-06",
+"km": 8.08,
+"mi": 5.02,
+"sec": 2126,
+"hr": 168,
+"intensity": 97.5,
+"load": 57,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-05-08",
+"km": 2.58,
+"mi": 1.6,
+"sec": 751,
+"hr": 149,
+"intensity": 76.2,
+"load": 13,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-05-09",
+"km": 1.31,
+"mi": 0.81,
+"sec": 525,
+"hr": 123,
+"intensity": null,
+"load": 5,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-05-14",
+"km": 5.05,
+"mi": 3.14,
+"sec": 1402,
+"hr": 166,
+"intensity": 94.8,
+"load": 36,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-05-28",
+"km": 6.02,
+"mi": 3.74,
+"sec": 1756,
+"hr": 166,
+"intensity": 96.9,
+"load": 46,
+"name": "Chilliwack Running"
+},
+{
+"date": "2025-06-07",
+"km": 4.95,
+"mi": 3.08,
+"sec": 1987,
+"hr": 143,
+"intensity": 72.1,
+"load": 30,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-08",
+"km": 3.36,
+"mi": 2.09,
+"sec": 1097,
+"hr": 152,
+"intensity": 83.1,
+"load": 22,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-09",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1411,
+"hr": 164,
+"intensity": 93.5,
+"load": 35,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-12",
+"km": 5.02,
+"mi": 3.12,
+"sec": 1363,
+"hr": 168,
+"intensity": 97.1,
+"load": 37,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-13",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1382,
+"hr": 168,
+"intensity": 97.2,
+"load": 37,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-16",
+"km": 6.45,
+"mi": 4.01,
+"sec": 1762,
+"hr": 168,
+"intensity": 97.9,
+"load": 47,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-17",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1331,
+"hr": 165,
+"intensity": 93.7,
+"load": 34,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-19",
+"km": 9.01,
+"mi": 5.6,
+"sec": 2496,
+"hr": 165,
+"intensity": 93.2,
+"load": 62,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-21",
+"km": 0.66,
+"mi": 0.41,
+"sec": 185,
+"hr": 128,
+"intensity": null,
+"load": 2,
+"name": "Chilliwack Running"
+},
+{
+"date": "2025-06-22",
+"km": 10.02,
+"mi": 6.23,
+"sec": 2857,
+"hr": 164,
+"intensity": 92.7,
+"load": 69,
+"name": "Chilliwack Running"
+},
+{
+"date": "2025-06-25",
+"km": 4.22,
+"mi": 2.62,
+"sec": 1139,
+"hr": 160,
+"intensity": 89.9,
+"load": 26,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-26",
+"km": 10.01,
+"mi": 6.22,
+"sec": 2780,
+"hr": 169,
+"intensity": 97.8,
+"load": 74,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-06-28",
+"km": 7.52,
+"mi": 4.67,
+"sec": 2041,
+"hr": 168,
+"intensity": 96.9,
+"load": 54,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-07-01",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1420,
+"hr": 153,
+"intensity": 83.0,
+"load": 28,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-07-03",
+"km": 8.69,
+"mi": 5.4,
+"sec": 2558,
+"hr": 167,
+"intensity": 96.5,
+"load": 67,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-07-09",
+"km": 12.09,
+"mi": 7.51,
+"sec": 3410,
+"hr": 167,
+"intensity": 95.0,
+"load": 89,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-07-12",
+"km": 12.1,
+"mi": 7.52,
+"sec": 3375,
+"hr": 168,
+"intensity": 96.9,
+"load": 91,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-07-15",
+"km": 13.01,
+"mi": 8.08,
+"sec": 3595,
+"hr": 163,
+"intensity": 90.7,
+"load": 84,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-07-17",
+"km": 13.01,
+"mi": 8.08,
+"sec": 3555,
+"hr": 168,
+"intensity": 96.5,
+"load": 95,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-07-23",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1867,
+"hr": 170,
+"intensity": 100.1,
+"load": 52,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-07-25",
+"km": 16.11,
+"mi": 10.01,
+"sec": 4543,
+"hr": 167,
+"intensity": 94.4,
+"load": 115,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-07-27",
+"km": 3.75,
+"mi": 2.33,
+"sec": 1018,
+"hr": 158,
+"intensity": 88.0,
+"load": 22,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-07-31",
+"km": 8.06,
+"mi": 5.01,
+"sec": 2118,
+"hr": 161,
+"intensity": 95.1,
+"load": 54,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-08-18",
+"km": 1.19,
+"mi": 0.74,
+"sec": 340,
+"hr": 139,
+"intensity": null,
+"load": 4,
+"name": "Hillingdon Running"
+},
+{
+"date": "2025-08-19",
+"km": 1.55,
+"mi": 0.96,
+"sec": 530,
+"hr": 145,
+"intensity": null,
+"load": 8,
+"name": "Hillingdon Running"
+},
+{
+"date": "2025-08-20",
+"km": 4.07,
+"mi": 2.53,
+"sec": 1418,
+"hr": 140,
+"intensity": 69.0,
+"load": 20,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-08-21",
+"km": 4.87,
+"mi": 3.03,
+"sec": 1424,
+"hr": 162,
+"intensity": 90.4,
+"load": 34,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-08-22",
+"km": 4.9,
+"mi": 3.04,
+"sec": 1374,
+"hr": 167,
+"intensity": 96.1,
+"load": 37,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-08-23",
+"km": 6.47,
+"mi": 4.02,
+"sec": 1593,
+"hr": 177,
+"intensity": 108.3,
+"load": 52,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-08-23",
+"km": 1.58,
+"mi": 0.98,
+"sec": 491,
+"hr": 161,
+"intensity": null,
+"load": 11,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-08-24",
+"km": 14.29,
+"mi": 8.88,
+"sec": 5486,
+"hr": 136,
+"intensity": 64.7,
+"load": 65,
+"name": "Pacifica Running"
+},
+{
+"date": "2025-08-30",
+"km": 8.07,
+"mi": 5.01,
+"sec": 2162,
+"hr": 173,
+"intensity": 103.2,
+"load": 64,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-09-01",
+"km": 16.37,
+"mi": 10.17,
+"sec": 6550,
+"hr": 134,
+"intensity": 62.5,
+"load": 72,
+"name": "Pacifica Running"
+},
+{
+"date": "2025-09-03",
+"km": 8.43,
+"mi": 5.24,
+"sec": 2224,
+"hr": 170,
+"intensity": 99.1,
+"load": 61,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-09-05",
+"km": 8.14,
+"mi": 5.06,
+"sec": 3429,
+"hr": 147,
+"intensity": 73.3,
+"load": 52,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-09-05",
+"km": 7.48,
+"mi": 4.65,
+"sec": 2263,
+"hr": 161,
+"intensity": 85.8,
+"load": 51,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-09-06",
+"km": 10.03,
+"mi": 6.23,
+"sec": 3448,
+"hr": 154,
+"intensity": 81.1,
+"load": 63,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-09-09",
+"km": 2.62,
+"mi": 1.63,
+"sec": 792,
+"hr": 142,
+"intensity": 69.9,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-09",
+"km": 1.79,
+"mi": 1.11,
+"sec": 612,
+"hr": 148,
+"intensity": 72.7,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-09",
+"km": 6.01,
+"mi": 3.73,
+"sec": 1275,
+"hr": 152,
+"intensity": 81.9,
+"load": 24,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-10",
+"km": 7.84,
+"mi": 4.87,
+"sec": 3526,
+"hr": 119,
+"intensity": 47.9,
+"load": 24,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-09-12",
+"km": 13.13,
+"mi": 8.16,
+"sec": 3483,
+"hr": 168,
+"intensity": 96.9,
+"load": 91,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-09-14",
+"km": 15.03,
+"mi": 9.34,
+"sec": 6028,
+"hr": 129,
+"intensity": 58.4,
+"load": 58,
+"name": "Alameda Running"
+},
+{
+"date": "2025-09-16",
+"km": 2.77,
+"mi": 1.72,
+"sec": 847,
+"hr": 144,
+"intensity": 71.4,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-16",
+"km": 7.72,
+"mi": 4.8,
+"sec": 1800,
+"hr": 174,
+"intensity": 104.7,
+"load": 55,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-19",
+"km": 8.07,
+"mi": 5.01,
+"sec": 3495,
+"hr": 133,
+"intensity": 60.9,
+"load": 36,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-09-20",
+"km": 8.11,
+"mi": 5.04,
+"sec": 2191,
+"hr": 164,
+"intensity": 94.0,
+"load": 54,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-09-23",
+"km": 1.83,
+"mi": 1.14,
+"sec": 675,
+"hr": 146,
+"intensity": 72.9,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-23",
+"km": 1.56,
+"mi": 0.97,
+"sec": 400,
+"hr": 152,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-23",
+"km": 2.38,
+"mi": 1.48,
+"sec": 779,
+"hr": 142,
+"intensity": 70.1,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-23",
+"km": 4.52,
+"mi": 2.81,
+"sec": 1116,
+"hr": 175,
+"intensity": 106.0,
+"load": 35,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-25",
+"km": 3.16,
+"mi": 1.96,
+"sec": 1058,
+"hr": 137,
+"intensity": 66.7,
+"load": 14,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-09-25",
+"km": 8.17,
+"mi": 5.08,
+"sec": 3409,
+"hr": 140,
+"intensity": 67.3,
+"load": 43,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-09-27",
+"km": 5.02,
+"mi": 3.12,
+"sec": 1420,
+"hr": 153,
+"intensity": 81.3,
+"load": 27,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-09-28",
+"km": 1.6,
+"mi": 0.99,
+"sec": 577,
+"hr": 138,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2025-09-28",
+"km": 5.02,
+"mi": 3.12,
+"sec": 1179,
+"hr": 176,
+"intensity": 106.3,
+"load": 37,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2025-09-28",
+"km": 1.21,
+"mi": 0.75,
+"sec": 432,
+"hr": 144,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-09-30",
+"km": 1.77,
+"mi": 1.1,
+"sec": 654,
+"hr": 137,
+"intensity": 65.8,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-30",
+"km": 2.61,
+"mi": 1.62,
+"sec": 848,
+"hr": 140,
+"intensity": 68.0,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-09-30",
+"km": 4.79,
+"mi": 2.98,
+"sec": 1133,
+"hr": 155,
+"intensity": 85.1,
+"load": 23,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-01",
+"km": 4.85,
+"mi": 3.01,
+"sec": 2033,
+"hr": 128,
+"intensity": 56.2,
+"load": 18,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-10-03",
+"km": 3.43,
+"mi": 2.13,
+"sec": 1084,
+"hr": 127,
+"intensity": 58.9,
+"load": 11,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-10-04",
+"km": 14.52,
+"mi": 9.02,
+"sec": 5060,
+"hr": 142,
+"intensity": 71.4,
+"load": 73,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-10-07",
+"km": 2.77,
+"mi": 1.72,
+"sec": 898,
+"hr": 137,
+"intensity": 66.4,
+"load": 11,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-07",
+"km": 6.83,
+"mi": 4.24,
+"sec": 1481,
+"hr": 160,
+"intensity": 90.4,
+"load": 34,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-07",
+"km": 1.78,
+"mi": 1.11,
+"sec": 587,
+"hr": 134,
+"intensity": 59.3,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-19",
+"km": 5.24,
+"mi": 3.26,
+"sec": 2212,
+"hr": 133,
+"intensity": 60.7,
+"load": 23,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-10-21",
+"km": 1.8,
+"mi": 1.12,
+"sec": 677,
+"hr": 139,
+"intensity": 63.8,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-21",
+"km": 4.68,
+"mi": 2.91,
+"sec": 1077,
+"hr": 158,
+"intensity": 87.5,
+"load": 23,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-21",
+"km": 2.48,
+"mi": 1.54,
+"sec": 745,
+"hr": 142,
+"intensity": 69.5,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-22",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1862,
+"hr": 166,
+"intensity": 98.2,
+"load": 50,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-10-24",
+"km": 3.23,
+"mi": 2.01,
+"sec": 978,
+"hr": 147,
+"intensity": 76.1,
+"load": 17,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-10-25",
+"km": 8.12,
+"mi": 5.05,
+"sec": 3325,
+"hr": 140,
+"intensity": 67.1,
+"load": 42,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-10-26",
+"km": 8.09,
+"mi": 5.03,
+"sec": 2148,
+"hr": 169,
+"intensity": 99.1,
+"load": 59,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-10-28",
+"km": 6.15,
+"mi": 3.82,
+"sec": 1314,
+"hr": 166,
+"intensity": 96.0,
+"load": 34,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-28",
+"km": 1.64,
+"mi": 1.02,
+"sec": 414,
+"hr": 148,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-28",
+"km": 1.82,
+"mi": 1.13,
+"sec": 588,
+"hr": 163,
+"intensity": null,
+"load": 13,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-28",
+"km": 2.4,
+"mi": 1.49,
+"sec": 793,
+"hr": 140,
+"intensity": 67.4,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-10-30",
+"km": 9.79,
+"mi": 6.08,
+"sec": 3967,
+"hr": 145,
+"intensity": 72.5,
+"load": 58,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-10-30",
+"km": 8.11,
+"mi": 5.04,
+"sec": 2170,
+"hr": 166,
+"intensity": 94.1,
+"load": 55,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-11-04",
+"km": 1.77,
+"mi": 1.1,
+"sec": 574,
+"hr": 137,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-11-04",
+"km": 2.54,
+"mi": 1.58,
+"sec": 830,
+"hr": 144,
+"intensity": 72.1,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-11-04",
+"km": 6.77,
+"mi": 4.21,
+"sec": 1579,
+"hr": 164,
+"intensity": 92.8,
+"load": 38,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-11-06",
+"km": 7.81,
+"mi": 4.85,
+"sec": 2190,
+"hr": 159,
+"intensity": 85.4,
+"load": 47,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-11-09",
+"km": 8.04,
+"mi": 5.0,
+"sec": 4103,
+"hr": 103,
+"intensity": 42.1,
+"load": 21,
+"name": "Arvada Running"
+},
+{
+"date": "2025-11-10",
+"km": 13.02,
+"mi": 8.09,
+"sec": 3632,
+"hr": 164,
+"intensity": 92.8,
+"load": 89,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-11-11",
+"km": 1.78,
+"mi": 1.11,
+"sec": 600,
+"hr": 136,
+"intensity": 64.8,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-11-11",
+"km": 2.42,
+"mi": 1.5,
+"sec": 723,
+"hr": 132,
+"intensity": 63.0,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-11-11",
+"km": 7.17,
+"mi": 4.46,
+"sec": 1605,
+"hr": 157,
+"intensity": 85.9,
+"load": 33,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-11-13",
+"km": 10.6,
+"mi": 6.59,
+"sec": 2960,
+"hr": 163,
+"intensity": 92.8,
+"load": 71,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-11-15",
+"km": 21.16,
+"mi": 13.15,
+"sec": 5622,
+"hr": 170,
+"intensity": 98.6,
+"load": 152,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-11-16",
+"km": 1.8,
+"mi": 1.12,
+"sec": 711,
+"hr": 131,
+"intensity": 59.5,
+"load": 7,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-11-18",
+"km": 2.59,
+"mi": 1.61,
+"sec": 732,
+"hr": 146,
+"intensity": 76.8,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-11-18",
+"km": 5.2,
+"mi": 3.23,
+"sec": 1153,
+"hr": 163,
+"intensity": 93.1,
+"load": 28,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-11-18",
+"km": 1.79,
+"mi": 1.11,
+"sec": 662,
+"hr": 141,
+"intensity": 68.8,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-11-20",
+"km": 6.51,
+"mi": 4.05,
+"sec": 1727,
+"hr": 161,
+"intensity": 90.5,
+"load": 40,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-11-22",
+"km": 8.12,
+"mi": 5.05,
+"sec": 2247,
+"hr": 159,
+"intensity": 87.2,
+"load": 48,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-11-25",
+"km": 9.76,
+"mi": 6.06,
+"sec": 3539,
+"hr": 137,
+"intensity": 66.1,
+"load": 43,
+"name": "Orange Running"
+},
+{
+"date": "2025-11-27",
+"km": 2.72,
+"mi": 1.69,
+"sec": 1239,
+"hr": 129,
+"intensity": 59.0,
+"load": 12,
+"name": "Orange Running"
+},
+{
+"date": "2025-11-27",
+"km": 4.99,
+"mi": 3.1,
+"sec": 1142,
+"hr": 145,
+"intensity": 73.1,
+"load": 17,
+"name": "Orange Running"
+},
+{
+"date": "2025-12-05",
+"km": 9.75,
+"mi": 6.06,
+"sec": 4137,
+"hr": 133,
+"intensity": 61.2,
+"load": 43,
+"name": "Redwood City Running"
+},
+{
+"date": "2025-12-06",
+"km": 1.75,
+"mi": 1.09,
+"sec": 486,
+"hr": 128,
+"intensity": null,
+"load": 5,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-12-09",
+"km": 2.61,
+"mi": 1.62,
+"sec": 740,
+"hr": 131,
+"intensity": 58.2,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-09",
+"km": 5.06,
+"mi": 3.14,
+"sec": 1071,
+"hr": 160,
+"intensity": 91.0,
+"load": 25,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-12",
+"km": 4.18,
+"mi": 2.6,
+"sec": 1092,
+"hr": 161,
+"intensity": 90.6,
+"load": 25,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-12-14",
+"km": 7.22,
+"mi": 4.49,
+"sec": 1682,
+"hr": 173,
+"intensity": 105.5,
+"load": 52,
+"name": "San Francisco Running"
+},
+{
+"date": "2025-12-14",
+"km": 1.54,
+"mi": 0.96,
+"sec": 470,
+"hr": 132,
+"intensity": null,
+"load": 5,
+"name": "San Francisco Running"
+},
+{
+"date": "2025-12-16",
+"km": 2.4,
+"mi": 1.49,
+"sec": 711,
+"hr": 143,
+"intensity": 70.5,
+"load": 10,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-16",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1623,
+"hr": 172,
+"intensity": 101.8,
+"load": 47,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-16",
+"km": 1.79,
+"mi": 1.11,
+"sec": 629,
+"hr": 155,
+"intensity": 82.8,
+"load": 12,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-19",
+"km": 12.13,
+"mi": 7.54,
+"sec": 3265,
+"hr": 167,
+"intensity": 95.4,
+"load": 85,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-12-20",
+"km": 9.96,
+"mi": 6.19,
+"sec": 4294,
+"hr": 122,
+"intensity": 51.5,
+"load": 32,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-12-22",
+"km": 9.28,
+"mi": 5.77,
+"sec": 2557,
+"hr": 148,
+"intensity": 75.6,
+"load": 41,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-12-23",
+"km": 2.39,
+"mi": 1.49,
+"sec": 705,
+"hr": 138,
+"intensity": 67.7,
+"load": 9,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-23",
+"km": 6.85,
+"mi": 4.26,
+"sec": 1534,
+"hr": 145,
+"intensity": 73.2,
+"load": 23,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-23",
+"km": 1.36,
+"mi": 0.85,
+"sec": 484,
+"hr": 143,
+"intensity": null,
+"load": 7,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-24",
+"km": 14.02,
+"mi": 8.71,
+"sec": 3753,
+"hr": 162,
+"intensity": 89.2,
+"load": 85,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-12-28",
+"km": 10.03,
+"mi": 6.23,
+"sec": 2575,
+"hr": 167,
+"intensity": 96.6,
+"load": 67,
+"name": "San Mateo Running"
+},
+{
+"date": "2025-12-30",
+"km": 1.78,
+"mi": 1.11,
+"sec": 574,
+"hr": 141,
+"intensity": null,
+"load": 8,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-30",
+"km": 1.8,
+"mi": 1.12,
+"sec": 489,
+"hr": 137,
+"intensity": null,
+"load": 6,
+"name": "Burlingame Running"
+},
+{
+"date": "2025-12-30",
+"km": 6.42,
+"mi": 3.99,
+"sec": 1362,
+"hr": 158,
+"intensity": 87.1,
+"load": 29,
+"name": "Burlingame Running"
+},
+{
+"date": "2026-01-10",
+"km": 7.02,
+"mi": 4.36,
+"sec": 1826,
+"hr": 164,
+"intensity": 95.8,
+"load": 47,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-01-18",
+"km": 10.49,
+"mi": 6.52,
+"sec": 2780,
+"hr": 166,
+"intensity": 94.1,
+"load": 71,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-01-24",
+"km": 8.69,
+"mi": 5.4,
+"sec": 2418,
+"hr": 170,
+"intensity": 99.1,
+"load": 66,
+"name": "Redwood City Running"
+},
+{
+"date": "2026-01-27",
+"km": 6.51,
+"mi": 4.05,
+"sec": 1717,
+"hr": 169,
+"intensity": 99.4,
+"load": 48,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-02-04",
+"km": 12.12,
+"mi": 7.53,
+"sec": 3336,
+"hr": 167,
+"intensity": 95.2,
+"load": 86,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-02-05",
+"km": 8.73,
+"mi": 5.42,
+"sec": 2641,
+"hr": 153,
+"intensity": 80.0,
+"load": 47,
+"name": "Burlingame Running"
+},
+{
+"date": "2026-02-07",
+"km": 6.47,
+"mi": 4.02,
+"sec": 1669,
+"hr": 164,
+"intensity": 93.9,
+"load": 42,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-02-08",
+"km": 16.12,
+"mi": 10.02,
+"sec": 4395,
+"hr": 171,
+"intensity": 99.1,
+"load": 120,
+"name": "Redwood City Running"
+},
+{
+"date": "2026-02-12",
+"km": 8.72,
+"mi": 5.42,
+"sec": 2515,
+"hr": 158,
+"intensity": 85.3,
+"load": 51,
+"name": "Burlingame Running"
+},
+{
+"date": "2026-02-14",
+"km": 6.95,
+"mi": 4.32,
+"sec": 1718,
+"hr": 166,
+"intensity": 94.5,
+"load": 44,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-02-15",
+"km": 8.42,
+"mi": 5.23,
+"sec": 2259,
+"hr": 169,
+"intensity": 97.0,
+"load": 59,
+"name": "Redwood City Running"
+},
+{
+"date": "2026-02-17",
+"km": 14.93,
+"mi": 9.28,
+"sec": 4206,
+"hr": 156,
+"intensity": 83.4,
+"load": 82,
+"name": "Burlingame Running"
+},
+{
+"date": "2026-03-01",
+"km": 3.23,
+"mi": 2.01,
+"sec": 875,
+"hr": 160,
+"intensity": 87.6,
+"load": 19,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-03-02",
+"km": 4.28,
+"mi": 2.66,
+"sec": 1650,
+"hr": 145,
+"intensity": 70.9,
+"load": 24,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-03-21",
+"km": 6.48,
+"mi": 4.03,
+"sec": 1785,
+"hr": 173,
+"intensity": 103.2,
+"load": 54,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-03-22",
+"km": 6.84,
+"mi": 4.25,
+"sec": 1862,
+"hr": 175,
+"intensity": 105.2,
+"load": 58,
+"name": "Redwood City Running"
+},
+{
+"date": "2026-05-02",
+"km": 3.25,
+"mi": 2.02,
+"sec": 893,
+"hr": 167,
+"intensity": 99.4,
+"load": 25,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-03",
+"km": 5.01,
+"mi": 3.11,
+"sec": 1447,
+"hr": 174,
+"intensity": 104.6,
+"load": 44,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-07",
+"km": 5.67,
+"mi": 3.52,
+"sec": 1696,
+"hr": 164,
+"intensity": 94.3,
+"load": 42,
+"name": "Menlo Park Running"
+},
+{
+"date": "2026-05-08",
+"km": 6.52,
+"mi": 4.05,
+"sec": 1853,
+"hr": 168,
+"intensity": 98.5,
+"load": 50,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-09",
+"km": 1.25,
+"mi": 0.78,
+"sec": 384,
+"hr": 148,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-09",
+"km": 2.41,
+"mi": 1.5,
+"sec": 559,
+"hr": 169,
+"intensity": null,
+"load": 15,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2026-05-09",
+"km": 1.26,
+"mi": 0.78,
+"sec": 368,
+"hr": 157,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-11",
+"km": 7.02,
+"mi": 4.36,
+"sec": 1953,
+"hr": 172,
+"intensity": 101.1,
+"load": 56,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-12",
+"km": 6.18,
+"mi": 3.84,
+"sec": 1905,
+"hr": 159,
+"intensity": 86.6,
+"load": 41,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-14",
+"km": 8.07,
+"mi": 5.01,
+"sec": 2241,
+"hr": 166,
+"intensity": 95.6,
+"load": 57,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-16",
+"km": 1.31,
+"mi": 0.81,
+"sec": 385,
+"hr": 151,
+"intensity": null,
+"load": 7,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-16",
+"km": 2.82,
+"mi": 1.75,
+"sec": 648,
+"hr": 174,
+"intensity": 105.3,
+"load": 20,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2026-05-16",
+"km": 1.38,
+"mi": 0.86,
+"sec": 438,
+"hr": 156,
+"intensity": null,
+"load": 8,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-17",
+"km": 8.06,
+"mi": 5.01,
+"sec": 2280,
+"hr": 170,
+"intensity": 98.5,
+"load": 62,
+"name": "Redwood City Running"
+},
+{
+"date": "2026-05-19",
+"km": 3.43,
+"mi": 2.13,
+"sec": 998,
+"hr": 157,
+"intensity": 84.9,
+"load": 20,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-21",
+"km": 8.07,
+"mi": 5.01,
+"sec": 2298,
+"hr": 160,
+"intensity": 86.0,
+"load": 50,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-22",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1932,
+"hr": 161,
+"intensity": 89.3,
+"load": 43,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-24",
+"km": 9.02,
+"mi": 5.6,
+"sec": 2522,
+"hr": 168,
+"intensity": 96.1,
+"load": 66,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-26",
+"km": 8.14,
+"mi": 5.06,
+"sec": 2263,
+"hr": 162,
+"intensity": 89.3,
+"load": 53,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-05-28",
+"km": 9.02,
+"mi": 5.6,
+"sec": 2467,
+"hr": 167,
+"intensity": 95.6,
+"load": 63,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-12",
+"km": 3.42,
+"mi": 2.13,
+"sec": 949,
+"hr": 166,
+"intensity": 97.3,
+"load": 25,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-13",
+"km": 5.11,
+"mi": 3.18,
+"sec": 1398,
+"hr": 159,
+"intensity": 90.6,
+"load": 32,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-14",
+"km": 2.63,
+"mi": 1.63,
+"sec": 723,
+"hr": 161,
+"intensity": 87.3,
+"load": 16,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-15",
+"km": 7.01,
+"mi": 4.36,
+"sec": 1970,
+"hr": 175,
+"intensity": 104.9,
+"load": 61,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-17",
+"km": 5.15,
+"mi": 3.2,
+"sec": 1417,
+"hr": 174,
+"intensity": 103.9,
+"load": 43,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-18",
+"km": 8.71,
+"mi": 5.41,
+"sec": 2485,
+"hr": 167,
+"intensity": 96.0,
+"load": 64,
+"name": "Burlingame Running"
+},
+{
+"date": "2026-06-20",
+"km": 3.21,
+"mi": 1.99,
+"sec": 730,
+"hr": 173,
+"intensity": 104.1,
+"load": 22,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2026-06-20",
+"km": 1.45,
+"mi": 0.9,
+"sec": 440,
+"hr": 160,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-20",
+"km": 1.3,
+"mi": 0.81,
+"sec": 377,
+"hr": 163,
+"intensity": null,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-21",
+"km": 7.31,
+"mi": 4.54,
+"sec": 2001,
+"hr": 170,
+"intensity": 98.2,
+"load": 54,
+"name": "Redwood City Running"
+},
+{
+"date": "2026-06-21",
+"km": 0.83,
+"mi": 0.52,
+"sec": 258,
+"hr": 161,
+"intensity": null,
+"load": 6,
+"name": "Redwood City Running"
+},
+{
+"date": "2026-06-23",
+"km": 10.02,
+"mi": 6.23,
+"sec": 2836,
+"hr": 161,
+"intensity": 87.6,
+"load": 64,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-27",
+"km": 9.1,
+"mi": 5.65,
+"sec": 2495,
+"hr": 172,
+"intensity": 102.0,
+"load": 73,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-28",
+"km": 2.01,
+"mi": 1.25,
+"sec": 601,
+"hr": 145,
+"intensity": 72.8,
+"load": 9,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-06-30",
+"km": 3.25,
+"mi": 2.02,
+"sec": 926,
+"hr": 158,
+"intensity": 85.8,
+"load": 19,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-07-01",
+"km": 10.02,
+"mi": 6.23,
+"sec": 2736,
+"hr": 174,
+"intensity": 104.5,
+"load": 83,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-07-02",
+"km": 4.04,
+"mi": 2.51,
+"sec": 1146,
+"hr": 158,
+"intensity": 86.8,
+"load": 24,
+"name": "San Mateo Running"
+},
+{
+"date": "2026-07-04",
+"km": 1.21,
+"mi": 0.75,
+"sec": 342,
+"hr": 149,
+"intensity": null,
+"load": 6,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2026-07-04",
+"km": 1.61,
+"mi": 1.0,
+"sec": 471,
+"hr": 164,
+"intensity": null,
+"load": 11,
+"name": "San Mateo Track Running"
+},
+{
+"date": "2026-07-04",
+"km": 3.21,
+"mi": 1.99,
+"sec": 789,
+"hr": 171,
+"intensity": 100.1,
+"load": 22,
+"name": "San Mateo Track Running"
+}
+],
+"weekly": [
+{
+"week": "2021-12-27",
+"km": 11.1,
+"mi": 6.9,
+"load": 82,
+"n": 1
+},
+{
+"week": "2022-01-03",
+"km": 2.3,
+"mi": 1.4,
+"load": 7,
+"n": 1
+},
+{
+"week": "2022-01-10",
+"km": 37.1,
+"mi": 23.1,
+"load": 222,
+"n": 7
+},
+{
+"week": "2022-01-17",
+"km": 30.0,
+"mi": 18.7,
+"load": 194,
+"n": 6
+},
+{
+"week": "2022-01-24",
+"km": 65.9,
+"mi": 40.9,
+"load": 412,
+"n": 11
+},
+{
+"week": "2022-01-31",
+"km": 53.2,
+"mi": 33.0,
+"load": 283,
+"n": 11
+},
+{
+"week": "2022-02-07",
+"km": 40.9,
+"mi": 25.4,
+"load": 213,
+"n": 11
+},
+{
+"week": "2022-02-14",
+"km": 27.1,
+"mi": 16.8,
+"load": 155,
+"n": 5
+},
+{
+"week": "2022-02-21",
+"km": 18.0,
+"mi": 11.2,
+"load": 113,
+"n": 2
+},
+{
+"week": "2022-02-28",
+"km": 50.8,
+"mi": 31.6,
+"load": 261,
+"n": 10
+},
+{
+"week": "2022-03-07",
+"km": 56.1,
+"mi": 34.9,
+"load": 307,
+"n": 9
+},
+{
+"week": "2022-03-14",
+"km": 55.0,
+"mi": 34.2,
+"load": 285,
+"n": 9
+},
+{
+"week": "2022-03-21",
+"km": 61.8,
+"mi": 38.4,
+"load": 312,
+"n": 10
+},
+{
+"week": "2022-03-28",
+"km": 35.1,
+"mi": 21.8,
+"load": 194,
+"n": 8
+},
+{
+"week": "2022-04-04",
+"km": 29.0,
+"mi": 18.0,
+"load": 154,
+"n": 7
+},
+{
+"week": "2022-04-11",
+"km": 5.6,
+"mi": 3.5,
+"load": 24,
+"n": 1
+},
+{
+"week": "2022-04-18",
+"km": 7.5,
+"mi": 4.6,
+"load": 39,
+"n": 4
+},
+{
+"week": "2022-05-02",
+"km": 63.2,
+"mi": 39.3,
+"load": 368,
+"n": 13
+},
+{
+"week": "2022-05-09",
+"km": 58.1,
+"mi": 36.1,
+"load": 251,
+"n": 15
+},
+{
+"week": "2022-05-16",
+"km": 63.2,
+"mi": 39.3,
+"load": 368,
+"n": 13
+},
+{
+"week": "2022-05-23",
+"km": 69.4,
+"mi": 43.1,
+"load": 373,
+"n": 13
+},
+{
+"week": "2022-05-30",
+"km": 42.2,
+"mi": 26.2,
+"load": 204,
+"n": 10
+},
+{
+"week": "2022-06-13",
+"km": 40.3,
+"mi": 25.1,
+"load": 199,
+"n": 12
+},
+{
+"week": "2022-06-20",
+"km": 29.4,
+"mi": 18.2,
+"load": 193,
+"n": 3
+},
+{
+"week": "2022-06-27",
+"km": 51.0,
+"mi": 31.7,
+"load": 281,
+"n": 7
+},
+{
+"week": "2022-07-04",
+"km": 69.3,
+"mi": 43.1,
+"load": 352,
+"n": 13
+},
+{
+"week": "2022-07-11",
+"km": 44.8,
+"mi": 27.8,
+"load": 238,
+"n": 9
+},
+{
+"week": "2022-07-18",
+"km": 11.3,
+"mi": 7.0,
+"load": 61,
+"n": 4
+},
+{
+"week": "2022-07-25",
+"km": 36.7,
+"mi": 22.8,
+"load": 207,
+"n": 3
+},
+{
+"week": "2022-08-01",
+"km": 12.7,
+"mi": 7.9,
+"load": 55,
+"n": 4
+},
+{
+"week": "2022-08-08",
+"km": 10.4,
+"mi": 6.4,
+"load": 74,
+"n": 2
+},
+{
+"week": "2022-08-15",
+"km": 43.6,
+"mi": 27.1,
+"load": 316,
+"n": 7
+},
+{
+"week": "2022-08-22",
+"km": 61.9,
+"mi": 38.5,
+"load": 332,
+"n": 12
+},
+{
+"week": "2022-08-29",
+"km": 46.8,
+"mi": 29.1,
+"load": 221,
+"n": 10
+},
+{
+"week": "2022-09-05",
+"km": 76.1,
+"mi": 47.3,
+"load": 409,
+"n": 12
+},
+{
+"week": "2022-09-12",
+"km": 82.0,
+"mi": 51.0,
+"load": 430,
+"n": 13
+},
+{
+"week": "2022-09-19",
+"km": 80.1,
+"mi": 49.7,
+"load": 395,
+"n": 16
+},
+{
+"week": "2022-09-26",
+"km": 55.1,
+"mi": 34.2,
+"load": 233,
+"n": 9
+},
+{
+"week": "2022-10-03",
+"km": 33.4,
+"mi": 20.8,
+"load": 183,
+"n": 8
+},
+{
+"week": "2022-10-10",
+"km": 60.2,
+"mi": 37.4,
+"load": 296,
+"n": 9
+},
+{
+"week": "2022-10-17",
+"km": 63.6,
+"mi": 39.5,
+"load": 336,
+"n": 14
+},
+{
+"week": "2022-10-24",
+"km": 55.0,
+"mi": 34.2,
+"load": 266,
+"n": 11
+},
+{
+"week": "2022-10-31",
+"km": 58.4,
+"mi": 36.3,
+"load": 260,
+"n": 10
+},
+{
+"week": "2022-11-07",
+"km": 80.1,
+"mi": 49.8,
+"load": 393,
+"n": 11
+},
+{
+"week": "2022-11-14",
+"km": 33.3,
+"mi": 20.7,
+"load": 152,
+"n": 6
+},
+{
+"week": "2022-11-21",
+"km": 27.8,
+"mi": 17.2,
+"load": 123,
+"n": 7
+},
+{
+"week": "2022-11-28",
+"km": 45.8,
+"mi": 28.5,
+"load": 242,
+"n": 8
+},
+{
+"week": "2022-12-05",
+"km": 75.4,
+"mi": 46.8,
+"load": 379,
+"n": 10
+},
+{
+"week": "2022-12-12",
+"km": 60.6,
+"mi": 37.7,
+"load": 264,
+"n": 11
+},
+{
+"week": "2022-12-19",
+"km": 14.9,
+"mi": 9.3,
+"load": 80,
+"n": 2
+},
+{
+"week": "2022-12-26",
+"km": 13.5,
+"mi": 8.4,
+"load": 60,
+"n": 4
+},
+{
+"week": "2023-01-02",
+"km": 23.2,
+"mi": 14.4,
+"load": 127,
+"n": 4
+},
+{
+"week": "2023-01-09",
+"km": 33.5,
+"mi": 20.8,
+"load": 168,
+"n": 12
+},
+{
+"week": "2023-01-16",
+"km": 82.6,
+"mi": 51.3,
+"load": 423,
+"n": 12
+},
+{
+"week": "2023-01-23",
+"km": 75.4,
+"mi": 46.9,
+"load": 374,
+"n": 13
+},
+{
+"week": "2023-01-30",
+"km": 29.8,
+"mi": 18.5,
+"load": 149,
+"n": 6
+},
+{
+"week": "2023-02-06",
+"km": 1.6,
+"mi": 1.0,
+"load": 4,
+"n": 1
+},
+{
+"week": "2023-02-13",
+"km": 34.5,
+"mi": 21.4,
+"load": 170,
+"n": 7
+},
+{
+"week": "2023-02-20",
+"km": 10.0,
+"mi": 6.2,
+"load": 43,
+"n": 3
+},
+{
+"week": "2023-02-27",
+"km": 11.2,
+"mi": 7.0,
+"load": 49,
+"n": 5
+},
+{
+"week": "2023-03-06",
+"km": 24.4,
+"mi": 15.2,
+"load": 110,
+"n": 6
+},
+{
+"week": "2023-03-13",
+"km": 18.5,
+"mi": 11.5,
+"load": 110,
+"n": 2
+},
+{
+"week": "2023-03-27",
+"km": 32.4,
+"mi": 20.2,
+"load": 140,
+"n": 6
+},
+{
+"week": "2023-04-03",
+"km": 21.0,
+"mi": 13.0,
+"load": 87,
+"n": 7
+},
+{
+"week": "2023-04-10",
+"km": 15.8,
+"mi": 9.8,
+"load": 120,
+"n": 3
+},
+{
+"week": "2023-04-17",
+"km": 19.1,
+"mi": 11.9,
+"load": 83,
+"n": 7
+},
+{
+"week": "2023-04-24",
+"km": 18.2,
+"mi": 11.3,
+"load": 101,
+"n": 3
+},
+{
+"week": "2023-05-01",
+"km": 31.4,
+"mi": 19.5,
+"load": 178,
+"n": 4
+},
+{
+"week": "2023-05-08",
+"km": 35.1,
+"mi": 21.8,
+"load": 162,
+"n": 6
+},
+{
+"week": "2023-05-15",
+"km": 40.1,
+"mi": 24.9,
+"load": 220,
+"n": 6
+},
+{
+"week": "2023-05-22",
+"km": 50.0,
+"mi": 31.1,
+"load": 309,
+"n": 8
+},
+{
+"week": "2023-05-29",
+"km": 53.2,
+"mi": 33.1,
+"load": 279,
+"n": 8
+},
+{
+"week": "2023-06-05",
+"km": 10.9,
+"mi": 6.8,
+"load": 51,
+"n": 3
+},
+{
+"week": "2023-06-12",
+"km": 49.5,
+"mi": 30.8,
+"load": 258,
+"n": 8
+},
+{
+"week": "2023-06-19",
+"km": 40.4,
+"mi": 25.1,
+"load": 226,
+"n": 6
+},
+{
+"week": "2023-06-26",
+"km": 23.1,
+"mi": 14.4,
+"load": 150,
+"n": 5
+},
+{
+"week": "2023-07-10",
+"km": 41.8,
+"mi": 26.0,
+"load": 228,
+"n": 8
+},
+{
+"week": "2023-07-17",
+"km": 11.6,
+"mi": 7.2,
+"load": 63,
+"n": 4
+},
+{
+"week": "2023-07-24",
+"km": 40.0,
+"mi": 24.8,
+"load": 243,
+"n": 7
+},
+{
+"week": "2023-07-31",
+"km": 46.4,
+"mi": 28.8,
+"load": 248,
+"n": 7
+},
+{
+"week": "2023-08-07",
+"km": 39.4,
+"mi": 24.5,
+"load": 203,
+"n": 9
+},
+{
+"week": "2023-08-14",
+"km": 45.7,
+"mi": 28.4,
+"load": 239,
+"n": 7
+},
+{
+"week": "2023-08-21",
+"km": 31.1,
+"mi": 19.4,
+"load": 179,
+"n": 6
+},
+{
+"week": "2023-08-28",
+"km": 32.2,
+"mi": 20.0,
+"load": 159,
+"n": 9
+},
+{
+"week": "2023-09-04",
+"km": 44.8,
+"mi": 27.8,
+"load": 226,
+"n": 7
+},
+{
+"week": "2023-09-11",
+"km": 28.3,
+"mi": 17.6,
+"load": 137,
+"n": 5
+},
+{
+"week": "2023-09-18",
+"km": 23.0,
+"mi": 14.3,
+"load": 158,
+"n": 3
+},
+{
+"week": "2023-09-25",
+"km": 37.9,
+"mi": 23.6,
+"load": 224,
+"n": 7
+},
+{
+"week": "2023-10-02",
+"km": 36.9,
+"mi": 22.9,
+"load": 206,
+"n": 6
+},
+{
+"week": "2023-10-09",
+"km": 46.3,
+"mi": 28.8,
+"load": 257,
+"n": 8
+},
+{
+"week": "2023-10-16",
+"km": 30.6,
+"mi": 19.0,
+"load": 159,
+"n": 6
+},
+{
+"week": "2023-10-23",
+"km": 45.6,
+"mi": 28.4,
+"load": 290,
+"n": 4
+},
+{
+"week": "2023-10-30",
+"km": 18.5,
+"mi": 11.5,
+"load": 44,
+"n": 6
+},
+{
+"week": "2023-11-06",
+"km": 20.5,
+"mi": 12.8,
+"load": 109,
+"n": 7
+},
+{
+"week": "2023-11-13",
+"km": 8.7,
+"mi": 5.4,
+"load": 49,
+"n": 1
+},
+{
+"week": "2023-11-20",
+"km": 18.8,
+"mi": 11.7,
+"load": 137,
+"n": 2
+},
+{
+"week": "2023-11-27",
+"km": 22.3,
+"mi": 13.8,
+"load": 130,
+"n": 5
+},
+{
+"week": "2023-12-04",
+"km": 24.1,
+"mi": 15.0,
+"load": 129,
+"n": 5
+},
+{
+"week": "2023-12-11",
+"km": 25.2,
+"mi": 15.6,
+"load": 135,
+"n": 7
+},
+{
+"week": "2023-12-18",
+"km": 12.2,
+"mi": 7.6,
+"load": 57,
+"n": 2
+},
+{
+"week": "2023-12-25",
+"km": 56.8,
+"mi": 35.3,
+"load": 379,
+"n": 7
+},
+{
+"week": "2024-01-01",
+"km": 4.9,
+"mi": 3.0,
+"load": 29,
+"n": 1
+},
+{
+"week": "2024-01-08",
+"km": 37.1,
+"mi": 23.0,
+"load": 242,
+"n": 6
+},
+{
+"week": "2024-01-15",
+"km": 22.4,
+"mi": 13.9,
+"load": 139,
+"n": 4
+},
+{
+"week": "2024-01-22",
+"km": 42.3,
+"mi": 26.3,
+"load": 272,
+"n": 6
+},
+{
+"week": "2024-01-29",
+"km": 20.9,
+"mi": 13.0,
+"load": 112,
+"n": 4
+},
+{
+"week": "2024-02-05",
+"km": 40.4,
+"mi": 25.1,
+"load": 236,
+"n": 8
+},
+{
+"week": "2024-02-12",
+"km": 15.0,
+"mi": 9.3,
+"load": 81,
+"n": 4
+},
+{
+"week": "2024-02-19",
+"km": 33.5,
+"mi": 20.8,
+"load": 189,
+"n": 8
+},
+{
+"week": "2024-02-26",
+"km": 14.6,
+"mi": 9.1,
+"load": 72,
+"n": 2
+},
+{
+"week": "2024-03-04",
+"km": 25.1,
+"mi": 15.6,
+"load": 130,
+"n": 5
+},
+{
+"week": "2024-03-11",
+"km": 15.1,
+"mi": 9.4,
+"load": 75,
+"n": 4
+},
+{
+"week": "2024-03-18",
+"km": 9.0,
+"mi": 5.6,
+"load": 39,
+"n": 3
+},
+{
+"week": "2024-03-25",
+"km": 13.9,
+"mi": 8.6,
+"load": 67,
+"n": 4
+},
+{
+"week": "2024-04-08",
+"km": 16.3,
+"mi": 10.2,
+"load": 118,
+"n": 2
+},
+{
+"week": "2024-04-15",
+"km": 4.8,
+"mi": 3.0,
+"load": 28,
+"n": 1
+},
+{
+"week": "2024-05-06",
+"km": 12.0,
+"mi": 7.5,
+"load": 68,
+"n": 3
+},
+{
+"week": "2024-05-13",
+"km": 4.8,
+"mi": 3.0,
+"load": 27,
+"n": 1
+},
+{
+"week": "2024-05-20",
+"km": 11.6,
+"mi": 7.2,
+"load": 72,
+"n": 6
+},
+{
+"week": "2024-05-27",
+"km": 14.6,
+"mi": 9.0,
+"load": 76,
+"n": 4
+},
+{
+"week": "2024-07-22",
+"km": 0.0,
+"mi": 0.0,
+"load": 0,
+"n": 1
+},
+{
+"week": "2024-11-11",
+"km": 2.4,
+"mi": 1.5,
+"load": 12,
+"n": 4
+},
+{
+"week": "2024-11-18",
+"km": 3.2,
+"mi": 2.0,
+"load": 21,
+"n": 3
+},
+{
+"week": "2024-11-25",
+"km": 5.9,
+"mi": 3.7,
+"load": 45,
+"n": 4
+},
+{
+"week": "2024-12-02",
+"km": 7.8,
+"mi": 4.9,
+"load": 50,
+"n": 4
+},
+{
+"week": "2024-12-09",
+"km": 6.1,
+"mi": 3.8,
+"load": 43,
+"n": 3
+},
+{
+"week": "2024-12-16",
+"km": 9.2,
+"mi": 5.7,
+"load": 56,
+"n": 4
+},
+{
+"week": "2024-12-23",
+"km": 9.0,
+"mi": 5.6,
+"load": 69,
+"n": 3
+},
+{
+"week": "2024-12-30",
+"km": 8.3,
+"mi": 5.2,
+"load": 73,
+"n": 2
+},
+{
+"week": "2025-01-06",
+"km": 8.2,
+"mi": 5.1,
+"load": 62,
+"n": 2
+},
+{
+"week": "2025-01-13",
+"km": 16.3,
+"mi": 10.1,
+"load": 108,
+"n": 4
+},
+{
+"week": "2025-01-20",
+"km": 17.1,
+"mi": 10.6,
+"load": 105,
+"n": 3
+},
+{
+"week": "2025-01-27",
+"km": 19.4,
+"mi": 12.0,
+"load": 141,
+"n": 3
+},
+{
+"week": "2025-02-03",
+"km": 21.6,
+"mi": 13.4,
+"load": 126,
+"n": 3
+},
+{
+"week": "2025-02-10",
+"km": 23.0,
+"mi": 14.3,
+"load": 165,
+"n": 3
+},
+{
+"week": "2025-02-17",
+"km": 20.5,
+"mi": 12.7,
+"load": 140,
+"n": 4
+},
+{
+"week": "2025-02-24",
+"km": 18.0,
+"mi": 11.2,
+"load": 130,
+"n": 2
+},
+{
+"week": "2025-03-03",
+"km": 18.8,
+"mi": 11.6,
+"load": 125,
+"n": 3
+},
+{
+"week": "2025-03-10",
+"km": 20.0,
+"mi": 12.5,
+"load": 160,
+"n": 2
+},
+{
+"week": "2025-03-17",
+"km": 10.0,
+"mi": 6.2,
+"load": 69,
+"n": 1
+},
+{
+"week": "2025-03-24",
+"km": 7.0,
+"mi": 4.4,
+"load": 29,
+"n": 2
+},
+{
+"week": "2025-03-31",
+"km": 9.8,
+"mi": 6.1,
+"load": 54,
+"n": 2
+},
+{
+"week": "2025-04-07",
+"km": 18.9,
+"mi": 11.8,
+"load": 136,
+"n": 3
+},
+{
+"week": "2025-04-14",
+"km": 25.7,
+"mi": 16.0,
+"load": 162,
+"n": 6
+},
+{
+"week": "2025-04-21",
+"km": 24.5,
+"mi": 15.2,
+"load": 165,
+"n": 3
+},
+{
+"week": "2025-04-28",
+"km": 18.7,
+"mi": 11.6,
+"load": 132,
+"n": 2
+},
+{
+"week": "2025-05-05",
+"km": 15.7,
+"mi": 9.8,
+"load": 91,
+"n": 4
+},
+{
+"week": "2025-05-12",
+"km": 5.0,
+"mi": 3.1,
+"load": 36,
+"n": 1
+},
+{
+"week": "2025-05-26",
+"km": 6.0,
+"mi": 3.7,
+"load": 46,
+"n": 1
+},
+{
+"week": "2025-06-02",
+"km": 8.3,
+"mi": 5.2,
+"load": 52,
+"n": 2
+},
+{
+"week": "2025-06-09",
+"km": 15.0,
+"mi": 9.3,
+"load": 109,
+"n": 3
+},
+{
+"week": "2025-06-16",
+"km": 31.2,
+"mi": 19.4,
+"load": 214,
+"n": 5
+},
+{
+"week": "2025-06-23",
+"km": 21.8,
+"mi": 13.5,
+"load": 154,
+"n": 3
+},
+{
+"week": "2025-06-30",
+"km": 13.7,
+"mi": 8.5,
+"load": 95,
+"n": 2
+},
+{
+"week": "2025-07-07",
+"km": 24.2,
+"mi": 15.0,
+"load": 180,
+"n": 2
+},
+{
+"week": "2025-07-14",
+"km": 26.0,
+"mi": 16.2,
+"load": 179,
+"n": 2
+},
+{
+"week": "2025-07-21",
+"km": 26.9,
+"mi": 16.7,
+"load": 189,
+"n": 3
+},
+{
+"week": "2025-07-28",
+"km": 8.1,
+"mi": 5.0,
+"load": 54,
+"n": 1
+},
+{
+"week": "2025-08-18",
+"km": 38.9,
+"mi": 24.2,
+"load": 231,
+"n": 8
+},
+{
+"week": "2025-08-25",
+"km": 8.1,
+"mi": 5.0,
+"load": 64,
+"n": 1
+},
+{
+"week": "2025-09-01",
+"km": 50.4,
+"mi": 31.4,
+"load": 299,
+"n": 5
+},
+{
+"week": "2025-09-08",
+"km": 46.4,
+"mi": 28.8,
+"load": 217,
+"n": 6
+},
+{
+"week": "2025-09-15",
+"km": 26.7,
+"mi": 16.6,
+"load": 157,
+"n": 4
+},
+{
+"week": "2025-09-22",
+"km": 34.5,
+"mi": 21.4,
+"load": 198,
+"n": 10
+},
+{
+"week": "2025-09-29",
+"km": 32.0,
+"mi": 19.9,
+"load": 144,
+"n": 6
+},
+{
+"week": "2025-10-06",
+"km": 11.4,
+"mi": 7.1,
+"load": 51,
+"n": 3
+},
+{
+"week": "2025-10-13",
+"km": 5.2,
+"mi": 3.3,
+"load": 23,
+"n": 1
+},
+{
+"week": "2025-10-20",
+"km": 35.4,
+"mi": 22.0,
+"load": 209,
+"n": 7
+},
+{
+"week": "2025-10-27",
+"km": 29.9,
+"mi": 18.6,
+"load": 177,
+"n": 6
+},
+{
+"week": "2025-11-03",
+"km": 26.9,
+"mi": 16.7,
+"load": 125,
+"n": 5
+},
+{
+"week": "2025-11-10",
+"km": 58.0,
+"mi": 36.0,
+"load": 367,
+"n": 7
+},
+{
+"week": "2025-11-17",
+"km": 24.2,
+"mi": 15.0,
+"load": 137,
+"n": 5
+},
+{
+"week": "2025-11-24",
+"km": 17.5,
+"mi": 10.8,
+"load": 72,
+"n": 3
+},
+{
+"week": "2025-12-01",
+"km": 11.5,
+"mi": 7.2,
+"load": 48,
+"n": 2
+},
+{
+"week": "2025-12-08",
+"km": 20.6,
+"mi": 12.8,
+"load": 114,
+"n": 5
+},
+{
+"week": "2025-12-15",
+"km": 33.3,
+"mi": 20.7,
+"load": 186,
+"n": 5
+},
+{
+"week": "2025-12-22",
+"km": 43.9,
+"mi": 27.3,
+"load": 232,
+"n": 6
+},
+{
+"week": "2025-12-29",
+"km": 10.0,
+"mi": 6.2,
+"load": 43,
+"n": 3
+},
+{
+"week": "2026-01-05",
+"km": 7.0,
+"mi": 4.4,
+"load": 47,
+"n": 1
+},
+{
+"week": "2026-01-12",
+"km": 10.5,
+"mi": 6.5,
+"load": 71,
+"n": 1
+},
+{
+"week": "2026-01-19",
+"km": 8.7,
+"mi": 5.4,
+"load": 66,
+"n": 1
+},
+{
+"week": "2026-01-26",
+"km": 6.5,
+"mi": 4.0,
+"load": 48,
+"n": 1
+},
+{
+"week": "2026-02-02",
+"km": 43.4,
+"mi": 27.0,
+"load": 295,
+"n": 4
+},
+{
+"week": "2026-02-09",
+"km": 24.1,
+"mi": 15.0,
+"load": 154,
+"n": 3
+},
+{
+"week": "2026-02-16",
+"km": 14.9,
+"mi": 9.3,
+"load": 82,
+"n": 1
+},
+{
+"week": "2026-02-23",
+"km": 3.2,
+"mi": 2.0,
+"load": 19,
+"n": 1
+},
+{
+"week": "2026-03-02",
+"km": 4.3,
+"mi": 2.7,
+"load": 24,
+"n": 1
+},
+{
+"week": "2026-03-16",
+"km": 13.3,
+"mi": 8.3,
+"load": 112,
+"n": 2
+},
+{
+"week": "2026-04-27",
+"km": 8.3,
+"mi": 5.1,
+"load": 69,
+"n": 2
+},
+{
+"week": "2026-05-04",
+"km": 17.1,
+"mi": 10.6,
+"load": 120,
+"n": 5
+},
+{
+"week": "2026-05-11",
+"km": 34.8,
+"mi": 21.6,
+"load": 251,
+"n": 7
+},
+{
+"week": "2026-05-18",
+"km": 27.5,
+"mi": 17.1,
+"load": 179,
+"n": 4
+},
+{
+"week": "2026-05-25",
+"km": 17.2,
+"mi": 10.7,
+"load": 116,
+"n": 2
+},
+{
+"week": "2026-06-08",
+"km": 11.2,
+"mi": 6.9,
+"load": 73,
+"n": 3
+},
+{
+"week": "2026-06-15",
+"km": 35.0,
+"mi": 21.7,
+"load": 268,
+"n": 8
+},
+{
+"week": "2026-06-22",
+"km": 21.1,
+"mi": 13.1,
+"load": 146,
+"n": 3
+},
+{
+"week": "2026-06-29",
+"km": 23.3,
+"mi": 14.5,
+"load": 165,
+"n": 6
+}
+]
+}
