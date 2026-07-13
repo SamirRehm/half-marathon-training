@@ -109,3 +109,34 @@ Auto-detected + manual laps/intervals with per-interval averages (pace, HR, cade
 - **`decoupling` is null on many runs** — compute from streams (first-third vs last-third pace:HR) when needed, and only trust it on steady efforts.
 - **Timezone** (see above) is the single most common dating error — always `start_date_local` + Pacific.
 - **Empty wellness fields aren't errors** — they're unlogged; render/skip gracefully.
+- **`activity_streams_get` 422s if you request a stream type the activity lacks.** Call `activity_detail_get` first and read its `stream_types` array, then request only what exists (plus `grade_smooth`, which works for runs even when unlisted).
+
+---
+
+## Dashboard data files the routine writes (in addition to daily_log.json)
+
+The site renders per-day stream plots and wellness trends from static JSON the routine maintains. Three files, all written in JOB 1 (close yesterday), all COMPACT JSON (no pretty-print).
+
+### `data/streams/<YYYY-MM-DD>.json` — one per day with ≥1 activity
+```json
+{"date":"YYYY-MM-DD","tz":"America/Los_Angeles","activities":[{
+  "id":"i…","name":"…","type":"Run","start_local":"YYYY-MM-DDTHH:MM:SS",
+  "meta":{"distance_m":,"moving_s":,"elapsed_s":,"avg_hr":,"max_hr":,"avg_speed":,"gap_speed":,
+          "cadence_rpm":,"stride_m":,"intensity":,"load":,"calories":,"elev_gain_m":,"elev_loss_m":,
+          "hr_zone_secs":[7 ints],"decoupling":,"ef":,"interval_summary":[],"device":"","race":false},
+  "streams":{"t":[],"d":[],"v":[],"hr":[],"cad":[],"alt":[],"grade":[],"watts":[]}
+}]}
+```
+Rules (the site's analytics depend on these):
+- One file per day, ALL of the day's activities in it, ordered by `start_local`.
+- Meta comes straight from `activity_detail_get` (`gap_speed`=`gap`, `cadence_rpm`=`average_cadence` as-is — do NOT double it; `hr_zone_secs`=`icu_hr_zone_times`; `ef`=`icu_efficiency_factor`). Omit null keys.
+- Streams: request the intersection of `stream_types` with time,distance,velocity_smooth,heartrate,cadence,altitude,watts (+`grade_smooth` for runs). **NEVER include `latlng` or `temp` — the repo is public; GPS traces stay private.** Non-Run activities: `t` + `hr` only.
+- Downsample if >1500 samples: keep every ceil(N/1500)-th index, same indexes across all streams. Round: v 3dp; d/alt 1dp; grade 1dp; t/hr/cad/watts ints. All arrays equal length.
+- Append the date to `data/streams/index.json` `dates` (keep sorted, no duplicates) — the site discovers day-files through this manifest.
+
+### `data/wellness.json` — one row per day, appended daily
+`{"days":[{"d":"YYYY-MM-DD","ctl":,"atl":,"ramp":,"hrv":,"rhr":,"sleepSecs":,"sleepScore":,"sleepQ":,"vo2max":,"weight":,"steps":},…]}`
+Field mapping from `wellness_recent_list`: `rampRate`→ramp, `restingHR`→rhr, `sleepQuality`→sleepQ; drop null fields; ctl/atl/ramp 1dp. **Upsert both yesterday's and today's rows each run** (today's morning values feed the site's "recovery today" ribbon; tomorrow's run finalizes them).
+
+### `data/athlete.json` — slowly-changing reference (zones, thresholds, race/phases, pace curve)
+Refresh occasionally (e.g. monthly, or when zones/threshold change in Intervals) — not part of the daily write.

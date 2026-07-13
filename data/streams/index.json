@@ -1,0 +1,1 @@
+{"_note":"Manifest of stream day-files. The site reads this to know which days have stream analytics; the daily routine appends yesterday's date when it writes a new day-file.","dates":["2026-07-04","2026-07-05","2026-07-06","2026-07-08","2026-07-09","2026-07-10","2026-07-12"]}

@@ -1,0 +1,44 @@
+{
+  "_note": "Athlete reference snapshot for the dashboard. Sources: Intervals.icu athlete_sport_settings_run_get + athlete_profile_get + athlete_pace_curves_get (pulled 2026-07-07), plus RUNNER_CONTEXT.md for plan constants not stored in Intervals. The daily routine may refresh this occasionally; the site treats it as slowly-changing reference data.",
+  "updated": "2026-07-07",
+  "athlete_id": "i631111",
+  "timezone": "America/Los_Angeles",
+  "lthr": 172,
+  "max_hr": 190,
+  "resting_hr_baseline": [46, 48],
+  "hrv_baseline_ms": 87,
+  "weight_kg": 61.0,
+  "hr_zones": [145, 153, 162, 171, 176, 181, 190],
+  "hr_zone_names": ["Recovery", "Aerobic", "Tempo", "SubThreshold", "SuperThreshold", "Aerobic Capacity", "Anaerobic"],
+  "gap_model": "STRAVA_RUN",
+  "pace_units": "MINS_KM",
+  "threshold_pace_s_per_km": 252,
+  "_threshold_note": "Not set in Intervals; ~4:10-4:15/km current estimate per RUNNER_CONTEXT §6 (Jul 2026). Used only for pace-context shading, never for scoring.",
+  "race": {
+    "date": "2026-10-31",
+    "name": "Half marathon",
+    "distance_m": 21097.5,
+    "goal_dream": "1:20:00",
+    "goal_stretch": "1:22:00",
+    "goal_committed": "1:24:00-1:27:00"
+  },
+  "phases": [
+    { "from": "2026-07-04", "to": "2026-08-01", "label": "base" },
+    { "from": "2026-08-02", "to": "2026-09-26", "label": "build" },
+    { "from": "2026-09-27", "to": "2026-10-17", "label": "HM-specific" },
+    { "from": "2026-10-18", "to": "2026-10-31", "label": "taper" }
+  ],
+  "checkpoint": { "date": "2026-09-07", "label": "Labor Day 1:20 gate" },
+  "pace_curve_1y": {
+    "_note": "Best elapsed time (s) to cover each distance (m), all runs, rolling 1-year window ending 2026-07-14, from athlete_pace_curves_get. Cross-validated vs RUNNER_CONTEXT §4: 1mi 5:54, 5K 19:17, 10K 42:41 all match.",
+    "window": "2025-07-14 to 2026-07-14",
+    "distance_m": [45.72, 50, 68.58, 75, 91.44, 100, 114.3, 125, 137.16, 150, 182.88, 200, 228.6, 250, 274.32, 300, 320.04, 350, 365.76, 400, 402.34, 411.48, 450, 457.2, 500, 502.92, 548.64, 550, 594.36, 600, 640.08, 650, 685.8, 700, 731.52, 750, 800, 804.67, 822.96, 900, 914.4, 1000, 1005.84, 1097.28, 1100, 1188.72, 1200, 1280.16, 1300, 1371.6, 1400, 1463.04, 1500, 1554.48, 1600, 1609.34, 1645.92, 1700, 1737.36, 1800, 1828.8, 1900, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3218.68, 3400, 3600, 3800, 4000, 4400, 4800, 4828.02, 5000, 5200, 5600, 6000, 6400, 6437.36, 7000, 8000, 8046.7, 9000, 9656.04, 10000, 11000, 11265.38, 12000, 12874.72, 13000, 14000, 14484.06, 15000, 16000, 16093.4, 17000, 17702.74, 18000, 19000, 19312.08, 20000, 20921.42, 21000, 21097.5],
+    "seconds": [7, 8, 11, 12, 15, 17, 19, 21, 23, 26, 34, 37, 43, 47, 52, 57, 61, 67, 70, 77, 78, 79, 87, 89, 97, 98, 107, 107, 117, 118, 126, 128, 136, 138, 145, 149, 160, 167, 171, 188, 191, 213, 214, 235, 236, 256, 259, 277, 282, 298, 306, 320, 328, 341, 352, 354, 362, 375, 384, 398, 405, 421, 443, 489, 536, 584, 632, 679, 725, 730, 773, 821, 868, 914, 1008, 1100, 1106, 1157, 1204, 1296, 1390, 1484, 1494, 1630, 2021, 2034, 2290, 2468, 2561, 2830, 2901, 3099, 3456, 3490, 3798, 3933, 4078, 4359, 4386, 4787, 4980, 5062, 5339, 5426, 5615, 5871, 5893, 5919]
+  },
+  "critical_speed_model": {
+    "_note": "CS/D' model fit by Intervals.icu on the 1-year pace curve (r²=0.99997). CS in m/s; D' in meters. CS 4.273 m/s = 3:54/km critical pace. Short-duration-biased curves typically overstate sustainable threshold for low-volume athletes - display with that caveat.",
+    "critical_speed_ms": 4.2731714,
+    "d_prime_m": 97.8,
+    "r2": 0.9999723
+  }
+}

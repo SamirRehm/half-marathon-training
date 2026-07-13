@@ -41,6 +41,12 @@ Per the "Current-Fitness Goal Probability" section of `DAY_SCORE.md`: P(hit goal
 ### 1d. Finalize yesterday's entry
 Terse coach's-voice read: executed vs prescribed, key stream findings, what it means. Fill `activity`, `score`, `score_committed`, `delta_p`, `p_120`, `p_125`, `prob_note`, `status:"scored"`.
 
+### 1e. Write the dashboard data files (the site's stream plots depend on this)
+Per the "Dashboard data files" section of `routine/INTERVALS_DATA_REFERENCE.md`, exactly:
+- If yesterday had ≥1 activity: write `data/streams/<yesterday>.json` (all activities, meta + downsampled streams, NO latlng/temp) and append the date to `data/streams/index.json`.
+- Upsert yesterday's AND today's rows in `data/wellness.json` (compact field names per the reference).
+You already pulled this data in 1a/2a — this step just persists it in the documented shape.
+
 ---
 
 ## JOB 2 — OPEN TODAY (prescribe today's session from this morning's recovery)
@@ -60,7 +66,7 @@ Given: this morning's recovery, where the athlete is in the plan (RUNNER_CONTEXT
 If something true beyond today surfaced (protocol change, corrected fact, confirmed pattern, plan amendment, checkpoint result) → edit the relevant §1–§6 of `RUNNER_CONTEXT.md` and note it with a "(doc: …)" pointer. Don't silt durable facts into the log. When unsure, leave for the human review pass.
 
 ## Step 4 — Commit
-Update `data/daily_log.json` (close yesterday + open today), `meta.last_updated`. Commit `daily log: <today> — closed <yesterday> (score N, P125 X%), opened <today> [auto]` and push. Site redeploys.
+Update `data/daily_log.json` (close yesterday + open today), `meta.last_updated`, plus the dashboard files from 1e (`data/streams/<yesterday>.json`, `data/streams/index.json`, `data/wellness.json`). Commit `daily log: <today> — closed <yesterday> (score N, P125 X%), opened <today> [auto]` and push. Site redeploys (the Pages workflow copies data/ into the published site).
 
 ## Entry object shape
 ```json

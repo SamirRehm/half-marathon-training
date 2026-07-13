@@ -28,8 +28,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Mirror data/*.json into public/
-        run: cp data/*.json public/
+      - name: Assemble site (copy data into public/)
+        run: |
+          cp data/*.json public/
+          mkdir -p public/streams
+          cp data/streams/*.json public/streams/
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
