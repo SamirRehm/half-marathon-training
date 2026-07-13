@@ -283,10 +283,11 @@ dialog.methods p{font-size:12.5px;color:var(--sub);margin:4px 0;line-height:1.6}
   <h3>Methods &amp; definitions</h3>
   <h5>Day score</h5><p>0–100, a <i>probability-change</i> reading: did the day move the odds of the 1:20 dream goal up (&gt;60), hold them (~60), or lower them (&lt;60)? Scored against 1:20 and independently against the committed 1:24–1:27 line. It rewards goal-fit, not effort — an easy run done genuinely easy scores high; intensity on an easy day scores low. See DAY_SCORE.md in the repo.</p>
   <h5>Raced-today odds</h5><p>P(goal) = Φ((goal − predicted) / σ) with σ ≈ 2.5–3.5% of the prediction — the chance of hitting the goal if the race were run today at current fitness. No schedule risk, no forecasting: it rises only as fitness improves.</p>
-  <h5>Pace &amp; GAP</h5><p>Pace comes from the device velocity stream (7 s smoothing for display; raw for computation). GAP (grade-adjusted pace) uses a Minetti-cost grade model with the per-activity level calibrated to Intervals.icu's Strava-model GAP, so splits sum consistently with the activity GAP.</p>
+  <h5>Pace &amp; GAP</h5><p>Pace comes from the device velocity stream (7 s smoothing for display; raw for computation). GAP (grade-adjusted pace) uses a Minetti-cost grade model with the per-activity level calibrated to Intervals.icu's Strava-model GAP, so splits sum consistently with the activity GAP. Km splits are computed on <b>moving time</b> (stops excluded), so split pace and split GAP share the same clock.</p>
+  <h5>Session types &amp; reps</h5><p>Each run is classified from its velocity stream: sustained fast segments are detected as work, shaded on the pace chart, and tabulated as reps (intervals) or work blocks (tempo). Runs without structure read as easy / steady / long / threshold from intensity and duration. Watch autolaps are not shown — on steady runs they're just kilometer beeps. The Signals row is type-aware: easy/steady/long runs surface easy-purity (time in Z1–Z2), decoupling, EF and cadence; quality days surface work time/pace vs threshold and rep-to-rep fade.</p>
   <h5>Decoupling (Pw:Hr)</h5><p>Split the moving time in half; EF₁/EF₂ = mean GAP speed ÷ mean HR per half; decoupling = (EF₁−EF₂)/EF₁. Positive = the same speed cost more heart rate late (aerobic drift). Intervals.icu's value is shown when it computes one; it's a clean base signal only on steady runs ≥ ~25 min — on progressions/workouts the negative split dominates, flagged accordingly.</p>
   <h5>Efficiency factor (EF)</h5><p>Meters travelled per heartbeat at GAP speed (m/beat). Rising EF at the same HR = the base building.</p>
-  <h5>Power</h5><p>Native Garmin wrist running power. NP = 30 s rolling average → mean of 4th powers → ⁴√. W/kg uses 61 kg.</p>
+  <h5>Power</h5><p>Native Garmin wrist running power. NP = 30 s rolling average → mean of 4th powers → ⁴√.</p>
   <h5>Cadence &amp; stride</h5><p>Device records per-leg rpm; shown as steps/min (×2). Stride = speed ÷ steps-per-second.</p>
   <h5>HR zones</h5><p>Z1≤145 · Z2≤153 · Z3≤162 · Z4≤171 · Z5≤176 · Z6≤181 · Z7≤190 (LTHR 172, max 190). Zone times prefer Intervals.icu's computation, else derived from the HR stream.</p>
   <h5>Intensity buckets (volume chart)</h5><p>Per-activity Intervals intensity (GAP speed ÷ threshold speed): easy &lt;80 · steady 80–88 · threshold 88–96 · hard ≥96. Unrated short fragments count as easy.</p>
@@ -377,28 +378,69 @@ function gapSeries(v,grade,mask,icuGap){
 }
 const movingMask=v=>v.map(x=>x!=null&&x>0.5);
 function dt(t,i){return i?Math.max(0,Math.min(10,t[i]-t[i-1])):1} // clamp gaps (pauses) to 10s
-function kmSplits(st,gapv){ // -> [{km,secs,pace,gap,hr,gain}]
+function kmSplits(st,gapv){ // moving-time splits: stopped samples excluded, so split pace and GAP share one clock
   const{t,d,v,hr,alt}=st;if(!t||!d)return[];
-  const res=[];let k=1000,i0=0,tS=t[0],hrS=0,hrT=0,gS=0,gT=0,gain=0;
-  const altS=alt?smooth(alt,9):null;
-  for(let i=1;i<t.length;i++){
-    const _dt=dt(t,i);
+  const altS=alt?smooth(alt,9):null,res=[];
+  let k=1000,secs=0,hrS=0,hrT=0,gS=0,gT=0,gain=0;
+  const flush=(km,dist,partial)=>{res.push({km,secs,pace:secs/dist,gap:gT?1000/(gS/gT):null,hr:hrT?hrS/hrT:null,gain,partial});secs=0;hrS=0;hrT=0;gS=0;gT=0;gain=0;};
+  const add=(i,w)=>{const _dt=dt(t,i)*w;secs+=_dt;
     if(hr&&hr[i]!=null){hrS+=hr[i]*_dt;hrT+=_dt;}
-    if(gapv&&gapv[i]!=null){gS+=gapv[i]*_dt;gT+=_dt;}
+    if(gapv&&gapv[i]!=null){gS+=gapv[i]*_dt;gT+=_dt;}};
+  for(let i=1;i<t.length;i++){
+    if(v&&v[i]!=null&&v[i]<=0.5)continue; // stopped — contributes no time, no weights
     if(altS&&altS[i]!=null&&altS[i-1]!=null){const da=altS[i]-altS[i-1];if(da>0)gain+=da;}
-    if(d[i]>=k){
-      const frac=(k-d[i-1])/Math.max(.01,d[i]-d[i-1]);
-      const tk=t[i-1]+frac*(t[i]-t[i-1]);
-      const secs=tk-tS;
-      res.push({km:k/1000,secs,pace:secs, gap:gT?1000/(gS/gT):null, hr:hrT?hrS/hrT:null, gain});
-      tS=tk;hrS=0;hrT=0;gS=0;gT=0;gain=0;k+=1000;
-    }
+    const dd=Math.max(0,d[i]-(d[i-1]??0));
+    if(d[i]>=k&&dd>0){
+      const frac=Math.min(1,Math.max(0,(k-d[i-1])/dd));
+      add(i,frac);flush(k/1000,1,false);add(i,1-frac);k+=1000;
+    }else add(i,1);
   }
-  // partial last split
-  const dLast=d[d.length-1];
-  if(dLast>k-1000+100){const secs=t[t.length-1]-tS,dist=(dLast-(k-1000))/1000;
-    res.push({km:+(dLast/1000).toFixed(2),secs,pace:secs/dist,gap:gT?1000/(gS/gT):null,hr:hrT?hrS/hrT:null,gain,partial:true});}
+  const dLast=d[d.length-1],tail=(dLast-(k-1000))/1000;
+  if(tail>=0.2)flush(+(dLast/1000).toFixed(2),tail,true); // sub-200m tails are noise, dropped
   return res;
+}
+/* --- session-type detection: classify each run from its velocity stream --- */
+function classify(a){ // -> {kind, spans:[{i0,i1}]}; spans = detected work segments (sample indexes)
+  const m=a.meta||{},st=a.streams||{};
+  if(a.type!=='Run')return{kind:'xt',spans:[]};
+  const durKind=()=> (m.moving_s>=3600||m.distance_m>=12000)?'long':
+    m.intensity==null||m.intensity<70?'recovery':m.intensity<80?'easy':m.intensity<88?'steady':'threshold';
+  if(!st.v||!st.t||st.t.length<60)return{kind:durKind(),spans:[]};
+  const vs=smooth(st.v,9),mask=movingMask(st.v);
+  const mv=vs.filter((x,i)=>mask[i]&&x!=null).sort((a,b)=>a-b);
+  if(mv.length<50)return{kind:durKind(),spans:[]};
+  const q=p=>mv[Math.floor(p*(mv.length-1))],p25=q(.25),p75=q(.75),med=q(.5);
+  if(!med||(p75-p25)/med<.10)return{kind:durKind(),spans:[]}; // uniform pace → no structure
+  const thr=(p25+p75)/2,raw=[];let s=-1;
+  for(let i=0;i<vs.length;i++){
+    const on=mask[i]&&vs[i]!=null&&vs[i]>thr;
+    if(on&&s<0)s=i;
+    if((!on||i===vs.length-1)&&s>=0){if(st.t[i]-st.t[s]>=40)raw.push({i0:s,i1:i});s=-1;}
+  }
+  const spans=[];raw.forEach(sp=>{const L=spans[spans.length-1];
+    if(L&&st.t[sp.i0]-st.t[L.i1]<20)L.i1=sp.i1;else spans.push({...sp});});
+  const durs=spans.map(sp=>st.t[sp.i1]-st.t[sp.i0]);
+  if(spans.length>=3){const md=durs.slice().sort((a,b)=>a-b)[Math.floor(durs.length/2)];
+    if(md>=35&&md<=720)return{kind:'intervals',spans};}
+  const workT=durs.reduce((x,y)=>x+y,0);
+  if(spans.length&&Math.max(...durs)>=480&&(!m.moving_s||workT/m.moving_s<=.85))
+    return{kind:'tempo',spans:spans.filter(sp=>st.t[sp.i1]-st.t[sp.i0]>=240)};
+  return{kind:durKind(),spans:[]};
+}
+const KIND_LABEL=c=>({intervals:`intervals · ${c.spans.length}×`,tempo:'tempo',threshold:'threshold effort',long:'long run',easy:'easy',steady:'steady',recovery:'recovery'})[c.kind]||null;
+function repsHTML(a,cls){ // reps table for detected structure (replaces raw watch laps)
+  if(!cls.spans.length)return'';
+  const{t,d,hr}=a.streams;
+  const rows=cls.spans.map((sp,n)=>{
+    const secs=t[sp.i1]-t[sp.i0],dist=d?d[sp.i1]-d[sp.i0]:null;
+    let hS=0,hC=0,hMax=0;if(hr)for(let i=sp.i0;i<=sp.i1;i++){if(hr[i]!=null){hS+=hr[i];hC++;if(hr[i]>hMax)hMax=hr[i];}}
+    return{n:n+1,secs,dist,pace:dist?secs/(dist/1000):null,hr:hC?hS/hC:null,hMax};});
+  const withPace=rows.filter(r=>r.pace);
+  const fade=withPace.length>1?Math.round(withPace[withPace.length-1].pace-withPace[0].pace):null;
+  return `<h4 style="margin-top:16px">${cls.kind==='intervals'?`Reps — ${rows.length} detected`:'Work blocks'}</h4>
+    <table class="splits"><tr><th>#</th><th>dist</th><th>time</th><th>pace</th><th>♥ avg</th><th>♥ max</th></tr>`+
+    rows.map(r=>`<tr><td>${r.n}</td><td>${r.dist?(r.dist/1000).toFixed(2)+' km':'–'}</td><td>${fmtDur(r.secs)}</td><td>${r.pace?paceStr(r.pace):'–'}</td><td>${r.hr?Math.round(r.hr):'–'}</td><td>${r.hMax||'–'}</td></tr>`).join('')+
+    `</table>`+(fade!=null?`<div class="zonekey" style="margin-top:4px">rep 1 → ${withPace.length}: ${fade>0?'+':''}${fade} s/km ${Math.abs(fade)<=8?'— held together':fade>0?'— faded late':'— negative-split reps'}</div>`:'');
 }
 function zoneTimesFromStream(t,hr,zones){
   const zt=new Array(zones.length).fill(0);
@@ -435,20 +477,6 @@ function normPower(t,w){if(!t||!w)return null;
   if(roll.length<10)return null;
   const m4=roll.reduce((a,x)=>a+x**4,0)/roll.length;
   return Math.round(m4**.25);
-}
-function bests(st){ // rolling best 1k/1mi/5k + peak HR + best 30s power
-  const{t,d,hr,v}=st,out=[];if(!t||!d)return out;
-  const total=d[d.length-1];
-  [[1000,'1k'],[1609.34,'1 mi'],[5000,'5k']].forEach(([D,label])=>{
-    if(total<D+40)return;let j=0,best=1/0;
-    for(let i=0;i<t.length;i++){while(d[i]-d[j]>=D){const secs=t[i]-t[j],dd=d[i]-d[j];const tt=secs*D/dd;if(tt<best)best=tt;j++;}}
-    if(isFinite(best))out.push({label,val:fmtDur(best),sub:paceStr(best/(D/1000))+'/km'});
-  });
-  if(hr){let mx=0;hr.forEach(h=>{if(h>mx)mx=h;});if(mx)out.push({label:'peak HR',val:mx,sub:'bpm'});}
-  if(st.watts){let j=0,best=0,s=0;
-    for(let i=0;i<t.length;i++){s+=st.watts[i]||0;while(t[i]-t[j]>30){s-=st.watts[j]||0;j++;}if(t[i]-t[j]>=25){const m=s/(i-j+1);if(m>best)best=m;}}
-    if(best)out.push({label:'best 30s pwr',val:Math.round(best),sub:'W'});}
-  return out;
 }
 const cadSpm=c=>c==null?null:(c<120?c*2:c);
 
@@ -701,7 +729,7 @@ function actBlock(a,idx){
   const spm=cadSpm(m.cadence_rpm);
   const np=st.watts?normPower(st.t,st.watts):null;
   const avgW=st.watts?Math.round(st.watts.reduce((s,x)=>s+(x||0),0)/st.watts.filter(x=>x!=null).length):null;
-  const kg=ATH?.weight_kg||61;
+  const sess=a._cls=classify(a),sessLbl=KIND_LABEL(sess);
   const time=new Date(a.start_local).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
   const stats=[
     ['distance',isRun&&m.distance_m!=null?(m.distance_m/1000).toFixed(2)+'<small> km</small>':null],
@@ -714,12 +742,10 @@ function actBlock(a,idx){
     ['cadence',isRun&&spm?Math.round(spm)+'<small> spm</small>':null],
     ['stride',isRun&&m.stride_m!=null?m.stride_m+'<small> m</small>':null],
     ['power',isRun&&avgW?avgW+(np?`<small> avg · ${np} NP</small>`:'<small> W</small>'):null],
-    ['w/kg',isRun&&avgW?(avgW/kg).toFixed(2):null],
-    ['climb',isRun&&m.elev_gain_m!=null?Math.round(m.elev_gain_m)+'<small> m</small>':null],
-    ['calories',m.calories??null]
+    ['climb',isRun&&m.elev_gain_m!=null?Math.round(m.elev_gain_m)+'<small> m</small>':null]
   ].filter(s=>s[1]!=null);
   let html=`<div class="act">
-    <div class="ahead"><span class="aname">${esc(a.name)}</span><span class="typechip">${a.type}</span>${m.race?'<span class="typechip" style="color:var(--gold);border-color:var(--gold)">race</span>':''}<span class="atime">${time}${m.device?' · '+esc(m.device):''}</span></div>
+    <div class="ahead"><span class="aname">${esc(a.name)}</span><span class="typechip">${a.type}</span>${sessLbl?`<span class="typechip" style="color:var(--gold);border-color:rgba(232,179,75,.4)">${sessLbl}</span>`:''}${m.race?'<span class="typechip" style="color:var(--gold);border-color:var(--gold)">race</span>':''}<span class="atime">${time}${m.device?' · '+esc(m.device):''}</span></div>
     <div class="statgrid">${stats.map(s=>`<div class="stat"><div class="k">${s[0]}</div><div class="v">${s[1]}</div></div>`).join('')}</div>`;
   if(st.t&&st.t.length>10){
     const hasD=!!st.d;
@@ -727,13 +753,11 @@ function actBlock(a,idx){
       ${isRun&&st.v?`<div class="schart"><canvas id="chPace${idx}"></canvas></div>`:''}
       ${st.hr?`<div class="schart sm"><canvas id="chHR${idx}"></canvas></div>`:''}
       ${isRun&&(st.cad||st.watts)?`<div class="schart sm"><canvas id="chCad${idx}"></canvas></div>`:''}`;
+    html+=`<div id="reps${idx}"></div>`;
     if(isRun&&hasD&&st.v){
       html+=`<h4 style="margin-top:16px">Splits</h4><div id="splits${idx}"></div>`;
     }
     html+=`<div id="zones${idx}"></div><div id="effort${idx}"></div>`;
-    if(m.interval_summary&&m.interval_summary.length>1){
-      html+=`<h4 style="margin-top:14px">Laps</h4>`+m.interval_summary.map(s=>`<div class="ivl">${esc(s)}</div>`).join('');
-    }
   } else {
     html+=`<div class="nostreams">No stream file for this activity — aggregates only.</div>`;
   }
@@ -770,6 +794,7 @@ function buildActCharts(a,idx){
   const m=a.meta||{},isRun=a.type==='Run';
   const mask=st.v?movingMask(st.v):st.t.map(()=>true);
   const gapv=isRun&&st.v?gapSeries(st.v,st.grade,mask,m.gap_speed):null;
+  const sess=a._cls||classify(a);
   let xMode=(isRun&&st.d)?'d':'t';
   const X=()=>xMode==='d'?st.d.map(x=>+(x/1000).toFixed(2)):st.t.map(x=>+(x/60).toFixed(1));
   const xT=items=>items[0].label+(xMode==='d'?' km':' min');
@@ -787,6 +812,7 @@ function buildActCharts(a,idx){
     o.plugins.tooltip.callbacks={title:xT,
       label:c=>c.dataset.label+': '+(c.dataset.yAxisID==='yA'?Math.round(c.parsed.y)+' m':paceStr(c.parsed.y)+'/km')};
     if(st.alt){o.scales.yA={position:'right',display:false,min:Math.min(...st.alt.filter(x=>x!=null))-2,max:Math.max(...st.alt.filter(x=>x!=null))+40};}
+    if(sess.spans.length)o.plugins.repBands={spans:sess.spans}; // shade detected work segments
     const ds=[];
     if(st.alt)ds.push({label:'alt',data:st.alt,yAxisID:'yA',borderWidth:0,pointRadius:0,fill:'origin',backgroundColor:'rgba(147,160,180,.14)',order:10});
     if(gapP)ds.push({label:'GAP',data:gapP,borderColor:'rgba(122,162,247,.45)',borderWidth:1.2,pointRadius:0,borderDash:[4,3],order:2});
@@ -832,33 +858,47 @@ function buildActCharts(a,idx){
           return `<tr><td>${s.partial?s.km.toFixed(2):s.km}</td><td>${fmtDur(s.secs)}</td><td class="${cls}">${paceStr(s.pace)}</td><td>${s.gap?paceStr(s.gap):'–'}</td><td>${s.hr?Math.round(s.hr):'–'}</td><td>${s.gain>=1?'+'+Math.round(s.gain)+'m':'·'}</td></tr>`;}).join('')+`</table>`;
     }
   }
-  /* zones */
-  if(st.hr&&$(`zones${idx}`)){
+  /* zones (zt reused by signals) */
+  let ztAll=null;
+  if(st.hr){
     const zones=ATH?.hr_zones||[145,153,162,171,176,181,190];
-    const zt=m.hr_zone_secs&&m.hr_zone_secs.some(x=>x>0)?m.hr_zone_secs:zoneTimesFromStream(st.t,st.hr,zones);
-    $(`zones${idx}`).innerHTML=zoneBarHTML(zt);
+    ztAll=m.hr_zone_secs&&m.hr_zone_secs.some(x=>x>0)?m.hr_zone_secs:zoneTimesFromStream(st.t,st.hr,zones);
+    if($(`zones${idx}`))$(`zones${idx}`).innerHTML=zoneBarHTML(ztAll);
   }
-  /* effort: decoupling + EF + bests */
-  if($(`effort${idx}`)){
+  /* reps table for detected workout structure */
+  if($(`reps${idx}`)&&['intervals','tempo'].includes(sess.kind))$(`reps${idx}`).innerHTML=repsHTML(a,sess);
+  /* signals — the progress indicators that matter for THIS run type */
+  if($(`effort${idx}`)&&isRun){
     const cells=[];
-    const dc=isRun?decouple(st,gapv):null;
-    const icuDec=m.decoupling;
-    if(dc||icuDec!=null){
-      const val=icuDec!=null?icuDec:dc.dec;
-      const col=val<=5?'var(--hi)':val<=8?'var(--mid)':'var(--lo)';
-      let sub=icuDec!=null?'Intervals.icu Pw:Hr':'computed Pw:Hr';
-      if(dc){sub+=` · halves EF ${(dc.ef1*60).toFixed(2)}→${(dc.ef2*60).toFixed(2)} m/beat`;if(dc.negSplit)sub+=' · negative split — read lightly';}
-      cells.push(`<div class="ecell"><div class="k">decoupling</div><div class="v" style="color:${col}">${(+val).toFixed(1)}%</div><div class="s">${sub}</div></div>`);
+    const workout=['intervals','tempo','threshold'].includes(sess.kind);
+    if(!workout){
+      if(ztAll){const tot=ztAll.reduce((x,y)=>x+y,0);
+        if(tot>0){const p=Math.round(((ztAll[0]||0)+(ztAll[1]||0))/tot*100);
+          const col=p>=75?'var(--hi)':p>=55?'var(--mid)':'var(--lo)';
+          cells.push(`<div class="ecell"><div class="k">easy purity</div><div class="v" style="color:${col}">${p}%</div><div class="s">time in Z1–Z2 — easy days should live here</div></div>`);}}
+      const dc=decouple(st,gapv),icuDec=m.decoupling;
+      if(dc||icuDec!=null){
+        const val=icuDec!=null?icuDec:dc.dec;
+        const col=val<=5?'var(--hi)':val<=8?'var(--mid)':'var(--lo)';
+        let sub=icuDec!=null?'Intervals.icu Pw:Hr':'computed Pw:Hr';
+        if(dc){sub+=` · halves EF ${(dc.ef1*60).toFixed(2)}→${(dc.ef2*60).toFixed(2)} m/beat`;if(dc.negSplit)sub+=' · negative split — read lightly';}
+        cells.push(`<div class="ecell"><div class="k">decoupling</div><div class="v" style="color:${col}">${(+val).toFixed(1)}%</div><div class="s">${sub}</div></div>`);
+      }
+      const ef=efOverall(st,gapv);
+      if(ef)cells.push(`<div class="ecell"><div class="k">efficiency</div><div class="v">${ef.mPerBeat.toFixed(2)}<small style="font-size:10px;color:var(--mut)"> m/beat</small></div><div class="s">GAP speed per heartbeat — up = base building</div></div>`);
+    }else{
+      // work summary: detected spans, or the whole run for a continuous threshold effort
+      let workT=0,workD=0;
+      if(sess.spans.length){sess.spans.forEach(sp=>{workT+=st.t[sp.i1]-st.t[sp.i0];if(st.d)workD+=st.d[sp.i1]-st.d[sp.i0];});}
+      else{workT=m.moving_s||0;workD=m.distance_m||0;}
+      const wp=workD>0?workT/(workD/1000):null;
+      const thrP=ATH?.threshold_pace_s_per_km;
+      if(workT)cells.push(`<div class="ecell"><div class="k">work</div><div class="v">${fmtDur(workT)}${wp?`<small style="font-size:10px;color:var(--mut)"> @ ${paceStr(wp)}/km</small>`:''}</div><div class="s">${thrP?`threshold ≈ ${paceStr(thrP)}/km (current est.)`:''}</div></div>`);
     }
-    const ef=isRun?efOverall(st,gapv):null;
-    if(ef)cells.push(`<div class="ecell"><div class="k">efficiency</div><div class="v">${ef.mPerBeat.toFixed(2)}<small style="font-size:10px;color:var(--mut)"> m/beat</small></div><div class="s">GAP speed per heartbeat — up = base building</div></div>`);
-    if(cells.length)$(`effort${idx}`).innerHTML=`<h4 style="margin-top:16px">Effort analysis</h4><div class="effort">${cells.join('')}</div>`+bestsHTML(st);
-    else $(`effort${idx}`).innerHTML=bestsHTML(st);
+    const spm=cadSpm(m.cadence_rpm);
+    if(spm)cells.push(`<div class="ecell"><div class="k">cadence</div><div class="v">${Math.round(spm)}<small style="font-size:10px;color:var(--mut)"> spm</small></div><div class="s">target 176–180 — cheap Achilles-load lever</div></div>`);
+    $(`effort${idx}`).innerHTML=cells.length?`<h4 style="margin-top:16px">Signals</h4><div class="effort">${cells.join('')}</div>`:'';
   }
-}
-function bestsHTML(st){
-  const b=bests(st);if(!b.length)return'';
-  return `<div class="chips">${b.map(x=>`<span class="chip">${x.label} <b>${x.val}</b> <span style="color:var(--mut)">${x.sub}</span></span>`).join('')}</div>`;
 }
 
 /* zone-band background plugin */
@@ -870,6 +910,15 @@ Chart.register({id:'zoneBands',beforeDraw(chart,args,opts){
     const y1=y.getPixelForValue(Math.min(hi,y.max)),y0=y.getPixelForValue(Math.max(lo,y.min));
     if(y0>y1){ctx.fillStyle=o.colors[i]+'22';ctx.fillRect(ca.left,y1,ca.width,y0-y1);}
     lo=hi;});
+}});
+/* shaded work-segment bands (pace chart, detected reps) */
+Chart.register({id:'repBands',beforeDraw(chart){
+  const o=chart.options.plugins.repBands;if(!o||!o.spans||!o.spans.length)return;
+  const{ctx,chartArea:ca,scales:{x}}=chart;if(!ca)return;
+  ctx.save();ctx.fillStyle='rgba(232,179,75,.10)';
+  o.spans.forEach(sp=>{const x0=x.getPixelForValue(sp.i0),x1=x.getPixelForValue(sp.i1);
+    if(isFinite(x0)&&isFinite(x1))ctx.fillRect(x0,ca.top,Math.max(1,x1-x0),ca.height);});
+  ctx.restore();
 }});
 /* vertical line markers plugin (trends) */
 Chart.register({id:'vlines',afterDraw(chart){
@@ -993,6 +1042,9 @@ function buildEff(){ // stream files already awaited by renderTrends
   const pts=[];
   streamDays().sort().forEach(d=>{const f=streamCache[d];if(!f)return;
     f.activities.forEach(a=>{if(a.type!=='Run'||!a.streams?.t)return;
+      const sess=classify(a);
+      if(['intervals','tempo','threshold'].includes(sess.kind))return; // trend only like-for-like: easy/steady/long runs
+      if((a.meta.moving_s||0)<1200)return; // <20 min — too short to trend
       const mask=a.streams.v?movingMask(a.streams.v):null;if(!mask)return;
       const gapv=gapSeries(a.streams.v,a.streams.grade,mask,a.meta.gap_speed);
       const ef=efOverall(a.streams,gapv);const dc=decouple(a.streams,gapv);
