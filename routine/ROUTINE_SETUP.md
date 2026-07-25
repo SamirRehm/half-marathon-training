@@ -25,16 +25,35 @@ Everything else is already in the repo.
 
 ## Create it
 
-1. Go to **claude.ai/code/routines** → **New routine** (or the Routines panel in the Claude desktop sidebar, or `/schedule` in the Claude Code CLI and choose the cloud/remote option).
-2. **Prompt:** paste the entire contents of `routine/DAILY_ROUTINE_PROMPT.md`, verbatim. It is self-contained and repo-referenced — each run reads `RUNNER_CONTEXT.md`, `DAY_SCORE.md`, `routine/INTERVALS_DATA_REFERENCE.md`, `.claude/skills/generate-day-data/SKILL.md` and `data/daily_log.json` for itself, which is why the prompt stays short and the thinking lives in version control.
-3. **Repository:** this repo, with permission to push to `main`. (Direct to `main` is what makes the site redeploy automatically. A `claude/*` branch + review also works, but then nothing publishes until you merge.)
-4. **Connectors:** attach **Intervals.icu**. Required — without it the routine writes `routine/LAST_RUN_ERROR.txt` and commits nothing. MCP traffic routes through Anthropic's servers, so there is no network allowlisting to do.
-5. **Schedule:** daily at **08:28**, timezone **America/Los_Angeles** — name the timezone rather than a UTC offset so DST is handled for you, and prefer an off-minute like `:28` over `:00` so you're not landing on the same instant as every other scheduled job in the world.
+Go to **claude.ai/code/routines** → **New routine** (or the Routines panel in the Claude desktop sidebar). Fill the form as below.
+
+### Name
+```
+Daily half-marathon coaching log
+```
+
+### Instructions
+Paste exactly this — nothing more. The instructions deliberately live in the repo, so changing how the routine behaves means editing a file under version control rather than editing the routine:
+
+```
+Follow .claude/skills/daily-coaching-run/SKILL.md in this repository. Read it in full first, then do exactly what it says — it is the entry point and it references the other skills and reference documents you need.
+
+Run at maximum effort: this is a judgement task, and the skill tells you where not to take shortcuts.
+```
+
+### The rest of the form
+
+1. **Repository:** `SamirRehm/half-marathon-training`, with push access to `main`. Direct to `main` is what makes the site redeploy automatically; a `claude/*` branch plus review also works, but then nothing publishes until you merge.
+2. **Model / effort:** the **strongest model at the highest effort** available. The skill says so too, but set the control if the UI offers one — scoring a session and reading a stream are judgement work, and this is the single setting that most affects whether the entries are worth reading.
+3. **Trigger:** **Schedule** → daily, `08:28`, timezone **America/Los_Angeles**. Name the timezone rather than a UTC offset so DST is handled for you, and prefer an off-minute like `:28` over `:00` so you aren't landing on the same instant as every other scheduled job in the world. (Cron form: `28 8 * * *`.)
 
    08:30 is the right single time: yesterday is complete and synced, so the scoring is reliable, *and* last night's HRV, resting HR and sleep are in, so today's session is set on real recovery numbers rather than guessed.
 
-6. **Effort / model:** set the routine to the **strongest model and highest effort** available. The prompt also states this at the top, but set the control if the UI offers one. Scoring a session and reading a stream are judgement work — this is the one setting that most affects whether the entries are any good.
-7. **Save.**
+4. **Connectors — attach Intervals.icu, and remove the rest.** Intervals.icu is required; without it the routine writes `routine/LAST_RUN_ERROR.txt` and commits nothing. MCP traffic routes through Anthropic's servers, so there's no network allowlisting to do.
+
+   Detach anything else the form has pre-attached — Gmail, Google Drive, and similar. The form warns that the agent can use **all** tools from attached connectors, **including writes, without asking during a run**. Nothing in this job needs to read your email or your files, and an autonomous daily agent with mail-send access is a real risk for no benefit: least privilege here also shrinks the prompt-injection surface, since anything the agent reads could in principle try to instruct it. The skill's final section tells it to stay inside this repo and Intervals.icu regardless, but removing the connector is the actual control.
+
+5. **Save.**
 
 ## What each run does
 
