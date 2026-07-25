@@ -120,7 +120,7 @@ main{padding:34px 0 60px}
 .more{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;margin-top:20px}
 
 /* week strip */
-.strip{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
 .sd{background:var(--card);border:1px solid var(--line);border-radius:var(--r3);padding:11px 8px;text-align:center;
   box-shadow:var(--shadow);transition:transform .14s,border-color .14s}
 .sd.tap{cursor:pointer}
@@ -152,8 +152,9 @@ main{padding:34px 0 60px}
 /* charts */
 .chart{position:relative;height:250px;margin-top:6px}
 .chart.sm{height:200px}
-.chtop{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
-.chtop .t{flex:1}
+/* the range buttons wrap under the title rather than widening the card past the phone */
+.chtop{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.chtop .t{flex:1 1 220px;min-width:0}
 .chtop h3{font-size:18px}
 .chtop .n{font-size:14px;color:var(--mut);margin-top:4px;line-height:1.55;max-width:58ch}
 .gbtn{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:8px;padding:5px 11px;flex:none;white-space:nowrap}
@@ -171,10 +172,12 @@ table.dt th:first-child,table.dt td:first-child{text-align:left}
 .calbar h2{font-size:21px;color:var(--ink);min-width:160px;margin:0}
 .ib{width:36px;height:36px;border:1px solid var(--line);border-radius:10px;color:var(--ink2);display:grid;place-items:center;font-size:17px;background:var(--card)}
 .ib:hover{color:var(--ink);border-color:var(--line2)}
-.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-.ch{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:8px}
+/* minmax(0,…), not 1fr: a plain 1fr floors at the cell's min-content, so seven
+   day cells push the calendar wider than a phone and Sunday falls off-screen. */
+.cg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.ch{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-bottom:8px}
 .ch div{font-size:12.5px;font-weight:600;color:var(--mut);text-align:center}
-.cd{min-height:96px;background:var(--card);border:1px solid var(--line);border-radius:var(--r3);padding:9px 10px;
+.cd{min-height:96px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r3);padding:9px 10px;
   text-align:left;display:flex;flex-direction:column;box-shadow:var(--shadow);position:relative;transition:transform .14s,border-color .14s}
 .cd.tap:hover{transform:translateY(-2px);border-color:var(--line2)}
 .cd.void{background:transparent;border-color:transparent;box-shadow:none}
@@ -183,12 +186,28 @@ table.dt th:first-child,table.dt td:first-child{text-align:left}
 .cd .s{position:absolute;top:8px;right:10px;font-size:15px;font-weight:650;font-variant-numeric:tabular-nums}
 .cd .m{font-size:16px;font-weight:650;font-variant-numeric:tabular-nums;margin-top:auto;letter-spacing:-.02em}
 .cd .m small{font-size:10.5px;color:var(--mut);font-weight:400}
+/* word labels in place of a distance — sized as classes, not inline styles, so
+   the narrow-phone rules below can shrink them */
+.cd .m.word{font-size:13px;overflow-wrap:anywhere}
+.cd .m.xt{color:var(--ink2)}.cd .m.plan{color:var(--blue)}.cd .m.rest{color:var(--mut)}
 .cd .p{font-size:12.5px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cd .u{position:absolute;bottom:8px;right:9px;width:7px;height:7px;border-radius:50%;background:var(--yellow)}
 .cd.plan{border-style:dashed;border-color:var(--blue)}
 .cd.now{border-color:var(--yellow);box-shadow:inset 0 0 0 1px var(--yellow)}
 .cd .bar{position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
 @media(max-width:640px){.cd{min-height:66px;padding:6px 7px}.cd .p{display:none}.cd .m{font-size:13px}.cd .s{font-size:13px}}
+/* Phone: a 43px-wide cell can't hold an absolutely-positioned score beside the
+   date — they collided. Below this the score sits on its own line and the unit
+   drops (the legend below the calendar says the numbers are miles). */
+@media(max-width:440px){
+  .cd{min-height:76px;padding:5px 5px}
+  .cd .n{font-size:11.5px;line-height:1.15}
+  .cd .s{position:static;font-size:12.5px;line-height:1.15;margin-top:1px}
+  .cd .m{font-size:12.5px}.cd .m small{display:none}
+  .cd .m.word{font-size:11px;line-height:1.15}
+  .cd .u{bottom:4px;right:4px;width:6px;height:6px}
+  .ch div{font-size:11px}
+}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--mut);margin-top:16px}
 .legend .i{display:flex;align-items:center;gap:6px}
 .legend .sw{width:11px;height:11px;border-radius:3px}
@@ -205,7 +224,10 @@ table.dt th:first-child,table.dt td:first-child{text-align:left}
 .te .dt{font-size:13px;color:var(--mut)}
 .te .l{font-size:16px;margin-top:2px}
 .te .c{font-size:15px;color:var(--ink2);margin-top:3px}
-table.era{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
+/* five columns of race times don't fit a small phone; they scroll inside the
+   card instead of pushing the page sideways */
+.xscroll{overflow-x:auto}
+table.era{width:100%;min-width:340px;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
 table.era th{font-size:13px;font-weight:600;color:var(--mut);text-align:right;padding:10px;border-bottom:1px solid var(--line)}
 table.era td{text-align:right;padding:12px 10px;border-bottom:1px solid var(--line);color:var(--ink2)}
 table.era tr:last-child td{border-bottom:none;color:var(--ink);font-weight:600}
@@ -215,9 +237,9 @@ table.era th:first-child,table.era td:first-child{text-align:left}
 .prose p:last-child{margin:0}
 .prose b{color:var(--ink);font-weight:600}
 .quote{font-size:17px;line-height:1.7;color:var(--ink);border-left:3px solid var(--yellow);padding-left:18px;margin:20px 0}
-.goalgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.goalgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
 .goalgrid .full{grid-column:1/-1}
-@media(max-width:860px){.goalgrid{grid-template-columns:1fr}.goalgrid .full{grid-column:auto}}
+@media(max-width:860px){.goalgrid{grid-template-columns:minmax(0,1fr)}.goalgrid .full{grid-column:auto}}
 .gaps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
 .gp{background:var(--sunk);border-radius:var(--r3);padding:16px 18px}
 .gp .k{font-size:13.5px;color:var(--mut)}
@@ -354,7 +376,7 @@ dialog.m p{font-size:15.5px;color:var(--ink2);margin:6px 0;line-height:1.7}
       <span class="i"><span class="sw" style="border:1px dashed var(--blue)"></span>planned</span>
       <span class="i"><span class="sw" style="background:var(--yellow);border-radius:50%"></span>needs your review</span>
     </div>
-    <p class="prose" style="margin-top:20px;font-size:15.5px">Days are coloured by whether they moved the odds of the goal, not by how hard they were. Tap any day for the coaching read and the full second-by-second analysis of every run.</p>
+    <p class="prose" style="margin-top:20px;font-size:15.5px">Days are coloured by whether they moved the odds of the goal, not by how hard they were; the number on each day is that day's distance in miles. Tap any day for the coaching read and the full second-by-second analysis of every run.</p>
   </section>
 
   <!-- ══ GOAL ══ -->
@@ -941,9 +963,9 @@ function renderCal(){
     const pt=rec?.activity?.pace_per_km||(pace?paceStr(pace):null);
     let mid="";
     if(mi>0)mid=`<div class="m num">${mi.toFixed(1)}<small> mi</small></div><div class="p">${pt?pt+"/km":""}${hr?` · ♥${hr}`:""}</div>`;
-    else if(xt)mid=`<div class="m" style="font-size:13px;color:var(--ink2)">cross-train</div>`;
-    else if(plan)mid=`<div class="m" style="font-size:13px;color:var(--blue)">planned</div><div class="p">${esc((rec.planned||"").replace(/[,(—].*/,"").slice(0,26))}</div>`;
-    else if(rec)mid=`<div class="m" style="font-size:13px;color:var(--mut)">rest</div>`;
+    else if(xt)mid=`<div class="m word xt">cross-train</div>`;
+    else if(plan)mid=`<div class="m word plan">planned</div><div class="p">${esc((rec.planned||"").replace(/[,(—].*/,"").slice(0,26))}</div>`;
+    else if(rec)mid=`<div class="m word rest">rest</div>`;
     h+=`<${has?"button":"div"} class="cd ${has?"tap":"nil"} ${plan?"plan":""} ${ds===TODAY?"now":""}" ${has?`data-d="${ds}"`:""}>
       ${sc!=null?`<span class="bar" style="background:${scol(sc)}"></span>`:""}
       <span class="n num">${day}</span>
@@ -1206,8 +1228,8 @@ function renderGoal(){
   <div class="card pad">
     <h3 style="font-size:20px">Best ever, by era</h3>
     <p class="n" style="font-size:14.5px;color:var(--mut);margin:6px 0 14px">An engine that has always outrun its endurance.</p>
-    <table class="era"><thead><tr><th>Era</th><th>Mile</th><th>5K</th><th>10K</th><th>Half</th></tr></thead>
-      <tbody>${(ATH?.eras?.rows||[]).map(r=>`<tr><td>${esc(r.era)}</td><td>${esc(r.mile||"–")}</td><td>${esc(r.k5||"–")}</td><td>${esc(r.k10||"–")}</td><td>${esc(r.half||"–")}</td></tr>`).join("")}</tbody></table>
+    <div class="xscroll"><table class="era"><thead><tr><th>Era</th><th>Mile</th><th>5K</th><th>10K</th><th>Half</th></tr></thead>
+      <tbody>${(ATH?.eras?.rows||[]).map(r=>`<tr><td>${esc(r.era)}</td><td>${esc(r.mile||"–")}</td><td>${esc(r.k5||"–")}</td><td>${esc(r.k10||"–")}</td><td>${esc(r.half||"–")}</td></tr>`).join("")}</tbody></table></div>
   </div>
 
   <div class="card pad">
