@@ -1,35 +1,63 @@
-# Setting up the daily routine (Claude Code)
+# Setting up the daily routine (cloud, laptop-independent)
 
-How to turn `DAILY_ROUTINE_PROMPT.md` into a live, scheduled Claude Code routine. Do this AFTER the repo is on GitHub and deployed (the routine commits to the repo, so the repo must exist first).
+How to turn `DAILY_ROUTINE_PROMPT.md` into a live scheduled **Claude routine** that runs on Anthropic's infrastructure — no local machine, laptop closed, doesn't matter.
 
-## What a routine is
-A **Claude Code routine** is a saved prompt + repo + connectors that runs autonomously on Anthropic's cloud on a schedule — no local machine needed, runs when your laptop is closed. (Research preview; behavior/limits may change — treat as switch-off-able, not load-bearing. The manual "check in with a chat session" loop produces the identical files as a fallback.)
+Do this after the repo is on GitHub and deploying (the routine commits to `main`, and the site redeploys off that commit).
 
-## Prerequisites
-1. The repo is on GitHub (public) and the routine has **write access** to it (it commits the daily log).
-2. The **Intervals.icu connector** is added to your Claude account and authenticated **as you** (Settings → Connectors). This is what lets the routine read your wellness + activities. See `INTERVALS_DATA_REFERENCE.md` for exactly what it pulls.
-3. The site is deployed with auto-redeploy on push (so the routine's commits publish themselves).
+## Why it has to be a routine, not a local scheduled task
+
+Two other mechanisms look similar and are the wrong tool here:
+
+| Mechanism | Runs where | Verdict |
+|---|---|---|
+| **Claude routine** (claude.ai/code/routines) | Anthropic's cloud | ✅ what you want |
+| Claude Code scheduled task (`scheduled-tasks`) | Your machine, **only while the app is open**; a missed run fires on next launch | ❌ laptop-dependent |
+| In-session cron (`CronCreate`) | The current chat session only; auto-expires after 7 days | ❌ not durable |
+
+## What you have to do yourself
+
+Two steps need *your* authorization and cannot be delegated:
+
+1. **Attach the Intervals.icu connector**, authenticated as you. This is what lets the routine read your wellness and activities. Nobody else can grant it.
+2. **Give the routine push access** to this repo.
+
+Everything else is already in the repo.
 
 ## Create it
-1. Go to **claude.ai/code/routines** (or the Routines panel in the Claude Desktop sidebar → New routine → Remote; or `/schedule` in the Claude Code CLI).
-2. **Prompt:** paste the entire contents of `routine/DAILY_ROUTINE_PROMPT.md`, verbatim. It's self-contained and repo-referenced (it reads `RUNNER_CONTEXT.md`, `DAY_SCORE.md`, `INTERVALS_DATA_REFERENCE.md`, and `data/daily_log.json` each run).
-3. **Repository:** select this repo. Allow it to push (branch setting per your preference — `claude/` branch + review, or main for direct commits).
-4. **Connectors:** attach **Intervals.icu** (required). MCP connector traffic routes through Anthropic's servers, so no extra network allowlisting is needed.
-5. **Schedule:** daily, **08:45 America/Los_Angeles (Pacific).** This timing matters — it's after the morning device sync so overnight recovery (HRV/RHR/sleep) is in, which the "open today" job needs to prescribe today's session.
-6. **Model:** a strong model (the routine does real analysis + judgment). Save.
 
-## What it does each run (two-invocation model)
-See `DAILY_ROUTINE_PROMPT.md` for the full spec. In short, every morning it:
-1. **Orients** against `data/daily_log.json` (what's been scored, what's prescribed) — so it never double-creates or re-scores.
-2. **Closes yesterday:** pulls yesterday's completed activity (+ streams for workouts/long runs), scores it (probability-change day-score), computes the raced-today probability, writes the coaching read, sets `status:"scored"`.
-3. **Opens today:** reads this morning's recovery, prescribes today's session (recovery-led, plan-aware), sets `status:"prescribed"`.
-4. **Commits + pushes** → site auto-redeploys.
+1. Go to **claude.ai/code/routines** → **New routine** (or the Routines panel in the Claude desktop sidebar, or `/schedule` in the Claude Code CLI and choose the cloud/remote option).
+2. **Prompt:** paste the entire contents of `routine/DAILY_ROUTINE_PROMPT.md`, verbatim. It is self-contained and repo-referenced — each run reads `RUNNER_CONTEXT.md`, `DAY_SCORE.md`, `routine/INTERVALS_DATA_REFERENCE.md`, `.claude/skills/generate-day-data/SKILL.md` and `data/daily_log.json` for itself, which is why the prompt stays short and the thinking lives in version control.
+3. **Repository:** this repo, with permission to push to `main`. (Direct to `main` is what makes the site redeploy automatically. A `claude/*` branch + review also works, but then nothing publishes until you merge.)
+4. **Connectors:** attach **Intervals.icu**. Required — without it the routine writes `routine/LAST_RUN_ERROR.txt` and commits nothing. MCP traffic routes through Anthropic's servers, so there is no network allowlisting to do.
+5. **Schedule:** daily, timezone **America/Los_Angeles** — name the timezone rather than a UTC offset so DST is handled for you. Pick a time:
+   - **00:15** — the day just ended, so scoring is at its most reliable. Your overnight recovery for the new day does not exist yet, so the routine marks the session **provisional** and attaches downgrade gates you apply on waking. The dashboard labels it as such.
+   - **07:00–08:45** *(firmer plans)* — after the morning device sync, so HRV, resting HR and sleep are in and the session is set on real numbers.
 
-## Verify it's working
-- After the first run, check `data/daily_log.json` got a new/updated day and the site shows it.
-- If a run failed, look for `routine/LAST_RUN_ERROR.txt` in the repo (the routine writes this and commits nothing rather than a half-entry).
-- Entries are `reviewed:false` — you amend them in a chat session with context the routine can't know (why a run was skipped, how it felt, on-call/travel), which flips `reviewed:true`.
+   Both work; the prompt detects which situation it is in and behaves accordingly. Prefer a minute that isn't `:00` so you're not landing on the same instant as everyone else.
+6. **Model:** a strong one. The scoring and the stream reading are real judgement, not formatting.
+7. Save.
+
+## What each run does
+
+1. **Orients** against `data/daily_log.json` so it never double-creates or re-scores.
+2. **Closes the day that just ended:** pulls the activities, does the deep stream read (step 7 of the skill — segment on recording gaps, per-rep legs, zone distribution, set pace vs threshold *and* recent race pace), scores it against both goal lines, computes the raced-today probabilities, writes the coaching read, sets `status:"scored"`.
+3. **Opens the current day:** prescribes the session, provisional if it's running pre-sync.
+4. **Writes the dashboard files:** `data/streams/<date>.json` at full resolution, the manifest, and the wellness upsert.
+5. **Commits and pushes** → GitHub Pages redeploys → the site is current within a minute or two.
+
+## Verify it worked
+
+- Check the repo for a new commit titled `daily log: <date> — closed <date> …`.
+- The live site's **Today** card should show the new session, and the **Log** calendar a new entry with an amber "needs your review" dot.
+- If a run failed, look for `routine/LAST_RUN_ERROR.txt` — by design it writes that and commits nothing rather than a half-entry.
+
+## The review loop
+
+Routine entries land as `reviewed:false`. You amend them in a chat session with the context the routine cannot see — why a session was cut, how it actually felt, what the workout was *meant* to be, on-call weeks, travel — and that flips `reviewed:true`. Both paths produce identical JSON.
+
+Telling it the intended structure matters more than anything else you can add: "4×1 mile, first 1000 m at 5K pace, last 600 at mile pace" turns a pile of numbers into a graded session.
 
 ## Limits
-- Daily run caps by plan (Pro ~5/day, Max ~15/day) — one morning run is well within any tier.
-- Research preview: the API surface and limits may shift. Keep the manual chat loop as the reliable fallback.
+
+- Daily run caps depend on your plan (Pro ~5/day, Max ~15/day). One morning run is well inside any tier.
+- The routine layer is a research preview; the API and limits may shift. The fallback is unchanged and reliable: ask for the same thing in a chat session and it produces the identical files.

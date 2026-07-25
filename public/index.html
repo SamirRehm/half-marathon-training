@@ -746,6 +746,7 @@ function renderToday(){
   else{lead=dt2+" · not yet prescribed";sess=last.note_next||"Waiting on this morning's routine";
     why="The routine writes today's session each morning once the overnight recovery has synced. Until then this shows the last plan on file."}
   $("nowCard").innerHTML=`<p class="eyebrow">${esc(lead)}</p><h1 class="session">${esc(sess)}</h1>
+    ${t?.provisional?`<p class="why" style="color:var(--ink)"><b>Provisional</b> — written before this morning's recovery synced, so treat the gates in it as live. Sleep and HRV can only downgrade the session, never upgrade it.</p>`:""}
     ${why?`<p class="why">${esc(why)}</p>`:""}
     <div class="ready">${flag(verdict,vw)}
       ${w.hrv!=null?`<span class="rv">HRV <b>${w.hrv}</b> <span style="color:var(--mut)">/ ${hb} usual</span></span>`:""}
