@@ -73,6 +73,13 @@ The aggregates lie. A session can show a defensible average pace and intensity a
 - **Prescribed vs executed**, in the prescription's own units (pace band and/or HR ceiling from yesterday's `note_next`). State the delta in s/km or bpm.
 - **Cadence trend across the session** (per rep, or first vs second half). A drop of ≥3 spm is a mechanical fatigue tell and usually precedes a pace collapse.
 
+**Is it structure, or was he just tired? Two signals, either sufficient**
+Pauses alone prove nothing — a continuous run stops at crossings, or because the athlete needed a breather. Decide with these, and do NOT require the reps to be uniform (that would reject a 1600/1200/800/400 pyramid or a fartlek, both real sessions):
+- **Deliberate recoveries cluster.** Consistent length, ≥1 min. Jul 21 2026 rests ran 172/200/211 s — obviously planned. Jul 23 2026 ran 28/37/52/74/87/231/276 s — obviously not.
+- **Work and float alternate in pace.** Structured work swaps fast/slow/fast/slow. A progression run or a long run with a fast finish also spreads its paces, but *monotonically* — the quick blocks bunch at the end. Alternation is what separates them, and it is also what identifies a fartlek.
+
+Rank the evidence: clustered standing rests (strongest) → Intervals' own work/recovery detection when the recoveries were jogged → a pace-only read from uneven pauses (weakest, and say so). If none of these fires, it is a continuous run: report the pauses explicitly ("6 pauses totalling 13:26, too uneven to be recoveries") rather than silently dropping them, and use moving-time splits so the stops don't inflate the paces.
+
 **Segment on the recording gaps FIRST — they are the workout, not noise**
 This athlete stops the watch during standing recoveries. So discontinuities in the `t` channel are the rep boundaries, and they are the most reliable structural signal available — more reliable than laps, and far more reliable than any velocity-threshold detector. Before anything else: scan `t` for jumps (>20 s), split the activity into the moving blocks between them, and treat the jump durations as the recoveries. Four blocks of ~365 s separated by ~200 s gaps is `4 x 1 mile off 3 minutes`; nothing else it could be.
 
