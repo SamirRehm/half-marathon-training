@@ -3,7 +3,7 @@
 This is a personal running-coach dashboard + an autonomous daily-logging routine for one athlete training for a **half marathon on 2026-10-31** (committed target 1:24–1:27; dream 1:20). It has two halves:
 
 1. **A static web app** — one self-contained `public/index.html`. Three views: **Today** (the prescribed session and why, a single readiness line, the last session's full analysis inline, this week as a 7-day strip, the three build signals, one volume chart), **Log** (score-coloured calendar → day sheet with per-activity stream analytics), **Goal** (gap to each goal, live Labor Day gate tracker, projection chart, fitness/fatigue, pace curve, boom-bust timeline, era table). Pure HTML/JS/Chart.js, no build step. Reads static JSON at runtime: `daily_log.json`, `activities.json`, `athlete.json`, `wellness.json`, and `streams/<date>.json` (via `streams/index.json`) — the stream files load *after* first paint, never blocking it.
-2. **A daily routine** (`routine/DAILY_ROUTINE_PROMPT.md`) — a Claude Code routine that each morning pulls the athlete's Intervals.icu data, scores yesterday, prescribes today, writes the day's stream/wellness files, and commits. The site redeploys on that commit.
+2. **A daily routine** (`.claude/skills/daily-coaching-run/SKILL.md`) — a cloud Claude routine that each morning pulls the athlete's Intervals.icu data, scores yesterday from its full streams, prescribes today, writes the day's stream/wellness files, and pushes to `main`. The site redeploys on that commit. The routine's own pasted instructions are three lines pointing at that skill, so its behaviour lives in version control.
 
 ## Files
 - `RUNNER_CONTEXT.md` — **the source of truth.** Full athlete profile, goal, training plan, all protocols, coaching approach, and the §7 daily-log authoring rules. The routine reads this every run. Keep it current; it's the brain.
@@ -36,7 +36,7 @@ GitHub Pages via `.github/workflows/deploy.yml`: on every push to `main` it copi
 `python3 scripts/build_activities.py` — rebuilds `data/activities.json` from `data/activities.csv`.
 
 ### Create the daily routine
-Use `routine/DAILY_ROUTINE_PROMPT.md` as the prompt at claude.ai/code/routines (or `/schedule`). Attach the **Intervals.icu connector** (must auth as the athlete). Daily **08:45 America/Los_Angeles (Pacific)**. Give it write access to this repo. Repo-referenced: it reads `RUNNER_CONTEXT.md`, `DAY_SCORE.md`, `routine/INTERVALS_DATA_REFERENCE.md`, and `data/daily_log.json` each run. Full setup in `routine/ROUTINE_SETUP.md`.
+At claude.ai/code/routines → New routine. Paste only a three-line pointer to `.claude/skills/daily-coaching-run/SKILL.md` (exact text in `routine/ROUTINE_SETUP.md`), attach the repo with push access to `main` and the **Intervals.icu connector** authenticated as the athlete, detach every other connector, set the strongest model at highest effort, and schedule daily **08:28 America/Los_Angeles**. Full field-by-field walkthrough in `routine/ROUTINE_SETUP.md`.
 
 ### The review loop
 Routine entries are committed with `reviewed:false` and show an "unreviewed" dot on the calendar. The athlete amends them later in a chat session (adding context the routine can't know — why a run was skipped, how it felt, on-call weeks, travel), which flips `reviewed:true`. Both produce the identical JSON shape.
