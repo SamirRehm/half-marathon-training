@@ -13,7 +13,13 @@ const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v
 const pad = (n) => String(n).padStart(2, "0");
 const dstr = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 const parseD = (s) => new Date(s + "T00:00:00");
-const TODAY = dstr(new Date());
+/* "Today" is always the athlete's Pacific date, never the viewer's local one —
+   the whole log is Pacific-dated, so a phone in another timezone must still
+   agree with the routine about which day it is. */
+const TODAY = (() => {
+  try { return new Date().toLocaleDateString("en-CA", { timeZone: "America/Los_Angeles" }); }
+  catch (e) { return dstr(new Date()); }
+})();
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const fx = (v, f = 0) => (v == null || !isFinite(v) ? "–" : (+v).toFixed(f));
 const signed = (v, f = 1) => (v == null ? "–" : (v > 0 ? "+" : "") + (+v).toFixed(f));
@@ -51,10 +57,10 @@ const BUCKETS = [
 const bucketOf = (i) => (i == null || i < 80 ? "easy" : i < 88 ? "steady" : i < 96 ? "threshold" : "hard");
 const bucketCol = (k) => C.o[BUCKETS.findIndex((b) => b.key === k)];
 
-/* status helper — colour is never the only channel; each returns glyph+word too */
+/* status helper — colour is never the only channel; each carries a glyph + word */
 const S_GLYPH = { ok: "●", warn: "▲", serious: "▲", crit: "■" };
 function chip(state, word, title) {
-  return `<span class="chip ${state}" ${title ? `title="${esc(title)}"` : ""}><span class="g">${S_GLYPH[state]}</span>${esc(word)}</span>`;
+  return `<span class="badge ${state}" ${title ? `title="${esc(title)}"` : ""}><span class="g">${S_GLYPH[state]}</span>${esc(word)}</span>`;
 }
 
 /* ── state ────────────────────────────────────────────────────────────── */
@@ -305,15 +311,18 @@ async function boot() {
 function renderPhaseRail() {
   const ph = ATH?.phases || []; if (!ph.length) return;
   const t0 = parseD(ph[0].from), t1 = parseD(RACE), span = t1 - t0, now = new Date();
-  $("phases").innerHTML = ph.map((p) => {
+  $("ptrack").innerHTML = ph.map((p) => {
     const from = parseD(p.from), to = parseD(p.to);
     const w = ((to - from + 864e5) / span) * 100;
     const done = now > to ? 100 : now < from ? 0 : ((now - from) / (to - from)) * 100;
     const on = now >= from && now <= to;
-    const mark = on ? `<span class="today-mark" style="left:${clamp(done, 0, 99)}%"></span>` : "";
-    return `<div class="ph ${on ? "on" : ""}" style="flex:${w}">
-      <div class="bar"><i style="width:${done}%;background:${on ? C.yellow : done ? C.blue : "transparent"};opacity:${done && !on ? 0.55 : 1}"></i></div>
-      ${mark}<div class="lb">${esc(p.label)}</div></div>`;
+    return `<i style="flex:${w};background:linear-gradient(90deg,${on ? C.yellow : C.blue} ${done}%, ${C.rule2} ${done}%)"></i>`;
+  }).join("");
+  $("pmarks").innerHTML = ph.map((p) => {
+    const from = parseD(p.from), to = parseD(p.to);
+    const w = ((to - from + 864e5) / span) * 100;
+    const on = now >= from && now <= to;
+    return `<span class="${on ? "on" : ""}" style="flex:${w}">${esc(p.label)}</span>`;
   }).join("");
 }
 function route() {
@@ -390,13 +399,14 @@ function renderToday() {
   $("gapList").innerHTML = (ATH?.race?.goals || []).map((g) => {
     const gap = predS ? predS - g.secs : null;
     const st = gap == null ? "" : gap <= 0 ? "ok" : gap < 300 ? "warn" : "serious";
-    return `<div class="gapline"><span class="nm">${esc(g.label)}</span>
+    return `<div class="gap"><span class="nm">${esc(g.label)}</span>
       <span class="num" style="color:var(--mut);font-size:11px">${esc(g.time)}</span>
       <span class="gp">${gap == null ? "–" : gap <= 0 ? "reached" : "+" + secToHMS(gap).replace(/^0:/, "")}</span></div>`;
   }).join("");
 
-  /* this morning */
+  /* how you woke up */
   const hrvB = ATH?.physiology?.hrv_baseline_ms || 87;
+  const __unused = 0;
   const [r0, r1] = ATH?.physiology?.resting_hr_baseline || [46, 48];
   const form = wLast.ctl != null && wLast.atl != null ? wLast.ctl - wLast.atl : null;
   const hrvSt = wLast.hrv == null ? null : wLast.hrv >= hrvB - 4 ? "ok" : wLast.hrv >= hrvB - 13 ? "warn" : "crit";
@@ -404,52 +414,70 @@ function renderToday() {
   const slH = wLast.sleepSecs ? wLast.sleepSecs / 3600 : null;
   const slSt = slH == null ? null : slH >= 7.5 ? "ok" : slH >= 6.5 ? "warn" : "crit";
   const fmSt = form == null ? null : form > -10 ? "ok" : form > -20 ? "warn" : "crit";
-  $("readyTiles").innerHTML = [
-    tile("HRV", wLast.hrv != null ? wLast.hrv : "–", "ms", `baseline ${hrvB}`, hrvSt, hrvSt === "ok" ? "recovered" : hrvSt === "warn" ? "a little low" : "suppressed", wd.slice(-21).map((x) => x.hrv), C.aqua),
-    tile("resting HR", wLast.rhr != null ? wLast.rhr : "–", "bpm", `floor ${r0}–${r1}`, rhrSt, rhrSt === "ok" ? "at floor" : rhrSt === "warn" ? "slightly up" : "elevated", wd.slice(-21).map((x) => x.rhr), C.magenta),
-    tile("sleep", slH != null ? slH.toFixed(1) : "–", "h", wLast.sleepScore ? `score ${wLast.sleepScore} · ${sleepWord(wLast.sleepQ)}` : "not logged", slSt, slSt === "ok" ? "good" : slSt === "warn" ? "short" : "poor", wd.slice(-21).map((x) => (x.sleepSecs ? x.sleepSecs / 3600 : null)), C.blue),
-    tile("form", form != null ? signed(form, 1) : "–", "", `CTL ${fx(wLast.ctl, 1)} · ATL ${fx(wLast.atl, 1)}`, fmSt, fmSt === "ok" ? "fresh enough" : fmSt === "warn" ? "carrying fatigue" : "deep hole", wd.slice(-21).map((x) => (x.ctl != null && x.atl != null ? x.ctl - x.atl : null)), C.violet),
-    tile("VO₂max est", ATH?.physiology?.vo2max_now ?? "–", "", `peak ${ATH?.physiology?.vo2max_peak ?? "–"} (${esc(ATH?.physiology?.vo2max_peak_when || "")})`, null, null, wd.slice(-30).map((x) => x.vo2max), C.aqua),
+  const worst = [hrvSt, rhrSt, slSt, fmSt].filter(Boolean);
+  const anyBad = worst.includes("crit"), anyMeh = worst.includes("warn");
+  $("readyIntro").textContent = anyBad
+    ? "Something is off this morning. Read the flagged number below before deciding anything — this is a day to take what the body offers, not what the plan says."
+    : anyMeh
+      ? "Mostly good, with one number worth a glance. Nothing here says stop; it says don't add to it."
+      : "Everything is where it should be. If today calls for work, the body can take it.";
+  $("readyStats").innerHTML = [
+    stat("Heart-rate variability", wLast.hrv != null ? wLast.hrv : "–", "ms", hrvSt,
+      hrvSt === "ok" ? "Recovered — at or near your 87 baseline" : hrvSt === "warn" ? `A little below your ${hrvB} baseline` : `Well below your ${hrvB} baseline`,
+      wd.slice(-21).map((x) => x.hrv), C.aqua),
+    stat("Resting heart rate", wLast.rhr != null ? wLast.rhr : "–", "bpm", rhrSt,
+      rhrSt === "ok" ? `At your floor of ${r0}–${r1}` : rhrSt === "warn" ? "A couple of beats up on your floor" : "Clearly elevated — often the first fatigue signal",
+      wd.slice(-21).map((x) => x.rhr), C.magenta),
+    stat("Sleep", slH != null ? slH.toFixed(1) : "–", "hours", slSt,
+      wLast.sleepScore ? `Scored ${wLast.sleepScore}, felt ${sleepWord(wLast.sleepQ)}` : "Not logged last night",
+      wd.slice(-21).map((x) => (x.sleepSecs ? x.sleepSecs / 3600 : null)), C.blue),
+    stat("Freshness", form != null ? signed(form, 0) : "–", "", fmSt,
+      fmSt === "ok" ? "Fresh enough to work" : fmSt === "warn" ? "Carrying real fatigue" : "Deep in the hole — absorb before adding",
+      wd.slice(-21).map((x) => (x.ctl != null && x.atl != null ? x.ctl - x.atl : null)), C.violet),
   ].join("");
 
-  /* week so far */
+  /* this week */
   const wkNow = WKBY[weekStart(TODAY)] || { mi: 0, runDays: 0, longest: 0, b: { easy: 0, steady: 0, threshold: 0, hard: 0 }, easyShare: null };
   const tgt = ph?.vol_mi || [20, 28];
-  const pctv = clamp((wkNow.mi / tgt[1]) * 100, 0, 100);
   const lgTgt = ph?.long_km || [12, 16];
-  $("weekTiles").innerHTML = [
-    `<div class="tile"><div class="k">volume this week</div><div class="v num">${wkNow.mi.toFixed(1)}<small> mi</small></div>
-      <div class="meter"><i style="width:${pctv}%;background:${wkNow.mi >= tgt[0] ? C.blue : C.o[0]}"></i></div>
-      <div class="s">${ph ? `${esc(ph.label)} target ${tgt[0]}–${tgt[1]} mi` : ""}</div></div>`,
-    `<div class="tile"><div class="k">run days</div><div class="v num">${wkNow.runDays}<small> / 7</small></div><div class="s">${wkNow.runDays >= 5 ? "frequency on plan" : "the easy days are the ramp"}</div></div>`,
-    `<div class="tile"><div class="k">longest run</div><div class="v num">${wkNow.longest ? wkNow.longest.toFixed(1) : "–"}<small> km</small></div><div class="s">target ${lgTgt[0]}–${lgTgt[1]} km this phase</div></div>`,
-    `<div class="tile"><div class="k">easy share</div><div class="v num">${wkNow.easyShare != null ? Math.round(wkNow.easyShare) : "–"}<small>%</small></div>
-      <div class="meter"><i style="width:${wkNow.easyShare || 0}%;background:${(wkNow.easyShare || 0) >= 70 ? STATUS.ok : (wkNow.easyShare || 0) >= 50 ? STATUS.warn : STATUS.crit}"></i></div>
-      <div class="s">of weekly miles under 80% intensity</div></div>`,
+  const es = wkNow.easyShare;
+  $("weekIntro").textContent = `You are ${wkNow.mi.toFixed(1)} miles into a week the ${ph?.label || "current"} phase wants at ${tgt[0]}–${tgt[1]}` +
+    (es != null ? `, and ${Math.round(es)}% of it has been genuinely easy.` : ".") +
+    (es != null && es < 55 ? " That easy share is the number to fix — it is the whole reason previous builds ended early." : "");
+  $("weekStats").innerHTML = [
+    `<div class="stat"><div class="lbl">Miles run</div><div class="v num">${wkNow.mi.toFixed(1)}</div>
+      <div class="bar"><i style="width:${clamp((wkNow.mi / tgt[1]) * 100, 0, 100)}%;background:${wkNow.mi >= tgt[0] ? C.blue : C.o[0]}"></i></div>
+      <div class="say">Phase target ${tgt[0]}–${tgt[1]} miles</div></div>`,
+    `<div class="stat"><div class="lbl">Easy share</div><div class="v num">${es != null ? Math.round(es) : "–"}<small>%</small></div>
+      <div class="bar"><i style="width:${es || 0}%;background:${(es || 0) >= 70 ? STATUS.ok : (es || 0) >= 50 ? STATUS.warn : STATUS.crit}"></i></div>
+      <div class="say">Of this week's miles below 80% intensity. Aim for 70%.</div></div>`,
+    `<div class="stat"><div class="lbl">Longest run</div><div class="v num">${wkNow.longest ? wkNow.longest.toFixed(1) : "–"}<small> km</small></div>
+      <div class="say">${wkNow.runDays} run${wkNow.runDays === 1 ? "" : "s"} so far. This phase wants ${lgTgt[0]}–${lgTgt[1]} km.</div></div>`,
   ].join("");
 
-  /* build signals */
+  /* the three things */
   const w4 = WEEKS.filter((w) => w.week < weekStart(TODAY)).slice(-4);
   const avg4 = w4.length ? w4.reduce((s, x) => s + x.mi, 0) / w4.length : 0;
   const easy4 = w4.length ? w4.reduce((s, x) => s + (x.easyShare || 0), 0) / w4.length : 0;
   const ramp = wLast.ramp;
   const rampSt = ramp == null ? null : ramp <= 2.5 ? "ok" : ramp <= 4 ? "warn" : "crit";
   const stk = streakWeeks();
-  const cp = ATH?.checkpoint;
-  const daysToCp = cp ? Math.max(0, Math.ceil((parseD(cp.date) - new Date()) / 864e5)) : null;
-  $("sigTiles").innerHTML = [
-    `<div class="tile"><div class="k">4-week avg volume</div><div class="v num">${avg4.toFixed(1)}<small> mi/wk</small></div><div class="s">${chip(avg4 >= 30 ? "ok" : avg4 >= 22 ? "warn" : "serious", avg4 >= 30 ? "building" : avg4 >= 22 ? "climbing" : "thin")} vs 35–38 by Labor Day</div></div>`,
-    `<div class="tile"><div class="k">ramp rate</div><div class="v num">${signed(ramp, 1)}<small> CTL/wk</small></div><div class="s">${rampSt ? chip(rampSt, rampSt === "ok" ? "healthy" : rampSt === "warn" ? "hot" : "over the line") : ""} +4 is the boom-bust warning</div></div>`,
-    `<div class="tile"><div class="k">uninterrupted weeks</div><div class="v num">${stk}</div><div class="s">${chip(stk >= 8 ? "ok" : stk >= 4 ? "warn" : "serious", stk >= 8 ? "gate met" : "need 8")} consistency is failure mode #1</div></div>`,
-    `<div class="tile"><div class="k">easy share · 4-wk</div><div class="v num">${Math.round(easy4)}<small>%</small></div><div class="s">${chip(easy4 >= 70 ? "ok" : easy4 >= 50 ? "warn" : "crit", easy4 >= 70 ? "polarised" : easy4 >= 50 ? "creeping" : "intensity-heavy")} the documented deficit</div></div>`,
-    `<div class="tile"><div class="k">Labor Day gate</div><div class="v num">${daysToCp ?? "–"}<small> days</small></div><div class="s">the 1:20 decision point · ${esc(cp?.date || "")}</div></div>`,
+  $("sigStats").innerHTML = [
+    stat("Weeks unbroken", stk, "", stk >= 8 ? "ok" : stk >= 4 ? "warn" : "serious",
+      stk >= 8 ? "Past the eight the Labor Day gate asks for" : `${8 - stk} more clean weeks reaches the gate. Every past collapse began with a broken block.`, null),
+    stat("Easy share, last 4 weeks", Math.round(easy4), "%", easy4 >= 70 ? "ok" : easy4 >= 50 ? "warn" : "crit",
+      easy4 >= 70 ? "Properly polarised" : easy4 >= 50 ? "Creeping up — the easy days keep turning into steady ones" : "Intensity-heavy. This is the documented deficit.", null),
+    stat("Ramp rate", signed(ramp, 1), "CTL/wk", rampSt,
+      rampSt === "ok" ? "A sustainable rate of build" : rampSt === "warn" ? "Running hot — +4 is where the history turns bad" : "Above +4, the rate that preceded every previous breakdown",
+      wd.slice(-21).map((x) => x.ramp), C.orange),
   ].join("");
 }
-function tile(label, val, unit, sub, state, word, sparkVals, sparkCol) {
-  return `<div class="tile"><div class="k">${esc(label)}</div>
-    <div class="v num">${val}${unit ? `<small> ${unit}</small>` : ""}</div>
-    <div class="s">${state ? chip(state, word) + " " : ""}${esc(sub)}</div>
-    ${sparkVals ? spark(sparkVals, 74, 26, sparkCol) : ""}</div>`;
+function stat(label, val, unit, state, say, sparkVals, sparkCol) {
+  return `<div class="stat"><div class="lbl">${esc(label)}</div>
+    <div class="v num">${val}${unit ? `<small>${unit === "%" ? "%" : " " + unit}</small>` : ""}</div>
+    ${state ? `<div style="margin-top:8px">${chip(state, state === "ok" ? "on track" : state === "warn" ? "watch" : state === "serious" ? "behind" : "flag")}</div>` : ""}
+    <div class="say">${esc(say)}</div>
+    ${sparkVals ? spark(sparkVals, 68, 24, sparkCol) : ""}</div>`;
 }
 
 /* ══ CALENDAR ═══════════════════════════════════════════════════════════ */
@@ -463,10 +491,10 @@ function renderCalendar() {
   const flushWeek = () => {
     const w = weekMi;
     cells.push(w
-      ? `<div class="wkcell"><div class="wv num">${w.mi.toFixed(1)}<small style="font-size:9px;color:var(--mut)"> mi</small></div>
-          <div class="stack">${BUCKETS.map((b) => (w.b[b.key] > 0 ? `<i style="flex:${w.b[b.key]};background:${bucketCol(b.key)}" title="${b.label} ${w.b[b.key].toFixed(1)} mi"></i>` : "")).join("")}</div>
-          <div class="wk2">${w.runDays} d${w.easyShare != null ? ` · ${Math.round(w.easyShare)}% easy` : ""}</div></div>`
-      : `<div class="wkcell"></div>`);
+      ? `<div class="wk"><div class="wv num">${w.mi.toFixed(1)}<small style="font-size:9px;color:var(--mut)"> mi</small></div>
+          <div class="mix">${BUCKETS.map((b) => (w.b[b.key] > 0 ? `<i style="flex:${w.b[b.key]};background:${bucketCol(b.key)}" title="${b.label} ${w.b[b.key].toFixed(1)} mi"></i>` : "")).join("")}</div>
+          <div class="s">${w.runDays} d${w.easyShare != null ? ` · ${Math.round(w.easyShare)}% easy` : ""}</div></div>`
+      : `<div class="wk"></div>`);
     weekMi = null;
   };
   for (let i = 0; i < start; i++) cells.push(`<div class="day blank"></div>`);
@@ -505,8 +533,7 @@ function dayCell(ds, day) {
     <span class="dn num">${day}</span>
     ${score != null ? `<span class="sc num" style="color:${scoreColor(score)}">${score}</span>` : ""}
     ${mid}
-    ${load ? `<div class="lbar"><i style="width:${clamp(load, 0, 100)}%;background:${bc}"></i></div>` : ""}
-    <span class="flags">${sf ? '<span class="wv" title="stream analytics">▁▄▂</span>' : ""}${rec && rec.reviewed === false && !plan ? '<span class="unrev" title="unreviewed draft"></span>' : ""}</span>
+    <span class="flags">${rec && rec.reviewed === false && !plan ? '<span class="unrev" title="drafted by the routine — needs your review"></span>' : ""}</span>
   </${has ? "button" : "div"}>`;
 }
 /* ══ chart plumbing ═════════════════════════════════════════════════════
@@ -577,10 +604,10 @@ let cardSeq = 0;
 function chartCard(opts) {
   const id = "ch" + ++cardSeq;
   return { id, html: `<div class="card ${opts.wide ? "span2" : ""}">
-      <div class="chead"><div class="t"><h3>${esc(opts.title)}</h3><div class="note">${opts.note}</div></div>
-      ${opts.extra || ""}<button class="dbtn" data-tbl="${id}">data</button></div>
-      <div class="chwrap ${opts.h || ""}"><canvas id="${id}"></canvas></div>
-      <div class="dtable hidden" id="${id}-t"></div></div>` };
+      <div class="chtop"><div class="t"><h3>${esc(opts.title)}</h3><div class="note">${opts.note}</div></div>
+      ${opts.extra || ""}<button class="mini-btn" data-tbl="${id}">Numbers</button></div>
+      <div class="chart ${opts.h || ""}"><canvas id="${id}"></canvas></div>
+      <div class="tblwrap hidden" id="${id}-t"></div></div>` };
 }
 function mountTable(id, head, rows) {
   const el = $(id + "-t"); if (!el) return;
@@ -590,7 +617,7 @@ function mountTable(id, head, rows) {
 function wireTables(root) {
   root.querySelectorAll("[data-tbl]").forEach((b) => (b.onclick = () => {
     const t = $(b.dataset.tbl + "-t"); const on = t.classList.toggle("hidden");
-    b.textContent = on ? "data" : "hide";
+    b.textContent = on ? "Numbers" : "Hide numbers"; b.classList.toggle("on", !on);
   }));
 }
 const mk = (id, cfg) => { const el = $(id); if (el) viewCharts[id] = new Chart(el, cfg); };
@@ -598,7 +625,7 @@ const mk = (id, cfg) => { const el = $(id); if (el) viewCharts[id] = new Chart(e
 /* ══ ANALYSIS ═══════════════════════════════════════════════════════════ */
 function renderAnalysis() {
   const cards = [];
-  const cVol = chartCard({ title: "Volume & intensity mix", wide: true, h: "tall", note: "weekly run miles, split by session intensity. The base grows from the dark band at the bottom — that is the discipline chart for this athlete.", extra: `<div class="rangebtns" id="volRange"></div>` });
+  const cVol = chartCard({ title: "Volume & intensity mix", wide: true, h: "tall", note: "weekly run miles, split by session intensity. The base grows from the dark band at the bottom — that is the discipline chart for this athlete.", extra: `<div class="rng" id="volRange"></div>` });
   const cEasy = chartCard({ title: "Easy share", note: "share of weekly miles run under 80% of threshold. The documented deficit; 70%+ is the polarised target." });
   const cFit = chartCard({ title: "Fitness & fatigue", note: "CTL (fitness) and ATL (fatigue), same load units. Form is the distance between them." });
   const cPred = chartCard({ title: "The call over time", note: "projected half time at current fitness, against the three goal lines." });
@@ -608,7 +635,11 @@ function renderAnalysis() {
   const cSleep = chartCard({ title: "Sleep duration", h: "short", note: "hours per night; 7.5 h is the target. Score and subjective quality in the tooltip." });
   const cEf = chartCard({ title: "Efficiency factor", h: "short", note: "metres per heartbeat at grade-adjusted speed, easy & long runs only. Rising = base building." });
   const cDec = chartCard({ title: "Decoupling", h: "short", note: "Pw:Hr drift on steady runs ≥20 min. Falling = the base is holding." });
-  [cVol, cEasy, cFit, cPred, cScore, cHrv, cRhr, cSleep, cEf, cDec].forEach((c) => cards.push(c.html));
+  /* Only four charts ship. The rest of the measures are more honest as numbers
+     with a sentence attached than as sparse lines, so they render in the form
+     strip below; the day panels carry them in context. (The unused builders
+     below no-op safely — mk()/mountTable() skip absent canvases.) */
+  [cVol, cEasy, cFit, cPred].forEach((c) => cards.push(c.html));
   const grid = $("analysisGrid"); grid.innerHTML = cards.join(""); wireTables(grid);
 
   /* range buttons for volume */
@@ -703,6 +734,30 @@ function renderAnalysis() {
   mk(cDec.id, { type: "line", data: { labels: pts.filter((p) => p.dec != null).map((p) => p.d.slice(5)), datasets: [
       { label: "decoupling", data: pts.filter((p) => p.dec != null).map((p) => p.dec), borderColor: C.red, backgroundColor: "rgba(230,103,103,.12)", fill: true, borderWidth: 2, pointRadius: 4, pointHoverRadius: 6, tension: 0.25 }] }, options: o });
   mountTable(cDec.id, ["date", "decoupling %", "km"], pts.filter((p) => p.dec != null).map((p) => [p.d, p.dec, p.km]));
+
+  /* ── form strip: the measures that read better as numbers ── */
+  const recent = wd.slice(-14), avg = (f) => { const v = recent.map(f).filter((x) => x != null); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; };
+  const slAvg = avg((x) => (x.sleepSecs ? x.sleepSecs / 3600 : null));
+  const rhrAvg = avg((x) => x.rhr), hrvAvg = avg((x) => x.hrv);
+  const efPts = pts.filter((p) => p.ef != null), decPts = pts.filter((p) => p.dec != null);
+  const efNow = efPts.length ? efPts[efPts.length - 1] : null, efFirst = efPts.length > 1 ? efPts[0] : null;
+  const decNow = decPts.length ? decPts[decPts.length - 1] : null;
+  const sdays = (LOG.days || []).filter((d) => d.score != null).slice(-14);
+  const scAvg = sdays.length ? sdays.reduce((s, d) => s + d.score, 0) / sdays.length : null;
+  const [rr0, rr1] = ATH?.physiology?.resting_hr_baseline || [46, 48];
+  $("formIntro").textContent = "Averages over the last two weeks, and the two efficiency measures that only mean anything on easy and long runs — where the base actually shows up.";
+  $("formStats").innerHTML = [
+    stat("Sleep, 14-day average", slAvg != null ? slAvg.toFixed(1) : "–", "hours", slAvg == null ? null : slAvg >= 7.5 ? "ok" : slAvg >= 6.8 ? "warn" : "crit",
+      slAvg != null && slAvg >= 7.5 ? "Comfortably enough to absorb the training" : "Below the 7.5 hours this build wants", null),
+    stat("Resting HR, 14-day average", rhrAvg != null ? rhrAvg.toFixed(1) : "–", "bpm", rhrAvg == null ? null : rhrAvg <= rr1 ? "ok" : rhrAvg <= rr1 + 2 ? "warn" : "crit",
+      `Your established floor is ${rr0}–${rr1}. HRV over the same window averaged ${hrvAvg != null ? Math.round(hrvAvg) : "–"} ms.`, null),
+    stat("Efficiency factor", efNow ? efNow.ef.toFixed(2) : "–", "m/beat", null,
+      efNow && efFirst ? `${efNow.ef > efFirst.ef ? "Up" : "Down"} from ${efFirst.ef.toFixed(2)} at the start of the block — metres covered per heartbeat on easy running.` : "Metres covered per heartbeat on easy running.", efPts.map((p) => p.ef), C.aqua),
+    stat("Aerobic drift", decNow ? decNow.dec.toFixed(1) : "–", "%", decNow == null ? null : decNow.dec <= 5 ? "ok" : decNow.dec <= 8 ? "warn" : "crit",
+      decNow == null ? "No qualifying steady run yet." : decNow.dec <= 5 ? "Heart rate held steady late in the run — the base is there." : "Heart rate climbed late at the same speed.", decPts.map((p) => p.dec), C.red),
+    stat("Average day score", scAvg != null ? Math.round(scAvg) : "–", "", scAvg == null ? null : scAvg >= 65 ? "ok" : scAvg >= 55 ? "warn" : "crit",
+      "Across the last two weeks. 60 means the days held the odds steady rather than improving them.", sdays.map((d) => d.score), C.blue),
+  ].join("");
 }
 function drawVol(id) {
   const n = volRange === "16w" ? 16 : volRange === "1y" ? 52 : WEEKS.length;
@@ -746,12 +801,12 @@ function renderGoal() {
       <div class="note">${daysLeft} days out · ${esc(phaseFor(TODAY)?.label || "")} phase</div>
       <div class="tiles" style="margin-top:4px">
         ${gs.map((g, i) => { const gap = predS ? predS - g.secs : null;
-          return `<div class="tile"><div class="k">${esc(g.label)}</div>
+          return `<div class="stat"><div class="k">${esc(g.label)}</div>
             <div class="v num">${gap == null ? "–" : gap <= 0 ? "reached" : "+" + secToHMS(gap).replace(/^0:/, "")}</div>
             <div class="s">${esc(g.time)} · needs ${esc(g.pace_km)}/km</div></div>`; }).join("")}
       </div>
       <div class="prose" style="margin-top:16px">The call today is <b>${esc(last.pred_half || "–")}</b>. ${esc(gs[0]?.note || "")}</div>
-      <div class="pull">${esc(ATH?.eras?.read || "")}</div>
+      <div class="quote">${esc(ATH?.eras?.read || "")}</div>
     </div>
 
     <div class="card">
@@ -765,7 +820,7 @@ function renderGoal() {
       <h3>Why 1:20 is hard, in one number</h3>
       <div class="note">the arithmetic behind the 10K gate</div>
       <div class="prose">${esc(cp?.math || "")}</div>
-      <div class="pull">Honest prior even with perfect execution: the checkpoint passes about one time in five.</div>
+      <div class="quote">Honest prior even with perfect execution: the checkpoint passes about one time in five.</div>
     </div>
 
     ${cCurve.html}
@@ -773,7 +828,7 @@ function renderGoal() {
     <div class="card">
       <h3>Peak capability by era</h3>
       <div class="note">pace-curve bests, elapsed-time based. An engine that has always outrun its endurance.</div>
-      <table class="eratab"><thead><tr><th>era</th><th>1 mile</th><th>5K</th><th>10K</th><th>half</th></tr></thead>
+      <table class="era"><thead><tr><th>era</th><th>1 mile</th><th>5K</th><th>10K</th><th>half</th></tr></thead>
       <tbody>${(ATH?.eras?.rows || []).map((r) => `<tr><td>${esc(r.era)}</td><td>${esc(r.mile || "–")}</td><td>${esc(r.k5 || "–")}</td><td>${esc(r.k10 || "–")}</td><td>${esc(r.half || "–")}</td></tr>`).join("")}</tbody></table>
       <div class="note" style="margin-top:10px">${esc((ATH?.eras?.rows || []).map((r) => r.k10_note || r.half_note).filter(Boolean).join(" · "))}</div>
     </div>
@@ -783,11 +838,11 @@ function renderGoal() {
       <div class="note">every previous build ended in a crash — and only one of those was a tendon</div>
       <div class="tl">${(ATH?.timeline?.events || []).map((e) => {
         const col = { peak: C.blue, bust: STATUS.crit, pr: STATUS.ok, injury: STATUS.crit, milestone: C.yellow }[e.kind] || C.mut;
-        return `<div class="tlrow"><span class="dot" style="background:${col}"></span>
+        return `<div class="tlr"><span class="dot" style="background:${col}"></span>
           <div class="dt">${esc(e.date)}${e.kind === "bust" ? " · collapse" : e.kind === "pr" ? " · best" : ""}</div>
           <div class="lb">${esc(e.label)}</div>
           ${e.cause ? `<div class="cz">${esc(e.cause)}</div>` : ""}</div>`; }).join("")}</div>
-      <div class="pull">${esc(ATH?.timeline?.lesson || "")}</div>
+      <div class="quote">${esc(ATH?.timeline?.lesson || "")}</div>
     </div>
 
     <div class="card span2">
@@ -878,7 +933,7 @@ async function openDay(ds) {
     h += `<div class="dials">${dial(rec.score, "vs 1:20 dream")}${rec.score_committed != null ? dial(rec.score_committed, "vs 1:25 committed") : ""}
       <div style="flex:1;min-width:170px">
         ${rec.reviewed === false ? chip("warn", "unreviewed draft", "written by the routine; amend in chat to confirm") : chip("ok", "reviewed")}
-        ${rec.delta_p ? `<div class="dp" style="margin-top:9px">“${esc(rec.delta_p)}”</div>` : ""}
+        ${rec.delta_p ? `<div class="verdict" style="margin-top:9px">“${esc(rec.delta_p)}”</div>` : ""}
         ${rec.pred_half ? `<div class="num" style="font-size:12.5px;color:var(--ink2);margin-top:9px">the call: <b style="color:var(--s-yellow)">${esc(rec.pred_half)}</b>${rec.prediction_prev && rec.prediction_prev !== rec.pred_half ? ` <span style="color:var(--mut)">(was ${esc(rec.prediction_prev)})</span>` : ""}</div>` : ""}
       </div></div>`;
   } else if (plan) {
@@ -890,9 +945,8 @@ async function openDay(ds) {
       const w = Math.min(50, Math.abs(c.delta) * 3.4);
       const col = c.delta > 0 ? STATUS.ok : c.delta < 0 ? STATUS.crit : C.mut;
       return `<div class="comp"><span class="cl">${esc(c.label)}</span>
-        <span class="cb">${c.delta >= 0 ? `<i style="left:50%;width:${w}px;background:${col}"></i>` : `<i style="right:50%;width:${w}px;background:${col}"></i>`}</span>
         <span class="cd" style="color:${col}">${c.delta > 0 ? "+" : ""}${c.delta}</span></div>`;
-    }).join("") + `<div class="comp"><span class="cl" style="color:var(--mut)">neutral 60 + deltas</span><span class="cb"></span><span class="cd">${rec.score}</span></div>`;
+    }).join("") + `<div class="comp"><span class="cl" style="color:var(--mut)">Starting from a neutral 60</span><span class="cd">${rec.score}</span></div>`;
   }
   const w = rec?.wellness || wellByDate[ds];
   if (w) {
@@ -903,17 +957,17 @@ async function openDay(ds) {
       ["quality", sleepWord(w.sleepQuality ?? w.sleepQ)], ["sleep score", w.sleepScore ?? "–"],
       ["ramp", (w.rampRate ?? w.ramp) != null ? signed(w.rampRate ?? w.ramp, 1) + "<small>/wk</small>" : "–"],
       ["VO₂max", w.vo2max ?? "–"]].filter((r) => r[1] !== "–" && r[1] !== "–<small> ms</small>");
-    h += `<h4>Morning wellness</h4><div class="wgrid">${rows.map((r) => `<div class="wc"><div class="k">${r[0]}</div><div class="v num">${r[1]}</div></div>`).join("")}</div>`;
+    h += `<h4>Morning wellness</h4><div class="wg">${rows.map((r) => `<div class="wc"><div class="k">${r[0]}</div><div class="v num">${r[1]}</div></div>`).join("")}</div>`;
   }
   const blocks = [];
   if (sf) sf.activities.forEach((a, i) => blocks.push(actBlock(a, i)));
   else if (rec?.activity) blocks.push(fallbackBlock(rec.activity));
   else (csvByDate[ds] || []).forEach((a) => blocks.push(fallbackBlock({ name: a.name, km: a.km, mi: a.mi, sec: a.sec, hr: a.hr, intensity: a.intensity, load: a.load })));
   if (blocks.length) h += `<h4>Training</h4>` + blocks.join("");
-  else if (rec && !plan) h += `<h4>Training</h4><div class="none">Rest day — no activity recorded.</div>`;
+  else if (rec && !plan) h += `<h4>Training</h4><div class="empty">Rest day — no activity recorded.</div>`;
   if (rec?.entry) h += `<h4>Coach's read</h4><div class="entry">${esc(rec.entry)}</div>`;
   if (rec?.note_next) h += `<h4>What's next</h4><div class="prose" style="font-size:13px">${esc(rec.note_next)}</div>`;
-  if (!rec && blocks.length) h += `<div class="none" style="margin-top:18px">No coaching entry for this day — activity synced from Intervals.icu.</div>`;
+  if (!rec && blocks.length) h += `<div class="empty" style="margin-top:18px">No coaching entry for this day — activity synced from Intervals.icu.</div>`;
   body.innerHTML = h;
   if (sf) sf.activities.forEach((a, i) => buildActCharts(a, i));
 }
@@ -940,14 +994,14 @@ function actBlock(a, idx) {
     ["climb", run && m.elev_gain_m != null ? Math.round(m.elev_gain_m) + "<small> m</small>" : null],
   ].filter((s) => s[1] != null);
   let h = `<div class="act">
-    <div class="ah"><span class="an">${esc(a.name)}</span><span class="tchip">${esc(a.type)}</span>
-      ${cls.kind !== "xt" ? `<span class="tchip hl">${esc(KIND[cls.kind] || cls.kind)}${cls.kind === "intervals" ? ` · ${cls.spans.length}×` : ""}</span>` : ""}
-      ${m.race ? `<span class="tchip hl">race</span>` : ""}
+    <div class="ah"><span class="an">${esc(a.name)}</span><span class="pill">${esc(a.type)}</span>
+      ${cls.kind !== "xt" ? `<span class="pill hl">${esc(KIND[cls.kind] || cls.kind)}${cls.kind === "intervals" ? ` · ${cls.spans.length}×` : ""}</span>` : ""}
+      ${m.race ? `<span class="pill hl">race</span>` : ""}
       <span class="at">${time}${m.device ? " · " + esc(m.device) : ""}</span></div>
-    <div class="sgrid">${stats.map((s) => `<div class="st"><div class="k">${s[0]}</div><div class="v num">${s[1]}</div></div>`).join("")}</div>`;
+    <div class="sg">${stats.map((s) => `<div class="sv"><div class="k">${s[0]}</div><div class="v num">${s[1]}</div></div>`).join("")}</div>`;
   if (st.t && st.t.length > 10) {
     const hasD = !!st.d;
-    if (run && hasD) h += `<div class="xtog" data-act="${idx}"><button class="on" data-x="d">by distance</button><button data-x="t">by time</button></div>`;
+    if (run && hasD) h += `<div class="xt" data-act="${idx}"><button class="on" data-x="d">by distance</button><button data-x="t">by time</button></div>`;
     if (run && st.v) h += `<div class="sch"><canvas id="cp${idx}"></canvas></div>`;
     if (run && st.alt) h += `<div class="sch mini"><canvas id="ce${idx}"></canvas></div>`;
     if (st.hr) h += `<div class="sch"><canvas id="ch${idx}"></canvas></div>`;
@@ -956,7 +1010,7 @@ function actBlock(a, idx) {
     h += `<div id="struct${idx}"></div>`;
     if (run && hasD && st.v && !isWorkout(cls.kind)) h += `<h4 style="margin-top:17px">Kilometre splits</h4><div id="sp${idx}"></div>`;
     h += `<div id="zn${idx}"></div><div id="sg${idx}"></div>`;
-  } else h += `<div class="none">No stream file for this activity — aggregates only.</div>`;
+  } else h += `<div class="empty">No stream file for this activity — aggregates only.</div>`;
   return h + `</div>`;
 }
 function fallbackBlock(f) {
@@ -966,10 +1020,10 @@ function fallbackBlock(f) {
     ["load", f.load ?? null], ["cadence", f.cadence ? f.cadence + "<small> spm</small>" : null],
     ["climb", f.elev_gain_m != null ? Math.round(f.elev_gain_m) + "<small> m</small>" : null],
     ["decoupling", f.decoupling_pct != null ? f.decoupling_pct + "<small>%</small>" : null]].filter((s) => s[1] != null);
-  let h = `<div class="act"><div class="ah"><span class="an">${esc(f.name || "Run")}</span><span class="tchip">logged</span></div>
-    <div class="sgrid">${stats.map((s) => `<div class="st"><div class="k">${s[0]}</div><div class="v num">${s[1]}</div></div>`).join("")}</div>`;
+  let h = `<div class="act"><div class="ah"><span class="an">${esc(f.name || "Run")}</span><span class="pill">logged</span></div>
+    <div class="sg">${stats.map((s) => `<div class="sv"><div class="k">${s[0]}</div><div class="v num">${s[1]}</div></div>`).join("")}</div>`;
   if (f.hr_zone_sec) h += zoneBar(f.hr_zone_sec);
-  return h + `<div class="none">Streams not captured for this day.</div></div>`;
+  return h + `<div class="empty">Streams not captured for this day.</div></div>`;
 }
 function zoneBar(zt) {
   const tot = zt.reduce((a, b) => a + b, 0); if (!tot) return "";
@@ -977,8 +1031,8 @@ function zoneBar(zt) {
   const seg = zt.map((s, i) => ({ s, i })).filter((x) => x.s > 0);
   const easy = ((zt[0] || 0) + (zt[1] || 0)) / tot * 100;
   return `<h4 style="margin-top:17px">Heart-rate zones <span style="color:var(--mut);text-transform:none;letter-spacing:0">· ${Math.round(easy)}% easy (Z1–Z2)</span></h4>
-    <div class="zbar">${seg.map((x) => `<div style="flex:${x.s};background:${ZONE_COL[x.i]}" title="Z${x.i + 1} ${esc(names[x.i] || "")} — ${fmtDur(x.s)}">${x.s / tot > 0.08 ? `Z${x.i + 1} ${Math.round((x.s / tot) * 100)}%` : ""}</div>`).join("")}</div>
-    <div class="zkey">${seg.map((x) => `<span><span style="color:${ZONE_COL[x.i]}">■</span> Z${x.i + 1} ${esc(names[x.i] || "")} ${fmtDur(x.s)}</span>`).join("")}</div>`;
+    <div class="zb">${seg.map((x) => `<div style="flex:${x.s};background:${ZONE_COL[x.i]}" title="Z${x.i + 1} ${esc(names[x.i] || "")} — ${fmtDur(x.s)}">${x.s / tot > 0.08 ? `Z${x.i + 1} ${Math.round((x.s / tot) * 100)}%` : ""}</div>`).join("")}</div>
+    <div class="zk">${seg.map((x) => `<span><span style="color:${ZONE_COL[x.i]}">■</span> Z${x.i + 1} ${esc(names[x.i] || "")} ${fmtDur(x.s)}</span>`).join("")}</div>`;
 }
 function structTable(a, cls) {
   if (!cls.segs) return "";
@@ -999,7 +1053,7 @@ function structTable(a, cls) {
   return `<h4 style="margin-top:17px">Structure — ${cls.kind === "intervals" ? `${reps.length} reps` : "tempo"} <span style="color:var(--mut);text-transform:none;letter-spacing:0">· auto-detected, no watch laps needed</span></h4>
     <table class="sp"><thead><tr><th>segment</th><th>km</th><th>time</th><th>pace</th><th>gap</th><th>♥ avg</th><th>♥ max</th></tr></thead>
     <tbody>${row("warmup", agg(wu))}${reps.map(rep).join("")}${rc ? row(`recoveries ×${rc.n}`, rc) : ""}${row("cooldown", agg(cd))}</tbody></table>
-    ${fade != null && cls.kind === "intervals" ? `<div class="zkey" style="margin-top:5px">rep 1 → ${wp.length}: ${fade > 0 ? "+" : ""}${fade} s/km ${Math.abs(fade) <= 8 ? "— held together" : fade > 0 ? "— faded late" : "— negative-split reps"}</div>` : ""}`;
+    ${fade != null && cls.kind === "intervals" ? `<div class="zk" style="margin-top:5px">rep 1 → ${wp.length}: ${fade > 0 ? "+" : ""}${fade} s/km ${Math.abs(fade) <= 8 ? "— held together" : fade > 0 ? "— faded late" : "— negative-split reps"}</div>` : ""}`;
 }
 function buildActCharts(a, idx) {
   const st = a.streams || {}; if (!st.t || st.t.length < 10) return;
@@ -1051,7 +1105,7 @@ function buildActCharts(a, idx) {
     ch.w = new Chart($(`cw${idx}`), { type: "line", data: { labels: X(), datasets: [{ label: "power (W)", data: smooth(st.watts, 9), borderColor: C.yellow, borderWidth: 1.2, pointRadius: 0, spanGaps: true }] }, options: o });
   }
   Object.values(ch).forEach((c) => panelCharts.push(c));
-  const tg = document.querySelector(`.xtog[data-act="${idx}"]`);
+  const tg = document.querySelector(`.xt[data-act="${idx}"]`);
   if (tg) tg.querySelectorAll("button").forEach((b) => (b.onclick = () => {
     xMode = b.dataset.x; tg.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
     const xs = X(); Object.values(ch).forEach((c) => { c.data.labels = xs; c.update("none"); });
@@ -1108,7 +1162,7 @@ function buildActCharts(a, idx) {
     const spm = cadSpm(m.cadence_rpm);
     if (spm) { const s = spm >= 176 ? "ok" : spm >= 170 ? "warn" : "crit";
       cells.push(sig("cadence", Math.round(spm) + " spm", s, s === "ok" ? "in target" : "below target", "target 176–180 — a cheap Achilles-load lever")); }
-    $(`sg${idx}`).innerHTML = cells.length ? `<h4 style="margin-top:17px">Signals</h4><div class="sig">${cells.join("")}</div>` : "";
+    $(`sg${idx}`).innerHTML = cells.length ? `<h4 style="margin-top:17px">Signals</h4><div class="sigs">${cells.join("")}</div>` : "";
   }
 }
 function sig(label, val, state, word, sub) {

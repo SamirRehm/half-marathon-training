@@ -19,6 +19,7 @@ Produces the static JSON the Split dashboard (public/index.html) renders. Follow
 1. `data/streams/<DATE>.json` — only if the day had ≥1 activity
 2. `data/streams/index.json` — DATE added to `dates` (sorted, unique)
 3. `data/wellness.json` — DATE row upserted (plus today's row when run the morning after, which is the normal routine case)
+4. A **deep stream read** (step 7) — the findings that the day's score and coaching entry must be based on. Never score a run from its averages.
 
 ## Procedure
 
@@ -62,7 +63,30 @@ Add DATE to `data/streams/index.json` `dates` — keep sorted ascending, no dupl
 ### 6. Wellness upsert
 `wellness_recent_list(from_date=DATE, to_date=today)`. Upsert into `data/wellness.json` `days` (sorted by `d`) a row for DATE and for today: `{"d","ctl":1dp,"atl":1dp,"ramp":rampRate 1dp,"hrv","rhr":restingHR,"sleepSecs","sleepScore","sleepQ":sleepQuality,"vo2max":1dp,"weight":1dp,"steps"}` — drop null fields. (Today's morning row feeds the site's "recovery today" ribbon; tomorrow's run finalizes it.)
 
-### 7. Validate (must pass before finishing)
+### 7. Deep stream read — REQUIRED for every run, before any score is written
+The aggregates lie. A session can show a defensible average pace and intensity and still be a badly-executed workout, and that difference is the whole point of scoring this athlete. So for every Run, compute the following from the **full-resolution** arrays and write the findings into the day's `stream_read` object (and reflect them in `entry` / `components`):
+
+**Every run**
+- **Zone distribution as percentages**, not just seconds — and explicitly `pct_z5_plus` and `z7_secs`. For a base-phase athlete these two numbers decide whether a session was aerobic work or anaerobic work.
+- **Peak HR as a percentage of max (190)**. Anything ≥95% means the session went to the well, whatever the label on it said.
+- **Moving vs elapsed**, i.e. how much standing/paused time. Long rests are what let an athlete hold paces they cannot otherwise sustain — a set that only works because of the rests is not the aerobic stimulus it appears to be.
+- **Prescribed vs executed**, in the prescription's own units (pace band and/or HR ceiling from yesterday's `note_next`). State the delta in s/km or bpm.
+- **Cadence trend across the session** (per rep, or first vs second half). A drop of ≥3 spm is a mechanical fatigue tell and usually precedes a pace collapse.
+
+**Workouts (intervals / tempo / threshold)**
+- **Per-rep pace, HR and cadence** from the `intervals` array. Then judge the *shape*: even, progressive, or ragged. A rep that drops ≥8 s/km off its neighbour with cadence falling is a crack, not a variation — call it out with the rep number.
+- **Set average pace vs (a) the threshold estimate and (b) the athlete's best 5K/10K pace for the window.** This is the single most diagnostic comparison available: if a rep set averages at or faster than recent 5K race pace, the athlete raced, and the session should be scored as a race-effort day regardless of what it was called.
+- **Whether HR actually recovered between reps** (the minimum HR in each gap). Starting successive reps above ~85% of max means there was no recovery and the set became one continuous maximal effort.
+- **Warmup and cooldown quality** — these are separate activity files on club/track nights. A cooldown above Z2 means the session never ended.
+
+**Easy / steady / long runs**
+- **Easy purity** (% of time in Z1–Z2) and whether HR drifted one-way at constant pace.
+- **Decoupling** on steady efforts ≥25 min, with the negative-split caveat when the run progressed.
+- **EF (m/beat)** for the like-for-like trend against previous easy/long runs.
+
+Write the honest read even when it contradicts the obvious framing — the Jul 21 2026 club night looked like a well-executed quality day by its averages (103.5% intensity, green recovery, good warmup) and the stream showed a 5K raced in six pieces at 98% of max HR with 73% of the work at Z5+. Scoring it from the aggregates got it wrong by 30 points.
+
+### 8. Validate (must pass before finishing)
 - `(Get-Content -Raw <file> | ConvertFrom-Json).activities.Count` parses and matches.
 - Every stream array length equals the others AND the API's original sample count.
 - `t` non-decreasing; `intervals[].i1` ≤ stream length.

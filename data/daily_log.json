@@ -338,19 +338,34 @@
       "plan_rationale": "The protected Tuesday quality slot, on a fully recovered body (HRV 92, RHR 44).",
       "wellness": { "ctl": 26.6, "atl": 40.5, "form": -13.9, "rampRate": 3.0, "hrv": 92, "restingHR": 44, "sleepSecs": 24420, "sleepScore": 84, "sleepQuality": 2, "vo2max": 57, "weight": null },
       "activity": { "name": "Burlingame Running — club night (wu / main / cd)", "km": 10.47, "mi": 6.51, "sec": 2764, "pace_per_km": "4:24", "hr": 164, "max_hr": 185, "intensity": 103.5, "load": 66, "cadence": 173, "stride_m": 1.31, "elev_gain_m": 43, "decoupling_pct": null, "hr_zone_sec": null },
-      "score": 78, "score_committed": 74, "bar_phase": "base",
-      "delta_p": "raised (best-executed quality day of the block)",
+      "score": 48, "score_committed": 54, "bar_phase": "base",
+      "delta_p": "lowered — a 5K raced in six pieces, not a threshold session",
       "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:00",
-      "prob_note": "current-fitness readout. ~0% now — projected half ~1:34 vs targets.",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:34 vs targets. Note the VO2max tick to 57 is partly an artefact of a 98%-max-HR session, not clean evidence of aerobic gain.",
+      "stream_read": {
+        "reps_pace": ["4:02", "3:52", "3:49", "3:59", "3:46", "3:48"],
+        "reps_hr": [158, 167, 179, 175, 176, 183],
+        "set_avg_pace": "3:52",
+        "threshold_pace": "4:12",
+        "best_5k_pace_12mo": "3:52",
+        "zone_pct": { "z1": 6, "z2": 2, "z3": 3, "z4": 16, "z5": 13, "z6": 22, "z7": 38 },
+        "pct_z5_plus": 73, "z7_secs": 552, "peak_hr": 187, "pct_max_hr": 98,
+        "standing_recovery_secs": 590, "moving_secs": 1440,
+        "cadence_by_rep": [87.4, 86.7, 87.9, 84.4, 86.1, 87.7],
+        "cooldown": "1.80 km @ 5:23/km, HR 155, Z3 — not a cooldown"
+      },
       "components": [
-        { "label": "Main set at 103.5% of threshold on a green body — the week's correct hard day", "delta": 13, "cat": "raiser" },
-        { "label": "Warmup at 72.7% / 143 HR — genuinely easy, the discipline that's been missing elsewhere", "delta": 5, "cat": "raiser" },
-        { "label": "VO2max estimate 56 → 57 (was 54 three weeks ago)", "delta": 4, "cat": "raiser" },
-        { "label": "RHR 44 and HRV 92 going in — arrived properly fresh", "delta": 2, "cat": "context" },
-        { "label": "Load 66; Wednesday now has to be genuinely easy for this to pay off", "delta": -3, "cat": "context" }
+        { "label": "Ran the set at 3:52/km average — exactly his 12-month 5K race pace, and 20 s/km FASTER than the 4:12 threshold estimate", "delta": -14, "cat": "lowerer" },
+        { "label": "73% of the main set at Z5 or above, including 9.2 min in Z7; peak 187 bpm = 98% of max HR", "delta": -10, "cat": "lowerer" },
+        { "label": "Pacing came apart mid-set: rep 4 fell to 3:59 (+10 s) with cadence dropping 87.9 → 84.4 — the mechanical tell of cracking — then forced back to 3:46/3:48", "delta": -6, "cat": "lowerer" },
+        { "label": "~10 min of standing recovery inside 24 min of work — the rests were what made 5K pace possible, so the session built anaerobic tolerance, not the aerobic base the goal needs", "delta": -5, "cat": "lowerer" },
+        { "label": "Cooldown run at 5:23/km and 155 HR (Z3) — the session never actually ended", "delta": -3, "cat": "lowerer" },
+        { "label": "Club is the sanctioned empty-the-tank day, it was the right slot, and he arrived genuinely fresh (HRV 92, RHR 44)", "delta": 12, "cat": "raiser" },
+        { "label": "Warmup was excellent and deliberate: 5:36 → 4:55 → 4:40, HR 134 → 156", "delta": 6, "cat": "raiser" },
+        { "label": "No injury signal and recovery held afterwards — this is a misdirected session, not a setback", "delta": 8, "cat": "context" }
       ],
-      "entry": "The best-executed day of the block. Warmup at 143 HR — genuinely easy, which is the discipline that keeps going missing on Wednesdays — then a main set at 103.5% of threshold, then a real cooldown. Arrived with RHR 44 and HRV 92 and had the day to spend. The VO2max estimate is now 57, up from 54 three weeks ago; combined with Saturday's long run at 141 HR, two independent signals are pointing the same way. This is what the Tuesday slot is worth when the rest of the week supports it.",
-      "note_next": "Wed Jul 22: easy 40-50 min, HR under 148. You have run this day at 87-92% for three straight weeks — that is the one change left."
+      "entry": "I had this down as the best-executed day of the block. Reading the full second-by-second stream, it was the most over-cooked. The six kilometre reps went 4:02, 3:52, 3:49, 3:59, 3:46, 3:48 — an average of 3:52/km. That is exactly your best 5K pace of the last twelve months, and 20 seconds per kilometre faster than your 4:12 threshold estimate. With roughly ten minutes of standing rest inside twenty-four minutes of running, which is the only reason it was holdable. So this wasn't a threshold workout with the paces slightly hot; it was a 5K raced in six pieces. The heart-rate trace says the same thing louder: 158 → 167 → 179 → 175 → 176 → 183, peaking at 187, which is 98% of your maximum, with 73% of the set at Z5 or above and 9.2 minutes in Z7. And it wasn't even controlled — rep 4 cracked to 3:59 with cadence falling from 87.9 to 84.4, the mechanical signature of running out of legs, before you forced the last two back down. Then the 'cooldown' was 5:23/km at 155 bpm in Z3. Credit where it's due: the warmup was genuinely excellent — 5:36 to 4:55 to 4:40 with HR building 134 to 156 — and you arrived properly fresh. Club is the sanctioned empty-the-tank day and this was the right slot for hard work. But you are 99 days out with an aerobic-base deficit, and anaerobic tolerance is the one quality this race does not ask for. One more honest correction: I cited the VO2max tick to 57 as a fitness signal. Garmin's estimate responds strongly to efforts near maximum heart rate, so a 98%-max session is precisely what inflates it — treat Saturday's 16 km at 141 bpm as the trustworthy signal, not this.",
+      "note_next": "Wed Jul 22: easy 40-50 min, HR under 148 — and after a session with 9 minutes in Z7, easy is not optional. The change that matters for the next club night: pick the pace band before you start (4:15-4:25 for kilometre reps) and let the rests be short rather than the reps fast. Short rest at threshold builds the half; long rest at 5K pace builds a 5K you are not racing."
     },
     {
       "date": "2026-07-22", "dow": "Wed", "status": "scored", "reviewed": false,
@@ -359,8 +374,8 @@
       "plan_rationale": "The Wednesday easy run — the habit the block has been trying to fix, and the day the aerobic base actually comes from.",
       "wellness": { "ctl": 27.3, "atl": 42.7, "form": -15.4, "rampRate": 2.8, "hrv": 98, "restingHR": 46, "sleepSecs": 25140, "sleepScore": 83, "sleepQuality": 2, "vo2max": 57, "weight": null },
       "activity": { "name": "San Mateo Running", "km": 10.27, "mi": 6.38, "sec": 3059, "pace_per_km": "4:58", "hr": 153, "max_hr": 176, "intensity": 81.7, "load": 57, "cadence": 172, "stride_m": 1.17, "elev_gain_m": 47, "decoupling_pct": null, "hr_zone_sec": null },
-      "score": 60, "score_committed": 63, "bar_phase": "base",
-      "delta_p": "~neutral, but trending the right way",
+      "score": 56, "score_committed": 60, "bar_phase": "base",
+      "delta_p": "slightly lowered — right direction, wrong day to spend",
       "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:45",
       "prob_note": "current-fitness readout. ~0% now — projected half ~1:33:45 vs targets.",
       "components": [
@@ -368,7 +383,8 @@
         { "label": "Real improvement on the same day: 153 HR / 81.7% vs 159 / 86.9% last Wednesday", "delta": 5, "cat": "raiser" },
         { "label": "HRV 98 — the highest of the entire block", "delta": 3, "cat": "raiser" },
         { "label": "Still not easy: prescribed under 148, ran 153 avg at 81.7% the day after club", "delta": -8, "cat": "lowerer" },
-        { "label": "Load 57 on a recovery slot — better than last week's 62, still high", "delta": -4, "cat": "lowerer" }
+        { "label": "Load 57 on a recovery slot — better than last week's 62, still high", "delta": -4, "cat": "lowerer" },
+        { "label": "Following a session that spent 9 min in Z7, this needed to be a true recovery day and wasn't", "delta": -4, "cat": "lowerer" }
       ],
       "entry": "Progress, honestly. Same day of the week, same assignment, and you ran it at 153 HR / 81.7% instead of last Wednesday's 159 / 86.9% — six beats and five points of intensity in the right direction, with HRV at 98, the highest of the block. It is still not the easy run that was prescribed (the ceiling was 148), and a load of 57 is still most of a quality day. But the direction is right and the body is thriving: this is the first week where the pattern is bending rather than repeating.",
       "note_next": "Thu Jul 23: easy again, or off. The weekend long run is the priority — and Thursday is where the last three weeks went wrong."
@@ -395,39 +411,19 @@
       "note_next": "Fri Jul 24: OFF, not optional. Then Sat easy and Sun long."
     },
     {
-      "date": "2026-07-24", "dow": "Fri", "status": "scored", "reviewed": false,
+      "date": "2026-07-24", "dow": "Fri", "status": "prescribed", "reviewed": false,
       "prediction": "1:33:30", "prediction_prev": "1:33:30",
-      "planned": "OFF",
-      "plan_rationale": "Mandatory after three consecutive days and the block's worst form reading (-17.8).",
+      "planned": "OFF — full rest day. No run, no cross-training.",
+      "plan_rationale": "Non-negotiable today. Yesterday was the third consecutive working day and it pushed ATL to 46.1 and form to -17.8, both the worst of the block, on a day that was prescribed easy-or-off. The week's long run is still owed and the weekend is what decides whether this becomes a 30-mile week or a 22-mile one — so the job today is to arrive at it fresh. Recovery is holding (HRV 91, RHR 48) but sleep quality slipped to 3, which is another reason not to add. If you feel compelled to move, walk.",
       "wellness": { "ctl": 27.6, "atl": 39.9, "form": -12.3, "rampRate": 3.3, "hrv": 91, "restingHR": 48, "sleepSecs": 25860, "sleepScore": 79, "sleepQuality": 3, "vo2max": null, "weight": null },
-      "activity": null,
-      "score": 64, "score_committed": 64, "bar_phase": "base",
-      "delta_p": "mildly raised (needed absorption)",
-      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:30",
-      "prob_note": "current-fitness readout. ~0% now — projected half ~1:33:30 vs targets. Prediction has come down 4:15 since Jul 5.",
-      "components": [
-        { "label": "Rest taken on the day the numbers demanded it — ATL 46 → 40, form -17.8 → -12.3", "delta": 8, "cat": "raiser" },
-        { "label": "Three consecutive days absorbed without an HRV drop (91)", "delta": 2, "cat": "raiser" },
-        { "label": "Sleep quality 3 on 7.2 h — the one soft spot", "delta": -3, "cat": "context" },
-        { "label": "No volume banked with the week's long run still owed", "delta": -3, "cat": "context" }
-      ],
-      "entry": "Correct rest. ATL came down from 46.1 to 39.9 and form from −17.8 to −12.3, which is exactly the reset Thursday made necessary. Zooming out: CTL has gone 20.3 → 27.6 in under three weeks, VO2max 54 → 57, and the projected half has come down from 1:37:45 to 1:33:30. That is a real fortnight of work. The week's long run is still owed, though, and the weekend decides whether this becomes a 30+ mile week or a 22-mile one.",
-      "note_next": "Sat Jul 25: easy 50-60 min. Sun Jul 26: long run 100-110 min at 5:50-6:05/km — repeat the Jul 18 formula, that's the one to build on."
-    },
-    {
-      "date": "2026-07-25", "dow": "Sat", "status": "prescribed", "reviewed": false,
-      "prediction": "1:33:30", "prediction_prev": "1:33:30",
-      "planned": "Easy 50-60 min @ 5:45-6:00/km, HR ceiling 148. Optional 4x20s strides at the end if it feels smooth.",
-      "plan_rationale": "Form is back to -7.6 after Friday's rest and HRV has sat 91-98 all week, so there is room to run — but the Saturday tempo gates are NOT open (they need 4+ consecutive weeks at 35+ mi/wk; you're at ~31 and climbing), and tomorrow's long run is the week's priority. So today is deliberately, boringly easy: aerobic minutes that cost nothing, protecting a 100-110 min long run tomorrow. If the legs feel flat, cut to 40 min rather than skipping — the streak matters more than the session.",
-      "wellness": { "ctl": 27.0, "atl": 34.6, "form": -7.6, "rampRate": 1.0, "hrv": null, "restingHR": null, "sleepSecs": null, "sleepScore": null, "sleepQuality": null, "vo2max": null, "weight": null },
       "activity": null,
       "score": null, "score_committed": null, "bar_phase": "base",
       "delta_p": null,
       "p_120": null, "p_125": null, "pred_half": "1:33:30",
-      "prob_note": null,
+      "prob_note": "The projected half has come down 4:15 since Jul 5 — CTL 20.3 to 27.6 and VO2max 54 to 57 in under three weeks.",
       "components": [],
       "entry": null,
-      "note_next": "Sun Jul 26: long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — the Jul 18 formula, the single most valuable session in this build."
+      "note_next": "Sat: easy 50-60 min @ 5:45-6:00/km, HR ceiling 148 — the tempo gates are not open yet (they need four straight weeks at 35+ mi/wk; you're at ~31). Sun: long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — repeat the Jul 18 formula exactly, it is the single most valuable session in this build."
     }
   ]
 }

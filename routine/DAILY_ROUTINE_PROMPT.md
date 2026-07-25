@@ -41,6 +41,9 @@ Per the "Current-Fitness Goal Probability" section of `DAY_SCORE.md`: P(hit goal
 ### 1d. Finalize yesterday's entry
 Terse coach's-voice read: executed vs prescribed, key stream findings, what it means. Fill `activity`, `score`, `score_committed`, `delta_p`, `p_120`, `p_125`, `prob_note`, `status:"scored"`.
 
+### 1b-bis. DEEP STREAM READ — do this before scoring, every run, no exceptions
+Follow **step 7 of `.claude/skills/generate-day-data/SKILL.md`** and write its findings into the day's `stream_read` object. Averages routinely hide the story: zone percentages (especially %Z5+ and seconds in Z7), peak HR as a % of max, moving-vs-elapsed (standing rest), per-rep pace/HR/cadence shape, set average pace vs BOTH the threshold estimate AND recent 5K/10K race pace, whether HR recovered between reps, and warmup/cooldown quality. A rep set averaging at or faster than recent 5K pace is a RACE and must be scored as one. Do not write a score until this read is done.
+
 ### 1e. Write the dashboard data files (the site's stream plots depend on this)
 Follow **`.claude/skills/generate-day-data/SKILL.md`** for yesterday's date, exactly — it is the canonical procedure (full-resolution streams, Intervals.icu auto-detected `intervals`, wellness upsert, manifest update, validation). Do its steps but do NOT commit inside it — committing happens in Step 4 below. You already pulled most of this data in 1a/2a; the skill adds `activity_intervals_get` and the persistence shapes.
 
