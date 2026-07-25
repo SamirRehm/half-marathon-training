@@ -73,6 +73,15 @@ The aggregates lie. A session can show a defensible average pace and intensity a
 - **Prescribed vs executed**, in the prescription's own units (pace band and/or HR ceiling from yesterday's `note_next`). State the delta in s/km or bpm.
 - **Cadence trend across the session** (per rep, or first vs second half). A drop of ≥3 spm is a mechanical fatigue tell and usually precedes a pace collapse.
 
+**Segment on the recording gaps FIRST — they are the workout, not noise**
+This athlete stops the watch during standing recoveries. So discontinuities in the `t` channel are the rep boundaries, and they are the most reliable structural signal available — more reliable than laps, and far more reliable than any velocity-threshold detector. Before anything else: scan `t` for jumps (>20 s), split the activity into the moving blocks between them, and treat the jump durations as the recoveries. Four blocks of ~365 s separated by ~200 s gaps is `4 x 1 mile off 3 minutes`; nothing else it could be.
+
+**Never judge rep execution from autolap kilometres.** Auto-laps straddle rep boundaries — the tail of one rep's fast finish plus the head of the next rep's controlled start — which manufactures a phantom mid-set collapse. On 2026-07-21 that artefact produced a confident, completely wrong report of "rep 4 cracked to 3:59 with cadence falling," and a 30-point scoring error. If gap-derived blocks exist, they win.
+
+**Then look for structure INSIDE each rep.** A rep is often not one pace: 2026-07-21 was 1000 m at 5K pace + ~560 m at mile pace, repeated four times. Whole-rep averages hide that completely. Split each rep where its pace steps (or at the prescribed distance, if known) and report both legs with their own pace and HR. Check whether the step is consistent across reps — a repeating internal pattern is design, never fade.
+
+**Ask what the session was meant to be.** If `note_next` or `planned` doesn't state the structure, say what the stream shows and ask the athlete rather than assuming. "Six kilometre reps" and "four mile reps with an internal gear change" score very differently, and only one of them was real.
+
 **Workouts (intervals / tempo / threshold)**
 - **Per-rep pace, HR and cadence** from the `intervals` array. Then judge the *shape*: even, progressive, or ragged. A rep that drops ≥8 s/km off its neighbour with cadence falling is a crack, not a variation — call it out with the rep number.
 - **Set average pace vs (a) the threshold estimate and (b) the athlete's best 5K/10K pace for the window.** This is the single most diagnostic comparison available: if a rep set averages at or faster than recent 5K race pace, the athlete raced, and the session should be scored as a race-effort day regardless of what it was called.

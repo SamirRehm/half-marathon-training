@@ -334,38 +334,42 @@
     {
       "date": "2026-07-21", "dow": "Tue", "status": "scored", "reviewed": false,
       "prediction": "1:34:00", "prediction_prev": "1:34:30",
-      "planned": "Run club speed workout",
-      "plan_rationale": "The protected Tuesday quality slot, on a fully recovered body (HRV 92, RHR 44).",
+      "planned": "Run club: 4 x 1 mile — first 1000 m at 5K pace, closing ~600 m at mile pace, ~3 min standing recovery between reps",
+      "plan_rationale": "The protected Tuesday quality slot, on a fully recovered body (HRV 92, RHR 44). A mile-rep set with an internal gear change: control the first 1000 m at 5K effort, then shift to mile pace for the last 600 m.",
       "wellness": { "ctl": 26.6, "atl": 40.5, "form": -13.9, "rampRate": 3.0, "hrv": 92, "restingHR": 44, "sleepSecs": 24420, "sleepScore": 84, "sleepQuality": 2, "vo2max": 57, "weight": null },
       "activity": { "name": "Burlingame Running — club night (wu / main / cd)", "km": 10.47, "mi": 6.51, "sec": 2764, "pace_per_km": "4:24", "hr": 164, "max_hr": 185, "intensity": 103.5, "load": 66, "cadence": 173, "stride_m": 1.31, "elev_gain_m": 43, "decoupling_pct": null, "hr_zone_sec": null },
-      "score": 48, "score_committed": 54, "bar_phase": "base",
-      "delta_p": "lowered — a 5K raced in six pieces, not a threshold session",
+      "score": 76, "score_committed": 70, "bar_phase": "base",
+      "delta_p": "raised — prescribed structure executed to the letter, and raised 1:20 more (speed evidence)",
       "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:00",
-      "prob_note": "current-fitness readout. ~0% now — projected half ~1:34 vs targets. Note the VO2max tick to 57 is partly an artefact of a 98%-max-HR session, not clean evidence of aerobic gain.",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:34 vs targets. This session also firms up the 5K estimate: 4x1 mile at 3:52 average off 3 min rest supports the critical-speed model's ~19:07 rather than 19:17 being the ceiling.",
       "stream_read": {
-        "reps_pace": ["4:02", "3:52", "3:49", "3:59", "3:46", "3:48"],
-        "reps_hr": [158, 167, 179, 175, 176, 183],
-        "set_avg_pace": "3:52",
-        "threshold_pace": "4:12",
-        "best_5k_pace_12mo": "3:52",
-        "zone_pct": { "z1": 6, "z2": 2, "z3": 3, "z4": 16, "z5": 13, "z6": 22, "z7": 38 },
-        "pct_z5_plus": 73, "z7_secs": 552, "peak_hr": 187, "pct_max_hr": 98,
-        "standing_recovery_secs": 590, "moving_secs": 1440,
-        "cadence_by_rep": [87.4, 86.7, 87.9, 84.4, 86.1, 87.7],
-        "cooldown": "1.80 km @ 5:23/km, HR 155, Z3 — not a cooldown"
+        "_method": "Segmented on the three recording gaps in the time channel (211 s / 172 s / 200 s) — those gaps ARE the standing recoveries, so they define the reps. Each rep then split at 1000 m to separate the 5K-pace leg from the mile-pace leg. Autolap kilometres were ignored: they straddle rep boundaries and fabricate a mid-set collapse that did not happen.",
+        "structure": "4 x ~1560 m, each = 1000 m @ 5K pace + ~560 m @ mile pace, ~3 min standing rest",
+        "reps": [
+          { "rep": 1, "dist_m": 1555, "time": "6:06", "avg_pace": "3:55", "leg1_1000m": "4:02", "leg1_hr": 158, "leg2_pace": "3:42", "leg2_hr": 173, "gear_change_s_per_km": 20, "rest_after_s": 211, "hr_recovered_to": 112 },
+          { "rep": 2, "dist_m": 1559, "time": "6:03", "avg_pace": "3:53", "leg1_1000m": "4:00", "leg1_hr": 172, "leg2_pace": "3:40", "leg2_hr": 179, "gear_change_s_per_km": 20, "rest_after_s": 172, "hr_recovered_to": 131 },
+          { "rep": 3, "dist_m": 1563, "time": "6:02", "avg_pace": "3:52", "leg1_1000m": "4:00", "leg1_hr": 175, "leg2_pace": "3:36", "leg2_hr": 182, "gear_change_s_per_km": 24, "rest_after_s": 200, "hr_recovered_to": 139 },
+          { "rep": 4, "dist_m": 1561, "time": "5:56", "avg_pace": "3:48", "leg1_1000m": "3:58", "leg1_hr": 179, "leg2_pace": "3:29", "leg2_hr": 184, "gear_change_s_per_km": 29 }
+        ],
+        "set_total": "6.24 km of work in 24:07, average 3:52/km",
+        "reference_paces": { "5k_pace_12mo": "3:52", "mile_pace_12mo": "3:40", "threshold_est": "4:12", "critical_speed": "3:54" },
+        "cadence_by_rep_spm": [176, 174, 171, 173],
+        "peak_hr": 187, "pct_max_hr": 98,
+        "warmup": "2.43 km building 5:36 → 4:55 → 4:40, HR 134 → 156 — textbook",
+        "cooldown": "1.80 km @ 5:23/km, HR 155 (Z3) — the one loose end; a cooldown should sit in Z1–Z2"
       },
       "components": [
-        { "label": "Ran the set at 3:52/km average — exactly his 12-month 5K race pace, and 20 s/km FASTER than the 4:12 threshold estimate", "delta": -14, "cat": "lowerer" },
-        { "label": "73% of the main set at Z5 or above, including 9.2 min in Z7; peak 187 bpm = 98% of max HR", "delta": -10, "cat": "lowerer" },
-        { "label": "Pacing came apart mid-set: rep 4 fell to 3:59 (+10 s) with cadence dropping 87.9 → 84.4 — the mechanical tell of cracking — then forced back to 3:46/3:48", "delta": -6, "cat": "lowerer" },
-        { "label": "~10 min of standing recovery inside 24 min of work — the rests were what made 5K pace possible, so the session built anaerobic tolerance, not the aerobic base the goal needs", "delta": -5, "cat": "lowerer" },
-        { "label": "Cooldown run at 5:23/km and 155 HR (Z3) — the session never actually ended", "delta": -3, "cat": "lowerer" },
-        { "label": "Club is the sanctioned empty-the-tank day, it was the right slot, and he arrived genuinely fresh (HRV 92, RHR 44)", "delta": 12, "cat": "raiser" },
-        { "label": "Warmup was excellent and deliberate: 5:36 → 4:55 → 4:40, HR 134 → 156", "delta": 6, "cat": "raiser" },
-        { "label": "No injury signal and recovery held afterwards — this is a misdirected session, not a setback", "delta": 8, "cat": "context" }
+        { "label": "Executed the prescription exactly: every 5K-pace leg landed 3:58-4:02 and every mile-pace leg 3:42 → 3:29. Four reps, four clean gear changes.", "delta": 16, "cat": "raiser" },
+        { "label": "Progressive across the whole set — 3:55, 3:53, 3:52, 3:48 — with the closing surge getting faster each rep (20, 20, 24, 29 s/km). Negative-split discipline, not fade.", "delta": 8, "cat": "raiser" },
+        { "label": "Held the controlled legs at 4:00, 8-10 s/km SLOWER than 5K pace — resisted the usual pull to over-cook the easy half of a rep", "delta": 6, "cat": "raiser" },
+        { "label": "Closing 560 m of the last rep at 3:29/km — comfortably inside mile pace. Genuine speed evidence, which is why 1:20 gains more than 1:25 here.", "delta": 5, "cat": "raiser" },
+        { "label": "Recovery depth shrank 62 → 49 → 44 beats across the rests — normal fatigue accumulation through a hard set, not a warning", "delta": 0, "cat": "note" },
+        { "label": "CTL 27 is still a thin base to be running mile-pace work on; the session is good, the foundation under it is young", "delta": -6, "cat": "lowerer" },
+        { "label": "Mile-pace sharpening is further from half-marathon specificity than threshold work — right execution, slightly off-target stimulus for the actual limiter", "delta": -4, "cat": "context" },
+        { "label": "Cooldown at 155 bpm in Z3 — the only sloppy part of the day", "delta": -3, "cat": "lowerer" }
       ],
-      "entry": "I had this down as the best-executed day of the block. Reading the full second-by-second stream, it was the most over-cooked. The six kilometre reps went 4:02, 3:52, 3:49, 3:59, 3:46, 3:48 — an average of 3:52/km. That is exactly your best 5K pace of the last twelve months, and 20 seconds per kilometre faster than your 4:12 threshold estimate. With roughly ten minutes of standing rest inside twenty-four minutes of running, which is the only reason it was holdable. So this wasn't a threshold workout with the paces slightly hot; it was a 5K raced in six pieces. The heart-rate trace says the same thing louder: 158 → 167 → 179 → 175 → 176 → 183, peaking at 187, which is 98% of your maximum, with 73% of the set at Z5 or above and 9.2 minutes in Z7. And it wasn't even controlled — rep 4 cracked to 3:59 with cadence falling from 87.9 to 84.4, the mechanical signature of running out of legs, before you forced the last two back down. Then the 'cooldown' was 5:23/km at 155 bpm in Z3. Credit where it's due: the warmup was genuinely excellent — 5:36 to 4:55 to 4:40 with HR building 134 to 156 — and you arrived properly fresh. Club is the sanctioned empty-the-tank day and this was the right slot for hard work. But you are 99 days out with an aerobic-base deficit, and anaerobic tolerance is the one quality this race does not ask for. One more honest correction: I cited the VO2max tick to 57 as a fitness signal. Garmin's estimate responds strongly to efforts near maximum heart rate, so a 98%-max session is precisely what inflates it — treat Saturday's 16 km at 141 bpm as the trustworthy signal, not this.",
-      "note_next": "Wed Jul 22: easy 40-50 min, HR under 148 — and after a session with 9 minutes in Z7, easy is not optional. The change that matters for the next club night: pick the pace band before you start (4:15-4:25 for kilometre reps) and let the rests be short rather than the reps fast. Short rest at threshold builds the half; long rest at 5K pace builds a 5K you are not racing."
+      "entry": "I got this badly wrong twice, so here it is read properly. The watch stops during your standing recoveries, which leaves three gaps in the time channel — 211, 172 and 200 seconds — and those gaps are the workout's skeleton. They cut the run into four blocks of 366, 363, 362 and 356 seconds: 4 x 1 mile off three minutes, exactly as prescribed. Splitting each rep at 1000 m separates the two halves of the assignment, and the execution is genuinely excellent. The 5K-pace legs came in at 4:02, 4:00, 4:00, 3:58 — metronomic, and deliberately 8-10 s/km slower than your actual 5K pace, which is the discipline this session was testing. The mile-pace legs went 3:42, 3:40, 3:36, 3:29: at mile pace, then progressively through it, finishing the last 560 m at 3:29/km. Rep averages fell every single time (3:55, 3:53, 3:52, 3:48) and the gear change widened every time (20, 20, 24, 29 s/km). That is a negative-split set executed better than most athletes manage. My earlier read claimed rep 4 'cracked to 3:59 with cadence collapsing' — that was an artefact of reading autolap kilometres, which straddle the boundary between one rep's fast finish and the next rep's controlled start. There was no crack. HR climbing 174 → 180 → 183 → 184 and recovery depth shrinking from 62 beats to 44 is simply the price of four hard miles, and a 62-beat drop in three minutes on the first rest is a strong number. Two honest caveats remain, and neither is a criticism of the session: CTL 27 is a young base to be running mile-pace work on, and mile speed is not your limiter — endurance is. The only loose end is the cooldown at 155 bpm in Z3. This also firms up the 5K picture: 4 x 1 mile averaging 3:52 off short rest sits with the critical-speed model's 19:07 rather than December's 19:17 being your ceiling.",
+      "note_next": "Wed Jul 22: easy 40-50 min, HR under 148. The session was right; what it needs is a Wednesday that actually absorbs it — that's the piece still missing. Keep the mile-rep format for the club nights; if anything, shorten the standing rest before you speed the reps up."
     },
     {
       "date": "2026-07-22", "dow": "Wed", "status": "scored", "reviewed": false,
@@ -374,7 +378,7 @@
       "plan_rationale": "The Wednesday easy run — the habit the block has been trying to fix, and the day the aerobic base actually comes from.",
       "wellness": { "ctl": 27.3, "atl": 42.7, "form": -15.4, "rampRate": 2.8, "hrv": 98, "restingHR": 46, "sleepSecs": 25140, "sleepScore": 83, "sleepQuality": 2, "vo2max": 57, "weight": null },
       "activity": { "name": "San Mateo Running", "km": 10.27, "mi": 6.38, "sec": 3059, "pace_per_km": "4:58", "hr": 153, "max_hr": 176, "intensity": 81.7, "load": 57, "cadence": 172, "stride_m": 1.17, "elev_gain_m": 47, "decoupling_pct": null, "hr_zone_sec": null },
-      "score": 56, "score_committed": 60, "bar_phase": "base",
+      "score": 58, "score_committed": 62, "bar_phase": "base",
       "delta_p": "slightly lowered — right direction, wrong day to spend",
       "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:45",
       "prob_note": "current-fitness readout. ~0% now — projected half ~1:33:45 vs targets.",
@@ -384,7 +388,7 @@
         { "label": "HRV 98 — the highest of the entire block", "delta": 3, "cat": "raiser" },
         { "label": "Still not easy: prescribed under 148, ran 153 avg at 81.7% the day after club", "delta": -8, "cat": "lowerer" },
         { "label": "Load 57 on a recovery slot — better than last week's 62, still high", "delta": -4, "cat": "lowerer" },
-        { "label": "Following a session that spent 9 min in Z7, this needed to be a true recovery day and wasn't", "delta": -4, "cat": "lowerer" }
+        { "label": "Following four hard miles at mile pace, this was the day that had to absorb them — and it didn't", "delta": -4, "cat": "lowerer" }
       ],
       "entry": "Progress, honestly. Same day of the week, same assignment, and you ran it at 153 HR / 81.7% instead of last Wednesday's 159 / 86.9% — six beats and five points of intensity in the right direction, with HRV at 98, the highest of the block. It is still not the easy run that was prescribed (the ceiling was 148), and a load of 57 is still most of a quality day. But the direction is right and the body is thriving: this is the first week where the pattern is bending rather than repeating.",
       "note_next": "Thu Jul 23: easy again, or off. The weekend long run is the priority — and Thursday is where the last three weeks went wrong."
