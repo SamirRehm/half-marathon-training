@@ -75,6 +75,7 @@ The file carries **raw truth**; the dashboard derives all presentation:
 So never pre-digest, filter, or "summarize" data here — completeness at full resolution IS the contract. Metric definitions live in the site's methods dialog (public/index.html); keep them in sync if analytics change.
 
 ## Gotchas
+- **Never estimate a sample. Omit the stream instead.** Every value in a day-file must be read data or computed from read data. If a stream can't be transcribed reliably — e.g. a barometric `altitude` array on a flat track session comes back as a long run-length step function whose boundary index you cannot count exactly — **drop that stream key for that activity** and say so. Omitting is schema-valid and the site degrades gracefully; a plausible-looking estimate is not recoverable later because nothing marks it as one. (Precedent: `2026-07-19` / `i167207575` has no `alt` for this reason.) Note that `alt` feeds only the decorative elevation strip — GAP uses the separately-fetched `grade_smooth`, so dropping it costs no metric.
 - **Timezone**: always Pacific `start_date_local`; check the neighboring UTC day before declaring a run missing.
 - **422s**: only request streams listed in `stream_types` (+`grade_smooth` for runs).
 - **Cadence** is per-leg rpm (~86 = 172 spm); store as recorded — the site doubles for display.
