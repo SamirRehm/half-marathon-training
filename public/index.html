@@ -24,10 +24,15 @@
 
    Series colours are steps from the data-viz reference palette. Both
    modes were validated as sets against this page's own chart surfaces
-   (#ffffff / #141922) with the skill's validator: lightness band, chroma
-   floor, adjacent CVD separation, normal-vision separation, contrast.
+   (#ffffff / #141922) with scripts/validate_palette.js — categorical
+   (blue,orange,aqua,yellow,magenta) and the ordinal blue ramp both pass
+   every gate in both modes (worst adjacent CVD ΔE 9.1 light / 8.4 dark).
    Light mode has three hues in the sub-3:1 "relief" band, which is legal
    here because every chart ships a legend and a numbers table.
+   Colour is assigned per measure, the same everywhere it appears:
+   pace=blue, heart rate=magenta, projection=yellow, fatigue=orange,
+   elevation=muted grey; session-type badges: workout=yellow, long=blue,
+   steady=orange, easy=aqua.
    ════════════════════════════════════════════════════════════════════════ */
 :root{
   color-scheme:light;
@@ -38,6 +43,7 @@
   --o1:#86b6ef; --o2:#5598e7; --o3:#2a78d6; --o4:#184f95;
   --ok:#0ca30c; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b;
   --okbg:rgba(12,163,12,.10); --warnbg:rgba(250,178,25,.13); --critbg:rgba(208,59,59,.10);
+  --bluebg:rgba(42,120,214,.10); --aquabg:rgba(27,175,122,.13); --orangebg:rgba(235,104,52,.12);
   --shadow:0 1px 2px rgba(17,24,38,.05),0 4px 12px rgba(17,24,38,.04);
   --r:16px; --r2:12px; --r3:9px;
 }
@@ -50,6 +56,7 @@
     --blue:#3987e5; --green:#008300; --magenta:#d55181; --yellow:#c98500; --aqua:#199e70; --orange:#d95926;
     --o1:#256abf; --o2:#3987e5; --o3:#86b6ef; --o4:#cde2fb;
     --okbg:rgba(12,163,12,.14); --warnbg:rgba(250,178,25,.14); --critbg:rgba(208,59,59,.15);
+    --bluebg:rgba(57,135,229,.17); --aquabg:rgba(25,158,112,.18); --orangebg:rgba(217,89,38,.17);
     --shadow:0 1px 2px rgba(0,0,0,.3);
   }
 }
@@ -108,7 +115,6 @@ main{padding:34px 0 60px}
 .lasthead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
 .lasthead h3{font-size:20px}
 .pill{font-size:13px;font-weight:600;padding:3px 11px;border-radius:99px;background:var(--sunk);color:var(--ink2)}
-.pill.hl{background:var(--warnbg);color:var(--yellow)}
 .read{font-size:16.5px;line-height:1.75;color:var(--ink2);margin-top:14px}
 .read b{color:var(--ink);font-weight:600}
 .figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:1px;background:var(--line);
@@ -249,43 +255,87 @@ table.era th:first-child,table.era td:first-child{text-align:left}
 /* day sheet */
 .scrim{position:fixed;inset:0;background:rgba(10,14,22,.5);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
 .scrim.on{opacity:1;pointer-events:auto}
-.sheet{position:fixed;top:0;right:0;bottom:0;width:min(700px,100vw);background:var(--page);
+.sheet{position:fixed;top:0;right:0;bottom:0;width:min(760px,100vw);background:var(--page);
   border-left:1px solid var(--line);transform:translateX(103%);transition:transform .26s cubic-bezier(.2,.8,.2,1);z-index:50;display:flex;flex-direction:column}
 .sheet.on{transform:none}
 .sh{display:flex;align-items:center;gap:10px;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--card)}
 .sh .t{font-size:18px;font-weight:650}
 .sh .r{margin-left:auto;display:flex;gap:8px}
 .sb{overflow-y:auto;padding:24px 22px 60px;overscroll-behavior:contain}
-.sb h4{font-size:14px;font-weight:600;color:var(--mut);margin:28px 0 12px}
+.sb h4{font-size:12.5px;font-weight:650;color:var(--mut);letter-spacing:.05em;text-transform:uppercase;margin:32px 0 12px}
 .sb h4:first-child{margin-top:0}
-.scorerow{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.sb h4 span{text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink2)}
+/* score hero: one ring for the headline score, everything else as quiet chips */
+.dhero{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.dh{flex:1;min-width:210px}
+.dh .verdict{font-size:18.5px;line-height:1.45;font-weight:600;letter-spacing:-.01em}
+.dmeta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;align-items:center}
+.rv{font-size:15px;color:var(--ink2)}
+.rv b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 .ring{width:104px;flex:none;text-align:center}
 .ring .v{margin-top:-66px;font-size:29px;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .ring .k{font-size:13px;color:var(--mut);margin-top:22px}
-.verdict{font-size:17px;line-height:1.6;color:var(--ink);flex:1;min-width:180px}
-.comp{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.verdict{font-size:17px;line-height:1.6;color:var(--ink)}
+.planbox{background:var(--sunk);border-left:3px solid var(--blue);border-radius:var(--r3);padding:16px 19px}
+.planbox .pt{font-size:16.5px;font-weight:600;line-height:1.5}
+.planbox .pr{font-size:15px;color:var(--ink2);line-height:1.68;margin-top:8px}
+.comp{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .comp:last-child{border-bottom:none}
 .comp .l{flex:1;font-size:15px;color:var(--ink2);line-height:1.55}
-.comp .d{font-size:16px;font-weight:650;font-variant-numeric:tabular-nums;width:40px;text-align:right;flex:none}
+.comp .d{font-size:13.5px;font-weight:650;font-variant-numeric:tabular-nums;flex:none;min-width:42px;text-align:center;border-radius:7px;padding:2px 8px}
+.comp .d.up{color:var(--ok);background:var(--okbg)}
+.comp .d.dn{color:var(--crit);background:var(--critbg)}
+.comp .d.zz{color:var(--mut);background:var(--sunk)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:14px;color:var(--ink2);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 13px;white-space:nowrap}
+.chip b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.chip i{font-style:normal;color:var(--mut)}
 .entry{font-size:16.5px;line-height:1.8;color:var(--ink2)}
 .act{border:1px solid var(--line);border-radius:var(--r2);background:var(--card);padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
-.act .ah{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:2px}
-.act .an{font-size:17px;font-weight:650}
+@media(max-width:600px){.act{padding:16px 14px}}
+.act .ah{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.act .an{font-size:17px;font-weight:650;flex:1 1 auto;min-width:120px}
 .act .tm{font-size:13.5px;color:var(--mut)}
-.sch{position:relative;height:180px;margin-top:18px}
-.sch.mini{height:92px}
-.xt{display:flex;gap:6px;margin-top:18px}
-.xt button{font-size:13px;color:var(--mut);border:1px solid var(--line);border-radius:8px;padding:4px 11px}
-.xt button.on{color:var(--ink);border-color:var(--yellow)}
-table.sp{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin-top:10px}
+.act h4{margin:26px 0 0;font-size:12px}
+/* session-type badge — colour follows the session kind, same map everywhere:
+   workout yellow, long blue, steady orange, easy/recovery aqua */
+.kbadge{font-size:12.5px;font-weight:650;padding:3px 11px;border-radius:99px;white-space:nowrap}
+.kbadge.wk{color:var(--yellow);background:var(--warnbg)}
+.kbadge.lg{color:var(--blue);background:var(--bluebg)}
+.kbadge.st{color:var(--orange);background:var(--orangebg)}
+.kbadge.ez{color:var(--aqua);background:var(--aquabg)}
+/* two tiers of stats: four hero tiles, then a quiet inline row.
+   (modifier is "big", not "hero" — .hero is the Today card and its padding
+   would frame this grid in grey) */
+.figs.big .fig{padding:14px 15px}
+.figs.big .v{font-size:22px}
+.subrow{display:flex;flex-wrap:wrap;gap:5px 18px;margin-top:12px;font-size:13.5px;color:var(--mut)}
+.subrow b{color:var(--ink2);font-weight:600;font-variant-numeric:tabular-nums}
+.cht{display:flex;align-items:baseline;gap:9px;margin-top:24px;min-width:0;flex-wrap:wrap}
+.cht .t{font-size:13.5px;font-weight:650;color:var(--ink)}
+.cht .s{font-size:12.5px;color:var(--mut)}
+.sch{position:relative;height:190px;margin-top:10px}
+.sch.mini{height:96px}
+.sch.reps{height:150px}
+.xtog{display:flex;gap:6px;margin-top:20px}
+.xtog button{font-size:13px;color:var(--mut);border:1px solid var(--line);border-radius:8px;padding:4px 11px}
+.xtog button.on{color:var(--ink);border-color:var(--yellow)}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px;margin-top:12px}
+.sv{background:var(--sunk);border-radius:var(--r3);padding:13px 16px}
+.sv .k{font-size:12.5px;color:var(--mut)}
+.sv .v{font-size:20px;font-weight:650;font-variant-numeric:tabular-nums;margin-top:2px;letter-spacing:-.02em}
+.sv .v small{font-size:12px;color:var(--mut);font-weight:400}
+.sv .n{font-size:13px;color:var(--mut);margin-top:4px;line-height:1.5}
+table.sp{width:100%;min-width:430px;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin-top:10px}
 table.sp th{font-size:12.5px;font-weight:600;color:var(--mut);text-align:right;padding:8px;border-bottom:1px solid var(--line)}
 table.sp td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);color:var(--ink2)}
 table.sp tr:last-child td{border-bottom:none}
 table.sp th:first-child,table.sp td:first-child{text-align:left}
 table.sp tr.w td{color:var(--ink);font-weight:550}
 table.sp td.best{color:var(--ok);font-weight:650}
-.zb{display:flex;height:30px;border-radius:8px;overflow:hidden;margin-top:12px;gap:2px}
-.zb div{display:grid;place-items:center;font-size:12.5px;font-weight:650;color:#fff;min-width:0;overflow:hidden;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.zb{display:flex;height:26px;border-radius:8px;overflow:hidden;margin-top:12px;gap:2px}
+/* label ink is chosen per segment by fill luminance — light zones get dark text */
+.zb div{display:grid;place-items:center;font-size:12px;font-weight:650;min-width:0;overflow:hidden}
 .zk{display:flex;gap:15px;flex-wrap:wrap;font-size:13px;color:var(--mut);margin-top:11px}
 .note{font-size:14.5px;color:var(--mut);background:var(--sunk);border-radius:var(--r3);padding:14px 16px;margin-top:16px;line-height:1.6}
 .x{width:36px;height:36px;border:1px solid var(--line);border-radius:10px;color:var(--ink2);display:grid;place-items:center;font-size:17px;background:var(--card)}
@@ -829,13 +879,13 @@ async function lastSession(){
 }
 function repTable(cls,a){
   const r=cls.rep,any=r.reps.some(x=>x.legs);
-  return `<table class="sp"><thead><tr><th>Rep</th><th>Dist</th><th>Time</th><th>Pace</th>
+  return `<div class="xscroll"><table class="sp"><thead><tr><th>Rep</th><th>Dist</th><th>Time</th><th>Pace</th>
     ${any?`<th>First leg</th><th>Closing</th>`:""}<th>♥ avg</th><th>Rest after</th></tr></thead><tbody>`+
     r.reps.map(x=>`<tr class="w"><td>${x.n}</td><td>${x.m?Math.round(x.m)+" m":"–"}</td><td>${mmss(x.secs)}</td>
       <td>${x.pace?paceStr(x.pace):"–"}</td>
       ${any?`<td>${x.legs?paceStr(x.legs[0].pace):"–"}</td><td class="best">${x.legs?paceStr(x.legs[1].pace):"–"}</td>`:""}
       <td>${x.hr?Math.round(x.hr):"–"}</td><td>${x.restAfter?mmss(x.restAfter)+(x.fellTo?` <span style="color:var(--mut)">→${x.fellTo}</span>`:""):"–"}</td></tr>`).join("")+
-    `</tbody></table><p class="note">${r.jogged
+    `</tbody></table></div><p class="note">${r.jogged
       ? "Segments come from Intervals.icu's work/recovery detection: the recoveries here were jogged rather than stood, so there are no pauses to split on. Only trusted when the fast segments sit clearly apart from the slow ones."
       : r.how==="varied"
         ? `Split on the ${r.rests.length} pause${r.rests.length===1?"":"s"} in the recording. The rests vary in length, but the blocks differ in pace by enough to be deliberate work rather than breathers.`
@@ -875,13 +925,6 @@ function buildRows(){
   const avg=w4.length?w4.reduce((s,x)=>s+x.mi,0)/w4.length:0;
   const e4=w4.length?w4.reduce((s,x)=>s+(x.easy||0),0)/w4.length:0;
   const wd=WELL.days||[],w=wd[wd.length-1]||{},st=streak();
-  const rows=[
-    [st,"weeks",st>=8?"ok":st>=4?"warn":"crit","Weeks without a break",
-      st>=8?"Past the eight the Labor Day gate asks for. This is the number your history cares about most.":`${8-st} more clean weeks reaches the gate. Every previous build ended when a block broke, not when training got too hard.`],
-    [Math.round(e4)+"%","","",e4>=70?"ok":e4>=50?"warn":"crit","Easy share, last four weeks"],
-    [sgn(w.ramp,1),"per week",w.ramp==null?"":w.ramp<=2.5?"ok":w.ramp<=4?"warn":"crit","How fast fitness is climbing",
-      w.ramp==null?"":w.ramp<=2.5?"A rate you can absorb.":w.ramp<=4?"Running warm. Above +4 is where your history turns bad.":"Above +4 — the rate that preceded every previous breakdown."]
-  ];
   $("buildRows").innerHTML=`
     <div class="row"><div class="rn num">${st}<small> wks</small></div><div class="rt">
       <div class="h">Weeks without a break ${flag(st>=8?"ok":st>=4?"warn":"crit",st>=8?"gate met":"building")}</div>
@@ -940,9 +983,13 @@ function drawVol(){
   const o=leg(opts());o.scales.x.stacked=true;o.scales.y.stacked=true;
   o.scales.y.ticks.callback=v=>v+" mi";
   o.plugins.tooltip.callbacks={footer:it=>"Total "+it.reduce((s,x)=>s+x.parsed.y,0).toFixed(1)+" mi"};
+  /* round the top of whichever bucket actually tops each week's stack —
+     a fixed "round the hard bucket" leaves flat tops on easy-only weeks */
+  const top=w.map(x=>{for(let k=BUCK.length-1;k>=0;k--)if(x.b[BUCK[k].k]>0.02)return k;return -1});
   mk("cVol",{type:"bar",data:{labels:w.map(x=>x.week.slice(5).replace("-","/")),
-    datasets:BUCK.map(b=>({label:b.l,data:w.map(x=>+x.b[b.k].toFixed(2)),backgroundColor:bcol(b.k),stack:"v",
-      borderRadius:b.k==="hard"?5:0,borderSkipped:false,borderColor:C.card,borderWidth:{top:2},maxBarThickness:30}))},options:o});
+    datasets:BUCK.map((b,bi)=>({label:b.l,data:w.map(x=>+x.b[b.k].toFixed(2)),backgroundColor:bcol(b.k),stack:"v",
+      borderRadius:c=>top[c.dataIndex]===bi?{topLeft:4,topRight:4}:0,borderSkipped:false,
+      borderColor:C.card,borderWidth:{top:2},maxBarThickness:24}))},options:o});
   tbl("cVol",["Week","Easy","Steady","Threshold","Hard","Total"],w.map(x=>[x.week,x.b.easy.toFixed(1),x.b.steady.toFixed(1),x.b.threshold.toFixed(1),x.b.hard.toFixed(1),x.mi.toFixed(1)]));
 }
 
@@ -1005,31 +1052,40 @@ async function openDay(ds){
   const rec=byDate[ds],sf=(ds in SF)?await getSF(ds):null;
   if(openD!==ds)return;
   const plan=rec?.status==="prescribed";let h="";
+  /* Order tells the story: verdict first, the narrative, the plan it is judged
+     against, the arithmetic, the morning context — then all the running data. */
   if(rec&&!plan&&rec.score!=null){
-    h+=`<div class="scorerow">${ring(rec.score,"vs 1:20")}${rec.score_committed!=null?ring(rec.score_committed,"vs 1:25"):""}
-      <div class="verdict">${rec.delta_p?esc(rec.delta_p[0].toUpperCase()+rec.delta_p.slice(1)):""}
-      ${rec.pred_half?`<div style="font-size:15px;color:var(--ink2);margin-top:10px">Projected half: <b style="color:var(--ink)">${esc(rec.pred_half)}</b></div>`:""}
-      ${rec.reviewed===false?`<div style="margin-top:12px">${flag("warn","drafted — needs your review")}</div>`:""}</div></div>`;
+    h+=`<div class="dhero">${ring(rec.score,"vs 1:20")}
+      <div class="dh"><div class="verdict">${rec.delta_p?esc(rec.delta_p[0].toUpperCase()+rec.delta_p.slice(1)):"Scored day"}</div>
+      <div class="dmeta">
+        ${rec.score_committed!=null?`<span class="rv">vs 1:25 <b style="color:${scol(rec.score_committed)}">${rec.score_committed}</b></span>`:""}
+        ${rec.pred_half?`<span class="rv">Projected <b>${esc(rec.pred_half)}</b></span>`:""}
+        ${rec.reviewed===false?flag("warn","drafted — needs your review"):""}
+      </div></div></div>`;
   }else if(plan)h+=`<div class="verdict" style="font-size:19px">${flag("ok","Planned for this day")}</div>`;
-  if(rec?.planned)h+=`<h4>${plan?"The session":"What was planned"}</h4><div class="card pad" style="box-shadow:none">
-    <div style="font-size:18px;font-weight:600;line-height:1.4">${esc(rec.planned)}</div>
-    ${rec.plan_rationale?`<p class="read" style="font-size:15.5px">${esc(rec.plan_rationale)}</p>`:""}</div>`;
-  if(rec?.components?.length)h+=`<h4>Why it scored that</h4>`+rec.components.map(c=>{
-    const col=c.delta>0?S.ok:c.delta<0?S.crit:C.mut;
-    return `<div class="comp"><span class="l">${esc(c.label)}</span><span class="d" style="color:${col}">${c.delta>0?"+":""}${c.delta}</span></div>`}).join("");
+  if(rec?.entry&&!plan)h+=`<h4>The coach's read</h4><div class="entry">${esc(rec.entry)}</div>`;
+  if(rec?.planned)h+=`<h4>${plan?"The session":"What was planned"}</h4>
+    <div class="planbox"><div class="pt">${esc(rec.planned)}</div>
+    ${rec.plan_rationale?`<div class="pr">${esc(rec.plan_rationale)}</div>`:""}</div>`;
+  if(rec?.components?.length)h+=`<h4>Why it scored that</h4>`+rec.components.map(c=>
+    `<div class="comp"><span class="l">${esc(c.label)}</span><span class="d ${c.delta>0?"up":c.delta<0?"dn":"zz"}">${c.delta>0?"+":""}${c.delta}</span></div>`).join("");
   const w=rec?.wellness||wellBy[ds];
   if(w){const form=w.form??(w.ctl!=null&&w.atl!=null?w.ctl-w.atl:null);
-    const rows=[["HRV",w.hrv],["Resting HR",w.restingHR??w.rhr],["Sleep",w.sleepSecs?(w.sleepSecs/3600).toFixed(1)+"<small> h</small>":null],
-      ["Quality",w.sleepQuality??w.sleepQ?sleepW(w.sleepQuality??w.sleepQ):null],["Fitness",fx(w.ctl,1)],["Fatigue",fx(w.atl,1)],
-      ["Freshness",form!=null?sgn(form,1):null],["Ramp",(w.rampRate??w.ramp)!=null?sgn(w.rampRate??w.ramp,1):null],["VO₂max",w.vo2max]].filter(r=>r[1]!=null);
-    h+=`<h4>That morning</h4><div class="figs">${rows.map(r=>`<div class="fig"><div class="k">${r[0]}</div><div class="v num">${r[1]}</div></div>`).join("")}</div>`}
+    const sq=w.sleepQuality??w.sleepQ;
+    const chips=[["HRV",w.hrv,null],["Resting",w.restingHR??w.rhr,null],
+      ["Slept",w.sleepSecs?(w.sleepSecs/3600).toFixed(1)+" h":null,sq?sleepW(sq):null],
+      ["Fitness",w.ctl!=null?fx(w.ctl,1):null,null],["Fatigue",w.atl!=null?fx(w.atl,1):null,null],
+      ["Freshness",form!=null?sgn(form,1):null,null],["Ramp",(w.rampRate??w.ramp)!=null?sgn(w.rampRate??w.ramp,1)+"/wk":null,null],
+      ["VO₂max",w.vo2max,null]].filter(r=>r[1]!=null);
+    if(chips.length)h+=`<h4>That morning</h4><div class="chips">${chips.map(r=>
+      `<span class="chip">${r[0]} <b>${r[1]}</b>${r[2]?` <i>(${r[2]})</i>`:""}</span>`).join("")}</div>`}
   const blocks=[];
   if(sf)sf.activities.forEach((a,i)=>blocks.push(actBlock(a,i)));
   else if(rec?.activity)blocks.push(simpleBlock(rec.activity));
   else (csvBy[ds]||[]).forEach(a=>blocks.push(simpleBlock({name:a.name,km:a.km,sec:a.sec,hr:a.hr,intensity:a.intensity,load:a.load})));
   if(blocks.length)h+=`<h4>The running</h4>`+blocks.join("");
   else if(rec&&!plan)h+=`<h4>The running</h4><div class="note">Rest day — nothing recorded.</div>`;
-  if(rec?.entry)h+=`<h4>The coach's read</h4><div class="entry">${esc(rec.entry)}</div>`;
+  if(rec?.entry&&plan)h+=`<h4>Notes</h4><div class="entry">${esc(rec.entry)}</div>`;
   if(rec?.note_next)h+=`<h4>What comes next</h4><div class="entry" style="font-size:15.5px">${esc(rec.note_next)}</div>`;
   $("shBody").innerHTML=h;
   if(sf)sf.activities.forEach((a,i)=>actCharts(a,i));
@@ -1038,22 +1094,30 @@ function actBlock(a,i){
   const m=a.meta||{},st=a.streams||{},run=a.type==="Run",cls=a._c=classify(a);
   const pace=m.avg_speed?v2p(m.avg_speed):null,gp=m.gap_speed?v2p(m.gap_speed):null,cd=spm(m.cadence_rpm);
   const time=new Date(a.start_local).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"});
-  const figs=[["Distance",run&&m.distance_m?(m.distance_m/1000).toFixed(2)+"<small> km</small>":null],
-    ["Moving",m.moving_s?fmtDur(m.moving_s):null],["Pace",run&&pace?paceStr(pace)+"<small>/km</small>":null],
-    ["Hill-adj",run&&gp?paceStr(gp)+"<small>/km</small>":null],
-    ["Avg ♥",m.avg_hr?m.avg_hr+(m.max_hr?`<small> / ${m.max_hr}</small>`:""):null],
-    ["Intensity",m.intensity!=null?Math.round(m.intensity)+"<small>%</small>":null],["Load",m.load??null],
-    ["Cadence",run&&cd?Math.round(cd)+"<small> spm</small>":null],
-    ["Climb",run&&m.elev_gain_m!=null?Math.round(m.elev_gain_m)+"<small> m</small>":null]].filter(f=>f[1]!=null);
-  let h=`<div class="act"><div class="ah"><span class="an">${esc(a.name)}</span>
-    ${cls.kind!=="xt"?`<span class="pill hl">${esc(KIND[cls.kind]||cls.kind)}${cls.rep?` · ${cls.rep.reps.length}×`:""}</span>`:`<span class="pill">${esc(a.type)}</span>`}
-    <span class="tm">${time}</span></div>
-    <div class="figs">${figs.map(f=>`<div class="fig"><div class="k">${f[0]}</div><div class="v num">${f[1]}</div></div>`).join("")}</div>`;
+  const kb=cls.kind==="xt"?`<span class="pill">${esc(a.type)}</span>`
+    :`<span class="kbadge ${isWk(cls.kind)?"wk":cls.kind==="long"?"lg":cls.kind==="steady"?"st":"ez"}">${esc(KIND[cls.kind]||cls.kind)}${cls.rep?` · ${cls.rep.reps.length}×`:""}</span>`;
+  /* four hero numbers; everything second-order drops to a quiet inline row */
+  const hero=[["Distance",run&&m.distance_m?(m.distance_m/1000).toFixed(2)+"<small> km</small>":null],
+    ["Moving",m.moving_s?fmtDur(m.moving_s):null],
+    ["Pace",run&&pace?paceStr(pace)+"<small>/km</small>":null],
+    ["Avg ♥",m.avg_hr?m.avg_hr+(m.max_hr?`<small> / ${m.max_hr}</small>`:""):null]].filter(f=>f[1]!=null);
+  const sub=[["hill-adj",run&&gp?paceStr(gp)+"/km":null],
+    ["intensity",m.intensity!=null?Math.round(m.intensity)+"%":null],["load",m.load??null],
+    ["cadence",run&&cd?Math.round(cd)+" spm":null],
+    ["climb",run&&m.elev_gain_m!=null?Math.round(m.elev_gain_m)+" m":null]].filter(f=>f[1]!=null);
+  let h=`<div class="act"><div class="ah"><span class="an">${esc(a.name)}</span>${kb}<span class="tm">${time}</span></div>
+    <div class="figs big">${hero.map(f=>`<div class="fig"><div class="k">${f[0]}</div><div class="v num">${f[1]}</div></div>`).join("")}</div>
+    ${sub.length?`<div class="subrow">${sub.map(f=>`<span>${f[0]} <b>${f[1]}</b></span>`).join("")}</div>`:""}`;
   if(st.t&&st.t.length>10){
-    if(run&&st.d)h+=`<div class="xt" data-a="${i}"><button class="on" data-x="d">By distance</button><button data-x="t">By time</button></div>`;
-    if(run&&st.v)h+=`<div class="sch"><canvas id="p${i}"></canvas></div>`;
-    if(st.hr)h+=`<div class="sch"><canvas id="h${i}"></canvas></div>`;
-    if(run&&st.alt)h+=`<div class="sch mini"><canvas id="e${i}"></canvas></div>`;
+    if(run&&st.d)h+=`<div class="xtog" data-a="${i}"><button class="on" data-x="d">By distance</button><button data-x="t">By time</button></div>`;
+    /* charts tailored to the session type: workouts lead with the rep-by-rep
+       read, continuous runs with the pace trace */
+    if(cls.rep)h+=`<div class="cht"><span class="t">Rep by rep</span><span class="s">taller is faster · the table below has every number</span></div><div class="sch reps"><canvas id="r${i}"></canvas></div>`;
+    if(run&&st.v)h+=`<div class="cht"><span class="t">Pace</span>${cls.rep?`<span class="s">work reps shaded</span>`:""}</div><div class="sch"><canvas id="p${i}"></canvas></div>`;
+    if(st.hr)h+=`<div class="cht"><span class="t">Heart rate</span><span class="s">zone bands behind</span></div><div class="sch"><canvas id="h${i}"></canvas></div>`;
+    /* elevation only when it shaped the run — a flat course is just noise */
+    let ar=0;if(st.alt){let mn=1/0,mx=-1/0;for(const x of st.alt){if(x==null)continue;if(x<mn)mn=x;if(x>mx)mx=x}ar=mx-mn}
+    if(run&&st.alt&&(ar>=25||(m.elev_gain_m||0)>=50))h+=`<div class="cht"><span class="t">Elevation</span></div><div class="sch mini"><canvas id="e${i}"></canvas></div>`;
     h+=`<div id="st${i}"></div>`;
     if(run&&st.d&&st.v&&!cls.rep){
       /* if a continuous run was paused, say so — silently ignoring the stops
@@ -1063,7 +1127,7 @@ function actBlock(a,i){
         const tot=gb.rests.reduce((x,y)=>x+y,0);
         h+=`<p class="note">${gb.rests.length} pause${gb.rests.length===1?"":"s"} totalling ${mmss(tot)}, ranging ${Math.min(...gb.rests)}–${Math.max(...gb.rests)} s. Too uneven, and the blocks too close in pace, to be deliberate recoveries — read as one continuous run with breaks. Splits below use moving time, so the stops don't inflate them.</p>`;
       }
-      h+=`<h4 style="margin:24px 0 0">Kilometre splits</h4><div id="sp${i}"></div>`;
+      h+=`<h4>Kilometre splits</h4><div id="sp${i}"></div>`;
     }
     h+=`<div id="f${i}"></div><div id="z${i}"></div>`;
   }else h+=`<div class="note">No detailed data for this activity.</div>`;
@@ -1075,13 +1139,17 @@ function simpleBlock(f){
   return `<div class="act"><div class="ah"><span class="an">${esc(f.name||"Run")}</span><span class="pill">logged</span></div>
     <div class="figs">${figs.map(x=>`<div class="fig"><div class="k">${x[0]}</div><div class="v num">${x[1]}</div></div>`).join("")}</div>
     <div class="note">Detailed streams weren't captured for this day.</div></div>`}
+/* in-fill labels pick white or ink by the segment's own luminance, so Z1's
+   light blue never carries white-on-light text */
+const lum=hx=>{if(!hx||hx[0]!=="#"||hx.length<7)return 0;const v=parseInt(hx.slice(1,7),16);
+  return(0.2126*(v>>16&255)+0.7152*(v>>8&255)+0.0722*(v&255))/255};
 function zoneBar(zt){
   const tot=zt.reduce((a,b)=>a+b,0);if(!tot)return"";
   const nm=ATH?.physiology?.hr_zone_names||[],cols=ZC();
   const seg=zt.map((s,i)=>({s,i})).filter(x=>x.s>0);
   const easy=Math.round(((zt[0]||0)+(zt[1]||0))/tot*100);
-  return `<h4 style="margin:24px 0 0">Time in each zone <span style="font-weight:400;color:var(--ink2)">— ${easy}% easy</span></h4>
-    <div class="zb">${seg.map(x=>`<div style="flex:${x.s};background:${cols[x.i]}" title="Z${x.i+1} ${esc(nm[x.i]||"")} ${fmtDur(x.s)}">${x.s/tot>.09?`Z${x.i+1}`:""}</div>`).join("")}</div>
+  return `<h4>Time in each zone <span>— ${easy}% easy</span></h4>
+    <div class="zb">${seg.map(x=>`<div style="flex:${x.s};background:${cols[x.i]};color:${lum(cols[x.i])>.62?"#101623":"#fff"}" title="Z${x.i+1} ${esc(nm[x.i]||"")} ${fmtDur(x.s)}">${x.s/tot>.09?`Z${x.i+1}`:""}</div>`).join("")}</div>
     <div class="zk">${seg.map(x=>`<span>Z${x.i+1} ${esc(nm[x.i]||"")} · ${fmtDur(x.s)}</span>`).join("")}</div>`}
 function actCharts(a,i){
   const st=a.streams||{};if(!st.t||st.t.length<10)return;
@@ -1104,6 +1172,24 @@ function actCharts(a,i){
   const spanX=()=>{const X=xv();return(cls.rep?cls.rep.reps:[]).map(r=>[X[r.i0],X[r.i1]])};
   const ch={};
   const series={};
+  /* the workout chart: one bar per rep, reversed pace axis so faster reps
+     stand taller. One series, so the mini-title above carries identity. */
+  if(cls.rep&&$("r"+i)){
+    const rr=cls.rep.reps.filter(r=>r.pace),lb=rr.map(r=>String(r.n));
+    if(rr.length>=2){
+      const ps=rr.map(r=>Math.round(r.pace)),mn=Math.min(...ps),mx=Math.max(...ps);
+      const o=opts();
+      o.scales.x.ticks.maxTicksLimit=24;
+      o.scales.y.reverse=true;o.scales.y.min=Math.max(0,mn-15);o.scales.y.max=mx+15;
+      o.scales.y.ticks.callback=v=>paceStr(v);
+      o.plugins.tooltip.callbacks={title:it=>"Rep "+lb[it[0].dataIndex],
+        label:c=>{const r=rr[c.dataIndex];const out=[`${paceStr(r.pace)}/km${r.m?` · ${Math.round(r.m)} m`:""} in ${mmss(r.secs)}`];
+          if(r.hr)out.push(`♥ ${Math.round(r.hr)} avg${r.peak?` / ${r.peak} peak`:""}`);
+          if(r.restAfter)out.push(`rest ${mmss(r.restAfter)} after`);return out}};
+      ch.r=new Chart($("r"+i),{type:"bar",data:{labels:lb,datasets:[{label:"Rep pace",data:ps,
+        backgroundColor:C.blue,borderRadius:4,borderSkipped:"start",maxBarThickness:24,base:mx+15}]},options:o});
+    }
+  }
   if(run&&st.v&&$("p"+i)){
     const ps=smooth(st.v,7).map(v2p),gs=gv?smooth(gv,13).map(v2p):null;
     const c2=ps.filter(x=>x&&x<900),mn=Math.min(...c2),mx=Math.max(...c2);
@@ -1113,7 +1199,7 @@ function actCharts(a,i){
     o.plugins.tooltip.callbacks={title:xt,label:c=>`${c.dataset.label}: ${paceStr(c.parsed.y)}/km`};
     if(cls.rep)o.plugins.reps={spans:spanX()};   // in axis units, refreshed on toggle
     const ds=[];
-    if(gs){series.g=gs;ds.push({label:"Hill-adjusted",data:pts(gs),borderColor:C.blue+"70",borderWidth:1.3,borderDash:[4,3],pointRadius:0,parsing:false,spanGaps:true})}
+    if(gs){series.g=gs;ds.push({label:"Hill-adjusted",data:pts(gs),borderColor:C.blue+"70",borderWidth:1.5,borderDash:[4,3],pointRadius:0,parsing:false,spanGaps:true})}
     series.p=ps;ds.push({label:"Pace",data:pts(ps),borderColor:C.blue,borderWidth:2,pointRadius:0,parsing:false,spanGaps:true});
     if(ds.length>1)leg(o);
     ch.p=new Chart($("p"+i),{type:"line",data:{datasets:ds},options:o});
@@ -1133,14 +1219,15 @@ function actCharts(a,i){
     o.plugins.tooltip.callbacks={title:xt,label:c=>`Elevation: ${Math.round(c.parsed.y)} m`};
     series.e=al;
     ch.e=new Chart($("e"+i),{type:"line",data:{datasets:[{label:"Elevation",data:pts(al),
-      borderColor:C.mut,backgroundColor:C.mut+"22",fill:"origin",borderWidth:1,pointRadius:0,parsing:false,spanGaps:true}]},options:o});
+      borderColor:C.mut,backgroundColor:C.mut+"1a",fill:"origin",borderWidth:1.5,pointRadius:0,parsing:false,spanGaps:true}]},options:o});
   }
   Object.values(ch).forEach(c=>sheetCharts.push(c));
-  const tg=document.querySelector(`.xt[data-a="${i}"]`);
+  const tg=document.querySelector(`.xtog[data-a="${i}"]`);
   if(tg)tg.querySelectorAll("button").forEach(b=>b.onclick=()=>{
     xm=b.dataset.x;tg.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
-    const key={p:["p","g"],h:["h"],e:["e"]};
+    const key={p:["p","g"],h:["h"],e:["e"]};   /* not "r": rep bars have no x axis to re-unit */
     Object.entries(ch).forEach(([k,c])=>{
+      if(!key[k])return;
       const src=key[k].filter(s=>series[s]);
       c.data.datasets.forEach((d,n)=>{d.data=pts(series[src[src.length-1-n]]||series[src[0]])});
       if(k==="p"&&series.g&&c.data.datasets.length===2){c.data.datasets[0].data=pts(series.g);c.data.datasets[1].data=pts(series.p)}
@@ -1148,26 +1235,35 @@ function actCharts(a,i){
       if(c.options.plugins.reps)c.options.plugins.reps.spans=spanX();
       c.update("none")});
   });
-  if($("st"+i)&&cls.rep)$("st"+i).innerHTML=`<h4 style="margin:24px 0 0">How it was run</h4>`+repTable(cls,a);
+  if($("st"+i)&&cls.rep)$("st"+i).innerHTML=`<h4>How it was run</h4>`+repTable(cls,a);
   if($("sp"+i)&&run&&st.d&&st.v&&!cls.rep){
     const sp=kmSplits(st,gv);
     if(sp.length){const full=sp.filter(s=>!s.part).map(s=>s.pace),f=Math.min(...full);
-      $("sp"+i).innerHTML=`<table class="sp"><thead><tr><th>Km</th><th>Time</th><th>Pace</th><th>Hill-adj</th><th>♥</th><th>Climb</th></tr></thead><tbody>`+
+      $("sp"+i).innerHTML=`<div class="xscroll"><table class="sp"><thead><tr><th>Km</th><th>Time</th><th>Pace</th><th>Hill-adj</th><th>♥</th><th>Climb</th></tr></thead><tbody>`+
       sp.map(s=>`<tr><td>${s.part?s.km.toFixed(2):s.km}</td><td>${mmss(s.secs)}</td>
         <td class="${!s.part&&s.pace===f?"best":""}">${paceStr(s.pace)}</td><td>${s.gap?paceStr(s.gap):"–"}</td>
-        <td>${s.hr?Math.round(s.hr):"–"}</td><td>${s.gain>=1?"+"+Math.round(s.gain)+" m":"·"}</td></tr>`).join("")+`</tbody></table>`}}
+        <td>${s.hr?Math.round(s.hr):"–"}</td><td>${s.gain>=1?"+"+Math.round(s.gain)+" m":"·"}</td></tr>`).join("")+`</tbody></table></div>`}}
   if($("z"+i)&&st.hr){const z=ATH?.physiology?.hr_zones||[145,153,162,171,176,181,190];
     $("z"+i).innerHTML=zoneBar(m.hr_zone_secs?.some(x=>x>0)?m.hr_zone_secs:zoneTimes(st.t,st.hr,z))}
-  /* a gear change at the end, and material stopped time — both invisible in the averages */
+  /* the numbers the averages bury: a gear change at the end, cardiac drift,
+     grade-adjusted efficiency, material stopped time */
   if($("f"+i)&&run&&!cls.rep){
     const bits=[];
     const fk=finishKick(st,gv);
     if(fk)bits.push(`<div class="sv"><div class="k">Finish</div><div class="v">${paceStr(fk.end.pace)}<small>/km</small></div>
-      <div class="k" style="margin-top:5px">last ${fk.end.km.toFixed(1)} km, ${fk.gain} s/km quicker than the ${paceStr(fk.body.pace)} body of the run${fk.end.hr?`, HR ${Math.round(fk.body.hr)}→${Math.round(fk.end.hr)}`:""}</div></div>`);
+      <div class="n">last ${fk.end.km.toFixed(1)} km, ${fk.gain} s/km up on the ${paceStr(fk.body.pace)} body of the run${fk.end.hr?`, ♥ ${Math.round(fk.body.hr)}→${Math.round(fk.end.hr)}`:""}</div></div>`);
+    if((m.moving_s||0)>=25*60){
+      const dc=decouple(st,gv);
+      if(dc)bits.push(`<div class="sv"><div class="k">Cardiac drift</div><div class="v">${dc.dec>0?"+":""}${dc.dec.toFixed(1)}<small>%</small></div>
+        <div class="n">${dc.neg?"ran a negative split, so low drift here is partly the faster finish":"how much more heart rate the same speed cost in the second half"}</div></div>`);
+    }
+    const ef=efOf(st,gv);
+    if(ef)bits.push(`<div class="sv"><div class="k">Efficiency</div><div class="v">${ef.toFixed(2)}<small> m/beat</small></div>
+      <div class="n">grade-adjusted metres travelled per heartbeat</div></div>`);
     const stop=(m.elapsed_s||0)-(m.moving_s||0);
     if(stop>=300)bits.push(`<div class="sv"><div class="k">Stopped</div><div class="v">${mmss(stop)}</div>
-      <div class="k" style="margin-top:5px">inside ${mmss(m.elapsed_s)} elapsed — the averages cover moving time only</div></div>`);
-    if(bits.length)$("f"+i).innerHTML=`<h4 style="margin:24px 0 0">Worth knowing</h4><div class="sg">${bits.join("")}</div>`;
+      <div class="n">inside ${mmss(m.elapsed_s)} elapsed — the averages cover moving time only</div></div>`);
+    if(bits.length)$("f"+i).innerHTML=`<h4>Worth knowing</h4><div class="sg">${bits.join("")}</div>`;
   }
 }
 
@@ -1248,14 +1344,14 @@ function renderGoal(){
   o.scales.y.ticks.callback=v=>`${Math.floor(v/60)}:${pad(Math.round(v%60))}`;
   o.plugins.tooltip.callbacks={label:c=>`${c.dataset.label}: ${s2hms(c.parsed.y*60)}`};
   mk("cCall",{type:"line",data:{labels:pd.map(d=>d.date.slice(5).replace("-","/")),datasets:[
-    {label:"Projected",data:pd.map(d=>t2s(d.pred_half||d.prediction)/60),borderColor:C.yellow,backgroundColor:C.yellow+"22",fill:true,borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.25},
-    ...gs.map((g,i)=>({label:g.time,data:pd.map(()=>g.secs/60),borderColor:[S.ok,C.aqua,C.mut][i]||C.mut,borderDash:[6,4],borderWidth:1.3,pointRadius:0}))]},options:o});
+    {label:"Projected",data:pd.map(d=>t2s(d.pred_half||d.prediction)/60),borderColor:C.yellow,backgroundColor:C.yellow+"1a",fill:true,borderWidth:2,pointRadius:2.5,pointHoverRadius:6,pointBackgroundColor:C.yellow,pointBorderColor:C.card,pointBorderWidth:1.5,tension:.25},
+    ...gs.map((g,i)=>({label:g.time,data:pd.map(()=>g.secs/60),borderColor:[S.ok,C.aqua,C.mut][i]||C.mut,borderDash:[6,4],borderWidth:1.5,pointRadius:0}))]},options:o});
   tbl("cCall",["Date","Projected","Score"],pd.map(d=>[d.date,d.pred_half||d.prediction,d.score??null]));
   /* fitness */
   o=leg(opts());o.plugins.cross=1;
   mk("cFit",{type:"line",data:{labels:wd.map(x=>x.d.slice(5).replace("-","/")),datasets:[
-    {label:"Fitness",data:wd.map(x=>x.ctl),borderColor:C.blue,backgroundColor:C.blue+"1f",fill:true,borderWidth:2.5,pointRadius:0,tension:.3},
-    {label:"Fatigue",data:wd.map(x=>x.atl),borderColor:C.orange,borderWidth:1.8,borderDash:[5,3],pointRadius:0,tension:.3}]},options:o});
+    {label:"Fitness",data:wd.map(x=>x.ctl),borderColor:C.blue,backgroundColor:C.blue+"1a",fill:true,borderWidth:2,pointRadius:0,tension:.3},
+    {label:"Fatigue",data:wd.map(x=>x.atl),borderColor:C.orange,borderWidth:1.5,borderDash:[5,3],pointRadius:0,tension:.3}]},options:o});
   tbl("cFit",["Date","Fitness","Fatigue","Freshness"],wd.map(x=>[x.d,fx(x.ctl,1),fx(x.atl,1),x.ctl!=null&&x.atl!=null?sgn(x.ctl-x.atl,1):null]));
   /* pace curve */
   const pc=ATH?.pace_curve_1y;
@@ -1268,10 +1364,10 @@ function renderGoal(){
     o.plugins.tooltip.callbacks={title:it=>it[0].parsed.x.toFixed(2)+" km",label:c=>`${c.dataset.label}: ${paceStr(c.parsed.y)}/km`};
     const cs=ATH.critical_speed_model?1000/ATH.critical_speed_model.critical_speed_ms:null;
     mk("cCurve",{type:"line",data:{datasets:[
-      {label:"Your best",data:pts,borderColor:C.blue,borderWidth:2.5,pointRadius:0,tension:.2,parsing:false},
-      ...gs.map((g,i)=>({label:g.time+" needs",data:[{x:21.0975,y:g.secs/21.0975}],borderColor:[S.ok,C.aqua,C.yellow][i]||C.mut,
-        backgroundColor:[S.ok,C.aqua,C.yellow][i]||C.mut,pointRadius:7,pointStyle:"rectRot",showLine:false,parsing:false})),
-      ...(cs?[{label:"Critical speed",data:[{x:.4,y:cs},{x:23,y:cs}],borderColor:C.magenta,borderDash:[5,4],borderWidth:1.3,pointRadius:0,parsing:false}]:[])]},options:o});
+      {label:"Your best",data:pts,borderColor:C.blue,borderWidth:2,pointRadius:0,tension:.2,parsing:false},
+      ...gs.map((g,i)=>({label:g.time+" needs",data:[{x:21.0975,y:g.secs/21.0975}],borderColor:C.card,
+        backgroundColor:[S.ok,C.aqua,C.yellow][i]||C.mut,pointRadius:7,pointHoverRadius:9,pointBorderWidth:2,pointStyle:"rectRot",showLine:false,parsing:false})),
+      ...(cs?[{label:"Critical speed",data:[{x:.4,y:cs},{x:23,y:cs}],borderColor:C.magenta,borderDash:[5,4],borderWidth:1.5,pointRadius:0,parsing:false}]:[])]},options:o});
     tbl("cCurve",["Distance","Best time","Pace"],pc.distance_m.map((D,i)=>[D>=1000?(D/1000).toFixed(2)+" km":Math.round(D)+" m",fmtDur(pc.seconds[i]),paceStr(pc.seconds[i]/(D/1000))]).reverse().slice(0,45));
   }
 }
