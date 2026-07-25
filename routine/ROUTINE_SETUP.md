@@ -29,11 +29,20 @@ Everything else is already in the repo.
 2. **Prompt:** paste the entire contents of `routine/DAILY_ROUTINE_PROMPT.md`, verbatim. It is self-contained and repo-referenced — each run reads `RUNNER_CONTEXT.md`, `DAY_SCORE.md`, `routine/INTERVALS_DATA_REFERENCE.md`, `.claude/skills/generate-day-data/SKILL.md` and `data/daily_log.json` for itself, which is why the prompt stays short and the thinking lives in version control.
 3. **Repository:** this repo, with permission to push to `main`. (Direct to `main` is what makes the site redeploy automatically. A `claude/*` branch + review also works, but then nothing publishes until you merge.)
 4. **Connectors:** attach **Intervals.icu**. Required — without it the routine writes `routine/LAST_RUN_ERROR.txt` and commits nothing. MCP traffic routes through Anthropic's servers, so there is no network allowlisting to do.
-5. **Schedule:** daily, timezone **America/Los_Angeles** — name the timezone rather than a UTC offset so DST is handled for you. Pick a time:
-   - **00:15** — the day just ended, so scoring is at its most reliable. Your overnight recovery for the new day does not exist yet, so the routine marks the session **provisional** and attaches downgrade gates you apply on waking. The dashboard labels it as such.
-   - **07:00–08:45** *(firmer plans)* — after the morning device sync, so HRV, resting HR and sleep are in and the session is set on real numbers.
+5. **Schedule:** daily, timezone **America/Los_Angeles** — name the timezone rather than a UTC offset so DST is handled for you.
 
-   Both work; the prompt detects which situation it is in and behaves accordingly. Prefer a minute that isn't `:00` so you're not landing on the same instant as everyone else.
+   **Recommended: two runs, same prompt.** Each half of the job gets the data it actually needs.
+
+   | Run | Time | What it has | What it does |
+   |---|---|---|---|
+   | **Night** | `00:15` | The day just ended and its activities have synced | Scores that day on complete data, writes its stream file, and puts a **provisional** plan on the new day with downgrade gates |
+   | **Morning** | `08:28` | Overnight HRV, resting HR and sleep | Firms the provisional plan into a real one, and re-checks the night's scoring in case a late-evening run synced after midnight |
+
+   Create the routine twice with the identical prompt and different times. The prompt works out which run it is from the Pacific clock and from what the log already contains, so the two can't fight: it never duplicates a day, never re-scores unchanged data, and commits nothing when there's nothing to change.
+
+   Prefer off-minutes (`:15`, `:28`) over `:00` so you're not landing on the same instant as every other scheduled job in the world.
+
+   **A single run at ~08:30 also works fine** and uses half the quota — it just does both jobs at once, and yesterday's analysis isn't waiting for you when you wake up.
 6. **Model:** a strong one. The scoring and the stream reading are real judgement, not formatting.
 7. Save.
 
