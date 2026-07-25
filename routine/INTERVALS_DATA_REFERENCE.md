@@ -25,13 +25,13 @@ Daily wellness rows. Use for a specific day (`from=to=that date`, Pacific) or a 
 Completed activities in a window. Each row has the summary fields (distance, moving_time, average_heartrate, icu_intensity, icu_training_load, start_date_local, type, total_elevation_gain, id, name). **Use `id` to fetch detail/streams.** NOTE the API returns activities dated by UTC window — pull a slightly wider window and filter by `start_date_local` to Pacific-yesterday to avoid boundary misses.
 
 ### `activity_detail_get` (activity_id)
-The FULL record for one activity — 200+ fields. Use for any workout / long run / notable day. Key fields below.
+The FULL record for one activity — 200+ fields. **Pull it for every activity, every day** — not just workouts or notable days. It is also how you learn which streams exist (`stream_types`), which is what prevents a 422 on the streams call. Key fields below.
 
 ### `activity_streams_get` (activity_id)
-Second-by-second arrays. **This is where the real read lives** — averages hide the story. Available streams: `time`, `velocity_smooth` (→ pace), `heartrate`, `cadence`, `watts` (running power — the Garmin records it), `distance`, `altitude`, `fixed_altitude`, `latlng`, `torque`. Analyze how pace/HR/cadence/power EVOLVE across the run.
+Second-by-second arrays. **This is where the real read lives** — averages hide the story. Available streams: `time`, `velocity_smooth` (→ pace), `heartrate`, `cadence`, `watts` (running power — the Garmin records it), `distance`, `altitude`, `fixed_altitude`, `latlng`, `torque`. **Pull these for every run without exception** and analyse how pace/HR/cadence/power evolve across it — a summary is a claim that the run had one character, and most runs don't. Never request `latlng` or `temp` (public repo). The full battery to compute is step 7A of `.claude/skills/generate-day-data/SKILL.md`.
 
 ### `activity_intervals_get` (activity_id)
-Auto-detected + manual laps/intervals with per-interval averages (pace, HR, cadence, gap, zone). Use to read workout structure (rep splits, fade across reps).
+Auto-detected + manual laps/intervals with per-interval averages (pace, HR, cadence, gap, zone). Pull for every run. Useful for structure when recoveries were *jogged* — but note that **auto-lap kilometres must never be used to judge rep execution**: they straddle rep boundaries and can fabricate a mid-set collapse. Recording gaps in the `time` stream outrank laps whenever they exist.
 
 ### Supporting (occasional)
 - `athlete_sport_settings_run_get` → HR zones, LTHR (172), max HR (190), threshold pace.

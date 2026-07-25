@@ -66,8 +66,15 @@ The same trap exists for **wellness rows**. Intervals keys wellness by its own d
 ### 2a. Pull the data
 Every activity for Pacific-yesterday: distance, moving and elapsed time, avg/max HR, `icu_intensity`, load, `average_cadence`, `average_stride`, pace, `gap`, elevation, `icu_hr_zone_times`, `interval_summary`, feel/RPE. Then `activity_streams_get` for each activity, and `activity_intervals_get` for every run.
 
-### 2b. Deep stream read — before any score is written, no exceptions
-Follow **step 7 of `.claude/skills/generate-day-data/SKILL.md`** and record the findings in the day's `stream_read` object. The aggregates routinely hide the session. These rules matter most, because getting them wrong has already produced confidently false reports:
+### 2b. Deep stream read — EVERY run, EVERY time, before any score is written
+
+**Every activity of type Run gets the full read. There are no exempt runs.** Not a 25-minute recovery jog, not a shakeout, not the fourth easy Wednesday in a row, not a run whose averages look unremarkable. Follow **step 7 of `.claude/skills/generate-day-data/SKILL.md`** — its section 7A is a mandatory battery that applies to every run, and 7B only *adds* checks depending on what the run turned out to be. Record everything in the day's `stream_read` object.
+
+This is not caution for its own sake. The two worst misreads on this athlete were both on runs that looked least interesting: a club night whose averages read as a tidy quality day was a 5K raced in six pieces at 98% of max HR, and a long run averaging 141 bpm read as "genuinely easy" while containing 4 km at 4:51–4:27/km. Both were missed by trusting a summary. **A mean is a claim that a run had one character, and most runs don't.**
+
+"Nothing notable" is a legitimate conclusion — but only after the numbers have actually been computed, and record them regardless. A boring run's numbers are what make next month's trend readable.
+
+These rules matter most, because getting them wrong has already produced confidently false reports:
 
 - **Segment on the recording gaps first.** This athlete stops his watch during standing recoveries, so jumps in the `t` channel are the rep boundaries — the most reliable structural signal that exists. Four blocks of ~365 s separated by ~200 s gaps is `4 × 1 mile off 3 minutes`, and nothing else.
 - **Never judge rep execution from auto-lap kilometres.** They straddle rep boundaries — one rep's fast finish plus the next rep's controlled start — and will manufacture a mid-set collapse that never happened. If gap-derived blocks exist, they win.
