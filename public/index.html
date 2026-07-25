@@ -523,17 +523,46 @@ function segStats(st,a,b){
   let peak=0;if(st.hr)for(let i=a;i<=b;i++)if(st.hr[i]>peak)peak=st.hr[i];
   return{m:d,secs,pace:d>0?secs/(d/1000):null,hr:av(st.hr),cad:spm(av(st.cad)),peak:peak||null,hrEnd:st.hr?st.hr[b]:null};
 }
+const meanOf=xs=>xs.reduce((a,b)=>a+b,0)/xs.length;
+const cvOf=xs=>{const m=meanOf(xs);return m?Math.sqrt(meanOf(xs.map(x=>(x-m)**2)))/m:99};
+const medOf=xs=>{const s=xs.slice().sort((a,b)=>a-b);return s[s.length>>1]};
+/* Gaps alone don't make a workout — a continuous run pauses at crossings, or
+   because the athlete needed a breather. Two signals separate real structure
+   from incidental stops, and EITHER is enough, so varied reps, pyramids and
+   fartlek all survive while fatigue breaks do not:
+     · deliberate recoveries CLUSTER (consistent length, ≥1 min);
+       incidental stops scatter (28 s next to 276 s).
+     · structured work has a fast/slow PACE SEPARATION between blocks;
+       a continuous run's blocks all sit at one effort.
+   Rep-duration uniformity is deliberately NOT required — that would reject a
+   1600/1200/800/400 pyramid, which is a real session. */
 function repRead(a){
   const st=a.streams;if(!st?.t||!st.v)return null;
   const gb=gapBlocks(st);if(!gb)return null;
-  /* Gaps alone don't make a rep session — a continuous run can pause at a road
-     crossing. Reps REPEAT: similar durations, plausible rests, rep-sized blocks. */
-  const durs=gb.blocks.map(([a2,b2])=>st.t[b2]-st.t[a2]);
-  const mean=durs.reduce((x,y)=>x+y,0)/durs.length;
-  const cvar=Math.sqrt(durs.reduce((s,d)=>s+(d-mean)**2,0)/durs.length)/mean;
-  if(cvar>0.2)return null;                              // uneven blocks = not reps
-  if(mean<45||mean>900)return null;                     // rep-sized only
-  if(!gb.rests.every(r=>r>=30&&r<=420))return null;      // plausible recoveries
+  const solid=gb.blocks.filter(([x,y])=>st.t[y]-st.t[x]>=45);   // drop fragments
+  if(solid.length<2)return null;
+  const rests=[];for(let n=1;n<solid.length;n++)rests.push(Math.round(st.t[solid[n][0]]-st.t[solid[n-1][1]]));
+  const durs=solid.map(([x,y])=>st.t[y]-st.t[x]);
+  if(medOf(durs)>1500)return null;                               // whole-run blocks, not reps
+  const restsRegular=rests.length>0&&medOf(rests)>=60&&cvOf(rests)<=0.4;
+  const paces=solid.map(([x,y])=>{const d=st.d?st.d[y]-st.d[x]:0;const t2=st.t[y]-st.t[x];return d>50?t2/(d/1000):null});
+  let paceSep=false;
+  const valid=paces.filter(Boolean);
+  if(valid.length>=3){
+    const mid=(Math.min(...valid)+Math.max(...valid))/2;
+    const fast=valid.filter(p=>p<=mid),slow=valid.filter(p=>p>mid);
+    if(fast.length&&slow.length&&(meanOf(slow)-meanOf(fast))>=25){
+      /* pace differences only mean structure if fast and slow ALTERNATE. A
+         progression run or a long run with a fast finish also spreads its
+         paces, but monotonically — all the quick blocks bunch at the end. */
+      const seq=paces.map(p=>p!=null&&p<=mid);
+      let groups=0;for(let n=0;n<seq.length;n++)if(seq[n]&&!seq[n-1])groups++;
+      paceSep=groups>=2;
+    }
+  }
+  if(!restsRegular&&!paceSep)return null;
+  gb.blocks=solid;gb.rests=rests;gb.how=restsRegular?"standing":"varied";
+  gb.weak=!restsRegular;   /* only pace-based — a weaker read than clustered rests */
   const reps=gb.blocks.map(([i0,i1],n)=>{
     const all=segStats(st,i0,i1);
     const j=legSplit(st,i0,i1);
@@ -542,7 +571,7 @@ function repRead(a){
     if(n<gb.rests.length){const nx=gb.blocks[n+1][0];let mn=999;for(let i=i1;i<=nx;i++)if(st.hr&&st.hr[i]!=null&&st.hr[i]<mn)mn=st.hr[i];fellTo=mn<999?mn:null}
     return{n:n+1,i0,i1,...all,legs,restAfter:gb.rests[n]??null,fellTo};
   });
-  return{reps,rests:gb.rests};
+  return{reps,rests:gb.rests,how:gb.how};
 }
 function kmSplits(st,gv){
   const{t,d,v,hr,alt}=st;if(!t||!d)return[];
@@ -591,9 +620,15 @@ function intervalRead(a){
   if(work.length<2||!slow.length)return null;
   const mean=xs=>xs.reduce((s,x)=>s+spd(x),0)/xs.length;
   if(mean(work)/mean(slow)<1.1)return null;                    // groups not separated
-  const durs=work.map(x=>x.mov);
-  const m2=durs.reduce((x,y)=>x+y,0)/durs.length;
-  if(Math.sqrt(durs.reduce((s,d)=>s+(d-m2)**2,0)/durs.length)/m2>0.3)return null;
+  /* Reps must ALTERNATE with recoveries. This is what separates a jogged-
+     recovery rep set or a fartlek (fast / float / fast / float) from a
+     continuous progression run, whose autolaps simply get monotonically
+     quicker and so bunch all the "fast" segments together at the end.
+     Deliberately NOT a uniformity test — a fartlek's surges and a
+     1600/1200/800/400 pyramid vary in length by design. */
+  const seq=iv.slice().sort((x,y)=>x.i0-y.i0).map(x=>spd(x)>thr);
+  let groups=0;for(let n=0;n<seq.length;n++)if(seq[n]&&!seq[n-1])groups++;
+  if(groups<2||groups<work.length*0.6)return null;
   const reps=work.map((x,n)=>{
     const j=legSplit(st,x.i0,x.i1);
     return{n:n+1,i0:x.i0,i1:x.i1,m:x.d,secs:x.mov,pace:x.v?1000/x.v:null,hr:x.hr,peak:x.max_hr,
@@ -607,7 +642,11 @@ function classify(a){
   if(a.type!=="Run")return{kind:"xt"};
   const dur=()=>m.moving_s>=3600||m.distance_m>=12000?"long":m.intensity==null||m.intensity<70?"recovery":m.intensity<80?"easy":m.intensity<88?"steady":"threshold";
   if(m.intensity!=null&&m.intensity<80)return{kind:dur()};
-  const rr=repRead(a)||intervalRead(a);
+  /* Strongest evidence first: clustered standing rests are unambiguous, then
+     Intervals' own work/recovery detection for jogged recoveries, then the
+     weaker pace-only read from uneven pauses. */
+  const gapR=repRead(a);
+  const rr=(gapR&&!gapR.weak)?gapR:(intervalRead(a)||gapR);
   if(rr&&rr.reps.length>=2){
     const md=rr.reps.map(r=>r.secs).sort((x,y)=>x-y)[rr.reps.length>>1];
     return{kind:md<=200?"intervals":"reps",rep:rr};
@@ -755,8 +794,10 @@ function repTable(cls,a){
       ${any?`<td>${x.legs?paceStr(x.legs[0].pace):"–"}</td><td class="best">${x.legs?paceStr(x.legs[1].pace):"–"}</td>`:""}
       <td>${x.hr?Math.round(x.hr):"–"}</td><td>${x.restAfter?mmss(x.restAfter)+(x.fellTo?` <span style="color:var(--mut)">→${x.fellTo}</span>`:""):"–"}</td></tr>`).join("")+
     `</tbody></table><p class="note">${r.jogged
-      ? "Reps taken from Intervals.icu's own work/recovery detection, because the recoveries here were jogged rather than stood — there are no pauses to segment on. Only used when the fast segments stand clearly apart from the slow ones."
-      : `Segmented on the ${r.rests.length} recording gap${r.rests.length===1?"":"s"} in the watch data — those pauses are the standing recoveries, so they define the reps. Auto-lap kilometres are deliberately ignored: they cut across rep boundaries and can invent a mid-set collapse that never happened.`}</p>`;
+      ? "Segments come from Intervals.icu's work/recovery detection: the recoveries here were jogged rather than stood, so there are no pauses to split on. Only trusted when the fast segments sit clearly apart from the slow ones."
+      : r.how==="varied"
+        ? `Split on the ${r.rests.length} pause${r.rests.length===1?"":"s"} in the recording. The rests vary in length, but the blocks differ in pace by enough to be deliberate work rather than breathers.`
+        : `Split on the ${r.rests.length} pause${r.rests.length===1?"":"s"} in the recording — they run ${Math.min(...r.rests)}–${Math.max(...r.rests)} s, consistent enough to be deliberate recoveries. Auto-lap kilometres are not used here: they cut across rep boundaries and can invent a mid-set collapse that never happened.`}</p>`;
 }
 function weekStrip(){
   const mon=parseD(wkOf(TODAY));
@@ -972,7 +1013,16 @@ function actBlock(a,i){
     if(st.hr)h+=`<div class="sch"><canvas id="h${i}"></canvas></div>`;
     if(run&&st.alt)h+=`<div class="sch mini"><canvas id="e${i}"></canvas></div>`;
     h+=`<div id="st${i}"></div>`;
-    if(run&&st.d&&st.v&&!cls.rep)h+=`<h4 style="margin:24px 0 0">Kilometre splits</h4><div id="sp${i}"></div>`;
+    if(run&&st.d&&st.v&&!cls.rep){
+      /* if a continuous run was paused, say so — silently ignoring the stops
+         would overstate how continuous the effort was */
+      const gb=gapBlocks(st);
+      if(gb&&gb.rests.length){
+        const tot=gb.rests.reduce((x,y)=>x+y,0);
+        h+=`<p class="note">${gb.rests.length} pause${gb.rests.length===1?"":"s"} totalling ${mmss(tot)}, ranging ${Math.min(...gb.rests)}–${Math.max(...gb.rests)} s. Too uneven, and the blocks too close in pace, to be deliberate recoveries — read as one continuous run with breaks. Splits below use moving time, so the stops don't inflate them.</p>`;
+      }
+      h+=`<h4 style="margin:24px 0 0">Kilometre splits</h4><div id="sp${i}"></div>`;
+    }
     h+=`<div id="z${i}"></div>`;
   }else h+=`<div class="note">No detailed data for this activity.</div>`;
   return h+`</div>`}
