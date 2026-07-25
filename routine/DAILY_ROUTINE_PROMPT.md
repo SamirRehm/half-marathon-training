@@ -42,10 +42,7 @@ Per the "Current-Fitness Goal Probability" section of `DAY_SCORE.md`: P(hit goal
 Terse coach's-voice read: executed vs prescribed, key stream findings, what it means. Fill `activity`, `score`, `score_committed`, `delta_p`, `p_120`, `p_125`, `prob_note`, `status:"scored"`.
 
 ### 1e. Write the dashboard data files (the site's stream plots depend on this)
-Per the "Dashboard data files" section of `routine/INTERVALS_DATA_REFERENCE.md`, exactly:
-- If yesterday had ≥1 activity: write `data/streams/<yesterday>.json` (all activities, meta + downsampled streams, NO latlng/temp) and append the date to `data/streams/index.json`.
-- Upsert yesterday's AND today's rows in `data/wellness.json` (compact field names per the reference).
-You already pulled this data in 1a/2a — this step just persists it in the documented shape.
+Follow **`.claude/skills/generate-day-data/SKILL.md`** for yesterday's date, exactly — it is the canonical procedure (full-resolution streams, Intervals.icu auto-detected `intervals`, wellness upsert, manifest update, validation). Do its steps but do NOT commit inside it — committing happens in Step 4 below. You already pulled most of this data in 1a/2a; the skill adds `activity_intervals_get` and the persistence shapes.
 
 ---
 

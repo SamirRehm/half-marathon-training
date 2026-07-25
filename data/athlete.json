@@ -1,42 +1,144 @@
 {
-  "_note": "Athlete reference snapshot for the dashboard. Sources: Intervals.icu athlete_sport_settings_run_get + athlete_profile_get + athlete_pace_curves_get (pulled 2026-07-07), plus RUNNER_CONTEXT.md for plan constants not stored in Intervals. The daily routine may refresh this occasionally; the site treats it as slowly-changing reference data.",
-  "updated": "2026-07-07",
-  "athlete_id": "i631111",
+  "_note": "Athlete reference + plan constants for the dashboard. Physiology/zones/pace-curve from Intervals.icu (pulled 2026-07-25); profile, history, plan and gates distilled from RUNNER_CONTEXT.md §1-§6. Slowly-changing — refresh occasionally, not daily.",
+  "updated": "2026-07-25",
   "timezone": "America/Los_Angeles",
-  "lthr": 172,
-  "max_hr": 190,
-  "resting_hr_baseline": [46, 48],
-  "hrv_baseline_ms": 87,
-  "weight_kg": 61.0,
-  "hr_zones": [145, 153, 162, 171, 176, 181, 190],
-  "hr_zone_names": ["Recovery", "Aerobic", "Tempo", "SubThreshold", "SuperThreshold", "Aerobic Capacity", "Anaerobic"],
-  "gap_model": "STRAVA_RUN",
-  "pace_units": "MINS_KM",
-  "threshold_pace_s_per_km": 252,
-  "_threshold_note": "Not set in Intervals; ~4:10-4:15/km current estimate per RUNNER_CONTEXT §6 (Jul 2026). Used only for pace-context shading, never for scoring.",
+
+  "physiology": {
+    "lthr": 172,
+    "max_hr": 190,
+    "resting_hr_baseline": [46, 48],
+    "hrv_baseline_ms": 87,
+    "hrv_range": [77, 99],
+    "weight_kg": 61.0,
+    "weight_lb": 134,
+    "vo2max_now": 57,
+    "vo2max_peak": 58,
+    "vo2max_peak_when": "2025-11",
+    "device": "Garmin Forerunner 255",
+    "hr_zones": [145, 153, 162, 171, 176, 181, 190],
+    "hr_zone_names": ["Recovery", "Aerobic", "Tempo", "SubThreshold", "SuperThreshold", "Aerobic Capacity", "Anaerobic"],
+    "threshold_pace_s_per_km": 252,
+    "_threshold_note": "Not set in Intervals; ~4:10-4:15/km estimate per RUNNER_CONTEXT §6 (Jul 2026). Used for pace context only, never for scoring.",
+    "gap_model": "STRAVA_RUN",
+    "pace_units": "MINS_KM"
+  },
+
   "race": {
     "date": "2026-10-31",
     "name": "Half marathon",
     "distance_m": 21097.5,
-    "goal_dream": "1:20:00",
-    "goal_stretch": "1:22:00",
-    "goal_committed": "1:24:00-1:27:00"
+    "goals": [
+      { "key": "dream",     "time": "1:20:00", "secs": 4800, "pace_km": "3:47", "label": "1:20 dream", "note": "Engine proven (35:33 10K, Feb 2023); endurance never trained past ~1:30 shape. Falsifiable at the Labor Day gate." },
+      { "key": "stretch",   "time": "1:22:00", "secs": 4920, "pace_km": "3:53", "label": "1:22 stretch" },
+      { "key": "committed", "time": "1:25:00", "secs": 5100, "pace_km": "4:01", "label": "1:24-1:27 committed", "note": "The defensible target. Would be a lifetime HM PR - has never raced a half fresh." }
+    ]
   },
+
   "phases": [
-    { "from": "2026-07-04", "to": "2026-08-01", "label": "base" },
-    { "from": "2026-08-02", "to": "2026-09-26", "label": "build" },
-    { "from": "2026-09-27", "to": "2026-10-17", "label": "HM-specific" },
-    { "from": "2026-10-18", "to": "2026-10-31", "label": "taper" }
+    { "from": "2026-07-04", "to": "2026-08-01", "label": "base",        "vol_mi": [20, 28], "long_km": [12, 16], "focus": "Consistency, 6 d/wk, nearly all easy + strides. The easy days ARE the ramp." },
+    { "from": "2026-08-02", "to": "2026-09-26", "label": "build",       "vol_mi": [28, 40], "long_km": [16, 18], "focus": "ONE threshold session + ONE long run with quality per week; everything else easy." },
+    { "from": "2026-09-27", "to": "2026-10-17", "label": "HM-specific", "vol_mi": [35, 40], "long_km": [16, 18], "focus": "Race-pace specificity; Saturday tempo if the gates opened." },
+    { "from": "2026-10-18", "to": "2026-10-31", "label": "taper",       "vol_mi": [20, 30], "long_km": [12, 14], "focus": "Sharpen, arrive healthy and fresh." }
   ],
-  "checkpoint": { "date": "2026-09-07", "label": "Labor Day 1:20 gate" },
+
+  "weekly_template": {
+    "Tue": "Run club speed workout — social anchor, protects consistency (the #1 historical failure mode)",
+    "Wed": "Easy 35-45 min — this is the ramp",
+    "Thu": "Easy 35-45 min — this is the ramp",
+    "Sat": "Easy-moderate; flexes to tempo only once the gates below open",
+    "Sun": "Long run; embedded quality every 2nd-3rd week from ~mid-Aug"
+  },
+
+  "checkpoint": {
+    "date": "2026-09-07",
+    "label": "Labor Day gate",
+    "decision": "Whether 1:20 stays alive into the final 8 weeks. ALL criteria must hold. Miss any → race committed at 1:24-1:27 with zero regret. Honest prior even with perfect execution: passes ~1 in 5.",
+    "criteria": [
+      { "key": "streak",    "label": "8+ consecutive uninterrupted weeks",     "target": 8,          "unit": "weeks" },
+      { "key": "volume",    "label": "Volume 35-38 mi/wk sustained",           "target": 35,         "unit": "mi/wk" },
+      { "key": "long_run",  "label": "16-18 km long runs routine",             "target": 16,         "unit": "km" },
+      { "key": "tt_10k",    "label": "10K TT/race ≤ 37:30 (solo gets 20-30 s grace)", "target": 2250, "unit": "secs" },
+      { "key": "threshold", "label": "Threshold ≈ 4:00-4:05/km",               "target": 245,        "unit": "s/km" },
+      { "key": "weight",    "label": "Weight ~128-130 lb, HRV/RHR intact",     "target": 130,        "unit": "lb" }
+    ],
+    "math": "1:20 needs a ~36:18 10K-equivalent on race day. 37:30 eight weeks out ≈ 1:22:30 equivalent — ~3% left to find, the outer edge of realistic. 38:30 ≈ 1:24:50 ≈ needing ~5 min in 8 weeks: arithmetic-dead. His 10K historically OVERSTATES his half fitness (35:33 vs ~1:30-1:35 demonstrated) — endurance is the side to distrust."
+  },
+
+  "profile": {
+    "career_miles": 3502,
+    "career_runs": 1055,
+    "best_year": { "year": 2022, "miles": 1398, "avg_mi_wk": 26.9, "peak_4wk_avg": 45.5, "peak_week": 51 },
+    "longest_run_km": 24.5,
+    "signature": "Chronically intensity-heavy, easy-running deficient — trains like a 25 mi/wk runner doing 45 mi/wk of intensity. 2022 easy/recovery was ~12% of volume; last 12 months ≈54% at tempo+; Q2 2026 was 45% threshold, 13% interval/race, ~7.5% easy. Races fast off low mileage — then every build ends in a crash. No polarization anywhere in the log.",
+    "the_deficit": "Aerobic base. A 35:33-10K engine attached to ~1:30 endurance. Base volume at genuinely easy effort is the single highest-value thing he can do, and the thing he most resists.",
+    "execution_pattern": "Negotiates prescribed easy paces upward, then drifts 20-30 s/km faster as a run progresses. The failure mode is holding the ceiling LATE, not starting too fast.",
+    "consistency_risk": "Life-schedule crunch, not motivation or body. Plans must survive busy weeks — short easy runs beat perfect weeks. Protect the Tuesday club anchor.",
+    "hr_relationships": { "easy": [130, 140], "long": [154, 166], "workout": [167, 178] },
+    "cadence": { "now_spm": 172, "target_spm": [176, 180], "why": "A cheap Achilles-load lever — shorter stride at the same pace lowers peak tendon force." },
+    "achilles": {
+      "event": "Complete rupture 2024-06-01",
+      "return_to_run": "2024-11-14 (first 600 m jog)",
+      "pt_months": 10.5,
+      "status": "Remodeled and demonstrably load-tolerant at 25+ months — track reps at 4:06/km, a 21.1 km TT, repeated threshold work, no incident. NOT to be treated as post-op fragile.",
+      "maintenance": "Heavy-slow weighted calf work 2x/wk as performance insurance, not rehab.",
+      "ramp_caution_reason": "General tissue adaptation (a body adapted to ~12 mi/wk being asked to carry 40) plus the documented boom-bust history — which predates the injury. NOT tendon fragility."
+    }
+  },
+
+  "eras": {
+    "_note": "Pace-curve bests by era (elapsed-time based) from RUNNER_CONTEXT §4. Shows an engine that has always outrun its endurance.",
+    "distances": ["1 mile", "5K", "10K", "Half"],
+    "rows": [
+      { "era": "2022",              "mile": "4:55", "k5": "17:07", "k10": "36:48", "half": "1:30:11", "half_note": "inside a 24 km training run, Nov 13 2022, HR 159" },
+      { "era": "2023",              "mile": "5:23", "k5": "17:26", "k10": "35:33", "half": "1:35:10", "k10_note": "race, Feb 5 2023, HR 172 avg / 190 max, CTL 34 — all-time peak" },
+      { "era": "Pre-tear (Jun23-Jun24)", "mile": "5:24", "k5": "18:02", "k10": "41:53", "half": null },
+      { "era": "Last 12 mo",        "mile": "5:54", "k5": "19:17", "k10": "42:41", "half": "1:33:42", "half_note": "21.16 km time trial, Nov 15 2025, moving time, HR 170, CTL 25 — the benchmark to beat" }
+    ],
+    "read": "Never raced a half fresh or tapered. The 35:33 10K converts to ~1:18-1:19 with proper HM training; peak endurance was only ever trained to ~1:30 shape."
+  },
+
+  "timeline": {
+    "_note": "The boom-bust record (RUNNER_CONTEXT §5). Every build so far has ended in a crash — the pattern this block exists to break.",
+    "events": [
+      { "date": "2022-03", "kind": "peak",  "label": "Spring block ~35 mi/wk" },
+      { "date": "2022-04", "kind": "bust",  "label": "Collapse", "cause": "Over-intensity on a thin base — healthy tendon" },
+      { "date": "2022-07-24", "kind": "pr", "label": "17:07 5K (race)" },
+      { "date": "2022-09", "kind": "peak",  "label": "Best block of career — 42 mi/wk avg, peak 4-wk 45.5" },
+      { "date": "2022-11-13", "kind": "pr", "label": "1:30:11 half inside a 24 km run @ HR 159" },
+      { "date": "2023-02-05", "kind": "pr", "label": "35:33 10K — all-time peak, ~120 lb, off the fall-2022 base + a 51 mi January" },
+      { "date": "2023-03", "kind": "bust",  "label": "Collapse to 10-12 mi/wk", "cause": "Boom-bust after the peak — again on a healthy tendon" },
+      { "date": "2023-10", "kind": "peak",  "label": "Rebuild to ~27 mi/wk; never regained 2022 volume" },
+      { "date": "2024-01", "kind": "bust",  "label": "Slow bleed 17 → 6 mi/wk by May", "cause": "Consistency loss" },
+      { "date": "2024-06-01", "kind": "injury", "label": "Achilles rupture during a cardio session", "cause": "Culmination of the spring-2024 decline" },
+      { "date": "2024-11-14", "kind": "milestone", "label": "Return to running — first 600 m jog" },
+      { "date": "2025-11-15", "kind": "pr",  "label": "21.16 km TT in 1:33:42 moving @ HR 170 (CTL 25)" },
+      { "date": "2026-02", "kind": "peak",  "label": "Decent Feb — 16 km long run, 4:07/km tempo" },
+      { "date": "2026-03-22", "kind": "bust", "label": "Six-week near-zero gap (to May 2)", "cause": "Work crunch — a schedule squeeze, not motivation or injury" },
+      { "date": "2026-07-04", "kind": "milestone", "label": "This build begins — 17 weeks to Oct 31" },
+      { "date": "2026-07-18", "kind": "milestone", "label": "16.1 km long run at 141 HR / 72.6% — first genuinely easy long run of the build" }
+    ],
+    "lesson": "Two failure modes, repeatedly: (1) intensity stacked on a base too thin to absorb it, and (2) life-schedule squeezes that break the block. Neither is a tendon problem. The counter-strategy is unglamorous easy volume, a protected social anchor, and plans that survive a bad week."
+  },
+
+  "protocols": {
+    "strength": "Heavy-slow weighted calf raises (straight-leg + bent-knee, slow eccentric, 3-4 × 8-10 hard) 2x/wk — the one item to nag about. Hips/core 2x/wk, covered by the daily 7-min bodyweight circuit. That circuit's 30 s bodyweight calf raises do NOT satisfy the calf protocol (endurance stimulus ≠ heavy-slow tendon stimulus). No plyometrics — track work already supplies elastic load.",
+    "weight": "Daily fasted weigh-in; interpret the 7-day rolling average only. Target ~128-130 lb by October. Alarm: >0.3 kg/wk loss + rising RHR + sagging HRV = under-fuelling, intervene. Worth ~1-2 s/km per kg at HM effort.",
+    "quality_budget": "Proportion, not day-count. Quality must sit on enough easy volume to absorb it. At ~15 mi/wk, club + long run is already most of the week. If the long run is run hard, one other quality slot is forfeited that week.",
+    "sat_tempo_gates": "4+ consecutive weeks at 35+ mi/wk, zero Achilles symptoms through a full block, HRV near ~87 and RHR stable while absorbing existing quality. Expected mid-to-late September — deliberately late, since weeks 12-15 are when HM-specific tempo pays most.",
+    "decoupling_marker": "Aerobic decoupling on steady long runs is the secondary fitness marker. Jul 5 baseline ~6% at 5:24/km. Target <5% at 5:45, trending toward 5:15-5:30 at stable HR by September — that closing IS the base being built."
+  },
+
+  "prediction_protocol": "One number per day. Basis: current threshold estimate, 5K shape conversion, minus an endurance discount for the volume/long-run deficit, cross-checked against the Nov 2025 benchmark (1:33:42 @ CTL 25). Volume and long-run length move it fastest early (~30-60 s per clean 25+ km week); threshold work matters later; missed weeks move it backward fastest. Credit only what is repeatable — no credit for excess intensity on easy days. Never move it >30 s/day without a race/TT or a missed week.",
+
   "pace_curve_1y": {
-    "_note": "Best elapsed time (s) to cover each distance (m), all runs, rolling 1-year window ending 2026-07-14, from athlete_pace_curves_get. Cross-validated vs RUNNER_CONTEXT §4: 1mi 5:54, 5K 19:17, 10K 42:41 all match.",
-    "window": "2025-07-14 to 2026-07-14",
+    "_note": "Best elapsed time (s) per distance (m), all runs, rolling 1-year window ending 2026-07-26, from athlete_pace_curves_get. Cross-validated vs RUNNER_CONTEXT §4: 1mi 5:54, 5K 19:17, 10K 42:41. Unchanged over the last two weeks — recent work has been aerobic, not max-effort.",
+    "window": "2025-07-26 to 2026-07-26",
     "distance_m": [45.72, 50, 68.58, 75, 91.44, 100, 114.3, 125, 137.16, 150, 182.88, 200, 228.6, 250, 274.32, 300, 320.04, 350, 365.76, 400, 402.34, 411.48, 450, 457.2, 500, 502.92, 548.64, 550, 594.36, 600, 640.08, 650, 685.8, 700, 731.52, 750, 800, 804.67, 822.96, 900, 914.4, 1000, 1005.84, 1097.28, 1100, 1188.72, 1200, 1280.16, 1300, 1371.6, 1400, 1463.04, 1500, 1554.48, 1600, 1609.34, 1645.92, 1700, 1737.36, 1800, 1828.8, 1900, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3218.68, 3400, 3600, 3800, 4000, 4400, 4800, 4828.02, 5000, 5200, 5600, 6000, 6400, 6437.36, 7000, 8000, 8046.7, 9000, 9656.04, 10000, 11000, 11265.38, 12000, 12874.72, 13000, 14000, 14484.06, 15000, 16000, 16093.4, 17000, 17702.74, 18000, 19000, 19312.08, 20000, 20921.42, 21000, 21097.5],
     "seconds": [7, 8, 11, 12, 15, 17, 19, 21, 23, 26, 34, 37, 43, 47, 52, 57, 61, 67, 70, 77, 78, 79, 87, 89, 97, 98, 107, 107, 117, 118, 126, 128, 136, 138, 145, 149, 160, 167, 171, 188, 191, 213, 214, 235, 236, 256, 259, 277, 282, 298, 306, 320, 328, 341, 352, 354, 362, 375, 384, 398, 405, 421, 443, 489, 536, 584, 632, 679, 725, 730, 773, 821, 868, 914, 1008, 1100, 1106, 1157, 1204, 1296, 1390, 1484, 1494, 1630, 2021, 2034, 2290, 2468, 2561, 2830, 2901, 3099, 3456, 3490, 3798, 3933, 4078, 4359, 4386, 4787, 4980, 5062, 5339, 5426, 5615, 5871, 5893, 5919]
   },
+
   "critical_speed_model": {
-    "_note": "CS/D' model fit by Intervals.icu on the 1-year pace curve (r²=0.99997). CS in m/s; D' in meters. CS 4.273 m/s = 3:54/km critical pace. Short-duration-biased curves typically overstate sustainable threshold for low-volume athletes - display with that caveat.",
+    "_note": "CS/D' fit by Intervals.icu on the 1-year pace curve (r²=0.99997). CS 4.273 m/s = 3:54/km. Short-duration-biased for a low-volume athlete — read as a ceiling marker, not a threshold prescription.",
     "critical_speed_ms": 4.2731714,
     "d_prime_m": 97.8,
     "r2": 0.9999723

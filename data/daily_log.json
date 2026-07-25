@@ -3,173 +3,431 @@
     "athlete": "half-marathon build to 2026-10-31",
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
-    "schema_note": "One object per day. `wellness` and `activity` are raw-ish pulled metrics; `score`+`components` from DAY_SCORE.md; `entry` is the prose; `prediction` is the HM time; reviewed=false means routine-drafted and not yet human-amended.",
-    "last_updated": "2026-07-06",
-    "scoring": "probability-change model v5 (see DAY_SCORE.md): score=\u0394P(1:20), score_committed=\u0394P(1:25) \u2014 INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; breakthrough/illness/cross-train channels; decoupling by run type; Pacific tz",
-    "timezone": "athlete US Pacific (UTC-8/-7); Intervals UTC but start_date_local is Pacific; evening runs cross midnight UTC",
-    "prob_model": "absolute P(1:20)/P(1:25) per DAY_SCORE.md \u2014 transparent model estimate, not measured; watch the trend",
-    "model_version": "v7: two-invocation; probability = current-fitness raced-TODAY readout (~0% now, climbs with fitness); no forward-dated plans; Pacific tz"
+    "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
+    "last_updated": "2026-07-25",
+    "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
+    "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
+    "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
+    "model_version": "v8: two-invocation; full-resolution streams + Intervals interval structure; raced-today probability; Pacific tz"
   },
   "days": [
     {
-      "date": "2026-07-05",
-      "dow": "Sun",
-      "reviewed": true,
-      "prediction": "1:37:45",
-      "prediction_prev": "1:38:00",
+      "date": "2026-07-05", "dow": "Sun", "status": "scored", "reviewed": true,
+      "prediction": "1:37:45", "prediction_prev": "1:38:00",
       "planned": "Easy long run 65 min @ 5:45/km flat (~11.3 km), optional 4x20s strides",
-      "wellness": {
-        "ctl": 20.3,
-        "atl": 33.5,
-        "form": -13.2,
-        "rampRate": 2.7,
-        "hrv": 95,
-        "restingHR": 47,
-        "sleepSecs": 28500,
-        "sleepScore": 86,
-        "sleepQuality": 2,
-        "vo2max": 54,
-        "weight": null
-      },
-      "activity": {
-        "name": "San Mateo Running",
-        "km": 12.04,
-        "mi": 7.48,
-        "sec": 3900,
-        "pace_per_km": "5:24",
-        "hr": 156,
-        "max_hr": 174,
-        "intensity": 84.3,
-        "load": 77,
-        "cadence": 172,
-        "stride_m": 1.07,
-        "elev_gain_m": 54,
-        "decoupling_pct": 6.0,
-        "hr_zone_sec": [
-          377,
-          783,
-          1864,
-          860,
-          16,
-          0,
-          0
-        ]
-      },
-      "score": 70,
-      "components": [
-        {
-          "label": "Long run \u2014 longest since Mar 22; base is exactly what 1:20 lacks",
-          "delta": 16,
-          "cat": "raiser"
-        },
-        {
-          "label": "vs 1:25: helps, but smaller \u0394P (1:25 needs less base, already closer)",
-          "delta": 0,
-          "cat": "note"
-        },
-        {
-          "label": "Ran hotter than prescribed (5:24 vs 5:45, drift to 167)",
-          "delta": -5,
-          "cat": "lowerer"
-        },
-        {
-          "label": "Decoupling ~6% mostly the negative split (progression) \u2014 weighted lightly",
-          "delta": -1,
-          "cat": "context"
-        },
-        {
-          "label": "Recovery green; ramp +3.3/wk hot",
-          "delta": 0,
-          "cat": "context"
-        }
-      ],
-      "entry": "Longest run since March 22 \u2014 and here the two lines separate in a way that's actually informative. Against the 1:20 dream it's a clear raiser (70): aerobic base is precisely what that goal is short on, so banking it moves the hard-goal odds up. Against the realistic 1:25 (66) it helps less \u2014 you're already closer to on-track for 1:25, so the same run buys a smaller probability gain. That 1:20-above-1:25 split is the signature of base work: it disproportionately helps the goal starving for base. Ran hotter than prescribed (5:24 vs 5:45, HR\u2192167), which costs a little; I'm weighting the ~6% decoupling lightly since this was a progression (rising HR is mostly the negative split, not base deficit). Recovery green, cadence steady 172-174.",
-      "note_next": "Mon Jul 6: OFF or \u226425 min true jog (load-77 bill). Tue intervals conditional on quiet Monday.",
-      "score_committed": 66,
-      "bar_phase": "base",
+      "plan_rationale": "Base-phase long run: build the aerobic base the 1:20 lacks, at easy effort.",
+      "wellness": { "ctl": 20.3, "atl": 33.5, "form": -13.2, "rampRate": 2.7, "hrv": 95, "restingHR": 47, "sleepSecs": 28500, "sleepScore": 86, "sleepQuality": 2, "vo2max": 54, "weight": null },
+      "activity": { "name": "San Mateo Running", "km": 12.04, "mi": 7.48, "sec": 3900, "pace_per_km": "5:24", "hr": 156, "max_hr": 174, "intensity": 84.3, "load": 77, "cadence": 172, "stride_m": 1.07, "elev_gain_m": 54, "decoupling_pct": 6.0, "hr_zone_sec": [377, 783, 1864, 860, 16, 0, 0] },
+      "score": 70, "score_committed": 66, "bar_phase": "base",
       "delta_p": "raised 1:20 more than 1:25 (base work)",
-      "p_120": 0.0,
-      "p_125": 0.0,
-      "prob_note": "current-fitness readout (raced-today odds). ~0% now \u2014 projected half ~1:37 vs 1:20/1:25 targets; the gap is fitness, not build risk. Rises as fitness improves.",
-      "status": "scored",
-      "plan_rationale": "Base-phase long run: build the aerobic base the 1:20 lacks, at easy effort. (Prescribed the night before under the old model; going forward, plans are set the morning-of.)",
-      "pred_half": "1:37:45"
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:37:45",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:37 vs 1:20/1:25 targets; the gap is fitness, not build risk.",
+      "components": [
+        { "label": "Long run — longest since Mar 22; base is exactly what 1:20 lacks", "delta": 16, "cat": "raiser" },
+        { "label": "vs 1:25: helps, but smaller ΔP (1:25 needs less base, already closer)", "delta": 0, "cat": "note" },
+        { "label": "Ran hotter than prescribed (5:24 vs 5:45, drift to 167)", "delta": -5, "cat": "lowerer" },
+        { "label": "Decoupling ~6% mostly the negative split (progression) — weighted lightly", "delta": -1, "cat": "context" },
+        { "label": "Recovery green; ramp +3.3/wk hot", "delta": 0, "cat": "context" }
+      ],
+      "entry": "Longest run since March 22 — and here the two lines separate in a way that's actually informative. Against the 1:20 dream it's a clear raiser: aerobic base is precisely what that goal is short on, so banking it moves the hard-goal odds up. Against the realistic 1:25 it helps less — you're already closer to on-track there, so the same run buys a smaller probability gain. That 1:20-above-1:25 split is the signature of base work. Ran hotter than prescribed (5:24 vs 5:45, HR→167), which costs a little; I'm weighting the ~6% decoupling lightly since this was a progression. Recovery green, cadence steady 172-174.",
+      "note_next": "Mon Jul 6: OFF or ≤25 min true jog (load-77 bill). Tue intervals conditional on a quiet Monday."
     },
     {
-      "date": "2026-07-06",
-      "dow": "Mon",
-      "reviewed": true,
-      "prediction": "1:37:45",
-      "prediction_prev": "1:37:45",
+      "date": "2026-07-06", "dow": "Mon", "status": "scored", "reviewed": true,
+      "prediction": "1:37:45", "prediction_prev": "1:37:45",
       "planned": "OFF or <=25 min TRUE jog",
-      "wellness": {
-        "ctl": 20.5,
-        "atl": 32.6,
-        "form": -12.1,
-        "rampRate": 3.3,
-        "hrv": 89,
-        "restingHR": 46,
-        "sleepSecs": 27634,
-        "sleepScore": 95,
-        "sleepQuality": 1,
-        "vo2max": 54,
-        "weight": null
-      },
-      "activity": {
-        "name": "San Mateo Running",
-        "km": 4.88,
-        "mi": 3.03,
-        "sec": 1516,
-        "pace_per_km": "5:10",
-        "hr": 150,
-        "max_hr": null,
-        "intensity": 79.2,
-        "load": 27,
-        "cadence": 172,
-        "stride_m": null,
-        "elev_gain_m": 21,
-        "decoupling_pct": null,
-        "hr_zone_sec": null
-      },
-      "score": 58,
-      "components": [
-        {
-          "label": "Short 5 km on a fresh, well-recovered body \u2014 banks some aerobic time",
-          "delta": 2,
-          "cat": "raiser"
-        },
-        {
-          "label": "Recovery green (sleep excellent, HRV 89 \u2265 baseline, RHR 46 floor)",
-          "delta": 2,
-          "cat": "raiser"
-        },
-        {
-          "label": "Ran hotter than a recovery slot ideally wants \u2014 didn't help as much as easy would have",
-          "delta": -4,
-          "cat": "context"
-        },
-        {
-          "label": "Green-recovery floor: a rested short run has NOT lowered the odds",
-          "delta": 0,
-          "cat": "note"
-        },
-        {
-          "label": "vs 1:25 slightly higher: tighter 1:20 is marginally less forgiving",
-          "delta": 0,
-          "cat": "note"
-        }
-      ],
-      "entry": "Short 5 km on a well-recovered body (sleep excellent, HRV 89 above baseline, RHR 46 at floor). ~Neutral against both goals \u2014 a rested, willing short run has not lowered the 1:20 odds (58 vs 1:20, 61 vs 1:25). It was run hotter than a pure recovery slot ideally wants, so it 'didn't help as much as truly easy would have' \u2014 a neutral, not a negative; the green-recovery floor prevents the model from ever scoring a fresh short-run day into the 40s (an earlier version wrongly did). The two lines sit close today with 1:25 a hair higher, since the tighter 1:20 is marginally less forgiving of the extra intensity. Logged correctly to July 6 Pacific.",
-      "note_next": "Tue Jul 7: FULLY OFF \u2014 Monday-quiet condition not met, so intervals move to Wed Jul 8. Tue homework: first weighted calf session. Protect sleep.",
-      "score_committed": 61,
-      "bar_phase": "base",
-      "delta_p": "~neutral (held both; 1:25 slightly more secure)",
-      "p_120": 0.0,
-      "p_125": 0.0,
-      "prob_note": "current-fitness readout (raced-today odds). ~0% now \u2014 projected half ~1:37 vs 1:20/1:25 targets; the gap is fitness, not build risk. Rises as fitness improves.",
-      "status": "scored",
       "plan_rationale": "Prescribed OFF/true-jog to absorb the prior long run; recovery was green but the day did not call for intensity.",
-      "pred_half": "1:37:45"
+      "wellness": { "ctl": 20.5, "atl": 32.6, "form": -12.1, "rampRate": 3.3, "hrv": 89, "restingHR": 46, "sleepSecs": 27634, "sleepScore": 95, "sleepQuality": 1, "vo2max": 54, "weight": null },
+      "activity": { "name": "San Mateo Running", "km": 4.88, "mi": 3.03, "sec": 1516, "pace_per_km": "5:10", "hr": 150, "max_hr": 163, "intensity": 79.2, "load": 27, "cadence": 171, "stride_m": 1.13, "elev_gain_m": 21, "decoupling_pct": null, "hr_zone_sec": [274, 418, 823, 2, 0, 0, 0] },
+      "score": 58, "score_committed": 61, "bar_phase": "base",
+      "delta_p": "~neutral (held both; 1:25 slightly more secure)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:37:45",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:37 vs targets.",
+      "components": [
+        { "label": "Short 5 km on a fresh, well-recovered body — banks some aerobic time", "delta": 2, "cat": "raiser" },
+        { "label": "Recovery green (sleep excellent, HRV 89, RHR 46 floor)", "delta": 2, "cat": "raiser" },
+        { "label": "Ran hotter than a recovery slot ideally wants", "delta": -4, "cat": "context" },
+        { "label": "Green-recovery floor: a rested short run has NOT lowered the odds", "delta": 0, "cat": "note" }
+      ],
+      "entry": "Short 5 km on a well-recovered body. ~Neutral against both goals — a rested, willing short run has not lowered the 1:20 odds. It was run hotter than a pure recovery slot ideally wants, so it 'didn't help as much as truly easy would have' — a neutral, not a negative; the green-recovery floor prevents scoring a fresh short-run day into the 40s. The two lines sit close with 1:25 a hair higher, since the tighter 1:20 is marginally less forgiving of the extra intensity.",
+      "note_next": "Tue Jul 7: FULLY OFF — Monday-quiet condition not met, so intervals move to Wed Jul 8. Tue homework: first weighted calf session."
+    },
+    {
+      "date": "2026-07-07", "dow": "Tue", "status": "scored", "reviewed": false,
+      "prediction": "1:37:45", "prediction_prev": "1:37:45",
+      "planned": "FULLY OFF + first weighted calf session (heavy slow, 3-4x8-10)",
+      "plan_rationale": "Monday-quiet condition wasn't met (ran 5 km hot), so the interval session moved to Wednesday and Tuesday became a true rest day.",
+      "wellness": { "ctl": 20.0, "atl": 28.3, "form": -8.3, "rampRate": 2.7, "hrv": 85, "restingHR": 49, "sleepSecs": 25560, "sleepScore": 86, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 68, "score_committed": 68, "bar_phase": "base",
+      "delta_p": "mildly raised (correct rest protects the block)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:37:45",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:37 vs targets.",
+      "components": [
+        { "label": "Rest taken exactly when the body asked (HRV 85 under baseline, RHR 49 top of range)", "delta": 8, "cat": "raiser" },
+        { "label": "Continuity protected — every historical collapse began with a broken block", "delta": 2, "cat": "raiser" },
+        { "label": "Rest is not zero, but it banks no new aerobic volume either", "delta": -2, "cat": "context" }
+      ],
+      "entry": "Full rest, as prescribed, on the first day the recovery numbers actually argued for it — HRV 85 sat under the ~87 baseline and RHR 49 was at the top of your range after three consecutive days in the 79-96% intensity band. Taking the day instead of forcing the interval session is a small raiser, not a neutral: your history says the blocks that survive are the ones with honest rest days in them.",
+      "note_next": "Wed Jul 8: the moved interval session — 15 min easy + 4-5x5 min @ 4:25-4:35/km (90 s jog) + 10 min easy."
+    },
+    {
+      "date": "2026-07-08", "dow": "Wed", "status": "scored", "reviewed": false,
+      "prediction": "1:37:30", "prediction_prev": "1:37:45",
+      "planned": "15 min easy + 4-5x5 min @ 4:25-4:35/km (90 s jog) + 10 min easy",
+      "plan_rationale": "Rescheduled from Tuesday onto a green day; controlled threshold reps to sharpen the top end without emptying the tank.",
+      "wellness": { "ctl": 21.0, "atl": 32.9, "form": -11.9, "rampRate": 2.2, "hrv": 94, "restingHR": 43, "sleepSecs": 27180, "sleepScore": 87, "sleepQuality": 2, "vo2max": 55, "weight": null },
+      "activity": { "name": "San Mateo - Run Workout", "km": 9.37, "mi": 5.82, "sec": 2569, "pace_per_km": "4:35", "hr": 163, "max_hr": 187, "intensity": 93.9, "load": 63, "cadence": 172, "stride_m": 1.27, "elev_gain_m": 43, "decoupling_pct": null, "hr_zone_sec": [93, 274, 606, 1073, 342, 118, 73] },
+      "score": 74, "score_committed": 70, "bar_phase": "base",
+      "delta_p": "raised 1:20 more (new threshold evidence)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:37:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:37 vs targets.",
+      "components": [
+        { "label": "5 reps completed on a green day (HRV 94, RHR 43 at the floor)", "delta": 12, "cat": "raiser" },
+        { "label": "Reps averaged 4:03/km vs a 4:10-4:15 threshold estimate — mild NEW fitness evidence, which is why 1:20 gains more", "delta": 6, "cat": "raiser" },
+        { "label": "Every rep faster than the 4:25-4:35 prescription; final rep 3:46 was 10K effort in a threshold session", "delta": -6, "cat": "lowerer" },
+        { "label": "Peaked at 187 bpm — a controlled session shouldn't need Z7", "delta": -2, "cat": "context" }
+      ],
+      "entry": "The session landed, and it landed faster than asked: 4:11, 4:08, 4:05, 4:04, 3:46. Against the prescription (4:25-4:35) that's 14-49 s/km hot, and the last rep was frankly a 10K effort — max HR 187. So two things are true at once. The genuinely good news is that averaging 4:03/km across five kilometre reps is evidence your threshold is better than the 4:10-4:15 estimate, and evidence of new speed is the one thing that moves the 1:20 line more than the 1:25 line — that's the divergence you see here. The cost is that you spent a threshold day at interval intensity, which prices tomorrow. Body was maximally green for it (RHR 43 is your floor), so this is a raiser overall.",
+      "note_next": "Thu Jul 9: EASY only, 35-45 min at genuinely easy effort. The reps were faster than prescribed — the bill is real."
+    },
+    {
+      "date": "2026-07-09", "dow": "Thu", "status": "scored", "reviewed": false,
+      "prediction": "1:37:30", "prediction_prev": "1:37:30",
+      "planned": "Easy 35-45 min at genuinely easy effort",
+      "plan_rationale": "Day after a hot interval session — the template's Thursday easy run, which is where the ramp actually comes from.",
+      "wellness": { "ctl": 21.8, "atl": 36.0, "form": -14.2, "rampRate": 2.9, "hrv": 95, "restingHR": 44, "sleepSecs": 26520, "sleepScore": 87, "sleepQuality": 2, "vo2max": 55, "weight": null },
+      "activity": { "name": "Burlingame Running", "km": 8.72, "mi": 5.42, "sec": 2445, "pace_per_km": "4:40", "hr": 161, "max_hr": 179, "intensity": 90.3, "load": 56, "cadence": 172, "stride_m": 1.24, "elev_gain_m": 69, "decoupling_pct": null, "hr_zone_sec": [61, 205, 704, 1258, 217, 0, 0] },
+      "score": 52, "score_committed": 56, "bar_phase": "base",
+      "delta_p": "lowered slightly (back-to-back quality)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:37:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:37 vs targets.",
+      "components": [
+        { "label": "8 km of aerobic-threshold work does carry some fitness value", "delta": 4, "cat": "raiser" },
+        { "label": "Second consecutive quality day — prescribed easy, ran a 4:45→4:31 progression at 90%", "delta": -10, "cat": "lowerer" },
+        { "label": "Intensity density: two threshold+ days in two days, no easy day between", "delta": -4, "cat": "lowerer" },
+        { "label": "Recovery still green (HRV 95, RHR 44) — the body is tolerating it, which is why this isn't worse", "delta": 2, "cat": "context" }
+      ],
+      "entry": "This is the pattern, in miniature. Thursday was prescribed easy; it came out as a 1 km warmup and then eight progressive kilometres from 4:45 down to 4:31 at 90% intensity — a tempo run, the day after an interval session. Nothing here is dangerous and your recovery numbers are still excellent, but this is exactly how the intensity share climbs while the easy base doesn't, and that specific arithmetic is what has ended every previous build. The 1:25 line takes it slightly better than the 1:20 line, because 1:25 has more margin to absorb a wasted easy day.",
+      "note_next": "Fri Jul 10: long run, and run it EASY — 5:45-6:00/km. Two quality days are already banked this week."
+    },
+    {
+      "date": "2026-07-10", "dow": "Fri", "status": "scored", "reviewed": false,
+      "prediction": "1:36:45", "prediction_prev": "1:37:30",
+      "planned": "Long run, easy effort 5:45-6:00/km",
+      "plan_rationale": "Long run pulled to Friday around the weekend; the week's quality budget was already spent on Wed/Thu, so this needed to be pure aerobic volume.",
+      "wellness": { "ctl": 23.5, "atl": 43.3, "form": -19.8, "rampRate": 5.0, "hrv": 92, "restingHR": 47, "sleepSecs": 25200, "sleepScore": 85, "sleepQuality": 2, "vo2max": 55, "weight": null },
+      "activity": { "name": "Menlo Park Running", "km": 14.01, "mi": 8.71, "sec": 4659, "pace_per_km": "5:33", "hr": 155, "max_hr": 179, "intensity": 83.4, "load": 91, "cadence": 172, "stride_m": 1.05, "elev_gain_m": 41, "decoupling_pct": 3.6, "hr_zone_sec": [344, 776, 3368, 173, 0, 0, 0] },
+      "score": 62, "score_committed": 66, "bar_phase": "base",
+      "delta_p": "raised on volume, blunted by a hot ramp",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:45",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:36 vs targets.",
+      "components": [
+        { "label": "14.0 km — new longest of the build, real aerobic volume banked", "delta": 14, "cat": "raiser" },
+        { "label": "Decoupling 3.6% — better than Jul 5's 6%; the base is starting to hold", "delta": 5, "cat": "raiser" },
+        { "label": "Third consecutive working day; load 91 on legs that did two quality days", "delta": -8, "cat": "lowerer" },
+        { "label": "Ramp +5.0/wk — past the +4 injury-risk line, the boom-bust early warning", "delta": -8, "cat": "lowerer" },
+        { "label": "83% intensity is steady, not the easy that was asked for", "delta": -1, "cat": "context" }
+      ],
+      "entry": "A genuinely valuable run wrapped in a genuinely risky week. 14 km is the longest of the build and the decoupling came in at 3.6%, down from 6% five days earlier — that is the base beginning to hold, and it's the most encouraging number of the week. But it was the third working day in a row, load 91, and it pushed the ramp rate to +5.0 CTL/week, past the +4 line that has preceded every previous breakdown. So: the training is landing, the loading pattern is the thing to watch. Run easy means easy — 83% still isn't it.",
+      "note_next": "Sat Jul 11: OFF. Non-negotiable after load 91 on a +5.0 ramp."
+    },
+    {
+      "date": "2026-07-11", "dow": "Sat", "status": "scored", "reviewed": false,
+      "prediction": "1:36:45", "prediction_prev": "1:36:45",
+      "planned": "OFF",
+      "plan_rationale": "Mandatory absorption day after a 91-load long run on a +5.0/wk ramp.",
+      "wellness": { "ctl": 22.9, "atl": 37.5, "form": -14.6, "rampRate": 4.0, "hrv": 93, "restingHR": 48, "sleepSecs": 23640, "sleepScore": 81, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 66, "score_committed": 66, "bar_phase": "base",
+      "delta_p": "mildly raised (absorption)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:45",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:36 vs targets.",
+      "components": [
+        { "label": "Rest after the biggest load of the block — exactly the right call", "delta": 8, "cat": "raiser" },
+        { "label": "Ramp eased +5.0 → +4.0; ATL down from 43", "delta": 2, "cat": "raiser" },
+        { "label": "No aerobic volume banked", "delta": -2, "cat": "context" }
+      ],
+      "entry": "Taken off, as it should have been. The ramp came off its +5.0 peak to +4.0 and ATL dropped from 43 to 37.5 — that is what a rest day is for after a 91-load run, and it converts Friday's work into fitness instead of a hole. HRV held at 93 through the whole three-day block, which says the engine tolerated the loading even where the pattern was imperfect.",
+      "note_next": "Sun Jul 12: easy 40 min, or cross-train if the legs are still heavy."
+    },
+    {
+      "date": "2026-07-12", "dow": "Sun", "status": "scored", "reviewed": false,
+      "prediction": "1:36:45", "prediction_prev": "1:36:45",
+      "planned": "Easy 40 min or cross-train",
+      "plan_rationale": "Light day to close a week that already carried two quality sessions and a 14 km long run.",
+      "wellness": { "ctl": 22.7, "atl": 34.5, "form": -11.8, "rampRate": 2.4, "hrv": 77, "restingHR": 48, "sleepSecs": 21600, "sleepScore": 50, "sleepQuality": 4, "vo2max": null, "weight": null },
+      "activity": { "name": "Redwood City Tennis", "km": 1.91, "mi": 1.19, "sec": 1992, "pace_per_km": null, "hr": 116, "max_hr": 151, "intensity": 42.2, "load": 15, "cadence": null, "stride_m": null, "elev_gain_m": null, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 60, "score_committed": 62, "bar_phase": "base",
+      "delta_p": "~neutral (cross-train, poor sleep)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:45",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:36 vs targets.",
+      "components": [
+        { "label": "33 min of tennis — real aerobic maintenance, Z1-Z2, never scored as a zero", "delta": 4, "cat": "raiser" },
+        { "label": "Easy on the tendon while the ramp cools — smart load management", "delta": 2, "cat": "raiser" },
+        { "label": "Sleep 6.0 h, score 50, quality 4 (poor) — HRV fell to 77, the block's low", "delta": -6, "cat": "lowerer" },
+        { "label": "Week closed at 23.0 mi — inside the 20-28 base-phase target", "delta": 0, "cat": "note" }
+      ],
+      "entry": "Tennis instead of a run, which is fine — cross-training is real aerobic maintenance and it kept the load off the tendon while the ramp cooled. The flag today isn't the training, it's the sleep: 6 hours, score 50, subjective quality 4, and HRV dropped to 77, the lowest of the block. One night is noise; two in a row with a Tuesday club session coming would be a reason to downgrade. Week closes at 23.0 miles.",
+      "note_next": "Mon Jul 13: OFF or true easy. Protect sleep tonight — club is Tuesday."
+    },
+    {
+      "date": "2026-07-13", "dow": "Mon", "status": "scored", "reviewed": false,
+      "prediction": "1:36:30", "prediction_prev": "1:36:45",
+      "planned": "OFF or true easy",
+      "plan_rationale": "Recovery day protecting Tuesday's club workout, with sleep and HRV both off after a poor night.",
+      "wellness": { "ctl": 22.7, "atl": 32.4, "form": -9.7, "rampRate": 2.2, "hrv": 83, "restingHR": 46, "sleepSecs": 24420, "sleepScore": 80, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 62, "score_committed": 62, "bar_phase": "base",
+      "delta_p": "~neutral (held)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:36 vs targets.",
+      "components": [
+        { "label": "Rest with HRV still recovering (83, under the 87 baseline) — correct", "delta": 5, "cat": "raiser" },
+        { "label": "Sleep rebounded to 6.8 h / score 80 and RHR back to 46", "delta": 2, "cat": "raiser" },
+        { "label": "Second no-run day in three — the base needs those minutes eventually", "delta": -5, "cat": "lowerer" }
+      ],
+      "entry": "Off again, and defensible with HRV still under baseline at 83 — but this is the second no-run day in three, and in base phase the easy minutes you skip are the ones the 1:20 line most needs. Sleep and RHR both recovered, so the reset worked. The week ahead is where the volume has to actually appear.",
+      "note_next": "Tue Jul 14: run club. Warm up properly and let the main set be the only hard part."
+    },
+    {
+      "date": "2026-07-14", "dow": "Tue", "status": "scored", "reviewed": false,
+      "prediction": "1:36:15", "prediction_prev": "1:36:30",
+      "planned": "Run club speed workout (the week's protected quality slot)",
+      "plan_rationale": "Tuesday club is the social anchor that protects consistency — the #1 historical failure mode. Green recovery made it the right day for it.",
+      "wellness": { "ctl": 23.6, "atl": 36.3, "form": -12.7, "rampRate": 3.6, "hrv": 90, "restingHR": 46, "sleepSecs": 24000, "sleepScore": 79, "sleepQuality": 3, "vo2max": 56, "weight": null },
+      "activity": { "name": "Burlingame Running — club night (wu / main / cd)", "km": 9.17, "mi": 5.70, "sec": 2533, "pace_per_km": "4:36", "hr": 164, "max_hr": 184, "intensity": 100.5, "load": 62, "cadence": 173, "stride_m": 1.24, "elev_gain_m": 33, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 74, "score_committed": 71, "bar_phase": "base",
+      "delta_p": "raised (quality on the right day)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:15",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:36 vs targets.",
+      "components": [
+        { "label": "Club session on a green body — the week's correct quality vehicle", "delta": 12, "cat": "raiser" },
+        { "label": "Properly structured: separate warmup and cooldown either side of the main set", "delta": 4, "cat": "raiser" },
+        { "label": "VO2max estimate ticked 55 → 56", "delta": 2, "cat": "raiser" },
+        { "label": "Main set at 100.5% of threshold — club is the empty-the-tank day, so this is on-brief", "delta": 0, "cat": "note" },
+        { "label": "Sleep quality 3 and only 6.7 h going in", "delta": -3, "cat": "context" }
+      ],
+      "entry": "Club night, done properly: a real warmup, the main set at 100.5% of threshold, a real cooldown. This is the one day of the week where emptying the tank is the assignment, and it came on a green body with HRV 90 and RHR 46. VO2max estimate ticked up to 56. Went in on 6.7 hours and subjective quality 3, which is the only mark against it. This is what the protected Tuesday slot is for — and it's why the club stays on the calendar even in busy weeks.",
+      "note_next": "Wed Jul 15: EASY — 35-45 min, HR under 145. This is the day that has been leaking all block."
+    },
+    {
+      "date": "2026-07-15", "dow": "Wed", "status": "scored", "reviewed": false,
+      "prediction": "1:36:00", "prediction_prev": "1:36:15",
+      "planned": "Easy 35-45 min, HR under 145",
+      "plan_rationale": "The template's Wednesday easy run — the day the ramp is supposed to come from, and the day most vulnerable to intensity creep.",
+      "wellness": { "ctl": 24.5, "atl": 39.7, "form": -15.2, "rampRate": 3.5, "hrv": 87, "restingHR": 48, "sleepSecs": 26160, "sleepScore": 82, "sleepQuality": 2, "vo2max": 56, "weight": null },
+      "activity": { "name": "San Mateo Running", "km": 10.01, "mi": 6.22, "sec": 2876, "pace_per_km": "4:47", "hr": 159, "max_hr": 180, "intensity": 86.9, "load": 62, "cadence": 172, "stride_m": 1.22, "elev_gain_m": 45, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 52, "score_committed": 56, "bar_phase": "base",
+      "delta_p": "lowered (easy day run at 87%)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:36 vs targets.",
+      "components": [
+        { "label": "10 km banked — the volume itself still counts toward the base", "delta": 6, "cat": "raiser" },
+        { "label": "Prescribed easy under 145 HR; ran 159 avg at 86.9% the day after club", "delta": -11, "cat": "lowerer" },
+        { "label": "Load 62 on a recovery day — same cost as the club session it was meant to absorb", "delta": -4, "cat": "lowerer" },
+        { "label": "Recovery held (HRV 87 at baseline, RHR 48) — the body is absorbing it, for now", "delta": 1, "cat": "context" }
+      ],
+      "entry": "Ten kilometres is good. Ten kilometres at 159 average heart rate and 86.9% intensity the day after a club workout is the signature error, and it cost the same training load (62) as the club session it was supposed to be absorbing. The prescription was HR under 145. The volume still counts — that's why this isn't in the 40s — but a hard-day/hard-day pattern is how a 31-mile week ends up feeling like a 45-mile week, and your own history says what happens next. Recovery numbers are holding, which buys room, not permission.",
+      "note_next": "Thu Jul 16: genuinely easy or off. Saturday's long run is the week's priority — protect it."
+    },
+    {
+      "date": "2026-07-16", "dow": "Thu", "status": "scored", "reviewed": false,
+      "prediction": "1:36:00", "prediction_prev": "1:36:00",
+      "planned": "Genuinely easy 30-40 min, or off",
+      "plan_rationale": "Third day of the block; the long run on Saturday was the week's priority and needed legs.",
+      "wellness": { "ctl": 24.9, "atl": 40.0, "form": -15.1, "rampRate": 3.1, "hrv": 90, "restingHR": 49, "sleepSecs": 23100, "sleepScore": 82, "sleepQuality": 2, "vo2max": 56, "weight": null },
+      "activity": { "name": "San Mateo Running", "km": 6.91, "mi": 4.29, "sec": 1878, "pace_per_km": "4:32", "hr": 161, "max_hr": 178, "intensity": 91.5, "load": 42, "cadence": 172, "stride_m": 1.26, "elev_gain_m": 38, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 48, "score_committed": 53, "bar_phase": "base",
+      "delta_p": "lowered (third hard-ish day running)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:36 vs targets.",
+      "components": [
+        { "label": "7 km more aerobic time on the week", "delta": 4, "cat": "raiser" },
+        { "label": "91.5% intensity on a day prescribed easy-or-off — third consecutive day at 87%+", "delta": -12, "cat": "lowerer" },
+        { "label": "Intensity density: the week is now ~60% quality by volume with no cheap miles", "delta": -5, "cat": "lowerer" },
+        { "label": "RHR crept to 49, the top of your range, three days running", "delta": -2, "cat": "lowerer" },
+        { "label": "HRV still 90 — no red flag yet", "delta": 3, "cat": "context" }
+      ],
+      "entry": "Third straight day at 87% or above, this one at 91.5%. This is the June-2026 pattern the plan was explicitly written to break: club, then two 'easy' days that aren't, and a week that reads as 60% quality by volume with no cheap miles in it. RHR has drifted to 49 for three days — the softest possible early warning, and worth naming before it becomes a story. HRV is fine at 90, so nothing is broken; the odds moved down because the week's shape got worse, not because your body failed.",
+      "note_next": "Fri Jul 17: OFF. Sat Jul 18: the long run — 90+ min at 5:50-6:05/km. That run is the whole week."
+    },
+    {
+      "date": "2026-07-17", "dow": "Fri", "status": "scored", "reviewed": false,
+      "prediction": "1:35:45", "prediction_prev": "1:36:00",
+      "planned": "OFF",
+      "plan_rationale": "Clearing the legs for Saturday's long run after three consecutive days at threshold-ish intensity.",
+      "wellness": { "ctl": 24.3, "atl": 34.7, "form": -10.4, "rampRate": 0.9, "hrv": 94, "restingHR": 48, "sleepSecs": 25800, "sleepScore": 88, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 66, "score_committed": 66, "bar_phase": "base",
+      "delta_p": "mildly raised (set up the long run)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:35:45",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:35 vs targets.",
+      "components": [
+        { "label": "Rest taken to protect the week's most valuable session", "delta": 8, "cat": "raiser" },
+        { "label": "HRV rebounded to 94, ATL 40 → 34.7, ramp cooled to +0.9", "delta": 3, "cat": "raiser" },
+        { "label": "No volume banked", "delta": -2, "cat": "context" }
+      ],
+      "entry": "Off, and it worked exactly as intended: HRV rebounded to 94, ATL came down from 40 to 34.7, and the ramp cooled to +0.9. That is a body arriving at a long run ready to actually absorb it, rather than survive it. Good discipline after three days that didn't have any.",
+      "note_next": "Sat Jul 18: long run, 90+ min at 5:50-6:05/km. HR ceiling 148. If it drifts above, walk 30 s and reset — the point is the duration, not the pace."
+    },
+    {
+      "date": "2026-07-18", "dow": "Sat", "status": "scored", "reviewed": false,
+      "prediction": "1:34:45", "prediction_prev": "1:35:45",
+      "planned": "Long run 90+ min @ 5:50-6:05/km, HR ceiling 148",
+      "plan_rationale": "The week's priority session and the whole point of base phase: sustained aerobic time at an effort the body can absorb and repeat.",
+      "wellness": { "ctl": 26.0, "atl": 42.9, "form": -16.9, "rampRate": 3.1, "hrv": 88, "restingHR": 44, "sleepSecs": 27480, "sleepScore": 94, "sleepQuality": 1, "vo2max": 56, "weight": null },
+      "activity": { "name": "San Mateo Running — long run", "km": 18.01, "mi": 11.19, "sec": 6523, "pace_per_km": "6:07", "hr": 141, "max_hr": 163, "intensity": 72.6, "load": 92, "cadence": 170, "stride_m": 0.97, "elev_gain_m": 104, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 94, "score_committed": 89, "bar_phase": "base",
+      "delta_p": "clearly raised — and raised 1:20 most",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:45",
+      "prob_note": "current-fitness readout. ~0% still, but the projected half fell to ~1:34:45 — the fastest single-day move of the block.",
+      "components": [
+        { "label": "16.1 km at 141 HR / 72.6% — the first genuinely EASY long run of the build", "delta": 24, "cat": "raiser" },
+        { "label": "Longest of the block, and 98 minutes of absorbable aerobic time — exactly the deficit", "delta": 10, "cat": "raiser" },
+        { "label": "The highest-value session available to the 1:20 goal, which is why it out-scores the 1:25 line", "delta": 4, "cat": "raiser" },
+        { "label": "Slept 7.6 h at quality 1, RHR 44 near the floor — arrived ready and absorbed it", "delta": 3, "cat": "raiser" },
+        { "label": "Load 92 pushed ATL to 42.9; the follow-up days matter", "delta": -4, "cat": "context" }
+      ],
+      "entry": "This is the run the whole plan has been asking for, and you finally did it. 16.1 km at 141 average heart rate and 72.6% intensity, with an easy 1.9 km on top — 98 minutes of genuinely easy aerobic time. For context: on July 5 you ran 12 km at 156 HR and called it easy. Same athlete, two weeks later, four kilometres further, fifteen beats lower. That is not a small thing; that is the base arriving, and it is the single most valuable session available to the 1:20 goal, which is exactly why this scores higher against 1:20 than against 1:25. You slept 7.6 hours at quality 1 beforehand and RHR was 44 — you arrived ready and the body took it. More of these. Nothing in this build matters more.",
+      "note_next": "Sun Jul 19: easy 30-40 min shakeout or off. Do NOT put quality on top of a 92-load long run — that's how the good week gets spent."
+    },
+    {
+      "date": "2026-07-19", "dow": "Sun", "status": "scored", "reviewed": false,
+      "prediction": "1:34:30", "prediction_prev": "1:34:45",
+      "planned": "Easy 30-40 min shakeout, or off",
+      "plan_rationale": "Absorption day after a 92-load long run; the week's quality was already banked at club on Tuesday.",
+      "wellness": { "ctl": 26.3, "atl": 42.2, "form": -15.9, "rampRate": 3.1, "hrv": 91, "restingHR": 47, "sleepSecs": 24360, "sleepScore": 81, "sleepQuality": 2, "vo2max": 56, "weight": null },
+      "activity": { "name": "San Mateo Track Running — track session (wu / main / cd)", "km": 6.60, "mi": 4.10, "sec": 1734, "pace_per_km": "4:23", "hr": 158, "max_hr": 180, "intensity": 98.7, "load": 38, "cadence": 172, "stride_m": 1.31, "elev_gain_m": 42, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 58, "score_committed": 62, "bar_phase": "base",
+      "delta_p": "slightly lowered (quality stacked on the long run)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:34:30 vs targets.",
+      "components": [
+        { "label": "Track work executed cleanly at 98.7%, with real warmup and cooldown", "delta": 6, "cat": "raiser" },
+        { "label": "Prescribed shakeout-or-off; ran a track session the day after a 92-load long run", "delta": -9, "cat": "lowerer" },
+        { "label": "Week's quality budget already spent at club — this was the forfeited slot", "delta": -3, "cat": "lowerer" },
+        { "label": "Recovery held (HRV 91, RHR 47) — green-recovery floor applies", "delta": 4, "cat": "context" }
+      ],
+      "entry": "Well-executed track work on the wrong day. Saturday's long run was the best session of your build and the way to bank it is an easy Sunday; instead it got a 98.7% track session on top. The body held — HRV 91, RHR 47 — so the floor keeps this near neutral rather than in the 40s, and the session itself was clean. But the quality budget for the week was already spent at club on Tuesday, and this is the slot the rules say you forfeit. Week closed at 31.5 miles, your biggest of the block by a wide margin.",
+      "note_next": "Mon Jul 20: OFF. That was a 31.5-mile week with three hard days in it."
+    },
+    {
+      "date": "2026-07-20", "dow": "Mon", "status": "scored", "reviewed": false,
+      "prediction": "1:34:30", "prediction_prev": "1:34:30",
+      "planned": "OFF",
+      "plan_rationale": "Absorption after the block's biggest week (31.5 mi) — and a deliberate reset before Tuesday's club session.",
+      "wellness": { "ctl": 25.7, "atl": 36.6, "form": -10.9, "rampRate": 3.0, "hrv": 92, "restingHR": 45, "sleepSecs": 27480, "sleepScore": 88, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 65, "score_committed": 65, "bar_phase": "base",
+      "delta_p": "mildly raised (absorption)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:34:30 vs targets.",
+      "components": [
+        { "label": "Rest after a 31.5 mi week — the right call, taken without argument", "delta": 7, "cat": "raiser" },
+        { "label": "Sleep 7.6 h / 88, HRV 92, RHR 45 — fully recovered", "delta": 3, "cat": "raiser" },
+        { "label": "No volume banked", "delta": -2, "cat": "context" }
+      ],
+      "entry": "Clean absorption day off the back of the biggest week of the build. Slept 7.6 hours, HRV 92, RHR 45 — the body has genuinely taken on 31.5 miles including a 98-minute long run and come out the other side recovered. That is the first week of this block that looks like a base week rather than a race week.",
+      "note_next": "Tue Jul 21: club. Then Wednesday actually easy — that's the one habit left to fix."
+    },
+    {
+      "date": "2026-07-21", "dow": "Tue", "status": "scored", "reviewed": false,
+      "prediction": "1:34:00", "prediction_prev": "1:34:30",
+      "planned": "Run club speed workout",
+      "plan_rationale": "The protected Tuesday quality slot, on a fully recovered body (HRV 92, RHR 44).",
+      "wellness": { "ctl": 26.6, "atl": 40.5, "form": -13.9, "rampRate": 3.0, "hrv": 92, "restingHR": 44, "sleepSecs": 24420, "sleepScore": 84, "sleepQuality": 2, "vo2max": 57, "weight": null },
+      "activity": { "name": "Burlingame Running — club night (wu / main / cd)", "km": 10.47, "mi": 6.51, "sec": 2764, "pace_per_km": "4:24", "hr": 164, "max_hr": 185, "intensity": 103.5, "load": 66, "cadence": 173, "stride_m": 1.31, "elev_gain_m": 43, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 78, "score_committed": 74, "bar_phase": "base",
+      "delta_p": "raised (best-executed quality day of the block)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:34 vs targets.",
+      "components": [
+        { "label": "Main set at 103.5% of threshold on a green body — the week's correct hard day", "delta": 13, "cat": "raiser" },
+        { "label": "Warmup at 72.7% / 143 HR — genuinely easy, the discipline that's been missing elsewhere", "delta": 5, "cat": "raiser" },
+        { "label": "VO2max estimate 56 → 57 (was 54 three weeks ago)", "delta": 4, "cat": "raiser" },
+        { "label": "RHR 44 and HRV 92 going in — arrived properly fresh", "delta": 2, "cat": "context" },
+        { "label": "Load 66; Wednesday now has to be genuinely easy for this to pay off", "delta": -3, "cat": "context" }
+      ],
+      "entry": "The best-executed day of the block. Warmup at 143 HR — genuinely easy, which is the discipline that keeps going missing on Wednesdays — then a main set at 103.5% of threshold, then a real cooldown. Arrived with RHR 44 and HRV 92 and had the day to spend. The VO2max estimate is now 57, up from 54 three weeks ago; combined with Saturday's long run at 141 HR, two independent signals are pointing the same way. This is what the Tuesday slot is worth when the rest of the week supports it.",
+      "note_next": "Wed Jul 22: easy 40-50 min, HR under 148. You have run this day at 87-92% for three straight weeks — that is the one change left."
+    },
+    {
+      "date": "2026-07-22", "dow": "Wed", "status": "scored", "reviewed": false,
+      "prediction": "1:33:45", "prediction_prev": "1:34:00",
+      "planned": "Easy 40-50 min, HR under 148",
+      "plan_rationale": "The Wednesday easy run — the habit the block has been trying to fix, and the day the aerobic base actually comes from.",
+      "wellness": { "ctl": 27.3, "atl": 42.7, "form": -15.4, "rampRate": 2.8, "hrv": 98, "restingHR": 46, "sleepSecs": 25140, "sleepScore": 83, "sleepQuality": 2, "vo2max": 57, "weight": null },
+      "activity": { "name": "San Mateo Running", "km": 10.27, "mi": 6.38, "sec": 3059, "pace_per_km": "4:58", "hr": 153, "max_hr": 176, "intensity": 81.7, "load": 57, "cadence": 172, "stride_m": 1.17, "elev_gain_m": 47, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 60, "score_committed": 63, "bar_phase": "base",
+      "delta_p": "~neutral, but trending the right way",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:45",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:33:45 vs targets.",
+      "components": [
+        { "label": "10.3 km banked on the day the base is supposed to be built", "delta": 7, "cat": "raiser" },
+        { "label": "Real improvement on the same day: 153 HR / 81.7% vs 159 / 86.9% last Wednesday", "delta": 5, "cat": "raiser" },
+        { "label": "HRV 98 — the highest of the entire block", "delta": 3, "cat": "raiser" },
+        { "label": "Still not easy: prescribed under 148, ran 153 avg at 81.7% the day after club", "delta": -8, "cat": "lowerer" },
+        { "label": "Load 57 on a recovery slot — better than last week's 62, still high", "delta": -4, "cat": "lowerer" }
+      ],
+      "entry": "Progress, honestly. Same day of the week, same assignment, and you ran it at 153 HR / 81.7% instead of last Wednesday's 159 / 86.9% — six beats and five points of intensity in the right direction, with HRV at 98, the highest of the block. It is still not the easy run that was prescribed (the ceiling was 148), and a load of 57 is still most of a quality day. But the direction is right and the body is thriving: this is the first week where the pattern is bending rather than repeating.",
+      "note_next": "Thu Jul 23: easy again, or off. The weekend long run is the priority — and Thursday is where the last three weeks went wrong."
+    },
+    {
+      "date": "2026-07-23", "dow": "Thu", "status": "scored", "reviewed": false,
+      "prediction": "1:33:30", "prediction_prev": "1:33:45",
+      "planned": "Easy 40 min, or off",
+      "plan_rationale": "Third consecutive day; the weekend long run was the week's priority and needed legs under it.",
+      "wellness": { "ctl": 28.3, "atl": 46.1, "form": -17.8, "rampRate": 3.4, "hrv": 92, "restingHR": 48, "sleepSecs": 28740, "sleepScore": 92, "sleepQuality": 1, "vo2max": 57, "weight": null },
+      "activity": { "name": "San Mateo Running", "km": 11.39, "mi": 7.08, "sec": 3201, "pace_per_km": "4:41", "hr": 158, "max_hr": 179, "intensity": 86.2, "load": 68, "cadence": 172, "stride_m": 1.21, "elev_gain_m": 51, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 50, "score_committed": 55, "bar_phase": "base",
+      "delta_p": "lowered (third day, biggest non-long-run load of the block)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:33:30 vs targets.",
+      "components": [
+        { "label": "11.4 km — the volume is real and the week is trending big", "delta": 6, "cat": "raiser" },
+        { "label": "86.2% on a day prescribed easy-or-off, third consecutive working day", "delta": -11, "cat": "lowerer" },
+        { "label": "Load 68 — the biggest non-long-run load of the entire block, on a recovery slot", "delta": -5, "cat": "lowerer" },
+        { "label": "ATL 46.1 and form -17.8, both block worsts; ramp back to +3.4", "delta": -4, "cat": "lowerer" },
+        { "label": "Slept 8.0 h at quality 1 and HRV 92 — the recovery side is doing its job", "delta": 4, "cat": "context" }
+      ],
+      "entry": "Wednesday bent the pattern; Thursday snapped it back. 11.4 km at 86.2% on a day prescribed easy-or-off, and load 68 — the biggest non-long-run load of the block, on a recovery slot. That pushed ATL to 46.1 and form to −17.8, both block worsts, with the ramp back up to +3.4. The recovery side is still holding up beautifully (8 hours at quality 1, HRV 92), which is the only reason this isn't lower. But three consecutive days at 82-92% with a long run still owed for the week is the exact arithmetic that has ended every build in your log. The fix isn't more discipline on hard days — you're good at those. It's letting one day a week be genuinely, boringly easy.",
+      "note_next": "Fri Jul 24: OFF, not optional. Then Sat easy and Sun long."
+    },
+    {
+      "date": "2026-07-24", "dow": "Fri", "status": "scored", "reviewed": false,
+      "prediction": "1:33:30", "prediction_prev": "1:33:30",
+      "planned": "OFF",
+      "plan_rationale": "Mandatory after three consecutive days and the block's worst form reading (-17.8).",
+      "wellness": { "ctl": 27.6, "atl": 39.9, "form": -12.3, "rampRate": 3.3, "hrv": 91, "restingHR": 48, "sleepSecs": 25860, "sleepScore": 79, "sleepQuality": 3, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 64, "score_committed": 64, "bar_phase": "base",
+      "delta_p": "mildly raised (needed absorption)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:33:30 vs targets. Prediction has come down 4:15 since Jul 5.",
+      "components": [
+        { "label": "Rest taken on the day the numbers demanded it — ATL 46 → 40, form -17.8 → -12.3", "delta": 8, "cat": "raiser" },
+        { "label": "Three consecutive days absorbed without an HRV drop (91)", "delta": 2, "cat": "raiser" },
+        { "label": "Sleep quality 3 on 7.2 h — the one soft spot", "delta": -3, "cat": "context" },
+        { "label": "No volume banked with the week's long run still owed", "delta": -3, "cat": "context" }
+      ],
+      "entry": "Correct rest. ATL came down from 46.1 to 39.9 and form from −17.8 to −12.3, which is exactly the reset Thursday made necessary. Zooming out: CTL has gone 20.3 → 27.6 in under three weeks, VO2max 54 → 57, and the projected half has come down from 1:37:45 to 1:33:30. That is a real fortnight of work. The week's long run is still owed, though, and the weekend decides whether this becomes a 30+ mile week or a 22-mile one.",
+      "note_next": "Sat Jul 25: easy 50-60 min. Sun Jul 26: long run 100-110 min at 5:50-6:05/km — repeat the Jul 18 formula, that's the one to build on."
+    },
+    {
+      "date": "2026-07-25", "dow": "Sat", "status": "prescribed", "reviewed": false,
+      "prediction": "1:33:30", "prediction_prev": "1:33:30",
+      "planned": "Easy 50-60 min @ 5:45-6:00/km, HR ceiling 148. Optional 4x20s strides at the end if it feels smooth.",
+      "plan_rationale": "Form is back to -7.6 after Friday's rest and HRV has sat 91-98 all week, so there is room to run — but the Saturday tempo gates are NOT open (they need 4+ consecutive weeks at 35+ mi/wk; you're at ~31 and climbing), and tomorrow's long run is the week's priority. So today is deliberately, boringly easy: aerobic minutes that cost nothing, protecting a 100-110 min long run tomorrow. If the legs feel flat, cut to 40 min rather than skipping — the streak matters more than the session.",
+      "wellness": { "ctl": 27.0, "atl": 34.6, "form": -7.6, "rampRate": 1.0, "hrv": null, "restingHR": null, "sleepSecs": null, "sleepScore": null, "sleepQuality": null, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": null, "score_committed": null, "bar_phase": "base",
+      "delta_p": null,
+      "p_120": null, "p_125": null, "pred_half": "1:33:30",
+      "prob_note": null,
+      "components": [],
+      "entry": null,
+      "note_next": "Sun Jul 26: long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — the Jul 18 formula, the single most valuable session in this build."
     }
   ]
 }

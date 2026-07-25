@@ -4,1084 +4,416 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
+<meta name="description" content="Personal half-marathon training instrument — daily coaching log, stream analytics and goal tracking for a race on Oct 31 2026.">
 <title>Split · half-marathon build</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏃</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,900;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-/* ============================================================= */
-/* Split — design system. Dark "training lab": editorial serif   */
-/* display + mono numerals over a deep blue-black surface.       */
-/* ============================================================= */
+/* ═══════════════════════════════════════════════════════════════════
+   Split — design system
+   Dark-only by deliberate choice. Every series colour below is a step
+   from the data-viz reference palette, validated as a set against this
+   page's own chart surface (#121826) with scripts/validate_palette.js:
+   lightness band, chroma floor, adjacent CVD ΔE 8.4, normal-vision
+   ΔE 19.3, contrast ≥3:1 — all pass.
+   ═══════════════════════════════════════════════════════════════════ */
 :root{
-  --bg:#0a0d12; --bg2:#0d1118; --card:#111823; --card2:#0f151f;
-  --line:#1c2634; --line2:#243044;
-  --ink:#e8edf5; --sub:#93a0b4; --mut:#5d6c81;
-  --gold:#e8b34b; --peri:#7aa2f7; --rose:#f2708a; --grape:#c792ea; --teal:#54b07c;
-  --hi:#4ade80; --mid:#e8b34b; --lo:#f26d6d; --none:#2a3648;
-  --z1:#5f87b3; --z2:#54b07c; --z3:#a5c65a; --z4:#e8b34b; --z5:#ee8450; --z6:#ef5f6b; --z7:#b8508f;
+  /* surfaces */
+  --page:#0b0f18; --surface:#121826; --raised:#172033; --sunken:#0e131f;
+  /* ink */
+  --ink:#eef2f9; --ink2:#9fb0c9; --mut:#64748f;
+  /* chrome */
+  --grid:rgba(159,176,201,.10); --rule:#1e2839; --rule2:#2b364a;
+  /* categorical series — fixed order, never cycled */
+  --s-blue:#3987e5; --s-green:#008300; --s-magenta:#d55181; --s-yellow:#c98500;
+  --s-aqua:#199e70; --s-orange:#d95926; --s-violet:#9085e9; --s-red:#e66767;
+  /* ordinal ramp (intensity: easy→hard, brightness rises with intensity) */
+  --o1:#256abf; --o2:#3987e5; --o3:#86b6ef; --o4:#cde2fb;
+  /* status — reserved, always paired with icon + label */
+  --ok:#0ca30c; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b;
+  /* type */
   --disp:"Fraunces",Georgia,serif; --ui:"Inter",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
-  --r:14px; --r2:10px;
+  --r:16px; --r2:11px; --r3:8px;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:radial-gradient(1200px 500px at 70% -10%,#141c2b 0%,var(--bg) 55%) fixed,var(--bg);color:var(--ink);font:14px/1.5 var(--ui);}
-a{color:var(--peri);text-decoration:none}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.55 var(--ui);
+  background-image:radial-gradient(1100px 480px at 78% -12%,rgba(57,135,229,.10),transparent 60%);
+  background-attachment:fixed}
+a{color:var(--s-blue);text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;padding:0}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-::selection{background:rgba(232,179,75,.25)}
-:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 22px}
+::selection{background:rgba(57,135,229,.28)}
+:focus-visible{outline:2px solid var(--s-blue);outline-offset:2px;border-radius:5px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 
-/* ---------- header ---------- */
-header{padding:26px 0 0}
-.masthead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.brand{font:italic 900 40px/1 var(--disp);letter-spacing:-.5px}
-.brand .dot{color:var(--gold)}
-.tagline{color:var(--sub);font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
-.countdown{margin-left:auto;text-align:right;font-family:var(--mono)}
-.countdown .n{font-size:22px;font-weight:600;color:var(--gold)}
-.countdown .k{font-size:10px;color:var(--mut);letter-spacing:.12em;text-transform:uppercase}
+/* mono/label primitives */
+.k{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-/* phase strip */
-.phasebar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin:14px 0 0;background:var(--none)}
-.phasebar span{height:100%;position:relative}
-.phasebar .past{filter:saturate(1)}
-.phasebar .future{opacity:.28}
-.phaselabels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;color:var(--mut);letter-spacing:.1em;text-transform:uppercase;margin-top:5px}
-
-/* ---------- hero ribbon ---------- */
-.ribbon{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0 0}
-@media(max-width:920px){.ribbon{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.ribbon{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.ribbon>.cellx{min-width:190px;scroll-snap-align:start}}
-.cellx{background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 40%),var(--card);border:1px solid var(--line);border-radius:var(--r);padding:13px 14px 11px;position:relative;overflow:hidden}
-.cellx .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
-.cellx .v{font-family:var(--mono);font-size:23px;font-weight:600;margin-top:4px;line-height:1.15}
-.cellx .s{font-family:var(--mono);font-size:10.5px;color:var(--sub);margin-top:3px}
-.cellx .spark{position:absolute;right:8px;bottom:6px;opacity:.9}
-.badge{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 7px;border-radius:99px;border:1px solid var(--line2);color:var(--sub);vertical-align:2px}
-.badge.good{color:var(--hi);border-color:rgba(74,222,128,.35)}
-.badge.warn{color:var(--mid);border-color:rgba(232,179,75,.4)}
-.badge.bad{color:var(--lo);border-color:rgba(242,109,109,.4)}
-.pbar{height:5px;border-radius:3px;background:var(--none);overflow:hidden;margin-top:6px}
-.pbar i{display:block;height:100%;border-radius:3px}
-
-/* ---------- tabs ---------- */
-.tabs{display:flex;gap:4px;margin:22px 0 14px;border-bottom:1px solid var(--line)}
-.tab{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding:9px 16px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .14s}
-.tab:hover{color:var(--sub)}
-.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold)}
+/* ── header ─────────────────────────────────────────────── */
+header{padding:26px 0 0;border-bottom:1px solid var(--rule);background:linear-gradient(180deg,rgba(23,32,51,.5),transparent)}
+.masthead{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.brand{font:italic 900 42px/.95 var(--disp);letter-spacing:-.6px}
+.brand span{color:var(--s-yellow)}
+.tag{color:var(--ink2);font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;padding-bottom:5px}
+.cd{margin-left:auto;text-align:right;display:flex;gap:20px;align-items:flex-end}
+.cd .box{text-align:right}
+.cd .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:26px;font-weight:600;line-height:1}
+.cd .v.accent{color:var(--s-yellow)}
+/* phase rail */
+.phases{margin:18px 0 0;display:flex;gap:3px}
+.phases .ph{flex:1;position:relative}
+.phases .bar{height:7px;border-radius:4px;background:var(--rule2);overflow:hidden}
+.phases .bar i{display:block;height:100%;border-radius:4px}
+.phases .lb{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.phases .ph.on .lb{color:var(--ink)}
+.today-mark{position:absolute;top:-3px;width:2px;height:13px;background:var(--s-yellow);border-radius:2px}
+/* tabs */
+nav.tabs{display:flex;gap:2px;margin:20px 0 0;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+.tab{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);
+  padding:11px 18px;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .15s}
+.tab:hover{color:var(--ink2)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--s-yellow)}
+main{padding-top:26px}
 .hidden{display:none!important}
 
-/* ---------- calendar ---------- */
-.calhead{display:flex;align-items:center;gap:10px;margin:6px 0 12px}
-.calhead h2{font:600 22px/1 var(--disp);margin:0}
-.navbtn{width:30px;height:30px;border:1px solid var(--line);border-radius:8px;color:var(--sub);display:grid;place-items:center;transition:all .14s}
-.navbtn:hover{color:var(--ink);border-color:var(--line2);background:var(--card)}
-.todaybtn{font-family:var(--mono);font-size:11px;color:var(--sub);border:1px solid var(--line);border-radius:8px;padding:6px 10px;transition:all .14s}
-.todaybtn:hover{color:var(--ink);background:var(--card)}
-.legend{margin-left:auto;display:flex;gap:12px;align-items:center;font-family:var(--mono);font-size:10px;color:var(--mut);flex-wrap:wrap}
-.lg{display:flex;align-items:center;gap:5px}
-.sw{width:9px;height:9px;border-radius:3px}
-.dowrow{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
-.dowrow div{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-align:center}
-.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.day{min-height:96px;background:var(--card2);border:1px solid var(--line);border-radius:var(--r2);padding:7px 8px;position:relative;text-align:left;display:flex;flex-direction:column;gap:2px;transition:transform .14s,border-color .14s,background .14s}
-.day.clickable:hover{transform:translateY(-1px);border-color:var(--line2);background:var(--card)}
-.day.empty{background:transparent;border-color:transparent}
-.day.nodata{opacity:.55}
+/* ── cards ──────────────────────────────────────────────── */
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);padding:18px 20px}
+.card h3{font:600 17px/1.25 var(--disp);margin-bottom:2px}
+.card .note{font-family:var(--mono);font-size:10px;color:var(--mut);line-height:1.5;margin-bottom:12px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.span2{grid-column:span 2}
+@media(max-width:900px){.g2,.g3{grid-template-columns:1fr}.span2{grid-column:auto}}
+
+/* ── stat tiles ─────────────────────────────────────────── */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r2);padding:13px 15px;position:relative;overflow:hidden}
+.tile .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:25px;font-weight:600;line-height:1.1;margin-top:5px}
+.tile .v small{font-size:11px;color:var(--mut);font-weight:400;letter-spacing:0}
+.tile .s{font-family:var(--mono);font-size:10.5px;color:var(--ink2);margin-top:4px;line-height:1.45}
+.tile svg.spark{position:absolute;right:10px;bottom:9px;opacity:.85}
+/* status chip: colour never alone — always glyph + word */
+.chip{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;
+  border:1px solid var(--rule2);border-radius:99px;padding:2px 9px;color:var(--ink2);white-space:nowrap}
+.chip .g{font-size:9px;line-height:1}
+.chip.ok{color:var(--ok);border-color:rgba(12,163,12,.45)}
+.chip.warn{color:var(--warn);border-color:rgba(250,178,25,.45)}
+.chip.serious{color:var(--serious);border-color:rgba(236,131,90,.45)}
+.chip.crit{color:var(--crit);border-color:rgba(208,59,59,.5)}
+.meter{height:6px;border-radius:4px;background:var(--rule2);overflow:hidden;margin-top:8px}
+.meter i{display:block;height:100%;border-radius:4px;background:var(--s-blue)}
+
+/* ── today view ─────────────────────────────────────────── */
+.hero{display:grid;grid-template-columns:1.35fr 1fr;gap:14px}
+@media(max-width:940px){.hero{grid-template-columns:1fr}}
+.rx{background:linear-gradient(180deg,rgba(57,135,229,.10),transparent 55%),var(--surface);
+  border:1px solid var(--rule);border-left:3px solid var(--s-blue);border-radius:var(--r);padding:20px 22px}
+.rx .lead{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--s-blue)}
+.rx .sess{font:500 25px/1.3 var(--disp);margin-top:8px}
+.rx .why{color:var(--ink2);font-size:13.5px;line-height:1.65;margin-top:12px}
+.rx.done{border-left-color:var(--s-yellow)}
+.rx.done .lead{color:var(--s-yellow)}
+.callbox{display:flex;flex-direction:column;gap:12px}
+.gapline{display:flex;align-items:baseline;gap:9px;padding:7px 0;border-bottom:1px dashed var(--rule)}
+.gapline:last-child{border-bottom:none}
+.gapline .nm{font-family:var(--mono);font-size:11px;color:var(--ink2);flex:1}
+.gapline .gp{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px;font-weight:600}
+.bigcall{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:40px;font-weight:600;line-height:1;color:var(--s-yellow)}
+.trendrow{display:flex;align-items:center;gap:8px;margin-top:7px;font-family:var(--mono);font-size:11px;color:var(--ink2)}
+
+/* ── calendar ───────────────────────────────────────────── */
+.calbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.calbar h2{font:600 23px/1 var(--disp);min-width:180px}
+.ibtn{width:32px;height:32px;border:1px solid var(--rule);border-radius:var(--r3);color:var(--ink2);display:grid;place-items:center;transition:all .15s}
+.ibtn:hover{color:var(--ink);border-color:var(--rule2);background:var(--raised)}
+.tbtn{font-family:var(--mono);font-size:11px;color:var(--ink2);border:1px solid var(--rule);border-radius:var(--r3);padding:7px 12px;transition:all .15s}
+.tbtn:hover{color:var(--ink);background:var(--raised)}
+.tbtn.on{color:var(--ink);border-color:var(--s-yellow)}
+.legend{margin-left:auto;display:flex;gap:13px;flex-wrap:wrap;align-items:center;font-family:var(--mono);font-size:10px;color:var(--mut)}
+.legend .li{display:flex;align-items:center;gap:5px}
+.sw{width:10px;height:10px;border-radius:3px;flex:none}
+.calhead{display:grid;grid-template-columns:repeat(7,1fr) 86px;gap:7px;margin-bottom:7px}
+.calhead div{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-align:center}
+.calgrid{display:grid;grid-template-columns:repeat(7,1fr) 86px;gap:7px}
+.day{min-height:102px;background:var(--sunken);border:1px solid var(--rule);border-radius:var(--r2);
+  padding:8px 9px;position:relative;text-align:left;display:flex;flex-direction:column;gap:2px;
+  transition:transform .15s,border-color .15s,background .15s}
+.day.click:hover{transform:translateY(-2px);border-color:var(--rule2);background:var(--surface)}
+.day.blank{background:transparent;border-color:transparent}
+.day.void{opacity:.4}
 .day .dn{font-family:var(--mono);font-size:11px;color:var(--mut)}
-.day .score{position:absolute;top:6px;right:8px;font-family:var(--mono);font-size:15px;font-weight:600}
+.day .sc{position:absolute;top:7px;right:9px;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:16px;font-weight:600}
 .day .rail{position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
-.day.today{border-color:rgba(232,179,75,.55);box-shadow:0 0 0 1px rgba(232,179,75,.25) inset}
-.day .mi{font-family:var(--mono);font-size:14.5px;font-weight:600;margin-top:auto}
-.day .sub{font-family:var(--mono);font-size:10px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.day .loadbar{height:3px;border-radius:2px;background:var(--none);overflow:hidden;margin-top:3px}
-.day .loadbar i{display:block;height:100%}
-.day .flags{position:absolute;bottom:6px;right:7px;display:flex;gap:4px;align-items:center}
-.day .wave{color:var(--peri);opacity:.85}
-.day .dotrev{width:6px;height:6px;border-radius:50%;background:var(--gold)}
-.day.prescribed{border-style:dashed;border-color:rgba(122,162,247,.5)}
-.day .plantag{font-family:var(--mono);font-size:9px;color:var(--peri);letter-spacing:.1em;text-transform:uppercase}
-.day .xt{font-size:11px}
-@media(max-width:640px){.day{min-height:70px;padding:5px 6px}.day .sub,.day .loadbar{display:none}.day .mi{font-size:12.5px}.day .score{font-size:12.5px}}
+.day.now{border-color:rgba(201,133,0,.6);box-shadow:inset 0 0 0 1px rgba(201,133,0,.28)}
+.day .mi{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:15px;font-weight:600;margin-top:auto}
+.day .mi small{font-size:9px;color:var(--mut)}
+.day .sub{font-family:var(--mono);font-size:10px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.day .lbar{height:3px;border-radius:2px;background:var(--rule2);overflow:hidden;margin-top:4px}
+.day .lbar i{display:block;height:100%}
+.day .flags{position:absolute;bottom:7px;right:8px;display:flex;gap:5px;align-items:center}
+.day .wv{color:var(--s-blue);font-size:9px;letter-spacing:-1px}
+.day .unrev{width:6px;height:6px;border-radius:50%;background:var(--s-yellow)}
+.day.plan{border-style:dashed;border-color:rgba(57,135,229,.55)}
+.day .ptag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--s-blue)}
+.wkcell{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r2);padding:8px;display:flex;flex-direction:column;justify-content:center;gap:3px}
+.wkcell .wv{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:15px;font-weight:600}
+.wkcell .wk2{font-family:var(--mono);font-size:9px;color:var(--mut)}
+.wkcell .stack{display:flex;height:5px;border-radius:3px;overflow:hidden;gap:1px;margin-top:2px}
+@media(max-width:760px){
+  .calhead,.calgrid{grid-template-columns:repeat(7,1fr)}
+  .calhead div:last-child,.wkcell{display:none}
+  .day{min-height:74px;padding:6px}
+  .day .sub,.day .lbar{display:none}
+  .day .mi{font-size:12.5px}.day .sc{font-size:13px}
+}
 
-/* ---------- trends ---------- */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:880px){.grid2{grid-template-columns:1fr}}
-.tcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 10px;margin-bottom:0}
-.tcard h3{margin:0 0 2px;font:600 16px/1.2 var(--disp)}
-.tcard .note{font-family:var(--mono);font-size:10px;color:var(--mut);margin-bottom:10px}
-.tcard .ch{position:relative;height:230px}
-.tcard.wide{grid-column:1/-1}
-.tcard.wide .ch{height:260px}
-.rangebtns{float:right;display:flex;gap:4px}
-.rangebtns button{font-family:var(--mono);font-size:10px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
-.rangebtns button.on{color:var(--ink);border-color:var(--gold);background:rgba(232,179,75,.1)}
+/* ── charts ─────────────────────────────────────────────── */
+.chwrap{position:relative;height:232px}
+.chwrap.tall{height:266px}
+.chwrap.short{height:150px}
+.chead{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.chead .t{flex:1}
+.dbtn{font-family:var(--mono);font-size:9.5px;color:var(--mut);border:1px solid var(--rule);border-radius:6px;padding:3px 8px;flex:none}
+.dbtn:hover{color:var(--ink)}
+.dtable{margin-top:10px;max-height:210px;overflow:auto}
+table.dt{width:100%;border-collapse:collapse;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:11px}
+table.dt th{position:sticky;top:0;background:var(--surface);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mut);text-align:right;padding:5px 7px;border-bottom:1px solid var(--rule)}
+table.dt td{text-align:right;padding:4px 7px;border-bottom:1px dashed var(--rule);color:var(--ink2)}
+table.dt th:first-child,table.dt td:first-child{text-align:left}
+.rangebtns{display:flex;gap:4px}
 
-/* ---------- day panel ---------- */
-.scrim{position:fixed;inset:0;background:rgba(4,6,10,.6);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .18s;z-index:40}
+/* ── goal view ──────────────────────────────────────────── */
+.gate{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px dashed var(--rule)}
+.gate:last-child{border-bottom:none}
+.gate .gl{flex:1;font-size:13px;color:var(--ink2)}
+.gate .gv{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--ink);min-width:96px;text-align:right}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:var(--rule2)}
+.tlrow{position:relative;padding:8px 0}
+.tlrow .dot{position:absolute;left:-23px;top:14px;width:9px;height:9px;border-radius:50%;border:2px solid var(--page)}
+.tlrow .dt{font-family:var(--mono);font-size:10px;color:var(--mut)}
+.tlrow .lb{font-size:13.5px;margin-top:1px}
+.tlrow .cz{font-size:12px;color:var(--ink2);margin-top:2px;font-style:italic}
+.eratab{width:100%;border-collapse:collapse;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12px}
+.eratab th{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);text-align:right;padding:6px 8px;border-bottom:1px solid var(--rule)}
+.eratab td{text-align:right;padding:7px 8px;border-bottom:1px dashed var(--rule);color:var(--ink2)}
+.eratab th:first-child,.eratab td:first-child{text-align:left}
+.eratab tr:last-child td{color:var(--ink);font-weight:600}
+.prose{font-size:13.5px;line-height:1.7;color:var(--ink2)}
+.prose b{color:var(--ink);font-weight:600}
+.pull{font:italic 500 15px/1.6 var(--disp);color:var(--ink);border-left:2px solid var(--s-yellow);padding-left:14px;margin:14px 0}
+
+/* ── day panel ──────────────────────────────────────────── */
+.scrim{position:fixed;inset:0;background:rgba(4,6,11,.66);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
 .scrim.on{opacity:1;pointer-events:auto}
-.panel{position:fixed;top:0;right:0;bottom:0;width:min(620px,100vw);background:var(--bg2);border-left:1px solid var(--line);transform:translateX(102%);transition:transform .22s cubic-bezier(.2,.8,.2,1);z-index:50;display:flex;flex-direction:column}
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(660px,100vw);background:var(--page);
+  border-left:1px solid var(--rule);transform:translateX(103%);transition:transform .24s cubic-bezier(.2,.8,.2,1);
+  z-index:50;display:flex;flex-direction:column}
 .panel.on{transform:none}
-.phead{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg2);z-index:2}
-.phead .pdate{font:600 19px/1.2 var(--disp)}
-.phead .pnav{display:flex;gap:6px;margin-left:auto}
-.pbody{overflow-y:auto;padding:16px 18px 40px;overscroll-behavior:contain}
-.pbody h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:22px 0 8px}
+.phead{display:flex;align-items:center;gap:9px;padding:15px 20px;border-bottom:1px solid var(--rule);background:var(--page)}
+.phead .pd{font:600 19px/1.2 var(--disp)}
+.phead .pn{display:flex;gap:6px;margin-left:auto}
+.pbody{overflow-y:auto;padding:18px 20px 48px;overscroll-behavior:contain}
+.pbody h4{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:24px 0 9px}
 .pbody h4:first-child{margin-top:0}
-.scorehead{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.dial{position:relative;width:104px}
-.dial svg{display:block}
-.dial .dv{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:26px;font-weight:600;padding-top:2px}
-.dial .dk{text-align:center;font-family:var(--mono);font-size:9.5px;color:var(--mut);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
-.deltap{font:italic 600 15px/1.4 var(--disp);color:var(--sub);margin:10px 0 0}
-.probline{font-family:var(--mono);font-size:11.5px;color:var(--sub);margin-top:8px}
-.predline{font-family:var(--mono);font-size:12.5px;margin-top:6px}
-.revflag{font-family:var(--mono);font-size:10px;color:var(--gold);border:1px solid rgba(232,179,75,.4);padding:1px 7px;border-radius:99px;margin-left:8px;vertical-align:3px}
-.plantxt{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--peri);border-radius:var(--r2);padding:10px 12px;font-size:13.5px}
-.rationale{color:var(--sub);font-size:12.5px;margin-top:7px;line-height:1.55}
-.comp{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.dials{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.dial{width:106px;flex:none}
+.dial .dv{position:relative;margin-top:-70px;text-align:center;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:27px;font-weight:600}
+.dial .dk{text-align:center;font-family:var(--mono);font-size:9px;color:var(--mut);letter-spacing:.09em;text-transform:uppercase;margin-top:26px}
+.dp{font:italic 500 15px/1.5 var(--disp);color:var(--ink2)}
+.comp{display:flex;align-items:center;gap:11px;padding:6px 0;border-bottom:1px dashed var(--rule)}
 .comp:last-child{border-bottom:none}
-.comp .cl{flex:1;font-size:12.5px;color:var(--sub)}
-.comp .cbar{width:120px;height:6px;position:relative}
-.comp .cbar::before{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--line2)}
-.comp .cbar i{position:absolute;top:0;height:100%;border-radius:3px}
-.comp .cd{font-family:var(--mono);font-size:12px;width:34px;text-align:right}
-.entrytxt{font:400 14.5px/1.7 var(--disp);color:#cfd8e6}
-.wellgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px}
-.wcell{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:8px 10px}
-.wcell .k{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
-.wcell .v{font-family:var(--mono);font-size:15px;font-weight:600;margin-top:2px}
-.wcell .v small{font-size:10px;color:var(--mut);font-weight:400}
-/* activity block */
-.act{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:14px;margin-bottom:14px}
-.act .ahead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.act .aname{font:600 16px/1.2 var(--disp)}
-.act .atime{font-family:var(--mono);font-size:11px;color:var(--mut)}
-.typechip{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line2);border-radius:99px;padding:1px 8px;color:var(--sub)}
-.statgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:7px;margin-top:12px}
-.stat{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:7px 9px}
-.stat .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-.stat .v{font-family:var(--mono);font-size:14px;font-weight:600;margin-top:1px;white-space:nowrap}
-.stat .v small{font-size:9.5px;color:var(--mut)}
-.schart{position:relative;height:150px;margin-top:10px}
-.schart.sm{height:110px}
-.xtoggle{display:flex;gap:4px;margin:12px 0 2px}
-.xtoggle button{font-family:var(--mono);font-size:9.5px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
-.xtoggle button.on{color:var(--ink);border-color:var(--gold)}
-.splits{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11.5px;margin-top:6px}
-.splits th{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);text-align:right;padding:4px 6px;border-bottom:1px solid var(--line)}
-.splits td{text-align:right;padding:4px 6px;border-bottom:1px dashed var(--line);color:var(--sub);position:relative}
-.splits td:first-child,.splits th:first-child{text-align:left}
-.splits tr:last-child td{border-bottom:none}
-.splits .fast{color:var(--hi)}
-.splits .slow{color:var(--lo)}
-.splits td .zbg{position:absolute;inset:2px 0;opacity:.16;border-radius:3px;z-index:-1}
-.zonebar{display:flex;height:22px;border-radius:6px;overflow:hidden;margin-top:8px}
-.zonebar div{display:grid;place-items:center;font-family:var(--mono);font-size:9px;color:rgba(0,0,0,.65);font-weight:600;min-width:0;overflow:hidden}
-.zonekey{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:9.5px;color:var(--mut);margin-top:6px}
-.effort{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:8px}
-.ecell{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:9px 11px}
-.ecell .k{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-.ecell .v{font-family:var(--mono);font-size:16px;font-weight:600;margin-top:2px}
-.ecell .s{font-family:var(--mono);font-size:9.5px;color:var(--mut);margin-top:2px;line-height:1.45}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.chip{font-family:var(--mono);font-size:10.5px;border:1px solid var(--line2);border-radius:99px;padding:3px 10px;color:var(--sub)}
-.chip b{color:var(--ink);font-weight:600}
-.ivl{font-family:var(--mono);font-size:11px;color:var(--sub);padding:3px 0;border-bottom:1px dashed var(--line)}
-.ivl:last-child{border-bottom:none}
-.nostreams{font-family:var(--mono);font-size:11px;color:var(--mut);background:var(--card2);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;margin-top:10px}
-.closex{width:32px;height:32px;border:1px solid var(--line);border-radius:8px;color:var(--sub);display:grid;place-items:center;font-size:15px}
-.closex:hover{color:var(--ink);background:var(--card)}
+.comp .cl{flex:1;font-size:12.5px;color:var(--ink2)}
+.comp .cb{width:104px;height:7px;position:relative;flex:none}
+.comp .cb::before{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--rule2)}
+.comp .cb i{position:absolute;top:0;height:100%;border-radius:3px}
+.comp .cd{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12px;width:32px;text-align:right;flex:none}
+.entry{font:400 14.5px/1.75 var(--disp);color:#d7dfec}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.wc{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r3);padding:9px 11px}
+.wc .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:15px;font-weight:600;margin-top:2px}
+.wc .v small{font-size:9.5px;color:var(--mut);font-weight:400}
+.act{border:1px solid var(--rule);border-radius:var(--r);background:var(--surface);padding:16px;margin-bottom:14px}
+.act .ah{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.act .an{font:600 16px/1.25 var(--disp)}
+.act .at{font-family:var(--mono);font-size:10.5px;color:var(--mut)}
+.tchip{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--rule2);border-radius:99px;padding:2px 9px;color:var(--ink2)}
+.tchip.hl{color:var(--s-yellow);border-color:rgba(201,133,0,.5)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:7px;margin-top:13px}
+.st{background:var(--sunken);border:1px solid var(--rule);border-radius:var(--r3);padding:8px 9px}
+.st .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:14px;font-weight:600;margin-top:1px;white-space:nowrap}
+.st .v small{font-size:9px;color:var(--mut)}
+.sch{position:relative;height:154px;margin-top:12px}
+.sch.mini{height:74px}
+.xtog{display:flex;gap:4px;margin:13px 0 2px}
+.xtog button{font-family:var(--mono);font-size:9.5px;color:var(--mut);border:1px solid var(--rule);border-radius:6px;padding:3px 9px}
+.xtog button.on{color:var(--ink);border-color:var(--s-yellow)}
+table.sp{width:100%;border-collapse:collapse;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:11.5px;margin-top:7px}
+table.sp th{font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--mut);text-align:right;padding:5px 6px;border-bottom:1px solid var(--rule)}
+table.sp td{text-align:right;padding:5px 6px;border-bottom:1px dashed var(--rule);color:var(--ink2)}
+table.sp th:first-child,table.sp td:first-child{text-align:left}
+table.sp tr:last-child td{border-bottom:none}
+table.sp td.hi{color:var(--ink);font-weight:600}
+table.sp tr.work td{color:var(--ink)}
+.zbar{display:flex;height:24px;border-radius:6px;overflow:hidden;margin-top:9px;gap:2px}
+.zbar div{display:grid;place-items:center;font-family:var(--mono);font-size:9px;font-weight:600;color:rgba(6,10,18,.78);min-width:0;overflow:hidden}
+.zkey{display:flex;gap:11px;flex-wrap:wrap;font-family:var(--mono);font-size:9.5px;color:var(--mut);margin-top:7px}
+.sig{display:grid;grid-template-columns:repeat(auto-fill,minmax(152px,1fr));gap:9px;margin-top:9px}
+.sc2{background:var(--sunken);border:1px solid var(--rule);border-radius:var(--r3);padding:10px 12px}
+.sc2 .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:17px;font-weight:600;margin-top:3px}
+.sc2 .s{font-family:var(--mono);font-size:9.5px;color:var(--mut);margin-top:3px;line-height:1.5}
+.none{font-family:var(--mono);font-size:11px;color:var(--mut);background:var(--sunken);border:1px dashed var(--rule);border-radius:var(--r3);padding:11px 13px;margin-top:11px}
+.x{width:33px;height:33px;border:1px solid var(--rule);border-radius:var(--r3);color:var(--ink2);display:grid;place-items:center;font-size:15px}
+.x:hover{color:var(--ink);background:var(--raised)}
 
-/* footer */
-footer{margin:36px 0 28px;color:var(--mut);font-family:var(--mono);font-size:10.5px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.mbtn{border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:var(--sub)}
-.mbtn:hover{color:var(--ink)}
-dialog.methods{background:var(--bg2);color:var(--ink);border:1px solid var(--line2);border-radius:var(--r);max-width:640px;width:92vw;padding:22px 24px;max-height:82vh;overflow-y:auto}
-dialog.methods::backdrop{background:rgba(4,6,10,.65);backdrop-filter:blur(3px)}
-dialog.methods h3{font:600 20px var(--disp);margin:0 0 4px}
-dialog.methods h5{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 4px}
-dialog.methods p{font-size:12.5px;color:var(--sub);margin:4px 0;line-height:1.6}
-.skel{background:linear-gradient(90deg,var(--card2),var(--card),var(--card2));background-size:200% 100%;animation:sk 1.2s infinite;border-radius:8px}
+/* footer + methods */
+footer{margin:40px 0 30px;color:var(--mut);font-family:var(--mono);font-size:10.5px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--rule);padding-top:18px}
+dialog.meth{background:var(--page);color:var(--ink);border:1px solid var(--rule2);border-radius:var(--r);
+  max-width:680px;width:93vw;padding:24px 26px;max-height:84vh;overflow-y:auto}
+dialog.meth::backdrop{background:rgba(4,6,11,.7);backdrop-filter:blur(3px)}
+dialog.meth h3{font:600 21px var(--disp);margin-bottom:5px}
+dialog.meth h5{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--s-yellow);margin:18px 0 5px}
+dialog.meth p{font-size:12.5px;color:var(--ink2);margin:4px 0;line-height:1.65}
+.skel{background:linear-gradient(90deg,var(--sunken),var(--surface),var(--sunken));background-size:200% 100%;
+  animation:sk 1.3s infinite;border-radius:var(--r3)}
 @keyframes sk{0%{background-position:0 0}100%{background-position:-200% 0}}
 </style>
 </head>
 <body>
-<header class="wrap">
-  <div class="masthead">
-    <div class="brand">Split<span class="dot">.</span></div>
-    <div class="tagline">half-marathon build · Oct 31 2026</div>
-    <div class="countdown"><span class="n" id="cdDays">–</span> <span class="k">days</span><div class="k" id="phaseNow"></div></div>
+<header>
+  <div class="wrap">
+    <div class="masthead">
+      <div class="brand">Split<span>.</span></div>
+      <div class="tag">half-marathon build · Oct 31 2026</div>
+      <div class="cd">
+        <div class="box"><div class="v accent num" id="cdDays">–</div><div class="k">days to race</div></div>
+        <div class="box"><div class="v num" id="cdWeek">–</div><div class="k" id="cdPhase">phase</div></div>
+      </div>
+    </div>
+    <div class="phases" id="phases" aria-hidden="true"></div>
+    <nav class="tabs" role="tablist" aria-label="views">
+      <button class="tab" role="tab" id="tab-today"    aria-selected="true"  data-v="today">Today</button>
+      <button class="tab" role="tab" id="tab-calendar" aria-selected="false" data-v="calendar">Calendar</button>
+      <button class="tab" role="tab" id="tab-analysis" aria-selected="false" data-v="analysis">Analysis</button>
+      <button class="tab" role="tab" id="tab-goal"     aria-selected="false" data-v="goal">The Goal</button>
+    </nav>
   </div>
-  <div class="phasebar" id="phasebar" aria-hidden="true"></div>
-  <div class="phaselabels" id="phaselabels" aria-hidden="true"></div>
-  <div class="ribbon" id="ribbon"></div>
-  <nav class="tabs" role="tablist" aria-label="views">
-    <button class="tab" role="tab" id="tab-cal" aria-selected="true" data-view="cal">Calendar</button>
-    <button class="tab" role="tab" id="tab-trends" aria-selected="false" data-view="trends">Trends</button>
-  </nav>
 </header>
 
 <main class="wrap">
-  <section id="view-cal" role="tabpanel" aria-labelledby="tab-cal">
-    <div class="calhead">
-      <button class="navbtn" id="prevM" aria-label="previous month">‹</button>
-      <h2 id="monthLabel">–</h2>
-      <button class="navbtn" id="nextM" aria-label="next month">›</button>
-      <button class="todaybtn" id="goToday">today</button>
-      <div class="legend">
-        <span class="lg"><span class="sw" style="background:var(--hi)"></span>raised odds</span>
-        <span class="lg"><span class="sw" style="background:var(--mid)"></span>held</span>
-        <span class="lg"><span class="sw" style="background:var(--lo)"></span>lowered</span>
-        <span class="lg"><span class="sw" style="border:1px dashed var(--peri);background:none"></span>planned</span>
-        <span class="lg"><span class="dotrev" style="width:7px;height:7px"></span>unreviewed</span>
-        <span class="lg"><span class="wave">▂▄▂</span>streams</span>
+  <section id="v-today" role="tabpanel" aria-labelledby="tab-today">
+    <div class="hero">
+      <div id="rxCard"></div>
+      <div class="card callbox">
+        <div>
+          <div class="k">the call — projected half today</div>
+          <div class="bigcall num" id="callNow">–</div>
+          <div class="trendrow" id="callTrend"></div>
+        </div>
+        <div>
+          <div class="k" style="margin-bottom:4px">gap to each goal</div>
+          <div id="gapList"></div>
+        </div>
       </div>
     </div>
-    <div class="dowrow"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div>
+    <h4 class="k" style="margin:26px 0 10px">This morning</h4>
+    <div class="tiles" id="readyTiles"></div>
+    <h4 class="k" style="margin:26px 0 10px">The week so far</h4>
+    <div class="tiles" id="weekTiles"></div>
+    <h4 class="k" style="margin:26px 0 10px">Signals that matter for this build</h4>
+    <div class="tiles" id="sigTiles"></div>
+  </section>
+
+  <section id="v-calendar" role="tabpanel" aria-labelledby="tab-calendar" class="hidden">
+    <div class="calbar">
+      <button class="ibtn" id="prevM" aria-label="previous month">‹</button>
+      <h2 id="monthLabel">–</h2>
+      <button class="ibtn" id="nextM" aria-label="next month">›</button>
+      <button class="tbtn" id="goToday">today</button>
+      <div class="legend">
+        <span class="li"><span class="sw" style="background:var(--ok)"></span>raised odds</span>
+        <span class="li"><span class="sw" style="background:var(--warn)"></span>held</span>
+        <span class="li"><span class="sw" style="background:var(--crit)"></span>lowered</span>
+        <span class="li"><span class="sw" style="border:1px dashed var(--s-blue)"></span>planned</span>
+        <span class="li"><span class="unrev" style="width:7px;height:7px"></span>unreviewed</span>
+        <span class="li"><span class="wv">▁▄▂</span>streams</span>
+      </div>
+    </div>
+    <div class="calhead"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div><div>Week</div></div>
     <div class="calgrid" id="calGrid"></div>
   </section>
 
-  <section id="view-trends" role="tabpanel" aria-labelledby="tab-trends" class="hidden">
-    <div class="grid2" id="trendsGrid">
-      <div class="tcard wide"><div class="rangebtns" id="volRange"></div><h3>Volume &amp; intensity mix</h3><div class="note">weekly run volume (mi), stacked by session intensity — the discipline chart: the base grows from the green layer</div><div class="ch"><canvas id="cVol"></canvas></div></div>
-      <div class="tcard"><h3>Fitness &amp; fatigue</h3><div class="note">CTL (fitness) / ATL (fatigue) / form = CTL−ATL · Intervals.icu all-sport load</div><div class="ch"><canvas id="cFit"></canvas></div></div>
-      <div class="tcard"><h3>The call over time</h3><div class="note">daily HM projection vs the goal lines</div><div class="ch"><canvas id="cPred"></canvas></div></div>
-      <div class="tcard"><h3>Day scores</h3><div class="note">Δ-probability day score · 60 = held the line</div><div class="ch"><canvas id="cScore"></canvas></div></div>
-      <div class="tcard"><h3>Raced-today odds</h3><div class="note">P(goal | raced a half today at current fitness) — pure fitness readout</div><div class="ch"><canvas id="cProb"></canvas></div></div>
-      <div class="tcard"><h3>Recovery — HRV &amp; resting HR</h3><div class="note">HRV baseline ~87 ms · RHR floor 46–48</div><div class="ch"><canvas id="cRec"></canvas></div></div>
-      <div class="tcard"><h3>Sleep</h3><div class="note">hours + Garmin sleep score · quality 1=excellent…4=poor</div><div class="ch"><canvas id="cSleep"></canvas></div></div>
-      <div class="tcard"><h3>Efficiency &amp; decoupling</h3><div class="note">per streamed run: EF = GAP speed per heartbeat · decoupling = Pw:Hr drift (lower is better)</div><div class="ch"><canvas id="cEff"></canvas></div></div>
-      <div class="tcard"><h3>Pace curve — last 12 months</h3><div class="note">best pace by distance (Intervals.icu) vs goal race paces · CS = critical speed</div><div class="ch"><canvas id="cCurve"></canvas></div></div>
-    </div>
+  <section id="v-analysis" role="tabpanel" aria-labelledby="tab-analysis" class="hidden">
+    <div class="grid g2" id="analysisGrid"></div>
+  </section>
+
+  <section id="v-goal" role="tabpanel" aria-labelledby="tab-goal" class="hidden">
+    <div class="grid g2" id="goalGrid"></div>
   </section>
 </main>
 
 <div class="scrim" id="scrim"></div>
 <aside class="panel" id="panel" role="dialog" aria-modal="true" aria-hidden="true" aria-label="day detail">
   <div class="phead">
-    <div class="pdate" id="pDate">–</div>
-    <div class="pnav">
-      <button class="navbtn" id="pPrev" aria-label="previous day">‹</button>
-      <button class="navbtn" id="pNext" aria-label="next day">›</button>
-      <button class="closex" id="pClose" aria-label="close">✕</button>
+    <div class="pd" id="pDate">–</div>
+    <div class="pn">
+      <button class="ibtn" id="pPrev" aria-label="previous day with data">‹</button>
+      <button class="ibtn" id="pNext" aria-label="next day with data">›</button>
+      <button class="x" id="pClose" aria-label="close">✕</button>
     </div>
   </div>
   <div class="pbody" id="pBody"></div>
 </aside>
 
 <footer class="wrap">
-  <span>Split — a personal training instrument. Data: Intervals.icu (Garmin FR255) · scored by the daily coaching routine.</span>
-  <button class="mbtn" id="methodsBtn">methods &amp; definitions</button>
+  <span>Split — a personal training instrument. Data: Intervals.icu (Garmin FR255), scored by the daily coaching routine.</span>
+  <button class="tbtn" id="methBtn">methods &amp; definitions</button>
 </footer>
 
-<dialog class="methods" id="methods">
+<dialog class="meth" id="meth">
   <h3>Methods &amp; definitions</h3>
-  <h5>Day score</h5><p>0–100, a <i>probability-change</i> reading: did the day move the odds of the 1:20 dream goal up (&gt;60), hold them (~60), or lower them (&lt;60)? Scored against 1:20 and independently against the committed 1:24–1:27 line. It rewards goal-fit, not effort — an easy run done genuinely easy scores high; intensity on an easy day scores low. See DAY_SCORE.md in the repo.</p>
-  <h5>Raced-today odds</h5><p>P(goal) = Φ((goal − predicted) / σ) with σ ≈ 2.5–3.5% of the prediction — the chance of hitting the goal if the race were run today at current fitness. No schedule risk, no forecasting: it rises only as fitness improves.</p>
-  <h5>Pace &amp; GAP</h5><p>Pace comes from the device velocity stream (7 s smoothing for display; raw for computation). GAP (grade-adjusted pace) uses a Minetti-cost grade model with the per-activity level calibrated to Intervals.icu's Strava-model GAP, so splits sum consistently with the activity GAP. Km splits are computed on <b>moving time</b> (stops excluded), so split pace and split GAP share the same clock.</p>
-  <h5>Session types &amp; reps</h5><p>Each run is classified from its velocity stream: sustained fast segments are detected as work, shaded on the pace chart, and tabulated as reps (intervals) or work blocks (tempo). Runs without structure read as easy / steady / long / threshold from intensity and duration. Watch autolaps are not shown — on steady runs they're just kilometer beeps. The Signals row is type-aware: easy/steady/long runs surface easy-purity (time in Z1–Z2), decoupling, EF and cadence; quality days surface work time/pace vs threshold and rep-to-rep fade.</p>
-  <h5>Decoupling (Pw:Hr)</h5><p>Split the moving time in half; EF₁/EF₂ = mean GAP speed ÷ mean HR per half; decoupling = (EF₁−EF₂)/EF₁. Positive = the same speed cost more heart rate late (aerobic drift). Intervals.icu's value is shown when it computes one; it's a clean base signal only on steady runs ≥ ~25 min — on progressions/workouts the negative split dominates, flagged accordingly.</p>
-  <h5>Efficiency factor (EF)</h5><p>Meters travelled per heartbeat at GAP speed (m/beat). Rising EF at the same HR = the base building.</p>
-  <h5>Power</h5><p>Native Garmin wrist running power. NP = 30 s rolling average → mean of 4th powers → ⁴√.</p>
-  <h5>Cadence &amp; stride</h5><p>Device records per-leg rpm; shown as steps/min (×2). Stride = speed ÷ steps-per-second.</p>
-  <h5>HR zones</h5><p>Z1≤145 · Z2≤153 · Z3≤162 · Z4≤171 · Z5≤176 · Z6≤181 · Z7≤190 (LTHR 172, max 190). Zone times prefer Intervals.icu's computation, else derived from the HR stream.</p>
-  <h5>Intensity buckets (volume chart)</h5><p>Per-activity Intervals intensity (GAP speed ÷ threshold speed): easy &lt;80 · steady 80–88 · threshold 88–96 · hard ≥96. Unrated short fragments count as easy.</p>
-  <h5>Critical speed</h5><p>CS/D′ fit by Intervals.icu on the 1-year pace curve. Short-duration-biased for low-volume athletes — read as a ceiling marker, not a threshold prescription.</p>
-  <h5>Streams &amp; sampling</h5><p>1 s device streams; runs longer than ~25 min are stored at 2–3 s resolution (adaptive, analytically lossless for these metrics). Aggregates always come from Intervals.icu directly. GPS traces are never published.</p>
-  <p style="margin-top:14px"><button class="mbtn" id="methodsClose">close</button></p>
+  <p>Everything here is computed in the browser from static JSON: the coaching log, an athlete reference, daily wellness rows, and one full-resolution stream file per training day.</p>
+
+  <h5>Day score</h5>
+  <p>0–100, a <i>probability-change</i> reading: did the day move the odds of the 1:20 dream goal up (&gt;60), hold them (~60), or lower them (&lt;60)? Scored independently against 1:20 and against the committed 1:24–1:27 line — the two can diverge, and the gap between them is itself the signal. It rewards goal-fit, not effort: an easy run done genuinely easy scores high; intensity on an easy day scores low. Most days sit 50–75; the extremes are reserved for real probability events.</p>
+
+  <h5>The call, and the raced-today odds</h5>
+  <p>The call is the projected half time at current fitness — threshold estimate plus 5K-shape conversion, minus an endurance discount, cross-checked against the Nov 2025 benchmark (1:33:42 at CTL 25). It moves at most ~30 s/day without a race or a missed week. The raced-today probability is Φ((goal − projection) / σ) with σ ≈ 3% — the chance of hitting the goal if the race were today. Both goals round to ~0% through base phase by design; the live signal is the projection falling toward the goal lines, which is why this dashboard leads with the gap in minutes rather than a flat-zero percentage.</p>
+
+  <h5>Pace &amp; GAP</h5>
+  <p>Pace comes from the device velocity stream (7 s smoothing for display, raw for computation). GAP (grade-adjusted pace) applies a Minetti metabolic-cost grade model, calibrated per activity to Intervals.icu's own GAP figure so splits stay consistent with the activity total. Kilometre splits are computed on <b>moving time</b>, so split pace and split GAP share one clock.</p>
+
+  <h5>Session type &amp; structure</h5>
+  <p>Every run is classified automatically — no watch laps required. The primary source is Intervals.icu's server-side auto-detected work/recovery segments (computed on full-resolution data and stored in the day file); each segment is judged work-or-float against that session's own grade-adjusted speed spread, so a progression stays whole and a rep set separates. A velocity-stream detector is the fallback. Workouts show a warmup / reps / recoveries / cooldown table with the work segments shaded on the pace chart, and skip kilometre splits; easy, steady and long runs show splits instead. Raw autolaps are never displayed — on a steady run they are just kilometre beeps.</p>
+
+  <h5>Decoupling (Pw:Hr) and efficiency</h5>
+  <p>Moving time is split in half; EF₁/EF₂ = mean GAP speed ÷ mean heart rate per half; decoupling = (EF₁−EF₂)/EF₁. Positive means the same speed cost more heart rate late — aerobic drift. It is a clean base signal only on steady efforts of ~25 min or more; on a progression the negative split dominates and the reading is flagged accordingly. EF is metres travelled per heartbeat at GAP speed: rising EF at the same heart rate is the base building.</p>
+
+  <h5>Easy purity &amp; intensity mix</h5>
+  <p>Easy purity is the share of a run's time in HR zones 1–2. The weekly mix buckets each activity by Intervals' intensity (GAP speed ÷ threshold speed): easy &lt;80%, steady 80–88%, threshold 88–96%, hard ≥96%; unrated fragments count as easy. For this athlete these two are the headline metrics — the documented failure mode is intensity on days that were meant to be easy.</p>
+
+  <h5>Heart-rate zones, cadence, power</h5>
+  <p>Z1≤145 · Z2≤153 · Z3≤162 · Z4≤171 · Z5≤176 · Z6≤181 · Z7≤190 (LTHR 172, max 190). Zone times use Intervals' computation where present, else the HR stream. The device records cadence per leg (~86); it is doubled for display as steps/min. Power is native Garmin wrist running power; NP is a 30 s rolling average, then the fourth root of the mean fourth power.</p>
+
+  <h5>Streams &amp; sampling</h5>
+  <p>Full 1-second device streams, no downsampling. Aggregates and workout-segment boundaries come from Intervals.icu directly. GPS traces are never published.</p>
+
+  <h5>Colour &amp; accessibility</h5>
+  <p>Series colours are steps from a documented palette, assigned per entity in a fixed order and never cycled. The set was validated against this page's chart surface for lightness band, chroma floor, colourblind separation (worst adjacent ΔE 8.4 under protan/deutan simulation), normal-vision separation (19.3) and ≥3:1 contrast. No chart uses two y-axes. Every chart has a legend when it plots more than one series, and a <span class="num">data</span> button that reveals the underlying table.</p>
+
+  <p style="margin-top:16px"><button class="tbtn" id="methClose">close</button></p>
 </dialog>
 
-<script>
-"use strict";
-/* ============================== data =============================== */
-const RACE_ISO='2026-10-31';
-let LOG={days:[]},ACT={activities:[]},ATH=null,WELL={days:[]};
-let byDate={},actByDate={},wellByDate={},streamCache={},streamMiss={};
-let CSV_MAX='0000';           // last date covered by activities.json
-let curY,curM,openDate=null,panelCharts=[],trendCharts={},trendsDone=false,volMode='16w';
-
-const $=id=>document.getElementById(id);
-const S=(v,f=0)=>v==null?'–':(+v).toFixed(f);
-const pad=n=>String(n).padStart(2,'0');
-const dstr=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-const parseD=s=>new Date(s+'T00:00:00');
-const todayStr=dstr(new Date());
-const fmtDur=s=>{if(s==null)return'–';s=Math.round(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),ss=s%60;return h?`${h}:${pad(m)}:${pad(ss)}`:`${m}:${pad(ss)}`};
-const paceStr=spk=>{if(!isFinite(spk)||spk<=0)return'–';const m=Math.floor(spk/60),s=Math.round(spk%60);return s===60?`${m+1}:00`:`${m}:${pad(s)}`};
-const v2pace=v=>v>0.3?1000/v:null; // m/s -> s/km
-const KM2MI=0.621371;
-const zColors=['--z1','--z2','--z3','--z4','--z5','--z6','--z7'].map(v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim());
-const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const scoreColor=s=>s==null?css('--none'):s>=72?css('--hi'):s>=48?css('--mid'):css('--lo');
-const IB={easy:{max:80,c:'#54b07c'},steady:{max:88,c:'#a5c65a'},threshold:{max:96,c:'#e8b34b'},hard:{max:1e9,c:'#ef5f6b'}};
-const bucketOf=i=>i==null||i<80?'easy':i<88?'steady':i<96?'threshold':'hard';
-
-Promise.all([
-  fetch('./daily_log.json').then(r=>r.json()).catch(()=>({days:[]})),
-  fetch('./activities.json').then(r=>r.json()).catch(()=>({activities:[]})),
-  fetch('./athlete.json').then(r=>r.json()).catch(()=>null),
-  fetch('./wellness.json').then(r=>r.json()).catch(()=>({days:[]})),
-  fetch('./streams/index.json').then(r=>r.ok?r.json():{dates:[]}).catch(()=>({dates:[]}))
-]).then(([log,act,ath,well,sidx])=>{
-  LOG=log;ACT=act;ATH=ath;WELL=well;
-  (LOG.days||[]).forEach(d=>byDate[d.date]=d);
-  (ACT.activities||[]).forEach(a=>{(actByDate[a.date]=actByDate[a.date]||[]).push(a);if(a.date>CSV_MAX)CSV_MAX=a.date;});
-  (WELL.days||[]).forEach(w=>wellByDate[w.d]=w);
-  (sidx.dates||[]).forEach(d=>{if(!(d in streamCache))streamCache[d]=undefined;}); // known stream days
-  boot();
-});
-const streamDays=()=>Object.keys(streamCache);
-async function getStreams(date){
-  if(streamCache[date])return streamCache[date];
-  if(streamMiss[date])return null;
-  try{const r=await fetch(`./streams/${date}.json`);if(!r.ok)throw 0;const j=await r.json();streamCache[date]=j;return j;}
-  catch(e){streamMiss[date]=1;return null;}
-}
-
-/* ====================== analytics library ========================= */
-function smooth(a,w){ // centered moving average, null-tolerant
-  if(!a)return a;const n=a.length,out=new Array(n),h=Math.floor(w/2);
-  let sum=0,cnt=0;const q=[];
-  for(let i=0;i<n;i++){
-    const add=a[Math.min(i+h,n-1)];
-    // simple O(n*w) is fine at <=1500 pts
-    let s=0,c=0;for(let j=Math.max(0,i-h);j<=Math.min(n-1,i+h);j++){const v=a[j];if(v!=null&&isFinite(v)){s+=v;c++;}}
-    out[i]=c?s/c:null;
-  }return out;
-}
-// Minetti metabolic cost of grade i (fraction), C(0)=3.6 J/kg/m
-const minettiC=i=>((155.4*i-30.4)*i-43.3)*i*i*i+46.3*i*i+19.5*i+3.6;
-function gapFactors(grade){ // per-point energy-equivalent flat-speed factor
-  if(!grade)return null;
-  return grade.map(g=>{
-    if(g==null)return 1;
-    let i=Math.max(-.30,Math.min(.30,g/100));
-    let f=minettiC(i)/3.6;
-    if(i<0)f=1+0.6*(f-1);          // damp downhill credit toward Strava-like behavior
-    return Math.max(.75,Math.min(1.9,f));
-  });
-}
-// GAP speed series calibrated so mean(moving) matches Intervals' activity GAP when available
-function gapSeries(v,grade,mask,icuGap){
-  const f=gapFactors(grade);
-  let g=v.map((x,i)=>x==null?null:x*(f?f[i]:1));
-  if(icuGap){
-    let s=0,c=0;g.forEach((x,i)=>{if(mask[i]&&x!=null){s+=x;c++;}});
-    if(c){const k=icuGap/(s/c);if(isFinite(k)&&Math.abs(k-1)<.25)g=g.map(x=>x==null?null:x*k);}
-  }
-  return g;
-}
-const movingMask=v=>v.map(x=>x!=null&&x>0.5);
-function dt(t,i){return i?Math.max(0,Math.min(10,t[i]-t[i-1])):1} // clamp gaps (pauses) to 10s
-function kmSplits(st,gapv){ // moving-time splits: stopped samples excluded, so split pace and GAP share one clock
-  const{t,d,v,hr,alt}=st;if(!t||!d)return[];
-  const altS=alt?smooth(alt,9):null,res=[];
-  let k=1000,secs=0,hrS=0,hrT=0,gS=0,gT=0,gain=0;
-  const flush=(km,dist,partial)=>{res.push({km,secs,pace:secs/dist,gap:gT?1000/(gS/gT):null,hr:hrT?hrS/hrT:null,gain,partial});secs=0;hrS=0;hrT=0;gS=0;gT=0;gain=0;};
-  const add=(i,w)=>{const _dt=dt(t,i)*w;secs+=_dt;
-    if(hr&&hr[i]!=null){hrS+=hr[i]*_dt;hrT+=_dt;}
-    if(gapv&&gapv[i]!=null){gS+=gapv[i]*_dt;gT+=_dt;}};
-  for(let i=1;i<t.length;i++){
-    if(v&&v[i]!=null&&v[i]<=0.5)continue; // stopped — contributes no time, no weights
-    if(altS&&altS[i]!=null&&altS[i-1]!=null){const da=altS[i]-altS[i-1];if(da>0)gain+=da;}
-    const dd=Math.max(0,d[i]-(d[i-1]??0));
-    if(d[i]>=k&&dd>0){
-      const frac=Math.min(1,Math.max(0,(k-d[i-1])/dd));
-      add(i,frac);flush(k/1000,1,false);add(i,1-frac);k+=1000;
-    }else add(i,1);
-  }
-  const dLast=d[d.length-1],tail=(dLast-(k-1000))/1000;
-  if(tail>=0.2)flush(+(dLast/1000).toFixed(2),tail,true); // sub-200m tails are noise, dropped
-  return res;
-}
-/* --- session-type detection: classify each run from its velocity stream --- */
-function classify(a){ // -> {kind, spans:[{i0,i1}]}; spans = detected work segments (sample indexes)
-  const m=a.meta||{},st=a.streams||{};
-  if(a.type!=='Run')return{kind:'xt',spans:[]};
-  const durKind=()=> (m.moving_s>=3600||m.distance_m>=12000)?'long':
-    m.intensity==null||m.intensity<70?'recovery':m.intensity<80?'easy':m.intensity<88?'steady':'threshold';
-  if(!st.v||!st.t||st.t.length<60)return{kind:durKind(),spans:[]};
-  const vs=smooth(st.v,9),mask=movingMask(st.v);
-  const mv=vs.filter((x,i)=>mask[i]&&x!=null).sort((a,b)=>a-b);
-  if(mv.length<50)return{kind:durKind(),spans:[]};
-  const q=p=>mv[Math.floor(p*(mv.length-1))],p25=q(.25),p75=q(.75),med=q(.5);
-  if(!med||(p75-p25)/med<.10)return{kind:durKind(),spans:[]}; // uniform pace → no structure
-  const thr=(p25+p75)/2,raw=[];let s=-1;
-  for(let i=0;i<vs.length;i++){
-    const on=mask[i]&&vs[i]!=null&&vs[i]>thr;
-    if(on&&s<0)s=i;
-    if((!on||i===vs.length-1)&&s>=0){if(st.t[i]-st.t[s]>=40)raw.push({i0:s,i1:i});s=-1;}
-  }
-  const spans=[];raw.forEach(sp=>{const L=spans[spans.length-1];
-    if(L&&st.t[sp.i0]-st.t[L.i1]<20)L.i1=sp.i1;else spans.push({...sp});});
-  const durs=spans.map(sp=>st.t[sp.i1]-st.t[sp.i0]);
-  if(spans.length>=3){const md=durs.slice().sort((a,b)=>a-b)[Math.floor(durs.length/2)];
-    if(md>=35&&md<=720)return{kind:'intervals',spans};}
-  const workT=durs.reduce((x,y)=>x+y,0);
-  if(spans.length&&Math.max(...durs)>=480&&(!m.moving_s||workT/m.moving_s<=.85))
-    return{kind:'tempo',spans:spans.filter(sp=>st.t[sp.i1]-st.t[sp.i0]>=240)};
-  return{kind:durKind(),spans:[]};
-}
-const KIND_LABEL=c=>({intervals:`intervals · ${c.spans.length}×`,tempo:'tempo',threshold:'threshold effort',long:'long run',easy:'easy',steady:'steady',recovery:'recovery'})[c.kind]||null;
-function repsHTML(a,cls){ // reps table for detected structure (replaces raw watch laps)
-  if(!cls.spans.length)return'';
-  const{t,d,hr}=a.streams;
-  const rows=cls.spans.map((sp,n)=>{
-    const secs=t[sp.i1]-t[sp.i0],dist=d?d[sp.i1]-d[sp.i0]:null;
-    let hS=0,hC=0,hMax=0;if(hr)for(let i=sp.i0;i<=sp.i1;i++){if(hr[i]!=null){hS+=hr[i];hC++;if(hr[i]>hMax)hMax=hr[i];}}
-    return{n:n+1,secs,dist,pace:dist?secs/(dist/1000):null,hr:hC?hS/hC:null,hMax};});
-  const withPace=rows.filter(r=>r.pace);
-  const fade=withPace.length>1?Math.round(withPace[withPace.length-1].pace-withPace[0].pace):null;
-  return `<h4 style="margin-top:16px">${cls.kind==='intervals'?`Reps — ${rows.length} detected`:'Work blocks'}</h4>
-    <table class="splits"><tr><th>#</th><th>dist</th><th>time</th><th>pace</th><th>♥ avg</th><th>♥ max</th></tr>`+
-    rows.map(r=>`<tr><td>${r.n}</td><td>${r.dist?(r.dist/1000).toFixed(2)+' km':'–'}</td><td>${fmtDur(r.secs)}</td><td>${r.pace?paceStr(r.pace):'–'}</td><td>${r.hr?Math.round(r.hr):'–'}</td><td>${r.hMax||'–'}</td></tr>`).join('')+
-    `</table>`+(fade!=null?`<div class="zonekey" style="margin-top:4px">rep 1 → ${withPace.length}: ${fade>0?'+':''}${fade} s/km ${Math.abs(fade)<=8?'— held together':fade>0?'— faded late':'— negative-split reps'}</div>`:'');
-}
-function zoneTimesFromStream(t,hr,zones){
-  const zt=new Array(zones.length).fill(0);
-  for(let i=1;i<t.length;i++){const h=hr[i];if(h==null)continue;const _dt=dt(t,i);
-    let z=zones.findIndex(u=>h<=u);if(z<0)z=zones.length-1;zt[z]+=_dt;}
-  return zt;
-}
-function decouple(st,gapv){ // Pw:Hr on moving time halves -> {dec,ef1,ef2,negSplit,minutes}
-  const{t,v,hr}=st;if(!t||!v||!hr)return null;
-  const mask=movingMask(v);
-  let movT=0;for(let i=1;i<t.length;i++)if(mask[i])movT+=dt(t,i);
-  if(movT<12*60)return null;
-  const half=movT/2;let acc=0;
-  let s1=0,h1=0,c1=0,s2=0,h2=0,c2=0,v1=0,v2=0;
-  for(let i=1;i<t.length;i++){if(!mask[i])continue;const _dt=dt(t,i);acc+=_dt;
-    const g=gapv&&gapv[i]!=null?gapv[i]:v[i];
-    if(acc<=half){if(hr[i]!=null){s1+=g*_dt;h1+=hr[i]*_dt;c1+=_dt;v1+=v[i]*_dt;}}
-    else{if(hr[i]!=null){s2+=g*_dt;h2+=hr[i]*_dt;c2+=_dt;v2+=v[i]*_dt;}}}
-  if(!c1||!c2)return null;
-  const ef1=(s1/c1)/(h1/c1),ef2=(s2/c2)/(h2/c2);
-  return{dec:(ef1-ef2)/ef1*100,ef1,ef2,negSplit:(v2/c2)>(v1/c1)*1.02,minutes:movT/60};
-}
-function efOverall(st,gapv){const{t,v,hr}=st;if(!t||!v||!hr)return null;const mask=movingMask(v);
-  let s=0,h=0,c=0;for(let i=1;i<t.length;i++){if(!mask[i]||hr[i]==null)continue;const _dt=dt(t,i);s+=(gapv&&gapv[i]!=null?gapv[i]:v[i])*_dt;h+=hr[i]*_dt;c+=_dt;}
-  if(!c)return null;return{mPerBeat:(s/c)*60/(h/c),efMin:(s/c)*60/(h/c)}; // m per beat = v*60/hr
-}
-function normPower(t,w){if(!t||!w)return null;
-  const n=t.length,roll=[];let acc=0;const q=[];
-  // 30s rolling mean respecting dt≈1-3s: approximate with index window sized by median dt
-  let md=1;{const ds=[];for(let i=1;i<Math.min(n,50);i++)ds.push(t[i]-t[i-1]);ds.sort((a,b)=>a-b);md=ds[Math.floor(ds.length/2)]||1;}
-  const win=Math.max(1,Math.round(30/md));
-  let s=0;const buf=[];
-  for(let i=0;i<n;i++){const x=w[i]!=null?w[i]:0;buf.push(x);s+=x;if(buf.length>win)s-=buf.shift();if(i>=win-1)roll.push(s/win);}
-  if(roll.length<10)return null;
-  const m4=roll.reduce((a,x)=>a+x**4,0)/roll.length;
-  return Math.round(m4**.25);
-}
-const cadSpm=c=>c==null?null:(c<120?c*2:c);
-
-/* ===================== merged volume/activity model ===================== */
-// One activity record shape: {date,km,mi,sec,hr,intensity,load,name,type}
-function mergedActivities(){
-  const out=[];
-  (ACT.activities||[]).forEach(a=>out.push({...a,type:'Run',src:'csv'}));
-  // stream-era & log-era beyond CSV
-  const seen={};
-  streamDays().forEach(d=>{if(d<=CSV_MAX)return;const f=streamCache[d];if(!f)return;
-    f.activities.forEach(a=>{out.push({date:d,km:a.meta.distance_m/1000,mi:a.meta.distance_m/1000*KM2MI,sec:a.meta.moving_s,hr:a.meta.avg_hr,intensity:a.meta.intensity,load:a.meta.load,name:a.name,type:a.type,src:'streams'});seen[d]=1;});
-  });
-  (LOG.days||[]).forEach(dd=>{if(dd.date<=CSV_MAX||seen[dd.date]||!dd.activity)return;
-    const a=dd.activity;out.push({date:dd.date,km:a.km,mi:a.mi,sec:a.sec,hr:a.hr,intensity:a.intensity,load:a.load,name:a.name,type:'Run',src:'log'});});
-  return out.sort((x,y)=>x.date<y.date?-1:1);
-}
-function weeklyAgg(acts){ // Mon-start weeks, runs only, zero-filled so gaps stay visible
-  const wk={};
-  acts.forEach(a=>{if(a.type&&a.type!=='Run')return;
-    const dt=parseD(a.date),off=(dt.getDay()+6)%7;dt.setDate(dt.getDate()-off);const w=dstr(dt);
-    const rec=wk[w]||(wk[w]={week:w,mi:0,byBucket:{easy:0,steady:0,threshold:0,hard:0}});
-    rec.mi+=a.mi||0;rec.byBucket[bucketOf(a.intensity)]+=a.mi||0;});
-  const keys=Object.keys(wk).sort();if(!keys.length)return[];
-  const out=[],cur=parseD(keys[0]),end=parseD(keys[keys.length-1]);
-  while(cur<=end){const w=dstr(cur);out.push(wk[w]||{week:w,mi:0,byBucket:{easy:0,steady:0,threshold:0,hard:0}});cur.setDate(cur.getDate()+7);}
-  return out;
-}
-
-/* ============================ boot & header ============================ */
-function boot(){
-  const days=Math.max(0,Math.ceil((parseD(RACE_ISO)-new Date())/864e5));
-  $('cdDays').textContent=days;
-  renderPhases();renderRibbon();
-  wireTabs();wirePanel();wireMethods();
-  route();window.addEventListener('hashchange',route);
-}
-function phaseFor(date){return (ATH?.phases||[]).find(p=>date>=p.from&&date<=p.to)||null}
-const PHASE_COLORS={base:'#54b07c',build:'#e8b34b','HM-specific':'#ee8450',taper:'#7aa2f7'};
-function renderPhases(){
-  const ph=ATH?.phases||[];if(!ph.length)return;
-  const t0=parseD(ph[0].from),t1=parseD(RACE_ISO),span=t1-t0,now=new Date();
-  $('phasebar').innerHTML=ph.map(p=>{
-    const w=(parseD(p.to)-parseD(p.from)+864e5)/span*100;
-    const cls=now>parseD(p.to)?'past':now<parseD(p.from)?'future':'';
-    return `<span class="${cls}" style="width:${w}%;background:${PHASE_COLORS[p.label]||'#888'}"></span>`;}).join('');
-  $('phaselabels').innerHTML=ph.map(p=>`<span>${p.label}</span>`).join('');
-  const cur=phaseFor(todayStr);
-  $('phaseNow').textContent=cur?`${cur.label} phase`:'';
-}
-function sparkSVG(vals,w=72,h=26,color=css('--gold')){
-  const v=vals.filter(x=>x!=null);if(v.length<2)return'';
-  const mn=Math.min(...v),mx=Math.max(...v),rg=mx-mn||1;
-  const pts=vals.map((x,i)=>x==null?null:[i/(vals.length-1)*w,h-2-(x-mn)/rg*(h-6)]).filter(Boolean);
-  return `<svg class="spark" width="${w}" height="${h}" aria-hidden="true"><polyline fill="none" stroke="${color}" stroke-width="1.5" points="${pts.map(p=>p.map(n=>n.toFixed(1)).join(',')).join(' ')}"/></svg>`;
-}
-function lastScored(){const ss=(LOG.days||[]).filter(d=>d.status!=='prescribed'&&d.score!=null);return ss.length?ss[ss.length-1]:null}
-function renderRibbon(){
-  const last=lastScored()||{},lw=last.wellness||{};
-  const wDays=WELL.days||[],wLast=wDays[wDays.length-1]||{};
-  const ctlNow=wLast.ctl??lw.ctl,atlNow=wLast.atl??lw.atl;
-  const form=ctlNow!=null&&atlNow!=null?ctlNow-atlNow:null;
-  const formBadge=form==null?'':form>-5?`<span class="badge good">fresh ${form>0?'+':''}${form.toFixed(0)}</span>`:form>-15?`<span class="badge warn">form ${form.toFixed(0)}</span>`:`<span class="badge bad">form ${form.toFixed(0)}</span>`;
-  const hrvB=(ATH?.hrv_baseline_ms)||87,[r0,r1]=(ATH?.resting_hr_baseline)||[46,48];
-  const hrvCls=wLast.hrv==null?'':wLast.hrv>=hrvB-8?'good':wLast.hrv>=hrvB-15?'warn':'bad';
-  const rhrCls=wLast.rhr==null?'':wLast.rhr<=r1+1?'good':wLast.rhr<=r1+4?'warn':'bad';
-  const slW=['','excellent','good','fair','poor'][wLast.sleepQ||0]||'';
-  const predDelta=last.prediction_prev&&last.prediction!==last.prediction_prev?`<span class="s">was ${last.prediction_prev}</span>`:`<span class="s">holding</span>`;
-  const p120=last.p_120!=null?Math.round(last.p_120*100):null,p125=last.p_125!=null?Math.round(last.p_125*100):null;
-  const ctlSpark=sparkSVG(wDays.slice(-28).map(x=>x.ctl));
-  const cells=[
-    `<div class="cellx"><div class="k">current call</div><div class="v" style="color:var(--gold)">${last.prediction||'–'}</div>${predDelta}</div>`,
-    `<div class="cellx"><div class="k">fitness · ctl</div><div class="v">${S(ctlNow,1)}</div><div class="s">atl ${S(atlNow,1)} ${formBadge}</div>${ctlSpark}</div>`,
-    `<div class="cellx"><div class="k">recovery today</div><div class="v">${wLast.hrv!=null?`<span class="badge ${hrvCls}" style="font-size:13px">${wLast.hrv}ms</span>`:'–'} ${wLast.rhr!=null?`<span class="badge ${rhrCls}" style="font-size:13px">♥${wLast.rhr}</span>`:''}</div><div class="s">${wLast.sleepSecs?`sleep ${(wLast.sleepSecs/3600).toFixed(1)}h · ${slW}`:'no sleep data'}</div></div>`,
-    `<div class="cellx"><div class="k">last day score</div><div class="v"><span style="color:${scoreColor(last.score)}">${last.score??'–'}</span><small style="color:var(--mut);font-size:13px"> / ${last.score_committed??'–'}</small></div><div class="s">vs 1:20 / vs 1:25 · ${last.date||''}</div></div>`,
-    `<div class="cellx"><div class="k">raced-today odds</div><div class="s" style="margin-top:7px">sub-1:20 <b style="color:var(--ink)">${p120!=null?p120+'%':'–'}</b></div><div class="pbar"><i style="width:${p120||0}%;background:var(--hi)"></i></div><div class="s" style="margin-top:6px">sub-1:25 <b style="color:var(--ink)">${p125!=null?p125+'%':'–'}</b></div><div class="pbar"><i style="width:${p125||0}%;background:var(--mid)"></i></div></div>`
-  ];
-  $('ribbon').innerHTML=cells.join('');
-}
-
-/* ============================ routing ============================ */
-function route(){
-  const h=location.hash||'#/cal';
-  const mDay=h.match(/^#\/day\/(\d{4}-\d{2}-\d{2})/);
-  const mCal=h.match(/^#\/cal(?:\/(\d{4})-(\d{2}))?/);
-  if(h.startsWith('#/trends')){showView('trends');closePanel(false);}
-  else if(mDay){const d=parseD(mDay[1]);curY=d.getFullYear();curM=d.getMonth();showView('cal');renderCal();openDay(mDay[1],false);}
-  else{showView('cal');closePanel(false);
-    if(mCal&&mCal[1]){curY=+mCal[1];curM=+mCal[2]-1;}
-    else if(curY==null){const last=(LOG.days||[]).slice(-1)[0];const d=last?parseD(last.date):new Date();curY=d.getFullYear();curM=d.getMonth();}
-    renderCal();}
-}
-function showView(v){
-  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',String(t.dataset.view===v)));
-  $('view-cal').classList.toggle('hidden',v!=='cal');
-  $('view-trends').classList.toggle('hidden',v!=='trends');
-  if(v==='trends')renderTrends();
-}
-function wireTabs(){
-  document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{location.hash=t.dataset.view==='trends'?'#/trends':`#/cal/${curY}-${pad(curM+1)}`;});
-  $('prevM').onclick=()=>{curM--;if(curM<0){curM=11;curY--;}location.hash=`#/cal/${curY}-${pad(curM+1)}`;};
-  $('nextM').onclick=()=>{curM++;if(curM>11){curM=0;curY++;}location.hash=`#/cal/${curY}-${pad(curM+1)}`;};
-  $('goToday').onclick=()=>{const d=new Date();curY=d.getFullYear();curM=d.getMonth();location.hash=`#/cal/${curY}-${pad(curM+1)}`;};
-}
-
-/* ============================ calendar ============================ */
-const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
-async function renderCal(){
-  $('monthLabel').textContent=`${MONTHS[curM]} ${curY}`;
-  const first=new Date(curY,curM,1),start=(first.getDay()+6)%7,dim=new Date(curY,curM+1,0).getDate();
-  // prefetch stream files for this month's known stream days (fills post-CSV gap days)
-  const monthPrefix=`${curY}-${pad(curM+1)}`;
-  await Promise.all(streamDays().filter(d=>d.startsWith(monthPrefix)).map(getStreams));
-  const g=$('calGrid');g.innerHTML='';
-  for(let i=0;i<start;i++){const e=document.createElement('div');e.className='day empty';g.appendChild(e);}
-  for(let day=1;day<=dim;day++){
-    const ds=`${curY}-${pad(curM+1)}-${pad(day)}`;
-    const rec=byDate[ds],csvActs=actByDate[ds]||[],sf=streamCache[ds]||null;
-    const prescribed=rec&&rec.status==='prescribed';
-    const score=rec&&!prescribed?rec.score:null;
-    // resolve display activity info (priority: streams > log activity > csv)
-    let mi=0,runCount=0,xt=false,pace=null,hr=null,load=0,intensity=null;
-    if(sf){sf.activities.forEach(a=>{if(a.type==='Run'){mi+=a.meta.distance_m/1000*KM2MI;runCount++;pace=pace||v2pace(a.meta.avg_speed);hr=hr||a.meta.avg_hr;load+=a.meta.load||0;intensity=Math.max(intensity||0,a.meta.intensity||0);}else xt=true;});}
-    else if(rec&&rec.activity){mi=rec.activity.mi||0;runCount=1;pace=rec.activity.pace_per_km?null:null;hr=rec.activity.hr;load=rec.activity.load||0;intensity=rec.activity.intensity;}
-    else if(csvActs.length){csvActs.forEach(a=>{mi+=a.mi||0;load+=a.load||0;if(a.intensity)intensity=Math.max(intensity||0,a.intensity);});runCount=csvActs.length;hr=csvActs[0].hr;}
-    const hasData=rec||csvActs.length||sf;
-    const cell=document.createElement(hasData?'button':'div');
-    cell.className='day'+(hasData?' clickable':' nodata')+(prescribed?' prescribed':'')+(ds===todayStr?' today':'');
-    const paceTxt=rec?.activity?.pace_per_km?rec.activity.pace_per_km:(pace?paceStr(pace):null);
-    let mid='';
-    if(mi>0)mid=`<div class="mi">${mi.toFixed(1)}<span style="font-size:9px;color:var(--mut)"> mi</span>${xt?' <span class="xt" title="cross-training">🎾</span>':''}</div><div class="sub">${paceTxt?paceTxt+'/km':''}${hr?` · ♥${hr}`:''}</div>`;
-    else if(xt)mid=`<div class="mi" style="font-size:12px">cross-train 🎾</div>`;
-    else if(prescribed)mid=`<div class="plantag">plan</div><div class="sub">${(rec.planned||'').replace(/ \(.*/,'').slice(0,42)}</div>`;
-    else if(rec)mid=`<div class="mi" style="color:var(--mut);font-size:11.5px">rest</div>`;
-    const loadW=Math.min(100,(load||0));
-    const ib=IB[bucketOf(intensity)];
-    cell.innerHTML=`<span class="rail" style="background:${prescribed?'repeating-linear-gradient(45deg,var(--peri),var(--peri) 3px,transparent 3px,transparent 6px)':scoreColor(score)}"></span>
-      <span class="dn">${day}</span>
-      ${score!=null?`<span class="score" style="color:${scoreColor(score)}">${score}</span>`:''}
-      ${mid}
-      ${load?`<div class="loadbar"><i style="width:${loadW}%;background:${ib.c}"></i></div>`:''}
-      <span class="flags">${sf?'<span class="wave" title="stream analytics available">▂▄▂</span>':''}${rec&&rec.reviewed===false?'<span class="dotrev" title="unreviewed"></span>':''}</span>`;
-    if(hasData){cell.setAttribute('aria-label',`open ${ds}`);cell.onclick=()=>{location.hash=`#/day/${ds}`;};}
-    g.appendChild(cell);
-  }
-}
-
-/* ============================ day panel ============================ */
-function wirePanel(){
-  $('pClose').onclick=()=>closePanel(true);
-  $('scrim').onclick=()=>closePanel(true);
-  $('pPrev').onclick=()=>stepDay(-1);
-  $('pNext').onclick=()=>stepDay(1);
-  document.addEventListener('keydown',e=>{
-    if(!$('panel').classList.contains('on'))return;
-    if(e.key==='Escape')closePanel(true);
-    if(e.key==='ArrowLeft')stepDay(-1);
-    if(e.key==='ArrowRight')stepDay(1);
-  });
-}
-function stepDay(dir){
-  if(!openDate)return;const d=parseD(openDate);
-  for(let i=1;i<=62;i++){d.setDate(d.getDate()+dir);const ds=dstr(d);
-    if(byDate[ds]||actByDate[ds]||(ds in streamCache)){location.hash=`#/day/${ds}`;return;}
-    if(ds>todayStr&&dir>0)return;if(ds<'2022-01-01')return;}
-}
-function closePanel(clearHash){
-  $('panel').classList.remove('on');$('panel').setAttribute('aria-hidden','true');$('scrim').classList.remove('on');
-  panelCharts.forEach(c=>c.destroy());panelCharts=[];openDate=null;
-  if(clearHash&&location.hash.startsWith('#/day/'))location.hash=`#/cal/${curY}-${pad(curM+1)}`;
-}
-async function openDay(ds,push=true){
-  openDate=ds;
-  const d=parseD(ds);
-  $('pDate').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-  panelCharts.forEach(c=>c.destroy());panelCharts=[];
-  const body=$('pBody');
-  body.innerHTML=`<div class="skel" style="height:120px"></div><div class="skel" style="height:200px;margin-top:12px"></div>`;
-  $('panel').classList.add('on');$('panel').setAttribute('aria-hidden','false');$('scrim').classList.add('on');
-  $('pClose').focus({preventScroll:true});
-  const rec=byDate[ds],sf=(ds in streamCache)?await getStreams(ds):null;
-  if(openDate!==ds)return; // user moved on while fetching
-  let html='';
-  /* --- score head --- */
-  if(rec&&rec.status!=='prescribed'&&rec.score!=null){
-    html+=`<div class="scorehead">${dialSVG(rec.score,'vs 1:20 dream')}${rec.score_committed!=null?dialSVG(rec.score_committed,'vs 1:25 committed'):''}
-      <div style="flex:1;min-width:180px">
-        ${rec.reviewed===false?'<span class="revflag">unreviewed draft</span>':''}
-        ${rec.delta_p?`<div class="deltap">“${rec.delta_p}”</div>`:''}
-        ${rec.p_125!=null?`<div class="probline">raced today → <b style="color:var(--hi)">${Math.round(rec.p_120*100)}%</b> sub-1:20 · <b style="color:var(--mid)">${Math.round(rec.p_125*100)}%</b> sub-1:25${rec.pred_half?` · proj ${rec.pred_half}`:''}</div>`:''}
-        ${rec.prediction?`<div class="predline">HM call <b style="color:var(--gold)">${rec.prediction}</b>${rec.prediction_prev&&rec.prediction_prev!==rec.prediction?` <span style="color:var(--mut)">(was ${rec.prediction_prev})</span>`:''}</div>`:''}
-      </div></div>`;
-  }else if(rec&&rec.status==='prescribed'){
-    html+=`<div style="font:600 20px var(--disp);color:var(--peri)">Prescribed <span class="revflag" style="border-color:rgba(122,162,247,.5);color:var(--peri)">plan for this day</span></div>`;
-  }
-  if(rec&&rec.planned){html+=`<h4>${rec.status==='prescribed'?"Today's plan":'Planned'}</h4><div class="plantxt">${esc(rec.planned)}</div>${rec.plan_rationale?`<div class="rationale">${esc(rec.plan_rationale)}</div>`:''}`;}
-  if(rec&&rec.components&&rec.components.length){
-    html+=`<h4>Score breakdown</h4>`+rec.components.map(c=>{
-      const w=Math.min(60,Math.abs(c.delta)*4);
-      const col=c.delta>0?'var(--hi)':c.delta<0?'var(--lo)':'var(--mut)';
-      const bar=c.delta>=0?`<i style="left:50%;width:${w}px;background:${col}"></i>`:`<i style="right:50%;width:${w}px;background:${col}"></i>`;
-      return `<div class="comp"><span class="cl">${esc(c.label)}</span><span class="cbar">${bar}</span><span class="cd" style="color:${col}">${c.delta>0?'+':''}${c.delta}</span></div>`;}).join('')
-      +`<div class="comp"><span class="cl" style="color:var(--mut)">base 60 + deltas</span><span class="cbar"></span><span class="cd">${rec.score}</span></div>`;
-  }
-  /* --- wellness --- */
-  const w=rec?.wellness||wellRec(ds);
-  if(w){
-    const rows=[['CTL',S(w.ctl,1)],['ATL',S(w.atl,1)],['form',w.ctl!=null&&w.atl!=null?fmtSigned(w.ctl-w.atl,1):'–'],
-      ['HRV',w.hrv!=null?w.hrv+'<small> ms</small>':'–'],['resting HR',w.restingHR??w.rhr??'–'],
-      ['sleep',w.sleepSecs?(w.sleepSecs/3600).toFixed(1)+'<small> h'+(w.sleepScore?' · '+w.sleepScore:'')+'</small>':'–'],
-      ['sleep quality',sleepWord(w.sleepQuality??w.sleepQ)],['ramp',w.rampRate!=null||w.ramp!=null?fmtSigned(w.rampRate??w.ramp,1)+'<small>/wk</small>':'–'],
-      ['VO₂max',w.vo2max??'–'],['weight',w.weight!=null?w.weight+'<small> kg</small>':'–']];
-    html+=`<h4>Morning wellness</h4><div class="wellgrid">`+rows.filter(r=>r[1]!=='–').map(r=>`<div class="wcell"><div class="k">${r[0]}</div><div class="v">${r[1]}</div></div>`).join('')+`</div>`;
-  }
-  /* --- activities --- */
-  const actsHtml=[];
-  if(sf){sf.activities.forEach((a,i)=>actsHtml.push(actBlock(a,i)));}
-  else{
-    // fallbacks: log activity or CSV rows
-    if(rec&&rec.activity){actsHtml.push(fallbackBlock({name:rec.activity.name,km:rec.activity.km,sec:rec.activity.sec,pace:rec.activity.pace_per_km,hr:rec.activity.hr,max_hr:rec.activity.max_hr,intensity:rec.activity.intensity,load:rec.activity.load,cad:rec.activity.cadence,elev:rec.activity.elev_gain_m,dec:rec.activity.decoupling_pct,zones:rec.activity.hr_zone_sec}));}
-    else (actByDate[ds]||[]).forEach(a=>actsHtml.push(fallbackBlock({name:a.name,km:a.km,sec:a.sec,hr:a.hr,intensity:a.intensity,load:a.load})));
-  }
-  if(actsHtml.length)html+=`<h4>Training</h4>`+actsHtml.join('');
-  if(rec&&rec.entry)html+=`<h4>Coach's read</h4><div class="entrytxt">${esc(rec.entry)}</div>`;
-  if(rec&&rec.note_next)html+=`<h4>Next</h4><div class="rationale" style="margin-top:0">${esc(rec.note_next)}</div>`;
-  if(!rec&&actsHtml.length)html+=`<div class="nostreams" style="margin-top:16px">No coaching entry for this day${ds>'2026-07-06'?' — the daily routine starts scoring days once it goes live':''}.</div>`;
-  body.innerHTML=html;
-  /* charts for stream activities */
-  if(sf)sf.activities.forEach((a,i)=>buildActCharts(a,i));
-}
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const fmtSigned=(v,f)=>v==null?'–':(v>0?'+':'')+(+v).toFixed(f);
-const sleepWord=q=>({1:'excellent',2:'good',3:'fair',4:'poor'}[q]||'–');
-const wellRec=ds=>wellByDate[ds]||null;
-function dialSVG(score,label){
-  const r=44,c=2*Math.PI*r,frac=Math.max(0,Math.min(1,score/100));
-  const col=scoreColor(score);
-  return `<div class="dial"><svg width="104" height="104" viewBox="0 0 104 104">
-    <circle cx="52" cy="52" r="${r}" fill="none" stroke="var(--none)" stroke-width="7"/>
-    <circle cx="52" cy="52" r="${r}" fill="none" stroke="${col}" stroke-width="7" stroke-linecap="round"
-      stroke-dasharray="${(frac*c).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 52 52)"/>
-  </svg><div class="dv" style="color:${col}">${score}</div><div class="dk">${label}</div></div>`;
-}
-
-/* ------- activity blocks ------- */
-function actBlock(a,idx){
-  const m=a.meta||{},st=a.streams||{};
-  const isRun=a.type==='Run';
-  const pace=m.avg_speed?v2pace(m.avg_speed):null,gapPace=m.gap_speed?v2pace(m.gap_speed):null;
-  const spm=cadSpm(m.cadence_rpm);
-  const np=st.watts?normPower(st.t,st.watts):null;
-  const avgW=st.watts?Math.round(st.watts.reduce((s,x)=>s+(x||0),0)/st.watts.filter(x=>x!=null).length):null;
-  const sess=a._cls=classify(a),sessLbl=KIND_LABEL(sess);
-  const time=new Date(a.start_local).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
-  const stats=[
-    ['distance',isRun&&m.distance_m!=null?(m.distance_m/1000).toFixed(2)+'<small> km</small>':null],
-    ['moving',m.moving_s!=null?fmtDur(m.moving_s):null],
-    ['pace',isRun&&pace?paceStr(pace)+'<small>/km</small>':null],
-    ['gap',isRun&&gapPace?paceStr(gapPace)+'<small>/km</small>':null],
-    ['avg hr',m.avg_hr!=null?m.avg_hr+(m.max_hr?`<small> / ${m.max_hr}</small>`:''):null],
-    ['intensity',m.intensity!=null?m.intensity+'<small>%</small>':null],
-    ['load',m.load??null],
-    ['cadence',isRun&&spm?Math.round(spm)+'<small> spm</small>':null],
-    ['stride',isRun&&m.stride_m!=null?m.stride_m+'<small> m</small>':null],
-    ['power',isRun&&avgW?avgW+(np?`<small> avg · ${np} NP</small>`:'<small> W</small>'):null],
-    ['climb',isRun&&m.elev_gain_m!=null?Math.round(m.elev_gain_m)+'<small> m</small>':null]
-  ].filter(s=>s[1]!=null);
-  let html=`<div class="act">
-    <div class="ahead"><span class="aname">${esc(a.name)}</span><span class="typechip">${a.type}</span>${sessLbl?`<span class="typechip" style="color:var(--gold);border-color:rgba(232,179,75,.4)">${sessLbl}</span>`:''}${m.race?'<span class="typechip" style="color:var(--gold);border-color:var(--gold)">race</span>':''}<span class="atime">${time}${m.device?' · '+esc(m.device):''}</span></div>
-    <div class="statgrid">${stats.map(s=>`<div class="stat"><div class="k">${s[0]}</div><div class="v">${s[1]}</div></div>`).join('')}</div>`;
-  if(st.t&&st.t.length>10){
-    const hasD=!!st.d;
-    html+=`${isRun&&hasD?`<div class="xtoggle" data-act="${idx}"><button class="on" data-x="d">distance</button><button data-x="t">time</button></div>`:''}
-      ${isRun&&st.v?`<div class="schart"><canvas id="chPace${idx}"></canvas></div>`:''}
-      ${st.hr?`<div class="schart sm"><canvas id="chHR${idx}"></canvas></div>`:''}
-      ${isRun&&(st.cad||st.watts)?`<div class="schart sm"><canvas id="chCad${idx}"></canvas></div>`:''}`;
-    html+=`<div id="reps${idx}"></div>`;
-    if(isRun&&hasD&&st.v){
-      html+=`<h4 style="margin-top:16px">Splits</h4><div id="splits${idx}"></div>`;
-    }
-    html+=`<div id="zones${idx}"></div><div id="effort${idx}"></div>`;
-  } else {
-    html+=`<div class="nostreams">No stream file for this activity — aggregates only.</div>`;
-  }
-  return html+`</div>`;
-}
-function fallbackBlock(f){
-  const stats=[['distance',f.km!=null?f.km.toFixed(2)+'<small> km</small>':null],['moving',f.sec!=null?fmtDur(f.sec):null],
-    ['pace',f.pace?f.pace+'<small>/km</small>':(f.sec&&f.km?paceStr(f.sec/f.km)+'<small>/km</small>':null)],
-    ['avg hr',f.hr??null],['intensity',f.intensity!=null?Math.round(f.intensity)+'<small>%</small>':null],['load',f.load??null],
-    ['cadence',f.cad?f.cad+'<small> spm</small>':null],['climb',f.elev!=null?Math.round(f.elev)+'<small> m</small>':null],
-    ['decoupling',f.dec!=null?f.dec+'<small>%</small>':null]].filter(s=>s[1]!=null);
-  let html=`<div class="act"><div class="ahead"><span class="aname">${esc(f.name||'Run')}</span><span class="typechip">Run</span></div>
-    <div class="statgrid">${stats.map(s=>`<div class="stat"><div class="k">${s[0]}</div><div class="v">${s[1]}</div></div>`).join('')}</div>`;
-  if(f.zones)html+=zoneBarHTML(f.zones);
-  return html+`<div class="nostreams">Streams not captured for this day (pre-instrumentation).</div></div>`;
-}
-function zoneBarHTML(zt){
-  const total=zt.reduce((a,b)=>a+b,0);if(!total)return'';
-  const names=ATH?.hr_zone_names||[];
-  const segs=zt.map((s,i)=>({s,i})).filter(x=>x.s>0);
-  return `<h4 style="margin-top:16px">HR zones</h4><div class="zonebar">`+
-    segs.map(x=>`<div style="flex:${x.s};background:${zColors[x.i]}" title="Z${x.i+1} ${names[x.i]||''} — ${fmtDur(x.s)}">${x.s/total>.07?`Z${x.i+1} ${Math.round(x.s/total*100)}%`:''}</div>`).join('')+
-    `</div><div class="zonekey">`+segs.map(x=>`<span><span style="color:${zColors[x.i]}">■</span> Z${x.i+1} ${names[x.i]||''} ${fmtDur(x.s)}</span>`).join('')+`</div>`;
-}
-
-/* ------- per-activity charts & analytics ------- */
-const baseOpts=()=>({responsive:true,maintainAspectRatio:false,animation:false,normalized:true,
-  interaction:{mode:'index',intersect:false},
-  plugins:{legend:{display:false},tooltip:{backgroundColor:'#0d1118',borderColor:css('--line2'),borderWidth:1,titleFont:{family:'IBM Plex Mono',size:10},bodyFont:{family:'IBM Plex Mono',size:11},padding:8}},
-  scales:{x:{grid:{display:false},ticks:{maxTicksLimit:8,font:{family:'IBM Plex Mono',size:9.5},color:css('--mut')}},
-          y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{font:{family:'IBM Plex Mono',size:9.5},color:css('--mut'),maxTicksLimit:6}}}});
-function buildActCharts(a,idx){
-  const st=a.streams||{};if(!st.t||st.t.length<10)return;
-  const m=a.meta||{},isRun=a.type==='Run';
-  const mask=st.v?movingMask(st.v):st.t.map(()=>true);
-  const gapv=isRun&&st.v?gapSeries(st.v,st.grade,mask,m.gap_speed):null;
-  const sess=a._cls||classify(a);
-  let xMode=(isRun&&st.d)?'d':'t';
-  const X=()=>xMode==='d'?st.d.map(x=>+(x/1000).toFixed(2)):st.t.map(x=>+(x/60).toFixed(1));
-  const xT=items=>items[0].label+(xMode==='d'?' km':' min');
-  const charts={};
-  const vSm=st.v?smooth(st.v,7):null;
-  const gapSm=gapv?smooth(gapv,13):null;
-  /* pace + altitude */
-  if(isRun&&st.v&&$(`chPace${idx}`)){
-    const pace=vSm.map(v=>v2pace(v)),gapP=gapSm?gapSm.map(v=>v2pace(v)):null;
-    const pClean=pace.filter(p=>p&&p<900);const pMin=Math.min(...pClean),pMax=Math.max(...pClean);
-    const o=baseOpts();
-    o.scales.y.reverse=true; // faster on top
-    o.scales.y.min=Math.floor((pMin-8)/10)*10;o.scales.y.max=Math.min(pMax+15,pMin+150);
-    o.scales.y.ticks.callback=v=>paceStr(v);
-    o.plugins.tooltip.callbacks={title:xT,
-      label:c=>c.dataset.label+': '+(c.dataset.yAxisID==='yA'?Math.round(c.parsed.y)+' m':paceStr(c.parsed.y)+'/km')};
-    if(st.alt){o.scales.yA={position:'right',display:false,min:Math.min(...st.alt.filter(x=>x!=null))-2,max:Math.max(...st.alt.filter(x=>x!=null))+40};}
-    if(sess.spans.length)o.plugins.repBands={spans:sess.spans}; // shade detected work segments
-    const ds=[];
-    if(st.alt)ds.push({label:'alt',data:st.alt,yAxisID:'yA',borderWidth:0,pointRadius:0,fill:'origin',backgroundColor:'rgba(147,160,180,.14)',order:10});
-    if(gapP)ds.push({label:'GAP',data:gapP,borderColor:'rgba(122,162,247,.45)',borderWidth:1.2,pointRadius:0,borderDash:[4,3],order:2});
-    ds.push({label:'pace',data:pace,borderColor:css('--peri'),borderWidth:1.8,pointRadius:0,order:1});
-    charts.pace=new Chart($(`chPace${idx}`),{type:'line',data:{labels:X(),datasets:ds},options:o});
-  }
-  /* HR with zone bands */
-  if(st.hr&&$(`chHR${idx}`)){
-    const o=baseOpts();const zones=ATH?.hr_zones||[145,153,162,171,176,181,190];
-    const hrClean=st.hr.filter(h=>h!=null);
-    o.scales.y.min=Math.max(60,Math.min(...hrClean)-8);o.scales.y.max=Math.max(...hrClean)+6;
-    o.plugins.tooltip.callbacks={title:isRun&&st.d?xT:items=>items[0].label+' min',label:c=>'♥ '+Math.round(c.parsed.y)+' bpm'};
-    o.plugins.zoneBands={zones,colors:zColors};
-    const xs=isRun&&st.d?X():st.t.map(x=>+(x/60).toFixed(1));
-    charts.hr=new Chart($(`chHR${idx}`),{type:'line',data:{labels:xs,datasets:[{label:'hr',data:st.hr,borderColor:css('--rose'),borderWidth:1.6,pointRadius:0}]},options:o});
-  }
-  /* cadence + power */
-  if(isRun&&(st.cad||st.watts)&&$(`chCad${idx}`)){
-    const o=baseOpts();const ds=[];
-    o.plugins.tooltip.callbacks={title:xT};
-    if(st.cad){const spm=smooth(st.cad.map(cadSpm),7);ds.push({label:'cadence (spm)',data:spm,borderColor:css('--grape'),borderWidth:1.4,pointRadius:0,yAxisID:'y'});
-      const sClean=spm.filter(x=>x!=null&&x>100);o.scales.y.min=Math.min(...sClean)-6;o.scales.y.max=Math.max(...sClean)+6;}
-    if(st.watts){ds.push({label:'power (W)',data:smooth(st.watts,7),borderColor:css('--gold'),borderWidth:1.2,pointRadius:0,yAxisID:'yW'});
-      o.scales.yW={position:'right',grid:{display:false},ticks:{font:{family:'IBM Plex Mono',size:9.5},color:css('--mut'),maxTicksLimit:5}};}
-    o.plugins.legend={display:true,labels:{boxWidth:8,boxHeight:8,font:{family:'IBM Plex Mono',size:9.5},color:css('--sub')}};
-    charts.cad=new Chart($(`chCad${idx}`),{type:'line',data:{labels:X(),datasets:ds},options:o});
-  }
-  Object.values(charts).forEach(c=>panelCharts.push(c));
-  /* x-axis toggle */
-  const tg=document.querySelector(`.xtoggle[data-act="${idx}"]`);
-  if(tg)tg.querySelectorAll('button').forEach(b=>b.onclick=()=>{
-    xMode=b.dataset.x;tg.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
-    const xs=X();Object.values(charts).forEach(c=>{c.data.labels=xs;c.update('none');});
-  });
-  /* splits */
-  if(isRun&&st.d&&st.v&&$(`splits${idx}`)){
-    const sp=kmSplits(st,gapv);
-    if(sp.length){
-      const paces=sp.filter(s=>!s.partial).map(s=>s.pace);
-      const fast=Math.min(...paces),slow=Math.max(...paces);
-      $(`splits${idx}`).innerHTML=`<table class="splits"><tr><th>km</th><th>time</th><th>pace</th><th>gap</th><th>♥</th><th>rise</th></tr>`+
-        sp.map(s=>{const cls=!s.partial&&s.pace===fast?'fast':!s.partial&&s.pace===slow?'slow':'';
-          return `<tr><td>${s.partial?s.km.toFixed(2):s.km}</td><td>${fmtDur(s.secs)}</td><td class="${cls}">${paceStr(s.pace)}</td><td>${s.gap?paceStr(s.gap):'–'}</td><td>${s.hr?Math.round(s.hr):'–'}</td><td>${s.gain>=1?'+'+Math.round(s.gain)+'m':'·'}</td></tr>`;}).join('')+`</table>`;
-    }
-  }
-  /* zones (zt reused by signals) */
-  let ztAll=null;
-  if(st.hr){
-    const zones=ATH?.hr_zones||[145,153,162,171,176,181,190];
-    ztAll=m.hr_zone_secs&&m.hr_zone_secs.some(x=>x>0)?m.hr_zone_secs:zoneTimesFromStream(st.t,st.hr,zones);
-    if($(`zones${idx}`))$(`zones${idx}`).innerHTML=zoneBarHTML(ztAll);
-  }
-  /* reps table for detected workout structure */
-  if($(`reps${idx}`)&&['intervals','tempo'].includes(sess.kind))$(`reps${idx}`).innerHTML=repsHTML(a,sess);
-  /* signals — the progress indicators that matter for THIS run type */
-  if($(`effort${idx}`)&&isRun){
-    const cells=[];
-    const workout=['intervals','tempo','threshold'].includes(sess.kind);
-    if(!workout){
-      if(ztAll){const tot=ztAll.reduce((x,y)=>x+y,0);
-        if(tot>0){const p=Math.round(((ztAll[0]||0)+(ztAll[1]||0))/tot*100);
-          const col=p>=75?'var(--hi)':p>=55?'var(--mid)':'var(--lo)';
-          cells.push(`<div class="ecell"><div class="k">easy purity</div><div class="v" style="color:${col}">${p}%</div><div class="s">time in Z1–Z2 — easy days should live here</div></div>`);}}
-      const dc=decouple(st,gapv),icuDec=m.decoupling;
-      if(dc||icuDec!=null){
-        const val=icuDec!=null?icuDec:dc.dec;
-        const col=val<=5?'var(--hi)':val<=8?'var(--mid)':'var(--lo)';
-        let sub=icuDec!=null?'Intervals.icu Pw:Hr':'computed Pw:Hr';
-        if(dc){sub+=` · halves EF ${(dc.ef1*60).toFixed(2)}→${(dc.ef2*60).toFixed(2)} m/beat`;if(dc.negSplit)sub+=' · negative split — read lightly';}
-        cells.push(`<div class="ecell"><div class="k">decoupling</div><div class="v" style="color:${col}">${(+val).toFixed(1)}%</div><div class="s">${sub}</div></div>`);
-      }
-      const ef=efOverall(st,gapv);
-      if(ef)cells.push(`<div class="ecell"><div class="k">efficiency</div><div class="v">${ef.mPerBeat.toFixed(2)}<small style="font-size:10px;color:var(--mut)"> m/beat</small></div><div class="s">GAP speed per heartbeat — up = base building</div></div>`);
-    }else{
-      // work summary: detected spans, or the whole run for a continuous threshold effort
-      let workT=0,workD=0;
-      if(sess.spans.length){sess.spans.forEach(sp=>{workT+=st.t[sp.i1]-st.t[sp.i0];if(st.d)workD+=st.d[sp.i1]-st.d[sp.i0];});}
-      else{workT=m.moving_s||0;workD=m.distance_m||0;}
-      const wp=workD>0?workT/(workD/1000):null;
-      const thrP=ATH?.threshold_pace_s_per_km;
-      if(workT)cells.push(`<div class="ecell"><div class="k">work</div><div class="v">${fmtDur(workT)}${wp?`<small style="font-size:10px;color:var(--mut)"> @ ${paceStr(wp)}/km</small>`:''}</div><div class="s">${thrP?`threshold ≈ ${paceStr(thrP)}/km (current est.)`:''}</div></div>`);
-    }
-    const spm=cadSpm(m.cadence_rpm);
-    if(spm)cells.push(`<div class="ecell"><div class="k">cadence</div><div class="v">${Math.round(spm)}<small style="font-size:10px;color:var(--mut)"> spm</small></div><div class="s">target 176–180 — cheap Achilles-load lever</div></div>`);
-    $(`effort${idx}`).innerHTML=cells.length?`<h4 style="margin-top:16px">Signals</h4><div class="effort">${cells.join('')}</div>`:'';
-  }
-}
-
-/* zone-band background plugin */
-Chart.register({id:'zoneBands',beforeDraw(chart,args,opts){
-  const o=chart.options.plugins.zoneBands;if(!o||!o.zones)return;
-  const{ctx,chartArea:ca,scales:{y}}=chart;if(!ca)return;
-  let lo=y.min;
-  o.zones.forEach((hi,i)=>{
-    const y1=y.getPixelForValue(Math.min(hi,y.max)),y0=y.getPixelForValue(Math.max(lo,y.min));
-    if(y0>y1){ctx.fillStyle=o.colors[i]+'22';ctx.fillRect(ca.left,y1,ca.width,y0-y1);}
-    lo=hi;});
-}});
-/* shaded work-segment bands (pace chart, detected reps) */
-Chart.register({id:'repBands',beforeDraw(chart){
-  const o=chart.options.plugins.repBands;if(!o||!o.spans||!o.spans.length)return;
-  const{ctx,chartArea:ca,scales:{x}}=chart;if(!ca)return;
-  ctx.save();ctx.fillStyle='rgba(232,179,75,.10)';
-  o.spans.forEach(sp=>{const x0=x.getPixelForValue(sp.i0),x1=x.getPixelForValue(sp.i1);
-    if(isFinite(x0)&&isFinite(x1))ctx.fillRect(x0,ca.top,Math.max(1,x1-x0),ca.height);});
-  ctx.restore();
-}});
-/* vertical line markers plugin (trends) */
-Chart.register({id:'vlines',afterDraw(chart){
-  const o=chart.options.plugins.vlines;if(!o||!o.lines)return;
-  const{ctx,chartArea:ca,scales:{x}}=chart;
-  o.lines.forEach(l=>{
-    const idx=chart.data.labels.indexOf(l.at);if(idx<0)return;
-    const px=x.getPixelForValue(idx);
-    ctx.save();ctx.strokeStyle=l.color||'#666';ctx.setLineDash([4,4]);ctx.lineWidth=1;
-    ctx.beginPath();ctx.moveTo(px,ca.top);ctx.lineTo(px,ca.bottom);ctx.stroke();
-    ctx.fillStyle=l.color||'#666';ctx.font='9px IBM Plex Mono';ctx.textAlign='left';
-    ctx.fillText(l.label,px+4,ca.top+10);ctx.restore();});
-}});
-
-/* ============================ trends ============================ */
-async function renderTrends(){
-  const lastD=(LOG.days||[]).filter(d=>d.status!=='prescribed');
-  if(!trendsDone){trendsDone=true;buildVolRange();}
-  await Promise.all(streamDays().map(getStreams)); // volume + efficiency need the stream-era activities
-  buildVolume();
-  buildOnce('cFit',()=>{
-    const wd=WELL.days||[];
-    return{type:'line',data:{labels:wd.map(x=>x.d.slice(5)),datasets:[
-      {label:'CTL',data:wd.map(x=>x.ctl),borderColor:css('--hi'),backgroundColor:'rgba(74,222,128,.08)',fill:true,borderWidth:2,pointRadius:0,tension:.3},
-      {label:'ATL',data:wd.map(x=>x.atl),borderColor:css('--rose'),borderDash:[4,3],borderWidth:1.6,pointRadius:0,tension:.3},
-      {label:'form',data:wd.map(x=>x.ctl!=null&&x.atl!=null?x.ctl-x.atl:null),borderColor:'rgba(147,160,180,.7)',borderWidth:1,pointRadius:0,tension:.3}
-    ]},options:legOpts()};
-  });
-  buildOnce('cPred',()=>{
-    const pd=lastD.filter(d=>d.prediction);
-    const toMin=p=>{const m=p.split(':');return +m[0]*60+ +m[1]+(+m[2]||0)/60};
-    const o=legOpts(false);
-    o.scales.y.reverse=true;
-    o.scales.y.ticks.callback=v=>{const h=Math.floor(v/60),mm=Math.round(v%60);return `${h}:${pad(mm)}`};
-    o.plugins.tooltip.callbacks={label:c=>{const v=c.parsed.y,h=Math.floor(v/60),mm=Math.round(v%60),ss=Math.round((v%1)*60);return `HM ${h}:${pad(mm)}:${pad(ss)}`}};
-    o.scales.y.min=78;o.scales.y.max=100;
-    return{type:'line',data:{labels:pd.map(d=>d.date.slice(5)),datasets:[
-      {label:'call',data:pd.map(d=>toMin(d.prediction)),borderColor:css('--gold'),backgroundColor:'rgba(232,179,75,.1)',fill:true,borderWidth:2,pointRadius:3,pointBackgroundColor:css('--gold'),tension:.3},
-      {label:'1:20 dream',data:pd.map(()=>80),borderColor:'rgba(74,222,128,.5)',borderDash:[6,4],borderWidth:1,pointRadius:0},
-      {label:'1:25 committed',data:pd.map(()=>85),borderColor:'rgba(232,179,75,.4)',borderDash:[6,4],borderWidth:1,pointRadius:0}
-    ]},options:o};
-  });
-  buildOnce('cScore',()=>{
-    const sd=lastD.filter(d=>d.score!=null);
-    const o=legOpts();o.scales.y.min=0;o.scales.y.max=100;
-    o.scales.y.ticks.callback=v=>v===60?'60·held':v;
-    return{type:'line',data:{labels:sd.map(d=>d.date.slice(5)),datasets:[
-      {label:'vs 1:20',data:sd.map(d=>d.score),borderColor:css('--hi'),borderWidth:2,pointRadius:3,pointBackgroundColor:sd.map(d=>scoreColor(d.score)),tension:.3},
-      {label:'vs 1:25',data:sd.map(d=>d.score_committed),borderColor:css('--peri'),borderDash:[5,3],borderWidth:1.6,pointRadius:2,tension:.3}
-    ]},options:o};
-  });
-  buildOnce('cProb',()=>{
-    const pdd=lastD.filter(d=>d.p_125!=null);
-    const o=legOpts();o.scales.y.min=0;o.scales.y.max=100;o.scales.y.ticks.callback=v=>v+'%';
-    return{type:'line',data:{labels:pdd.map(d=>d.date.slice(5)),datasets:[
-      {label:'sub-1:20',data:pdd.map(d=>Math.round(d.p_120*100)),borderColor:css('--hi'),backgroundColor:'rgba(74,222,128,.08)',fill:true,borderWidth:2,pointRadius:2,tension:.3},
-      {label:'sub-1:25',data:pdd.map(d=>Math.round(d.p_125*100)),borderColor:css('--mid'),backgroundColor:'rgba(232,179,75,.08)',fill:true,borderWidth:2,pointRadius:2,tension:.3}
-    ]},options:o};
-  });
-  buildOnce('cRec',()=>{
-    const wd=WELL.days||[];
-    const o=legOpts();
-    o.scales.yR={position:'right',grid:{display:false},ticks:{font:{family:'IBM Plex Mono',size:9.5},color:css('--mut'),maxTicksLimit:5}};
-    const hrv7=wd.map((x,i)=>{const s=wd.slice(Math.max(0,i-6),i+1).map(y=>y.hrv).filter(v=>v!=null);return s.length?s.reduce((a,b)=>a+b,0)/s.length:null});
-    return{type:'line',data:{labels:wd.map(x=>x.d.slice(5)),datasets:[
-      {label:'HRV',data:wd.map(x=>x.hrv),borderColor:css('--teal'),borderWidth:1.2,pointRadius:2,pointBackgroundColor:css('--teal'),tension:.3},
-      {label:'HRV 7d',data:hrv7,borderColor:'rgba(84,176,124,.5)',borderWidth:2,pointRadius:0,tension:.35},
-      {label:'baseline 87',data:wd.map(()=>87),borderColor:'rgba(147,160,180,.35)',borderDash:[5,4],borderWidth:1,pointRadius:0},
-      {label:'RHR',data:wd.map(x=>x.rhr),borderColor:css('--rose'),borderWidth:1.4,pointRadius:0,tension:.3,yAxisID:'yR'}
-    ]},options:o};
-  });
-  buildOnce('cSleep',()=>{
-    const wd=WELL.days||[];
-    const o=legOpts();o.scales.y.min=0;o.scales.y.max=10;
-    o.scales.yS={position:'right',min:0,max:100,grid:{display:false},ticks:{font:{family:'IBM Plex Mono',size:9.5},color:css('--mut'),maxTicksLimit:5}};
-    const cols=wd.map(x=>x.sleepScore==null?'rgba(122,162,247,.5)':x.sleepScore>=85?'rgba(74,222,128,.75)':x.sleepScore>=70?'rgba(232,179,75,.75)':'rgba(242,109,109,.75)');
-    return{type:'bar',data:{labels:wd.map(x=>x.d.slice(5)),datasets:[
-      {label:'hours',data:wd.map(x=>x.sleepSecs?x.sleepSecs/3600:null),backgroundColor:cols,borderRadius:3,maxBarThickness:14},
-      {label:'score',type:'line',data:wd.map(x=>x.sleepScore),borderColor:'rgba(147,160,180,.6)',borderWidth:1.2,pointRadius:0,tension:.3,yAxisID:'yS'}
-    ]},options:o};
-  });
-  buildEff();
-  buildCurve();
-}
-function legOpts(withLeg=true){
-  const o=baseOpts();
-  if(withLeg)o.plugins.legend={display:true,position:'top',align:'end',labels:{boxWidth:8,boxHeight:8,font:{family:'IBM Plex Mono',size:9.5},color:css('--sub')}};
-  return o;
-}
-function buildOnce(id,make){
-  if(trendCharts[id])return;
-  const el=$(id);if(!el)return;
-  trendCharts[id]=new Chart(el,make());
-}
-function buildVolRange(){
-  const host=$('volRange');
-  [['16w','16w'],['1y','1 yr'],['all','4.5 yr']].forEach(([k,lbl])=>{
-    const b=document.createElement('button');b.textContent=lbl;b.className=k===volMode?'on':'';
-    b.onclick=()=>{volMode=k;host.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));if(trendCharts.cVol){trendCharts.cVol.destroy();delete trendCharts.cVol;}buildVolume();};
-    host.appendChild(b);});
-}
-function buildVolume(){
-  if(trendCharts.cVol)return;
-  const wk=weeklyAgg(mergedActivities());
-  const n=volMode==='16w'?16:volMode==='1y'?52:wk.length;
-  const w=wk.slice(-n);
-  const o=legOpts();o.scales.x.stacked=true;o.scales.y.stacked=true;
-  o.plugins.tooltip.callbacks={footer:items=>{const t=items.reduce((s,i)=>s+i.parsed.y,0);return 'total '+t.toFixed(1)+' mi'}};
-  o.plugins.vlines={lines:[]};
-  if(ATH?.checkpoint&&w.some(x=>x.week>=ATH.checkpoint.date.slice(0,8)+'01')){/* checkpoint falls inside window? add marker at nearest week */
-    const cw=w.find(x=>x.week>=ATH.checkpoint.date);if(cw)o.plugins.vlines.lines.push({at:cw.week.slice(5),label:'gate',color:'#e8b34b88'});}
-  trendCharts.cVol=new Chart($('cVol'),{type:'bar',data:{labels:w.map(x=>x.week.slice(volMode==='all'?2:5)),datasets:[
-    {label:'easy',data:w.map(x=>x.byBucket.easy),backgroundColor:IB.easy.c,stack:'v'},
-    {label:'steady',data:w.map(x=>x.byBucket.steady),backgroundColor:IB.steady.c,stack:'v'},
-    {label:'threshold',data:w.map(x=>x.byBucket.threshold),backgroundColor:IB.threshold.c,stack:'v'},
-    {label:'hard',data:w.map(x=>x.byBucket.hard),backgroundColor:IB.hard.c,stack:'v'}
-  ].map(d=>({...d,borderRadius:2,maxBarThickness:26}))},options:o});
-}
-function buildEff(){ // stream files already awaited by renderTrends
-  if(trendCharts.cEff)return;
-  const pts=[];
-  streamDays().sort().forEach(d=>{const f=streamCache[d];if(!f)return;
-    f.activities.forEach(a=>{if(a.type!=='Run'||!a.streams?.t)return;
-      const sess=classify(a);
-      if(['intervals','tempo','threshold'].includes(sess.kind))return; // trend only like-for-like: easy/steady/long runs
-      if((a.meta.moving_s||0)<1200)return; // <20 min — too short to trend
-      const mask=a.streams.v?movingMask(a.streams.v):null;if(!mask)return;
-      const gapv=gapSeries(a.streams.v,a.streams.grade,mask,a.meta.gap_speed);
-      const ef=efOverall(a.streams,gapv);const dc=decouple(a.streams,gapv);
-      const dec=a.meta.decoupling!=null?a.meta.decoupling:(dc?dc.dec:null);
-      if(ef)pts.push({d:d.slice(5),ef:+ef.mPerBeat.toFixed(3),dec:dec!=null?+(+dec).toFixed(1):null});});});
-  if(!pts.length)return;
-  const o=legOpts();
-  o.scales.yD={position:'right',grid:{display:false},ticks:{font:{family:'IBM Plex Mono',size:9.5},color:css('--mut'),callback:v=>v+'%'}};
-  trendCharts.cEff=new Chart($('cEff'),{type:'line',data:{labels:pts.map(p=>p.d),datasets:[
-    {label:'EF (m/beat)',data:pts.map(p=>p.ef),borderColor:css('--teal'),borderWidth:2,pointRadius:3,pointBackgroundColor:css('--teal'),tension:.25},
-    {label:'decoupling %',data:pts.map(p=>p.dec),borderColor:css('--rose'),borderWidth:1.4,pointRadius:3,borderDash:[4,3],tension:.25,yAxisID:'yD'}
-  ]},options:o});
-}
-function buildCurve(){
-  if(trendCharts.cCurve||!ATH?.pace_curve_1y)return;
-  const pc=ATH.pace_curve_1y;
-  const pts=pc.distance_m.map((D,i)=>({x:D/1000,y:pc.seconds[i]/(D/1000)})).filter(p=>p.x>=0.4);
-  const o=baseOpts();
-  o.scales.x={type:'logarithmic',min:.4,max:22,grid:{display:false},ticks:{font:{family:'IBM Plex Mono',size:9.5},color:css('--mut'),callback:v=>[0.4,1,2,5,10,21.1].includes(+v)?(+v<1?v*1000+'m':v+'k'):''}};
-  o.scales.y.reverse=true;o.scales.y.ticks.callback=v=>paceStr(v);
-  o.plugins.tooltip.callbacks={title:items=>(items[0].parsed.x).toFixed(2)+' km',label:c=>c.dataset.label+': '+paceStr(c.parsed.y)+'/km'};
-  o.plugins.legend={display:true,position:'top',align:'end',labels:{boxWidth:8,boxHeight:8,font:{family:'IBM Plex Mono',size:9.5},color:css('--sub')}};
-  const goal=(tSec)=>({x:21.0975,y:tSec/21.0975});
-  const cs=ATH.critical_speed_model?1000/ATH.critical_speed_model.critical_speed_ms:null;
-  trendCharts.cCurve=new Chart($('cCurve'),{type:'line',data:{datasets:[
-    {label:'best pace (1y)',data:pts,borderColor:css('--peri'),borderWidth:2,pointRadius:0,tension:.25,parsing:false},
-    {label:'1:20 goal',data:[goal(4800)],borderColor:css('--hi'),backgroundColor:css('--hi'),pointRadius:5,pointStyle:'rectRot',showLine:false,parsing:false},
-    {label:'1:25 goal',data:[goal(5100)],borderColor:css('--mid'),backgroundColor:css('--mid'),pointRadius:5,pointStyle:'rectRot',showLine:false,parsing:false},
-    ...(cs?[{label:'critical speed',data:[{x:.4,y:cs},{x:22,y:cs}],borderColor:'rgba(199,146,234,.5)',borderWidth:1,borderDash:[5,4],pointRadius:0,parsing:false}]:[])
-  ]},options:o});
-}
-
-/* ============================ methods dialog ============================ */
-function wireMethods(){
-  $('methodsBtn').onclick=()=>$('methods').showModal();
-  $('methodsClose').onclick=()=>$('methods').close();
-}
-</script>
+<script src="./app.js"></script>
 </body>
 </html>
