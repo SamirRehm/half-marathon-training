@@ -434,18 +434,27 @@
       "note_next": "Fri Jul 24: OFF, not optional. Then Sat easy and Sun long."
     },
     {
-      "date": "2026-07-24", "dow": "Fri", "status": "prescribed", "reviewed": false,
+      "date": "2026-07-24", "dow": "Fri", "status": "scored", "reviewed": false,
       "prediction": "1:33:30", "prediction_prev": "1:33:30",
       "planned": "OFF — full rest day. No run, no cross-training.",
       "plan_rationale": "Non-negotiable today. Yesterday was the third consecutive working day and it pushed ATL to 46.1 and form to -17.8, both the worst of the block, on a day that was prescribed easy-or-off. The week's long run is still owed and the weekend is what decides whether this becomes a 30-mile week or a 22-mile one — so the job today is to arrive at it fresh. Recovery is holding (HRV 91, RHR 48) but sleep quality slipped to 3, which is another reason not to add. If you feel compelled to move, walk.",
       "wellness": { "ctl": 27.6, "atl": 39.9, "form": -12.3, "rampRate": 3.3, "hrv": 91, "restingHR": 48, "sleepSecs": 25860, "sleepScore": 79, "sleepQuality": 3, "vo2max": null, "weight": null },
       "activity": null,
-      "score": null, "score_committed": null, "bar_phase": "base",
-      "delta_p": null,
-      "p_120": null, "p_125": null, "pred_half": "1:33:30",
-      "prob_note": "The projected half has come down 4:15 since Jul 5 — CTL 20.3 to 27.6 and VO2max 54 to 57 in under three weeks.",
-      "components": [],
-      "entry": null,
+      "stream_read": {"_method": "no activities recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-07-24 Pacific; nearest either side are 2026-07-23T20:40 and 2026-07-25T08:33 local. The day's wellness row carries atlLoad 0.0, corroborating zero training load.", "rest_day": true},
+      "score": 66, "score_committed": 72, "bar_phase": "base",
+      "delta_p": "held — the fatigue hole repaired, no volume banked",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:30",
+      "prob_note": "Current-fitness readout, unchanged on a zero-load day — projected half 1:33:30 against the 1:20 and 1:25 lines. Both round to 0%; the live signal is the projection falling.",
+      "components": [
+        { "label": "Prescribed rest taken in full — no run, no cross-training, on the day the block most needed one", "delta": 9, "cat": "raiser" },
+        { "label": "Fatigue unwound: ATL 46.1 to 39.9 and form -17.8 to -12.3, both off the block's worst reading", "delta": 7, "cat": "raiser" },
+        { "label": "Arrives at the weekend with the long run still to come and legs under it", "delta": 3, "cat": "raiser" },
+        { "label": "No volume banked — the week stands at 20.0 mi against a 20-28 target with the long run owed", "delta": -7, "cat": "lowerer" },
+        { "label": "CTL 28.3 to 27.6: rest protects, it does not build, and the 1:20 bar rises every week", "delta": -5, "cat": "context" },
+        { "label": "Slept 7.2 h at quality 3, the week's poorest — the recovery day was only partly banked", "delta": -3, "cat": "lowerer" },
+        { "label": "This morning resting HR 43, matching the block's floor, HRV 89", "delta": 2, "cat": "raiser" }
+      ],
+      "entry": "The rest day was taken in full, and it did the job it was there to do. ATL came off 46.1 to 39.9, form moved from -17.8 — the worst reading of the block — to -12.3, and this morning's resting HR is back to 43, matching the block's floor. That is what a correctly-taken rest day looks like on the numbers. What it does not do is build: CTL slipped 28.3 to 27.6, and the week stands at 20.0 miles against a 20-28 target with the long run still owed. Against 1:20 that reads roughly flat — you protected the trajectory rather than advanced it. Against 1:24-1:27 it reads better, because what has ended every previous build in your log is a broken block, not a missed easy day. The soft spot was sleep: 7.2 hours at quality 3, the poorest of the week, so the recovery day was only partly banked.",
       "note_next": "Sat: easy 50-60 min @ 5:45-6:00/km, HR ceiling 148 — the tempo gates are not open yet (they need four straight weeks at 35+ mi/wk; you're at ~31). Sun: long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — repeat the Jul 18 formula exactly, it is the single most valuable session in this build."
     }
   ]
