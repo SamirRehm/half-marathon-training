@@ -278,19 +278,38 @@
       "plan_rationale": "The week's priority session and the whole point of base phase: sustained aerobic time at an effort the body can absorb and repeat.",
       "wellness": { "ctl": 26.0, "atl": 42.9, "form": -16.9, "rampRate": 3.1, "hrv": 88, "restingHR": 44, "sleepSecs": 27480, "sleepScore": 94, "sleepQuality": 1, "vo2max": 56, "weight": null },
       "activity": { "name": "San Mateo Running — long run", "km": 18.01, "mi": 11.19, "sec": 6523, "pace_per_km": "6:07", "hr": 141, "max_hr": 163, "intensity": 72.6, "load": 92, "cadence": 170, "stride_m": 0.97, "elev_gain_m": 104, "decoupling_pct": null, "hr_zone_sec": null },
-      "score": 94, "score_committed": 89, "bar_phase": "base",
-      "delta_p": "clearly raised — and raised 1:20 most",
+      "score": 82, "score_committed": 77, "bar_phase": "base",
+      "delta_p": "raised — 12 km of real base work, then an unprescribed tempo finish",
       "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:45",
-      "prob_note": "current-fitness readout. ~0% still, but the projected half fell to ~1:34:45 — the fastest single-day move of the block.",
+      "prob_note": "current-fitness readout. ~0% still, but the projected half fell to ~1:34:45 — the largest single-day move of the block.",
+      "stream_read": {
+        "_method": "Moving-time thirds and per-km splits. The session average is not representative: this was two different runs joined together, and 42:39 of the 2h21m elapsed was spent stopped.",
+        "shape": "12 km easy, then a 4 km progression finish",
+        "thirds": [
+          { "third": 1, "km": 4.86, "pace": "6:46", "hr": 133 },
+          { "third": 2, "km": 5.0, "pace": "6:35", "hr": 136 },
+          { "third": 3, "km": 6.26, "pace": "5:15", "hr": 154 }
+        ],
+        "splits_km_13_16": ["4:51 @160", "4:52 @165", "4:37 @162", "4:27 @160"],
+        "body_of_run": "km 1-12 at 6:12-6:59/km, HR 127-145 — genuinely easy",
+        "finish": "last 5 km averaged 4:54/km, 106 s/km quicker than the 6:40 body, HR 135 → 158",
+        "prescribed": "90+ min at 5:50-6:05/km, HR ceiling 148",
+        "moving_s": 5917, "elapsed_s": 8476, "stopped_s": 2559,
+        "zone_secs": [4388, 195, 463, 681, 134, 55, 0],
+        "pct_z1_z2": 77, "pct_z4_plus": 15, "peak_hr": 181
+      },
       "components": [
-        { "label": "16.1 km at 141 HR / 72.6% — the first genuinely EASY long run of the build", "delta": 24, "cat": "raiser" },
-        { "label": "Longest of the block, and 98 minutes of absorbable aerobic time — exactly the deficit", "delta": 10, "cat": "raiser" },
-        { "label": "The highest-value session available to the 1:20 goal, which is why it out-scores the 1:25 line", "delta": 4, "cat": "raiser" },
-        { "label": "Slept 7.6 h at quality 1, RHR 44 near the floor — arrived ready and absorbed it", "delta": 3, "cat": "raiser" },
-        { "label": "Load 92 pushed ATL to 42.9; the follow-up days matter", "delta": -4, "cat": "context" }
+        { "label": "Twelve kilometres at 6:12-6:59/km and HR 127-145 — genuinely easy, and exactly the base work this build is short of", "delta": 20, "cat": "raiser" },
+        { "label": "Longest run of the block, and the biggest single-day move the projection has made", "delta": 8, "cat": "raiser" },
+        { "label": "Base volume helps the 1:20 line more than the 1:25 line, which is why the two diverge here", "delta": 3, "cat": "raiser" },
+        { "label": "Closing 4 km at 4:51/4:52/4:37/4:27 and HR 160-165 is genuine fitness evidence — 4:27/km at 160 bpm sixteen kilometres in is strong", "delta": 6, "cat": "raiser" },
+        { "label": "That finish was not prescribed: the plan was 5:50-6:05/km with a 148 HR ceiling, and the last 5 km ran 106 s/km quicker at HR 158", "delta": -9, "cat": "lowerer" },
+        { "label": "Embedded quality on long runs isn't due until mid-August per the plan — this arrived three weeks early on a day meant to be pure aerobic", "delta": -4, "cat": "lowerer" },
+        { "label": "42:39 stopped inside 2h21m elapsed, so the 141 average HR reads easier than the running actually was", "delta": -3, "cat": "context" },
+        { "label": "Slept 7.6 h at quality 1, RHR 44 near the floor — arrived ready and absorbed it", "delta": 3, "cat": "raiser" }
       ],
-      "entry": "This is the run the whole plan has been asking for, and you finally did it. 16.1 km at 141 average heart rate and 72.6% intensity, with an easy 1.9 km on top — 98 minutes of genuinely easy aerobic time. For context: on July 5 you ran 12 km at 156 HR and called it easy. Same athlete, two weeks later, four kilometres further, fifteen beats lower. That is not a small thing; that is the base arriving, and it is the single most valuable session available to the 1:20 goal, which is exactly why this scores higher against 1:20 than against 1:25. You slept 7.6 hours at quality 1 beforehand and RHR was 44 — you arrived ready and the body took it. More of these. Nothing in this build matters more.",
-      "note_next": "Sun Jul 19: easy 30-40 min shakeout or off. Do NOT put quality on top of a 92-load long run — that's how the good week gets spent."
+      "entry": "Two runs joined together, and the average hides it. The first twelve kilometres are the run the plan has been asking for: 6:12 to 6:59 per kilometre at 127-145 bpm, genuinely easy, the longest of the block. For context, on July 5 you ran 12 km at 156 HR and called that easy — same athlete, two weeks later, further and fifteen beats lower. That part is the base arriving and it is worth more to this race than anything else you do. Then kilometres 13 to 16 went 4:51, 4:52, 4:37, 4:27 at 160-165 bpm. Split by moving time, the final third covered 6.26 km at 5:15/km and HR 154 against 6:46 and HR 133 for the first — the last 5 km ran 106 s/km quicker than the body of the run. The prescription was 5:50-6:05/km with a heart-rate ceiling of 148. So: a strong session, and 4:27/km at 160 bpm sixteen kilometres deep is real evidence of fitness, but it was a long run with a tempo finish rather than the easy long run it reads as — and embedded quality on long runs isn't due until mid-August. Also worth knowing for reading the numbers: 42 minutes and 39 seconds of the 2h21m elapsed was spent stopped, which is why an average of 141 bpm looks gentler than the running was.",
+      "note_next": "Sun Jul 19: easy 30-40 min shakeout or off. That was a 92-load run with 4 km of tempo in it — do NOT put quality on top of it. If you want a finish like that on a long run, it's a good session, but it costs a quality slot that week and should be planned rather than improvised."
     },
     {
       "date": "2026-07-19", "dow": "Sun", "status": "scored", "reviewed": false,

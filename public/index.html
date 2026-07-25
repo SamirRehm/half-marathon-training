@@ -601,6 +601,25 @@ function decouple(st,gv){
   if(!c1||!c2)return null;
   const e1=(s1/c1)/(h1/c1),e2=(s2/c2)/(h2/c2);
   return{dec:(e1-e2)/e1*100,e1:e1*60,e2:e2*60,neg:v2/c2>(v1/c1)*1.02}}
+/* Did the run change gear at the end? On a nominally easy or long run the
+   averages bury this completely — a 12 km easy run with a 4 km tempo finish
+   reports as one moderate average. Compare the last quarter of moving time
+   against the body of the run. */
+function finishKick(st,gv){
+  const{t,v,hr,d}=st;if(!t||!v||!d)return null;
+  const m=mMask(v);let tot=0;for(let i=1;i<t.length;i++)if(m[i])tot+=dt(t,i);
+  if(tot<900)return null;
+  const cut=tot*0.75;let acc=0,split=null;
+  for(let i=1;i<t.length;i++){if(!m[i])continue;acc+=dt(t,i);if(acc>=cut){split=i;break}}
+  if(!split)return null;
+  const seg=(a,b)=>{let s=0,hs=0,hc=0;for(let i=a+1;i<=b;i++){if(m[i])s+=dt(t,i);if(hr&&hr[i]!=null){hs+=hr[i];hc++}}
+    const dist=d[b]-d[a];return{secs:s,km:dist/1000,pace:dist>0&&s>0?s/(dist/1000):null,hr:hc?hs/hc:null}};
+  const body=seg(0,split),end=seg(split,t.length-1);
+  if(!body.pace||!end.pace)return null;
+  const gain=body.pace-end.pace;                        // s/km faster at the end
+  if(gain<20)return null;                               // not a real gear change
+  return{gain:Math.round(gain),body,end};
+}
 function efOf(st,gv){const{t,v,hr}=st;if(!t||!v||!hr)return null;const m=mMask(v);
   let s=0,h=0,c=0;for(let i=1;i<t.length;i++){if(!m[i]||hr[i]==null)continue;const x=dt(t,i);s+=(gv&&gv[i]!=null?gv[i]:v[i])*x;h+=hr[i]*x;c+=x}
   return c?(s/c)*60/(h/c):null}
@@ -1024,7 +1043,7 @@ function actBlock(a,i){
       }
       h+=`<h4 style="margin:24px 0 0">Kilometre splits</h4><div id="sp${i}"></div>`;
     }
-    h+=`<div id="z${i}"></div>`;
+    h+=`<div id="f${i}"></div><div id="z${i}"></div>`;
   }else h+=`<div class="note">No detailed data for this activity.</div>`;
   return h+`</div>`}
 function simpleBlock(f){
@@ -1048,42 +1067,65 @@ function actCharts(a,i){
   const mask=st.v?mMask(st.v):st.t.map(()=>true);
   const gv=run&&st.v?gapSeries(st.v,st.grade,mask,m.gap_speed):null;
   let xm=run&&st.d?"d":"t";
-  const X=()=>xm==="d"?st.d.map(x=>+(x/1000).toFixed(3)):st.t.map(x=>+(x/60).toFixed(2));
-  const xt=it=>it[0].label+(xm==="d"?" km":" min");
+  /* Linear x-axis, not category. A category axis spaces points by sample index,
+     so on a run with pauses or a big pace change a slow kilometre occupies more
+     width than a fast one and the shape of the run is wrong. Points carry their
+     own x, so distance (or time) is genuinely proportional. */
+  const xv=()=>xm==="d"?st.d.map(x=>x/1000):st.t.map(x=>x/60);
+  const pts=arr=>{const X=xv();return arr.map((y,i)=>({x:X[i],y:y==null?null:y}))};
+  const xAxis=()=>{const X=xv();return{type:"linear",min:0,max:X[X.length-1],
+    grid:{display:false},border:{color:C.line},
+    ticks:{maxTicksLimit:8,font:{family:"Inter",size:12},color:C.mut,
+      callback:v=>xm==="d"?(+v).toFixed(v>=10?0:1)+" km":mmss(v*60)}}};
+  const xt=it=>xm==="d"?(+it[0].parsed.x).toFixed(2)+" km":mmss(it[0].parsed.x*60);
+  /* work-segment shading, expressed in whatever units the axis is currently in */
+  const spanX=()=>{const X=xv();return(cls.rep?cls.rep.reps:[]).map(r=>[X[r.i0],X[r.i1]])};
   const ch={};
+  const series={};
   if(run&&st.v&&$("p"+i)){
     const ps=smooth(st.v,7).map(v2p),gs=gv?smooth(gv,13).map(v2p):null;
     const c2=ps.filter(x=>x&&x<900),mn=Math.min(...c2),mx=Math.max(...c2);
-    const o=opts();o.plugins.cross=1;o.scales.y.reverse=true;
+    const o=opts();o.plugins.cross=1;o.scales.x=xAxis();o.scales.y.reverse=true;
     o.scales.y.min=Math.floor((mn-8)/10)*10;o.scales.y.max=Math.min(mx+15,mn+170);
     o.scales.y.ticks.callback=v=>paceStr(v);
     o.plugins.tooltip.callbacks={title:xt,label:c=>`${c.dataset.label}: ${paceStr(c.parsed.y)}/km`};
-    if(cls.rep)o.plugins.reps={spans:cls.rep.reps.map(r=>[r.i0,r.i1])};
+    if(cls.rep)o.plugins.reps={spans:spanX()};   // in axis units, refreshed on toggle
     const ds=[];
-    if(gs)ds.push({label:"Hill-adjusted",data:gs,borderColor:C.blue+"70",borderWidth:1.3,borderDash:[4,3],pointRadius:0});
-    ds.push({label:"Pace",data:ps,borderColor:C.blue,borderWidth:2,pointRadius:0});
+    if(gs){series.g=gs;ds.push({label:"Hill-adjusted",data:pts(gs),borderColor:C.blue+"70",borderWidth:1.3,borderDash:[4,3],pointRadius:0,parsing:false,spanGaps:true})}
+    series.p=ps;ds.push({label:"Pace",data:pts(ps),borderColor:C.blue,borderWidth:2,pointRadius:0,parsing:false,spanGaps:true});
     if(ds.length>1)leg(o);
-    ch.p=new Chart($("p"+i),{type:"line",data:{labels:X(),datasets:ds},options:o});
+    ch.p=new Chart($("p"+i),{type:"line",data:{datasets:ds},options:o});
   }
   if(st.hr&&$("h"+i)){
     const z=ATH?.physiology?.hr_zones||[145,153,162,171,176,181,190],c2=st.hr.filter(x=>x!=null);
-    const o=opts();o.plugins.cross=1;o.plugins.bands={zones:z};
+    const o=opts();o.plugins.cross=1;o.plugins.bands={zones:z};o.scales.x=xAxis();
     o.scales.y.min=Math.max(60,Math.min(...c2)-8);o.scales.y.max=Math.max(...c2)+6;
-    o.plugins.tooltip.callbacks={title:run&&st.d?xt:it=>it[0].label+" min",label:c=>`Heart rate: ${Math.round(c.parsed.y)} bpm`};
-    ch.h=new Chart($("h"+i),{type:"line",data:{labels:run&&st.d?X():st.t.map(x=>+(x/60).toFixed(2)),
-      datasets:[{label:"Heart rate",data:st.hr,borderColor:C.magenta,borderWidth:2,pointRadius:0,spanGaps:true}]},options:o});
+    o.plugins.tooltip.callbacks={title:xt,label:c=>`Heart rate: ${Math.round(c.parsed.y)} bpm`};
+    series.h=st.hr;
+    ch.h=new Chart($("h"+i),{type:"line",data:{datasets:[{label:"Heart rate",data:pts(st.hr),
+      borderColor:C.magenta,borderWidth:2,pointRadius:0,parsing:false,spanGaps:true}]},options:o});
   }
   if(run&&st.alt&&$("e"+i)){
-    const o=opts();o.scales.y.ticks.maxTicksLimit=3;
+    const al=smooth(st.alt,9);
+    const o=opts();o.scales.x=xAxis();o.scales.y.ticks.maxTicksLimit=3;
     o.plugins.tooltip.callbacks={title:xt,label:c=>`Elevation: ${Math.round(c.parsed.y)} m`};
-    ch.e=new Chart($("e"+i),{type:"line",data:{labels:X(),datasets:[{label:"Elevation",data:smooth(st.alt,9),
-      borderColor:C.mut,backgroundColor:C.mut+"22",fill:"origin",borderWidth:1,pointRadius:0}]},options:o});
+    series.e=al;
+    ch.e=new Chart($("e"+i),{type:"line",data:{datasets:[{label:"Elevation",data:pts(al),
+      borderColor:C.mut,backgroundColor:C.mut+"22",fill:"origin",borderWidth:1,pointRadius:0,parsing:false,spanGaps:true}]},options:o});
   }
   Object.values(ch).forEach(c=>sheetCharts.push(c));
   const tg=document.querySelector(`.xt[data-a="${i}"]`);
-  if(tg)tg.querySelectorAll("button").forEach(b=>b.onclick=()=>{xm=b.dataset.x;
-    tg.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
-    const xs=X();Object.values(ch).forEach(c=>{c.data.labels=xs;c.update("none")})});
+  if(tg)tg.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    xm=b.dataset.x;tg.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+    const key={p:["p","g"],h:["h"],e:["e"]};
+    Object.entries(ch).forEach(([k,c])=>{
+      const src=key[k].filter(s=>series[s]);
+      c.data.datasets.forEach((d,n)=>{d.data=pts(series[src[src.length-1-n]]||series[src[0]])});
+      if(k==="p"&&series.g&&c.data.datasets.length===2){c.data.datasets[0].data=pts(series.g);c.data.datasets[1].data=pts(series.p)}
+      c.options.scales.x=xAxis();
+      if(c.options.plugins.reps)c.options.plugins.reps.spans=spanX();
+      c.update("none")});
+  });
   if($("st"+i)&&cls.rep)$("st"+i).innerHTML=`<h4 style="margin:24px 0 0">How it was run</h4>`+repTable(cls,a);
   if($("sp"+i)&&run&&st.d&&st.v&&!cls.rep){
     const sp=kmSplits(st,gv);
@@ -1094,6 +1136,17 @@ function actCharts(a,i){
         <td>${s.hr?Math.round(s.hr):"–"}</td><td>${s.gain>=1?"+"+Math.round(s.gain)+" m":"·"}</td></tr>`).join("")+`</tbody></table>`}}
   if($("z"+i)&&st.hr){const z=ATH?.physiology?.hr_zones||[145,153,162,171,176,181,190];
     $("z"+i).innerHTML=zoneBar(m.hr_zone_secs?.some(x=>x>0)?m.hr_zone_secs:zoneTimes(st.t,st.hr,z))}
+  /* a gear change at the end, and material stopped time — both invisible in the averages */
+  if($("f"+i)&&run&&!cls.rep){
+    const bits=[];
+    const fk=finishKick(st,gv);
+    if(fk)bits.push(`<div class="sv"><div class="k">Finish</div><div class="v">${paceStr(fk.end.pace)}<small>/km</small></div>
+      <div class="k" style="margin-top:5px">last ${fk.end.km.toFixed(1)} km, ${fk.gain} s/km quicker than the ${paceStr(fk.body.pace)} body of the run${fk.end.hr?`, HR ${Math.round(fk.body.hr)}→${Math.round(fk.end.hr)}`:""}</div></div>`);
+    const stop=(m.elapsed_s||0)-(m.moving_s||0);
+    if(stop>=300)bits.push(`<div class="sv"><div class="k">Stopped</div><div class="v">${mmss(stop)}</div>
+      <div class="k" style="margin-top:5px">inside ${mmss(m.elapsed_s)} elapsed — the averages cover moving time only</div></div>`);
+    if(bits.length)$("f"+i).innerHTML=`<h4 style="margin:24px 0 0">Worth knowing</h4><div class="sg">${bits.join("")}</div>`;
+  }
 }
 
 /* ══════════════════ GOAL ══════════════════ */

@@ -96,7 +96,9 @@ This athlete stops the watch during standing recoveries. So discontinuities in t
 - **Warmup and cooldown quality** — these are separate activity files on club/track nights. A cooldown above Z2 means the session never ended.
 
 **Easy / steady / long runs**
-- **Easy purity** (% of time in Z1–Z2) and whether HR drifted one-way at constant pace.
+- **Check the end of the run against its body — a nominally easy run is often two runs.** Split the moving time and compare the last quarter to the rest. If the finish is ≥20 s/km quicker, that is a gear change and must be reported, not averaged away: name the finish pace, the body pace, the gap, and the HR at each. The 2026-07-18 long run averaged 141 bpm at 72.6% and read as "genuinely easy"; it was 12 km at 6:12–6:59/km and HR 127–145 followed by 4 km at 4:51/4:52/4:37/4:27 and HR 160–165, against a prescription of 5:50–6:05 with a 148 ceiling. The session average described neither half.
+- **Report stopped time whenever it is ≥5 min** (`elapsed − moving`). Standing time drags the average HR down, so a run with 40 minutes of stops looks far easier in the aggregate than the running actually was. That same 2026-07-18 run spent 42:39 stopped inside 2h21m elapsed.
+- **Easy purity** (% of time in Z1–Z2) and whether HR drifted one-way at constant pace. Note that purity is computed on moving samples, so it is not distorted by stops — but it *is* diluted by a fast finish, so read it alongside the check above rather than on its own.
 - **Decoupling** on steady efforts ≥25 min, with the negative-split caveat when the run progressed.
 - **EF (m/beat)** for the like-for-like trend against previous easy/long runs.
 
