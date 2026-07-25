@@ -29,28 +29,18 @@ Everything else is already in the repo.
 2. **Prompt:** paste the entire contents of `routine/DAILY_ROUTINE_PROMPT.md`, verbatim. It is self-contained and repo-referenced — each run reads `RUNNER_CONTEXT.md`, `DAY_SCORE.md`, `routine/INTERVALS_DATA_REFERENCE.md`, `.claude/skills/generate-day-data/SKILL.md` and `data/daily_log.json` for itself, which is why the prompt stays short and the thinking lives in version control.
 3. **Repository:** this repo, with permission to push to `main`. (Direct to `main` is what makes the site redeploy automatically. A `claude/*` branch + review also works, but then nothing publishes until you merge.)
 4. **Connectors:** attach **Intervals.icu**. Required — without it the routine writes `routine/LAST_RUN_ERROR.txt` and commits nothing. MCP traffic routes through Anthropic's servers, so there is no network allowlisting to do.
-5. **Schedule:** daily, timezone **America/Los_Angeles** — name the timezone rather than a UTC offset so DST is handled for you.
+5. **Schedule:** daily at **08:28**, timezone **America/Los_Angeles** — name the timezone rather than a UTC offset so DST is handled for you, and prefer an off-minute like `:28` over `:00` so you're not landing on the same instant as every other scheduled job in the world.
 
-   **Recommended: two runs, same prompt.** Each half of the job gets the data it actually needs.
+   08:30 is the right single time: yesterday is complete and synced, so the scoring is reliable, *and* last night's HRV, resting HR and sleep are in, so today's session is set on real recovery numbers rather than guessed.
 
-   | Run | Time | What it has | What it does |
-   |---|---|---|---|
-   | **Night** | `00:15` | The day just ended and its activities have synced | Scores that day on complete data, writes its stream file, and puts a **provisional** plan on the new day with downgrade gates |
-   | **Morning** | `08:28` | Overnight HRV, resting HR and sleep | Firms the provisional plan into a real one, and re-checks the night's scoring in case a late-evening run synced after midnight |
-
-   Create the routine twice with the identical prompt and different times. The prompt works out which run it is from the Pacific clock and from what the log already contains, so the two can't fight: it never duplicates a day, never re-scores unchanged data, and commits nothing when there's nothing to change.
-
-   Prefer off-minutes (`:15`, `:28`) over `:00` so you're not landing on the same instant as every other scheduled job in the world.
-
-   **A single run at ~08:30 also works fine** and uses half the quota — it just does both jobs at once, and yesterday's analysis isn't waiting for you when you wake up.
-6. **Model:** a strong one. The scoring and the stream reading are real judgement, not formatting.
-7. Save.
+6. **Effort / model:** set the routine to the **strongest model and highest effort** available. The prompt also states this at the top, but set the control if the UI offers one. Scoring a session and reading a stream are judgement work — this is the one setting that most affects whether the entries are any good.
+7. **Save.**
 
 ## What each run does
 
 1. **Orients** against `data/daily_log.json` so it never double-creates or re-scores.
 2. **Closes the day that just ended:** pulls the activities, does the deep stream read (step 7 of the skill — segment on recording gaps, per-rep legs, zone distribution, set pace vs threshold *and* recent race pace), scores it against both goal lines, computes the raced-today probabilities, writes the coaching read, sets `status:"scored"`.
-3. **Opens the current day:** prescribes the session, provisional if it's running pre-sync.
+3. **Opens today:** prescribes the session on this morning's recovery — duration, pace band and an HR ceiling. (If the device somehow hasn't synced, it falls back to a provisional plan with downgrade gates, and the dashboard labels it.)
 4. **Writes the dashboard files:** `data/streams/<date>.json` at full resolution, the manifest, and the wellness upsert.
 5. **Commits and pushes** → GitHub Pages redeploys → the site is current within a minute or two.
 
