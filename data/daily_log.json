@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-07-25",
+    "last_updated": "2026-08-01",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -456,6 +456,189 @@
       ],
       "entry": "The rest day was taken in full, and it did the job it was there to do. ATL came off 46.1 to 39.9, form moved from -17.8 — the worst reading of the block — to -12.3, and this morning's resting HR is back to 43, matching the block's floor. That is what a correctly-taken rest day looks like on the numbers. What it does not do is build: CTL slipped 28.3 to 27.6, and the week stands at 20.0 miles against a 20-28 target with the long run still owed. Against 1:20 that reads roughly flat — you protected the trajectory rather than advanced it. Against 1:24-1:27 it reads better, because what has ended every previous build in your log is a broken block, not a missed easy day. The soft spot was sleep: 7.2 hours at quality 3, the poorest of the week, so the recovery day was only partly banked.",
       "note_next": "Sat: easy 50-60 min @ 5:45-6:00/km, HR ceiling 148 — the tempo gates are not open yet (they need four straight weeks at 35+ mi/wk; you're at ~31). Sun: long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — repeat the Jul 18 formula exactly, it is the single most valuable session in this build."
+    },
+    {
+      "date": "2026-07-25", "dow": "Sat", "status": "scored", "reviewed": false,
+      "prediction": "1:33:30", "prediction_prev": "1:33:30",
+      "planned": "Easy 50-60 min @ 5:45-6:00/km, HR ceiling 148 — tempo gates not yet open (need 4 straight weeks at 35+ mi/wk; at ~31)",
+      "plan_rationale": "Saturday easy volume; the tempo gates were explicitly not open yet per the prior day's note.",
+      "wellness": { "ctl": 27.8, "atl": 39.4, "form": -11.6, "rampRate": 1.8, "hrv": 89, "restingHR": 43, "sleepSecs": 26214, "sleepScore": 87, "sleepQuality": 2, "vo2max": 57, "weight": null },
+      "activity": { "name": "San Mateo Running/Track — wu / main / cd", "km": 6.27, "mi": 3.90, "sec": 1681, "pace_per_km": "4:28", "hr": 156, "max_hr": 180, "intensity": 97, "load": 36, "cadence": 87.3, "stride_m": 1.28, "elev_gain_m": 27.2, "decoupling_pct": null, "hr_zone_sec": [264, 427, 347, 316, 235, 96, 0] },
+      "score": 40, "score_committed": 51, "bar_phase": "base",
+      "delta_p": "lowered — defied the stated Saturday gate; short, hard, and unauthorized",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:30",
+      "prob_note": "current-fitness readout, unchanged — the session re-confirmed (not exceeded) the speed already shown Jul 21; no new repeatable aerobic evidence.",
+      "stream_read": {
+        "_method": "Three files read individually (wu / main set / cd) per 7A. The main set's ~1 s gaps between reps are lap-button presses, not standing rest and not auto-lap artifacts — confirmed by the near-zero recovery duration and the interval type flags (WORK/RECOVERY) Intervals itself assigned.",
+        "structure": "WU 1.25 km building 4:51→4:46/km (HR 139→155) into MAIN: a 97 s build-up @ ~4:00/km (HR 135, Z1) then 7×~400 m run continuously — no standing rest, only ~1 s between reps — at 3:55-4:00/km with HR climbing from 165 into the high 170s, peaking 180. CD 1.81 km that sped up rather than settled: 5:20/km @146 (Z2) into 5:01/km @155 (Z3).",
+        "reps_summary": "7×95 s @ 171 bpm average (Intervals' own interval_summary), continuous with only ~1 s between reps. Intensity climbed rep-to-rep (95%→102% of threshold) and zone shifted Z4→Z5→Z6 as the set progressed; pace held tight (3:55-4:00/km) while HR drifted up — cardiac drift at a steady pace, not a fade.",
+        "prescribed_vs_executed": "Prescribed: 50-60 min easy @ 5:45-6:00/km, HR ceiling 148, with an explicit note that the Saturday tempo gates were not yet open. Executed: 28 min total including 7×400 m continuous to Z5/Z6 at ~3:57/km average — 108-128 s/km faster than prescribed, peak HR 180 vs the 148 ceiling.",
+        "main_set_zone_pct": { "pct_z4_plus": 85, "pct_z5_plus": 44, "z7_sec": 0 },
+        "peak_hr": 180, "pct_max_hr": 94.7,
+        "cooldown_quality": "Sped up and drifted from Z2 into Z3 (155 bpm) instead of settling — the same unfinished-cooldown pattern flagged Jul 21.",
+        "cadence_trend": "Stable 86-89 rpm (172-178 spm) through the reps — no mechanical fatigue tell.",
+        "easy_purity_pct_z1_z2": 41,
+        "stopped_time": "Elapsed-moving gap negligible across all three files (≤3 s each) — no real stops."
+      },
+      "components": [
+        { "label": "Defied the explicit Saturday-tempo gate stated one day earlier (needs 4 straight weeks at 35+ mi/wk; at ~31) — ran 7x400m continuous to Z5/Z6 instead of the prescribed 50-60 min easy", "delta": -16, "cat": "lowerer" },
+        { "label": "85% of the main set at Z4+, 44% at Z5+, peak HR 180 (95% max) — genuinely hard, not a controlled tempo", "delta": -6, "cat": "lowerer" },
+        { "label": "Cooldown sped up 5:20→5:01/km into Z3 (155 bpm) instead of settling — the same pattern flagged Jul 21", "delta": -3, "cat": "lowerer" },
+        { "label": "Green recovery (HRV 89 near baseline, RHR 43 at the floor) absorbed the load without apparent cost; rep pace matched, not exceeded, the fitness already shown Jul 21", "delta": 6, "cat": "context" },
+        { "label": "Whole session just 6.3 km / 28 min — little aerobic base banked either way", "delta": -1, "cat": "context" }
+      ],
+      "entry": "Saturday was prescribed 50-60 minutes easy, with an explicit note that the tempo gates were still shut — four straight weeks at 35+ mi/wk needed; the block sits at ~31. Instead: a 1.25 km jog into a continuous 7x400m set — no standing rest, just a lap press between reps — at 3:55-4:00/km, HR climbing from 165 into the high 170s and peaking 180 (95% of max). 85% of the main set sat at Z4 or above, 44% at Z5+. The pace matches the mile-pace evidence from Jul 21, not new fitness — a repeat of a session already banked, not a breakthrough, on a day the plan had explicitly named closed. The cooldown didn't cool down either: 5:20/km at 146 bpm sliding to 5:01/km at 155 (Z3), the same loose end flagged eleven days ago. Recovery was excellent going in (HRV 89, RHR 43 at the floor, 7.3 h sleep) — the body took the session without complaint, which is the only reason this isn't lower. Total volume was 6.3 km in 28 minutes: too little to matter as aerobic base, high enough in intensity to matter as a pattern. This is the third time in ten days a prescribed easy day became a self-selected hard one.",
+      "note_next": "Sun Jul 26: the long run, and it needs to actually be easy — 5:50-6:05/km, HR ceiling 148. Two hard days back to back is exactly the shape that has ended every previous block."
+    },
+    {
+      "date": "2026-07-26", "dow": "Sun", "status": "scored", "reviewed": false,
+      "prediction": "1:33:15", "prediction_prev": "1:33:30",
+      "planned": "Long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — repeat the Jul 18 formula",
+      "plan_rationale": "The week's priority long run; the Jul 18 session (12 km easy into a controlled tempo finish) was the formula to repeat, with a hard HR ceiling to protect the base-building purpose.",
+      "wellness": { "ctl": 30.0, "atl": 50.0, "form": -20.0, "rampRate": 3.7, "hrv": 105, "restingHR": 47, "sleepSecs": 27480, "sleepScore": 86, "sleepQuality": 2, "vo2max": 57, "weight": null },
+      "activity": { "name": "Redwood City Running — long run", "km": 20.01, "mi": 12.43, "sec": 6132, "pace_per_km": "5:07", "hr": 155, "max_hr": 168, "intensity": 83.6, "load": 119, "cadence": 87.2, "stride_m": 1.12, "elev_gain_m": 64.1, "decoupling_pct": 4.2, "hr_zone_sec": [259, 1626, 3916, 333, 0, 0, 0] },
+      "score": 36, "score_committed": 50, "bar_phase": "base",
+      "delta_p": "diverges sharply — a real endurance milestone that also spiked the block's deepest fatigue hole; hurts the tight goal, nets near-neutral for the committed one",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:15",
+      "prob_note": "current-fitness readout. ~0% now — projected half nudges to ~1:33:15 on the distance milestone, tempered because it wasn't banked as clean aerobic base.",
+      "stream_read": {
+        "_method": "Continuous run (elapsed 6133s vs moving 6132s — no real stops). Intervals' own ~1 km auto-laps are the right tool here (no rep structure to protect) and were used for kilometre splits on moving time, per the no-structure-run guidance.",
+        "splits_km_pace_hr": ["5:08@138","5:07@148","5:06@150","5:08@151","5:08@152","5:08@154","5:06@154","5:06@155","5:09@154","5:06@154","5:08@157","5:07@158","5:07@159","5:08@159","5:08@159","5:06@159","5:07@159","5:08@160","5:07@164","5:03@167"],
+        "shape": "Pace essentially flat 5:03-5:09/km for all 20 km (a 6 s/km spread) while HR climbed monotonically 138→167 (Z1→Z4) — decoupling at constant pace, not a progression (pace never eased and never surged).",
+        "prescribed_vs_executed": "Prescribed 5:50-6:05/km, HR ceiling 148. Executed ~5:07/km throughout — 43-58 s/km hot from km 1 — with HR above the 148 ceiling for the entire second half, reaching 167 by the finish. Duration (102 min) sat inside the prescribed 100-110 min band; effort did not.",
+        "decoupling_pct": 4.2,
+        "decoupling_note": "First-half avg HR ~151 vs second-half ~157 at essentially unchanged pace (3.256 vs 3.258 m/s) — real, moderate decoupling on a steady effort; no negative-split caveat applies since pace never changed.",
+        "pct_z1_z2": 30.7, "pct_z4_plus": 5.4, "peak_hr": 168, "pct_max_hr": 88.4,
+        "cadence_trend": "Flat ~87 rpm (174 spm) start to finish — no mechanical fatigue tell.",
+        "finish_vs_body": "Last 5 km averaged ~5:06/km at 161.8 bpm vs ~5:07/km at 149.9 bpm for km 1-15 — same pace, +12 bpm. Not a gear change (pace didn't move ≥20 s/km); this is drift, not a finishing kick.",
+        "milestone": "20.0 km — longest run of the build, surpassing Jul 18's 18.0 km.",
+        "load_context": "Load 119 is the single biggest day of the entire block (previous high: 92, Jul 18). Pushed ATL to 50.0 and form to -20.0 — both the block's worst reading, exactly the fatigue-hole line DAY_SCORE flags."
+      },
+      "components": [
+        { "label": "20.0 km — new longest of the build (previous 18.0 km, Jul 18), a genuine distance milestone", "delta": 12, "cat": "raiser" },
+        { "label": "Never within 40 s/km of the prescribed 5:50-6:05/km band — opened at ~5:07/km and never eased; no genuinely easy portion in 20 km", "delta": -14, "cat": "lowerer" },
+        { "label": "HR sat above the 148 ceiling for the entire second half, climbing to 167 by the finish — a sustained ceiling breach, not a brief drift", "delta": -10, "cat": "lowerer" },
+        { "label": "Load 119 — the block's biggest day — pushed ATL to 50.0 and form to -20.0, the block's worst reading and the fatigue-hole line", "delta": -8, "cat": "lowerer" },
+        { "label": "Back-to-back hard days: Saturday's unauthorized track reps into Sunday's steady-effort long run, with no easy day between", "delta": -4, "cat": "lowerer" },
+        { "label": "Ramp +3.7/wk — hot, but still under the +4 injury-risk line", "delta": 0, "cat": "context" }
+      ],
+      "entry": "Twenty kilometres — the longest run of the build, beating Jul 18's 18.0 km — and the pace tells a single story start to finish: 5:03-5:09/km for all 20 km, a 6 s/km spread, essentially dead flat. What isn't flat is heart rate: 138 in km 1, climbing without a single reversal to 167 by km 20. That's decoupling on a steady effort — first-half average 151 bpm, second-half 157 — because the pace never eased. Prescribed was 5:50-6:05/km with a 148 ceiling, repeating the Jul 18 formula; this run opened 43-58 s/km hotter than that band and spent its entire second half above the ceiling. Duration was right (102 of the 100-110 min asked for); effort wasn't. Load 119 is the biggest single day of the entire block, landing on top of Saturday's unauthorized track session — back-to-back hard days with nothing easy between them. That combination pushed ATL to 50.0 and form to -20.0, both the worst readings in this log and exactly the fatigue-hole line the scoring model watches for. The two goal lines split hard here: real endurance volume is what 1:25 needs most, so it holds up; 1:20 has no margin for a weekend like this, so it takes the larger hit. Ramp is +3.7/wk — hot, but still under the +4 injury-risk line, for now.",
+      "note_next": "Mon Jul 27: OFF, not negotiable. Two hard days back to back on a block that was already running hot — the legs and the trend both need it."
+    },
+    {
+      "date": "2026-07-27", "dow": "Mon", "status": "scored", "reviewed": false,
+      "prediction": "1:33:15", "prediction_prev": "1:33:15",
+      "planned": "OFF, not negotiable",
+      "plan_rationale": "Mandatory absorption after back-to-back hard days (Saturday's unauthorized track session, Sunday's 20 km run that spiked ATL to 50.0 and form to -20.0).",
+      "wellness": { "ctl": 29.3, "atl": 43.4, "form": -14.1, "rampRate": 3.6, "hrv": 85, "restingHR": 49, "sleepSecs": 22440, "sleepScore": 73, "sleepQuality": 3, "vo2max": null, "weight": null },
+      "activity": null,
+      "stream_read": { "_method": "no activities recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-07-27 Pacific; wellness atlLoad 0.0 corroborates zero training load.", "rest_day": true },
+      "score": 58, "score_committed": 61, "bar_phase": "base",
+      "delta_p": "held — the rest day the plan itself called for",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:15",
+      "prob_note": "current-fitness readout, unchanged on a zero-load day.",
+      "components": [
+        { "label": "Prescribed rest, taken in full, after the block's biggest 2-day load", "delta": 7, "cat": "raiser" },
+        { "label": "HRV still below baseline (85) and RHR at 49 — still recovering", "delta": 2, "cat": "raiser" },
+        { "label": "Sleep short again (6.2h, quality 3) — only partly banked", "delta": -3, "cat": "lowerer" },
+        { "label": "No volume banked, on a week that already needs it", "delta": -8, "cat": "context" }
+      ],
+      "entry": "Rest, exactly as prescribed, after the block's biggest two-day load. HRV was still under baseline (85 vs ~87) and resting HR at 49 — the top of the range — so the body was still asking for the day. Sleep was short again, 6.2 hours at quality 3, so the recovery day was only partly banked. No volume added to a week that already needs it after Saturday and Sunday's pattern, but taking the rest when the numbers called for it is the correct decision, not a neutral one.",
+      "note_next": "Tue Jul 28: club, if the body is ready — check HRV/RHR before committing to the main set."
+    },
+    {
+      "date": "2026-07-28", "dow": "Tue", "status": "scored", "reviewed": false,
+      "prediction": "1:33:15", "prediction_prev": "1:33:15",
+      "planned": "Run club (the week's protected quality slot)",
+      "plan_rationale": "Standing weekly template — Tuesday club is the protected social anchor. No same-day routine prescription exists for this date; the routine did not run.",
+      "wellness": { "ctl": 28.6, "atl": 37.6, "form": -9.0, "rampRate": 2.0, "hrv": 89, "restingHR": 46, "sleepSecs": 23760, "sleepScore": 77, "sleepQuality": 3, "vo2max": null, "weight": null },
+      "activity": null,
+      "stream_read": { "_method": "no activities recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-07-28 Pacific; wellness atlLoad 0.0 corroborates zero training load.", "rest_day": true },
+      "score": 50, "score_committed": 54, "bar_phase": "base",
+      "delta_p": "lowered — missed the protected Tuesday slot, with no data indicating why",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:15",
+      "prob_note": "current-fitness readout, unchanged on a zero-load day.",
+      "components": [
+        { "label": "Missed Tuesday club — the protected social anchor this plan leans on for consistency", "delta": -6, "cat": "lowerer" },
+        { "label": "Recovery was green (HRV 89, RHR 46) — nothing in the numbers explains the miss", "delta": -2, "cat": "lowerer" },
+        { "label": "Second consecutive zero day, no volume banked", "delta": -4, "cat": "context" },
+        { "label": "No injury/illness signal on record — an unexplained gap, not a flagged setback", "delta": 2, "cat": "context" }
+      ],
+      "entry": "Second consecutive day off, and this one cost Tuesday club — the protected slot this plan has leaned on all block as the primary defense against the consistency failures in this athlete's history. Recovery gives no explanation: HRV 89, RHR 46, both comfortably green. Nothing on record points to illness or injury. The gap is simply unexplained, which is worth naming rather than assuming a story that isn't in the data.",
+      "note_next": "Wed Jul 29: easy 35-45 min if legs and schedule allow — two days off is a pause, not yet a pattern, but it's the direction to watch."
+    },
+    {
+      "date": "2026-07-29", "dow": "Wed", "status": "scored", "reviewed": false,
+      "prediction": "1:33:30", "prediction_prev": "1:33:15",
+      "planned": "Easy 35-45 min",
+      "plan_rationale": "Standing weekly template default; no same-day routine prescription exists for this date.",
+      "wellness": { "ctl": 27.9, "atl": 32.6, "form": -4.7, "rampRate": 0.6, "restingHR": 50, "vo2max": null, "weight": null },
+      "activity": null,
+      "stream_read": { "_method": "no activities recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-07-29 Pacific; wellness atlLoad 0.0 corroborates zero training load. Sleep/HRV also did not sync this morning (both null) — a data gap layered on the training gap.", "rest_day": true },
+      "score": 48, "score_committed": 52, "bar_phase": "base",
+      "delta_p": "lowered — third consecutive zero day",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:30",
+      "prob_note": "current-fitness readout — nudged back 15 s on a third straight day of zero training; not yet a full missed week.",
+      "components": [
+        { "label": "Third consecutive day with zero training, RHR crept to 50 — the block's high — with no data explaining the gap", "delta": -8, "cat": "lowerer" },
+        { "label": "Wellness sync also gapped (no HRV or sleep recorded) — can't rule in or out an illness signal", "delta": -3, "cat": "context" },
+        { "label": "CTL still holding in the high 27s; nothing catastrophic yet, but the trend is now three days running", "delta": -1, "cat": "context" }
+      ],
+      "entry": "Third consecutive day with no training. Resting heart rate has crept to 50, the highest reading of the block, though with sleep and HRV both missing from this morning's sync there's no way to read whether that's fatigue, illness, or a device gap — the wellness data itself went quiet along with the training. CTL is still in the high 27s, so nothing has collapsed, but three straight zero days is now a trend, not a single decision.",
+      "note_next": "Thu Jul 30: easy 30-40 min if the body and the week allow it. If something is going on outside training, the plan can absorb a short gap — it can't absorb an unexplained long one."
+    },
+    {
+      "date": "2026-07-30", "dow": "Thu", "status": "scored", "reviewed": false,
+      "prediction": "1:33:45", "prediction_prev": "1:33:30",
+      "planned": "Easy 30-40 min if body/week allow",
+      "plan_rationale": "Standing template default carried forward; no same-day routine prescription exists.",
+      "wellness": { "ctl": 27.3, "atl": 28.2, "form": -0.9, "rampRate": -1.0, "hrv": 93, "restingHR": 47, "sleepSecs": 8940, "sleepScore": 33, "sleepQuality": 4, "vo2max": null, "weight": null },
+      "activity": null,
+      "stream_read": { "_method": "no activities recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-07-30 Pacific; wellness atlLoad 0.0 corroborates zero training load.", "rest_day": true },
+      "score": 47, "score_committed": 51, "bar_phase": "base",
+      "delta_p": "lowered — fourth zero day, and sleep collapsed",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:45",
+      "prob_note": "current-fitness readout — nudged back again on a fourth straight day of zero training.",
+      "components": [
+        { "label": "Fourth consecutive zero day", "delta": -8, "cat": "lowerer" },
+        { "label": "Sleep collapsed to 2h29m, score 33, quality 4 (poor) — the worst sleep in this log", "delta": -7, "cat": "lowerer" },
+        { "label": "HRV/RHR still fine (93 / 47) — a life/sleep signal, not a physiological red flag", "delta": 2, "cat": "context" }
+      ],
+      "entry": "Fourth consecutive day off, and this one has a number attached: 2 hours 29 minutes of sleep, a score of 33, subjective quality 4 (poor) — the worst sleep in this entire log. HRV (93) and resting HR (47) are both still fine, so this doesn't read as illness; it reads as whatever is taking up the week reaching into sleep now too. Four days is a real gap against a rising trajectory, whatever is behind it.",
+      "note_next": "Fri Jul 31: no specific prescription — the priority is sleep and whatever the week needs, not a training target."
+    },
+    {
+      "date": "2026-07-31", "dow": "Fri", "status": "scored", "reviewed": false,
+      "prediction": "1:34:00", "prediction_prev": "1:33:45",
+      "planned": "No specific prescription — priority is sleep/life, not training",
+      "plan_rationale": "Standing catch-all; the week's pattern called for flexibility rather than a fixed target.",
+      "wellness": { "ctl": 26.6, "atl": 24.5, "form": 2.1, "rampRate": -1.0, "hrv": 96, "restingHR": 42, "sleepSecs": 24900, "sleepScore": 88, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "stream_read": { "_method": "no activities recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-07-31 Pacific; wellness atlLoad 0.0 corroborates zero training load.", "rest_day": true },
+      "score": 50, "score_committed": 55, "bar_phase": "base",
+      "delta_p": "held — fifth zero day, but the body is now fully rested and sleep recovered",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:00",
+      "prob_note": "current-fitness readout — nudged back again; five days of zero training is now close to a full missed week.",
+      "components": [
+        { "label": "Fifth consecutive zero day — a full week-scale gap against a rising trajectory", "delta": -13, "cat": "lowerer" },
+        { "label": "Sleep rebounded (6.9h/88), RHR a new floor (42, below the prior 43), HRV 96 — fully rested, whatever caused the week", "delta": 5, "cat": "raiser" },
+        { "label": "CTL down to 26.6 from 30.0 five days ago — a real, measurable fitness cost", "delta": -2, "cat": "context" }
+      ],
+      "entry": "Fifth consecutive day off. The body now reads fully rested — sleep back to 6.9 hours at score 88, resting heart rate down to 42 (a new floor, below the prior 43), HRV at 96, above baseline. Whatever the week was, it's cleared. What it cost is measurable: CTL has fallen from 30.0 five days ago to 26.6, and the week banks zero volume against a build that needs the opposite. Nothing on record points to injury or illness through any of the five days — this reads as an unexplained gap, not a flagged setback, and the trajectory needs it closed starting tomorrow.",
+      "note_next": "Sat Aug 1: resume with a genuinely easy run, 35-45 min, HR ceiling ~145-148. The job is restarting the habit cleanly, not making up five lost days in one session."
+    },
+    {
+      "date": "2026-08-01", "dow": "Sat", "status": "prescribed", "reviewed": false, "provisional": false,
+      "prediction": null, "prediction_prev": "1:34:00",
+      "planned": "Easy 35-45 min, HR ceiling 145-148, whatever pace that produces. No strides, no pickups.",
+      "plan_rationale": "Five days with zero training after a demanding weekend (Saturday's unauthorized track reps to Z5/6, Sunday's 20 km run that spiked ATL to 50.0 and form to -20.0). Fitness has slipped (CTL 30.0→26.0) but the body is now maximally fresh (form +4.8, HRV 95, RHR 43, sleep 9h27m at quality 1). The job today is a clean, genuinely easy restart, not a make-up session. Saturday tempo gates remain shut — they need 4 straight weeks at 35+ mi/wk, and this week stands at ~6 km before today.",
+      "wellness": { "ctl": 26.0, "atl": 21.2, "form": 4.8, "rampRate": -1.8, "hrv": 95, "restingHR": 43, "sleepSecs": 34020, "sleepScore": 92, "sleepQuality": 1, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": null, "score_committed": null, "bar_phase": "base", "delta_p": null,
+      "p_120": null, "p_125": null, "pred_half": null, "prob_note": null,
+      "components": [],
+      "entry": null,
+      "note_next": null
     }
   ]
 }
