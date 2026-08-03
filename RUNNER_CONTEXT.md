@@ -48,7 +48,7 @@ Never raced a half fresh/tapered. 35:33 10K converts to ~1:18–1:19 HM with pro
 - **2023:** 982 mi; boom-bust — Feb–Apr collapse to 10–12 mi/wk, summer/fall rebuild (~27 mi/wk Oct), never regained 2022 volume.
 - **2024:** slow bleed Jan (17/wk) → May (6/wk). **Achilles rupture June 1 during cardio session.** Zero running to mid-Nov. Dec 31, 2024: raced a track 5K at 178 avg HR in week 7 of return (aggressive).
 - **2025:** sawtooth rebuild; best block Sep–Nov (~20–24 mi/wk). Nov 15: 21.16 km TT in 1:33:42 moving @ 170 HR.
-- **2026:** choppy. Decent Feb (16 km long run, 4:07/km tempo). Mar 22 – May 2: near-zero (6-week gap). Rebuilt May–Jun to ~10–15 mi/wk. Current CTL ~19, ATL ~27 (form ≈ −8).
+- **2026:** choppy. Decent Feb (16 km long run, 4:07/km tempo). Mar 22 – May 2: near-zero (6-week gap). Rebuilt May–Jun to ~10–15 mi/wk. Base phase Jul 4 – Aug 1 built CTL to a block-peak 30.0 on Jul 26 (a 20 km long run at 5:06/km, well hot of its 5:50–6:05 prescription, HR avg 155 vs a 148 ceiling — form fell to −20.0, the block's worst). Then a second gap: zero training Jul 27 – Aug 2 (7 days), landing right at the base→build transition — CTL eroded 30.0 → 25.4 over the gap. Wellness through the gap (HRV climbing to 121, well above the 77–99 baseline; RHR falling to 41, below the 46–48 floor; one short-sleep night before a long compensatory one) reads as extended rest/deconditioning rather than illness, whose signature runs the other way — cause otherwise unconfirmed, described functionally per the log's privacy convention. Build resumed cautiously Aug 3 rather than picking the interrupted 28–40 mi/wk build target back up cold.
 
 ## 6. Goal assessment and plan skeleton (agreed July 4, 2026)
 
