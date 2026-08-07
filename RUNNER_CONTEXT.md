@@ -48,7 +48,7 @@ Never raced a half fresh/tapered. 35:33 10K converts to ~1:18–1:19 HM with pro
 - **2023:** 982 mi; boom-bust — Feb–Apr collapse to 10–12 mi/wk, summer/fall rebuild (~27 mi/wk Oct), never regained 2022 volume.
 - **2024:** slow bleed Jan (17/wk) → May (6/wk). **Achilles rupture June 1 during cardio session.** Zero running to mid-Nov. Dec 31, 2024: raced a track 5K at 178 avg HR in week 7 of return (aggressive).
 - **2025:** sawtooth rebuild; best block Sep–Nov (~20–24 mi/wk). Nov 15: 21.16 km TT in 1:33:42 moving @ 170 HR.
-- **2026:** choppy. Decent Feb (16 km long run, 4:07/km tempo). Mar 22 – May 2: near-zero (6-week gap). Rebuilt May–Jun to ~10–15 mi/wk. Current CTL ~19, ATL ~27 (form ≈ −8).
+- **2026:** choppy. Decent Feb (16 km long run, 4:07/km tempo). Mar 22 – May 2: near-zero (6-week gap). Rebuilt May–Jun to ~10–15 mi/wk. Jul 5 base-phase restart at CTL 19; built cleanly to CTL 30.0 by Jul 26 (that day's 20 km long run — longest of the build — landed on top of an unplanned near-max track session the day before, a one-day load spike). Jul 27 – Aug 6: second multi-week gap (11 days, one Copenhagen walk Aug 4 confirming travel as at least part of the cause), CTL back down to ~23 by Aug 7 — same consistency-risk pattern as the Mar–May gap, distinct instance. Routine itself also did not run Jul 26 – Aug 6 (scheduling gap, not a data-pull failure); all 13 days were backfilled and scored on Aug 7.
 
 ## 6. Goal assessment and plan skeleton (agreed July 4, 2026)
 
