@@ -698,6 +698,19 @@
       "sleepScore": 76,
       "sleepQ": 3,
       "vo2max": 57.0
+    },
+    {
+      "d": "2026-08-12",
+      "ctl": 23.83,
+      "atl": 23.51,
+      "ramp": -0.02,
+      "hrv": 71,
+      "rhr": 53,
+      "sleepSecs": 27840,
+      "sleepScore": 79,
+      "sleepQ": 3,
+      "vo2max": 57.0,
+      "steps": 17406
     }
   ]
 }

@@ -3021,6 +3021,133 @@
       ],
       "entry": "Four files, one story repeating and escalating from yesterday. A clean building warmup (file1) led into a real surge set (file2): 4 gap-defined efforts of ~750-800m with genuine standing rests between them (137s/135s/161s, confirmed in the raw time stream, NOT the same boundaries Intervals' own auto-summary drew), each one building from a partially-recovered HR into the 180s — a finishing 37-second kick touched 184bpm, 97% of max. Fifteen minutes later, file3 was a maximal, negative-split ~338-second effort (3:36/km building to 3:28/km) that averaged 3:31/km overall — faster than this athlete's recent 5K race pace — and peaked at 186bpm, 98% of max, with 53% of its time at Z7. A minute after that, file4 covered 18.5 more minutes that never actually cooled down: 5:14-5:27/km the whole way, HR building to 164 and holding 159-162, 92% of the file at Z3/Z4. Nothing here is the 'controlled, technique/strides or aerobic group running only' option yesterday's note_next specified, and the recovery signal this morning was mixed rather than the clearly-good bar the downgrade condition required — sleep quality was only fair (3/4) on a 76 sleep score. In total hard-minute exposure, today is bigger than yesterday's single hot progression run: whole-day easy purity was 19.0%, Z5+ time was 20.4% of the day, and peak HR touched 98% of max. The one genuinely good sign is that the top-end speed is real — 3:31/km for the better part of a mile is meaningful evidence the engine survived the 14-day gap intact — but it was spent in an uncontrolled surge rather than banked as a controlled test, and it landed on top of an already-hot return day rather than replacing it. This is the documented pattern deepening, not correcting, on exactly the days the plan most needed graded reintroduction.",
       "note_next": "Wed Aug 12 must be strict, protected recovery — not just 'easy,' genuinely off-the-body: true easy jog 20-30 min with HR clamped low (~140-145, tighter than the usual 148 ceiling given two big hard days back-to-back), or full rest if legs/soreness/Achilles feel off. Pull this morning's HRV/RHR/sleep before deciding — if HRV is down or RHR up from the ~86/47 baseline, or sleep is soft again, take the full rest option rather than the easy jog. Two consecutive days breaking the prescribed intensity ceiling (day 1 a 94.7%-max progression, day 2 a structured surge set plus a sub-5K-pace maximal effort) on legs only 3 days off a 14-day break is real accumulated load with essentially zero easy volume banked in the return block so far — this is worth a direct conversation with the athlete about how club night gets structured going forward, not just a one-day fix. Thursday and Friday should also default to easy given this load; no more quality until a clean absorption day is actually banked."
+    },
+    {
+      "date": "2026-08-12",
+      "dow": "Wed",
+      "status": "scored",
+      "reviewed": false,
+      "prediction": "1:36:50",
+      "prediction_prev": "1:36:30",
+      "planned": "Strict protected recovery: true easy jog 20-30 min with HR clamped low (~140-145), or full rest if legs/soreness/wellness signals were off — check morning HRV/RHR/sleep before deciding.",
+      "plan_rationale": "Two straight days breaking the intensity ceiling post-break (Aug10 a 94.7%-max progression, Aug11 a structured surge set plus a sub-5K-pace maximal effort to 98% max) left essentially zero easy volume banked. Yesterday's note_next set today as the tightest-possible cap and flagged that club-night structure itself needed a conversation, not just a one-day fix.",
+      "wellness": {
+        "ctl": 23.83,
+        "atl": 23.51,
+        "form": 0.32,
+        "rampRate": -0.02,
+        "hrv": 71,
+        "restingHR": 53,
+        "sleepSecs": 27840,
+        "sleepScore": 79,
+        "sleepQuality": 3,
+        "vo2max": 57.0,
+        "weight": null
+      },
+      "activity": {
+        "name": "San Mateo Running",
+        "km": 10.02,
+        "mi": 6.23,
+        "sec": 2932,
+        "pace_per_km": "4:53",
+        "hr": 155,
+        "max_hr": 176,
+        "intensity": 81.1,
+        "load": 56,
+        "cadence": 85.3,
+        "stride_m": 1.2,
+        "elev_gain_m": 45.2,
+        "decoupling_pct": 4.7,
+        "hr_zone_sec": [
+          316,
+          682,
+          1289,
+          617,
+          30,
+          0,
+          0
+        ]
+      },
+      "stream_read": {
+        "_method": "Segmented on recording gaps first: 13 gaps in the 't' channel (4/21/12/115/20/146/34/15/10/5/13/20/3s, 431s total stopped vs 3363s elapsed / 2932s moving). Lengths are wildly uneven — nothing near the clustered, consistent-duration pattern that would signal deliberate rests — and Intervals' own auto-detected 'RECOVERY' segment is a single 1-second artifact at index 307-308, not a real jogged recovery. This was one continuous run; the gaps read as street-crossing / traffic stops, matching the same signature as Aug 10's pauses.",
+        "structure": "Continuous, unstructured — but with the same monotonic-progression signature as Aug 10, this time stretched over 10km/49min instead of 5.7km/26min. Paces and HR built steadily and in the same direction throughout (never alternating fast/slow), which is the progression signature, not intervals or a fartlek.",
+        "prescribed_vs_executed": "Prescribed: true easy jog 20-30 min, HR clamped ~140-145 (or full rest). Executed: 48.9 min moving (2932s) — 1.6-2.4x the top of the prescribed window — at avg HR 155, 10-15 bpm over the ceiling. Only km1 (5:05/km, HR142) sat near the ceiling; every kilometre after ran hotter and faster: km2 4:56@HR150, km3 4:57@HR143, km4 4:56@HR154, km5 4:55@HR157, km6 4:52@HR151, km7 4:52@HR161, km8 4:52@HR162, km9 4:47@HR165, km10 4:47@HR164 (peak 176). Neither the duration nor the HR ceiling was respected past the opening kilometre.",
+        "km_splits_pace_hr": [
+          "1: 5:05/km, HR 142 (peak 158)",
+          "2: 4:56/km, HR 150 (peak 156)",
+          "3: 4:57/km, HR 143 (peak 161)",
+          "4: 4:56/km, HR 154 (peak 158)",
+          "5: 4:55/km, HR 157 (peak 161)",
+          "6: 4:52/km, HR 151 (peak 161)",
+          "7: 4:52/km, HR 161 (peak 164)",
+          "8: 4:52/km, HR 162 (peak 171)",
+          "9: 4:47/km, HR 165 (peak 176)",
+          "10: 4:47/km, HR 164 (peak 176)"
+        ],
+        "finish_vs_body": "Moving-time quarters: body (first 75%) 4:56/km @ HR151.4, final quarter 4:47.5/km @ HR164.6 — 8.5s/km faster with HR +13.2bpm, a real but modest gear-change (under the 20s/km 'kick' threshold). The more telling read is the whole-run build: km1 (5:05@142) to km10 (4:47@164) is an 18s/km speed-up with a 22bpm HR rise across the entire session — the same progression pattern as Aug 10, just held twice as long.",
+        "cadence_trend": "85.3 rpm first half vs 85.2 rpm second half (170.6→170.5 spm) — essentially flat, no mechanical-fatigue drop today, unlike Aug 10's ~3.8 spm collapse.",
+        "decoupling": "4.7% by pace:HR ratio (first half 4:58/km@HR148.9 → second half 4:50/km@HR160.5). This was a progression run (pace sped up throughout), so per protocol this reads mostly as the negative-split signature rather than a clean base-deficit signal; the run is long enough (49min) for the number to be meaningful, but the direction of travel (pace up, HR up) makes it uninterpretable as a pure aerobic-base read.",
+        "ef_m_per_s_per_bpm": 0.022,
+        "peak_hr": 176,
+        "pct_max_hr": 92.6,
+        "zone_pct": {
+          "z1": 11.3,
+          "z2": 23.1,
+          "z3": 43.7,
+          "z4": 21.0,
+          "z5": 1.0,
+          "z6": 0.0,
+          "z7": 0.0,
+          "pct_z5_plus": 1.0
+        },
+        "easy_purity_pct_z1_z2": 34.4,
+        "moving_vs_elapsed": "3363s elapsed vs 2932s moving (431s / 7.2min stopped) across 13 pauses — well over the 5-min disclosure threshold.",
+        "pauses": "13 pauses totalling 431s, ranging 3-146s with no consistent length (4/21/12/115/20/146/34/15/10/5/13/20/3s) — too uneven to be deliberate recoveries; read as street-crossing/traffic stops on a road route, not workout structure.",
+        "well_check": "Peak HR 176 = 92.6% of max — hard, but did NOT go to the true well (under the 95% threshold), and meaningfully less extreme than Aug10's 94.7% or Aug11's 98% peaks. The pattern repeated a third time, but at a somewhat lower absolute intensity ceiling than the prior two days.",
+        "conclusion": "Third straight day of the same over-intensity pattern: prescribed strict recovery (20-30min, HR~140-145) executed instead as a 49-minute, 10km continuous progression run that built from an appropriately easy opening kilometre (5:05/km, HR142) to a hard, HR-160s close (4:47/km, HR164, peak176). It landed on the first morning this block where recovery itself was flashing red — HRV 71 (vs ~87 baseline, ~18% suppressed) and RHR 53 (vs 46-48 baseline, +6-7bpm) — rather than the clearly-good recovery the note_next's easy-jog option required, and rather than the full-rest option that a red morning like this should have triggered. Cadence held flat and peak HR stayed under the true-max-effort threshold, so this wasn't as extreme in absolute terms as Aug 11's near-maximal effort — but as the third data point in a three-day trend, on the worst recovery morning of the three, it is evidence of a pattern, not a one-off."
+      },
+      "score": 25,
+      "score_committed": 34,
+      "bar_phase": "base",
+      "delta_p": "lowered — a third straight uncontrolled-intensity day post-break, this time compounding directly on the first genuinely red recovery morning of the block",
+      "p_120": 0.0,
+      "p_125": 0.0,
+      "pred_half": "1:36:50",
+      "prob_note": "Current-fitness readout, nudged 20s worse (inside the ~30s/day guardrail). Today wasn't a controlled test and it happened on top of degraded recovery, so it isn't fitness evidence — the small worsening reflects three days of accumulated fatigue cost against a trajectory still well below the pre-break CTL peak (23.83 vs 30.0 on 7/26), not any demonstrated gain. Both P(1:20)/P(1:25) still round to 0%.",
+      "components": [
+        {
+          "label": "Prescribed strict recovery (20-30min, HR~140-145 or rest); executed a 49-minute, 10km continuous progression averaging HR155, nearly double the prescribed duration and 10-15bpm over ceiling past km1",
+          "delta": -16,
+          "cat": "lowerer"
+        },
+        {
+          "label": "First genuinely red/amber recovery morning of the block — HRV 71 (~18% below the ~87 baseline), RHR 53 (+6-7bpm above 46-48 baseline) — and the hard-effort option was chosen anyway rather than the full-rest fallback the note_next specified for exactly this reading",
+          "delta": -14,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Third straight day of the documented over-intensity pattern (Aug10 94.7% max HR, Aug11 98% max HR, Aug12 92.6% max HR) — this is now a multi-day density/pattern problem, not an isolated day",
+          "delta": -10,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Easy purity only 34.4% (Z1-Z2) — better than Aug10/11's ~19-20%, but still means two-thirds of the run sat at Z3+ against a recovery-day prescription",
+          "delta": -3,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Real aerobic volume banked (10km, longest continuous run since the return), no injury/pain signal, cadence held flat with no mechanical-fatigue tell",
+          "delta": 5,
+          "cat": "raiser"
+        },
+        {
+          "label": "Peak HR 92.6% of max, under the true-well threshold and below both prior days' peaks (94.7%, 98%) — contained relative to the pattern, even if still a clear ceiling breach",
+          "delta": 3,
+          "cat": "raiser"
+        }
+      ],
+      "entry": "Third straight day, same story. Yesterday's note_next was explicit and tightened: true easy 20-30 minutes with HR clamped to 140-145, or full rest if the morning's signals were off. This morning's signals WERE off — HRV 71 against an ~87 baseline (about 18% suppressed) and resting HR 53 against a 46-48 baseline (up 6-7bpm) — the first genuinely amber/red recovery reading of this entire block. The run itself ran the same shape as Aug 10's: an appropriately easy opening kilometre (5:05/km, HR142), then a steady, monotonic build the rest of the way — km2 through km10 got progressively faster and hotter, closing the final two kilometres at 4:47/km with HR in the 160s (peak 176, 92.6% of max). At 48.9 minutes moving, this was also roughly double the top of the prescribed duration window, not just an intensity miss. Cadence held flat (no mechanical-fatigue drop, unlike Aug 10), and the peak effort itself (92.6% of max) was less extreme than either of the prior two days (94.7%, then 98%) — so in isolation this is not the most alarming single session of the three. But taken as the third data point it is the more important story: three straight days of the documented over-intensity pattern, now landing directly on the worst recovery morning yet, with the fallback option built specifically for this scenario (full rest on a red morning) not taken. Easy purity was 34.4% — an improvement on the prior two days' ~19-20% — but still means two-thirds of a run prescribed as pure recovery sat at Z3 or above. Thirteen recording-gap pauses (431s total, wildly uneven 3-146s) read as street stops, not structure; no deliberate rep pattern was found. This needs to be named plainly: club-night structure and the athlete's default response to 'easy' prescriptions both need to change, not just today's plan.",
+      "note_next": "Thu Aug 13 needs to actually be the reset, not a fourth iteration of the same conversation. Given three straight days of prescribed-easy-run-hot on a recovery signal that is now genuinely red (not just borderline), today should default to full rest, or if the athlete strongly prefers to move, a very short (15-20min), tightly capped shakeout with HR held under ~140 and a hard stop at the first sign of the pattern repeating — no 'progression,' no building, walk if needed. Pull this morning's HRV/RHR/sleep before deciding and do not let a good number alone green-light a normal run; the last three mornings show recovery data isn't reliably being checked or acted on before the run happens. This three-day pattern (Aug10 hot progression, Aug11 ignored-warning max effort, Aug12 red-morning progression) is the central coaching issue right now, not three separate one-off days — it should be named directly with the athlete, including whether club night's structure needs to change and whether 'easy' prescriptions need a harder mechanism (e.g. run/walk, treadmill, or a HR-locked effort) than trusting pace-by-feel, which has now failed to hold three times in a row."
     }
   ]
 }
