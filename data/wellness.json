@@ -711,6 +711,17 @@
       "sleepQ": 3,
       "vo2max": 57.0,
       "steps": 17406
+    },
+    {
+      "d": "2026-08-13",
+      "ctl": 23.3,
+      "atl": 20.4,
+      "ramp": 0.0,
+      "hrv": 73,
+      "rhr": 50,
+      "sleepSecs": 24420,
+      "sleepScore": 76,
+      "sleepQ": 3
     }
   ]
 }
