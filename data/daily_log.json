@@ -457,5 +457,102 @@
       "entry": "The rest day was taken in full, and it did the job it was there to do. ATL came off 46.1 to 39.9, form moved from -17.8 — the worst reading of the block — to -12.3, and this morning's resting HR is back to 43, matching the block's floor. That is what a correctly-taken rest day looks like on the numbers. What it does not do is build: CTL slipped 28.3 to 27.6, and the week stands at 20.0 miles against a 20-28 target with the long run still owed. Against 1:20 that reads roughly flat — you protected the trajectory rather than advanced it. Against 1:24-1:27 it reads better, because what has ended every previous build in your log is a broken block, not a missed easy day. The soft spot was sleep: 7.2 hours at quality 3, the poorest of the week, so the recovery day was only partly banked.",
       "note_next": "Sat: easy 50-60 min @ 5:45-6:00/km, HR ceiling 148 — the tempo gates are not open yet (they need four straight weeks at 35+ mi/wk; you're at ~31). Sun: long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — repeat the Jul 18 formula exactly, it is the single most valuable session in this build."
     }
+,
+    {
+      "date": "2026-07-25", "dow": "Sat", "status": "scored", "reviewed": false,
+      "prediction": "1:33:30", "prediction_prev": "1:33:30",
+      "planned": "Easy 50-60 min @ 5:45-6:00/km, HR ceiling 148",
+      "plan_rationale": "The tempo gates are not open yet (they need four straight weeks at 35+ mi/wk; you're at ~31) — today was meant to be legs-under-you prep for Sunday's long run, not a hard day.",
+      "wellness": { "ctl": 27.8, "atl": 39.4, "form": -11.6, "rampRate": 1.8, "hrv": 89, "restingHR": 43, "sleepSecs": 26214, "sleepScore": 87, "sleepQuality": 2, "vo2max": 57, "weight": null },
+      "activity": { "name": "San Mateo Running — unplanned track session (wu / main / 2nd piece)", "km": 6.27, "mi": 3.9, "sec": 1681, "pace_per_km": "4:28", "hr": 156, "max_hr": 180, "intensity": 97.4, "load": 36, "cadence": 175, "stride_m": 1.28, "elev_gain_m": 27, "decoupling_pct": null, "hr_zone_sec": null },
+      "stream_read": {
+        "_method": "Segmented at the activity level first: three separate files with ~7 min and ~6.5 min gaps between them (normal watch-stops between warmup / track set / second piece). Checked each file's own t-channel for internal recording gaps: none found — elapsed_time equals moving_time equals recording_time in all three — so the 7 auto-lapped ~400m segments Intervals found inside the main file are NOT standing-rest reps; they are GPS/lap-plateau markers inside one continuous ~12:39 effort. Read accordingly as a sustained piece, not a rep set. Auto-lap kilometres were not used to judge structure, per the standing rule.",
+        "warmup": {
+          "file": "i169133843",
+          "dist_km": 1.25,
+          "time": "6:00",
+          "structure": "building: 4:52 @ 139bpm (4:51/km) then 71s @ 155bpm (4:46/km), HR 76→157"
+        },
+        "main_effort": {
+          "file": "i169138549",
+          "dist_km": 3.21,
+          "time": "12:39",
+          "intensity_pct": 97.4,
+          "avg_pace": "3:57/km",
+          "peak_hr": 180,
+          "pct_max_hr": 94.7,
+          "structure": "continuous — no internal recording gaps and no real rest between the 7 auto-lapped ~400m segments (the single 'RECOVERY' tag between segment 1 and 2 is a 1-second GPS artifact, 2.7m, not a stop). Read as one sustained near-threshold piece, not discrete reps.",
+          "laps_400m_pace_hr": [
+            "3:57@165",
+            "3:58@167",
+            "3:55@171",
+            "3:57@170",
+            "3:54@172",
+            "3:57@175",
+            "3:58@176"
+          ],
+          "cadence_trend": "88.2 → 86.3 rpm across the piece (~3.8 spm drift down) while HR climbed 165→176 and pace stayed flat — normal cardiac drift under sustained load, not a mechanical fade",
+          "finish_vs_body": "last two laps (3:57@175, 3:58@176) match the body of the piece (3:54-3:58 throughout) — no closing surge or fade, the effort was held, not chased",
+          "reference_paces": {
+            "5k_pace_12mo": "3:52",
+            "threshold_est_jul21": "4:12",
+            "critical_speed": "3:54",
+            "today_avg": "3:57"
+          },
+          "zone_pct_of_main_file": {
+            "z1": 6.7,
+            "z2": 0.8,
+            "z3": 7.4,
+            "z4": 41.6,
+            "z5": 30.9,
+            "z6": 12.6,
+            "z7": 0.0,
+            "pct_z5_plus": 43.6
+          }
+        },
+        "second_piece": {
+          "file": "i169141553",
+          "dist_km": 1.81,
+          "time": "9:22",
+          "structure": "never eased: 321s @ 146bpm (5:20/km) then 243s @ 155bpm (5:01/km) — HR and pace both built through it, ending above the 148 ceiling that governed the whole day"
+        },
+        "prescribed_vs_executed": "Prescribed: 50-60 min easy @ 5:45-6:00/km, HR ceiling 148. Executed: 28:01 total across 3 files (roughly half the prescribed duration), whole-day avg pace 4:28/km (77-135 s/km hotter than the target band) and whole-day avg HR ~156 (8 bpm over the ceiling), driven by a 12:39 piece at 97.4% intensity peaking at 180bpm (95% max). Not an easy run that drifted hot — a different session entirely.",
+        "moving_vs_elapsed": "negligible stopped time within each file (<2s each); the ~7min and ~6.5min gaps sit BETWEEN the three files (track-side setup/recovery), not inside any single effort",
+        "easy_purity_pct_z1_z2": {
+          "warmup": 100.0,
+          "main": 7.5,
+          "second_piece": 100.0,
+          "whole_day": 41.0
+        },
+        "combined_zone_pct_whole_day": {
+          "z1": 15.7,
+          "z2": 25.3,
+          "z3": 20.6,
+          "z4": 18.8,
+          "z5": 13.9,
+          "z6": 5.7,
+          "z7": 0.0,
+          "pct_z5_plus": 19.6
+        },
+        "peak_hr": 180,
+        "pct_max_hr": 94.7,
+        "decoupling": "not computed — no single segment reached the 25-minute steady-effort threshold",
+        "conclusion": "An unannounced track session, not the prescribed easy run: a real warmup, a sustained ~12:39 piece at 97.4% intensity essentially at critical-speed pace (3:57/km vs the 3:54 model estimate), and a second piece that itself crept from 5:20 to 5:01/km rather than cooling down. Genuine fitness evidence, wrong day for it — Saturday was supposed to be legs-under-you prep for Sunday's long run, and the Saturday-tempo gate explicitly isn't open yet."
+      },
+      "score": 40, "score_committed": 47, "bar_phase": "base",
+      "delta_p": "lowered — deliberate track effort broke the Saturday-tempo gate and the day's easy prescription, adding real fatigue risk before Sunday's long run; fresh legs and clean recovery capped the damage",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:30",
+      "prob_note": "Current-fitness readout, unchanged — projected half 1:33:30 against the 1:20/1:25 lines, both round to 0%. Today's track effort matches the existing critical-speed model (3:57 vs 3:54) rather than exceeding it, so it doesn't move the prediction; unplanned intensity also isn't the repeatable kind of evidence (volume, long run) this number is built on.",
+      "components": [
+        { "label": "Unplanned track session where an easy day was prescribed — 3.21km continuous @ 3:57/km, 97.4% intensity, 85% of it at Z4+ (peak HR 180, 95% max) — exactly the Saturday-tempo-gate violation flagged as not-yet-open just yesterday (need 4 straight weeks at 35+ mi/wk; at ~31)", "delta": -16, "cat": "lowerer" },
+        { "label": "Total day was 28 min across three files against a 50-60 min easy prescription — the aerobic volume the deficit needs wasn't banked either", "delta": -6, "cat": "lowerer" },
+        { "label": "The closing piece never eased: HR built 146→155 and pace quickened 5:20→5:01/km, both over the 148 ceiling that governed the whole day", "delta": -5, "cat": "lowerer" },
+        { "label": "Fatigue banked the day before the week's most valuable session — Sunday's long run now carries risk it didn't need to carry", "delta": -4, "cat": "lowerer" },
+        { "label": "Real fitness evidence: pace held rock-flat (3:54-3:58/km, essentially the critical-speed estimate) for 12+ minutes even as HR climbed 165→176 and cadence eased only ~4 spm — a sustained effort, not a blow-up", "delta": 6, "cat": "raiser" },
+        { "label": "Morning recovery was excellent (RHR 43 = block floor, HRV 89, decent sleep) and the day barely moved fatigue (ATL 39.9→39.4, ramp fell to 1.8) — not a red-day call or a fatigue-hole spike", "delta": 5, "cat": "raiser" }
+      ],
+      "entry": "Three files, one story: a track session slipped in on a day that was supposed to be easy prep for tomorrow's long run. A 6-minute building warmup led into 12:39 essentially continuous at 97.4% of threshold — seven ~400m laps holding 3:54-3:58/km with no real rest between them (the single 'recovery' tag Intervals found is a 1-second GPS blip, not a stop), HR climbing 165 to 176 and peaking at 180 (95% of max) while the pace stayed dead flat. That's genuine fitness — the average sits right on the critical-speed model's 3:54/km — but it's a different session than what was prescribed. Total time across all three files was 28 minutes against a 50-60 minute easy target, and the closing piece never eased either: HR built 146 to 155 and pace quickened from 5:20 to 5:01/km, both over the 148 ceiling that was supposed to govern the whole day. This is the exact violation flagged yesterday — the Saturday-tempo gate isn't open (needs four straight weeks at 35+ mi/wk; you're at ~31) — and it lands the day before the block's most valuable session. The mitigating facts: recovery this morning was excellent (RHR 43, HRV 89), and the day barely moved the fatigue numbers (ATL actually eased to 39.4, ramp fell to 1.8), so this wasn't a red-day decision and it isn't a structural fatigue spike. But it was the wrong vehicle for today, and it puts tomorrow's long run on notice.",
+      "note_next": "Sun: long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — unchanged in structure, but go in aware that today's track effort (12:39 at 97% intensity, peak HR 180) is real fatigue stacked on an already-heavy week; if legs feel flat early or HR won't settle under the ceiling, downgrade to 70-80 min rather than force the full distance hot. Repeat the Jul 18 formula (genuinely easy, low decoupling) — that's still the target, today just made it harder to hit."
+    }
   ]
 }
