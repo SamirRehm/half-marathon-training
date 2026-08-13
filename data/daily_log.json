@@ -2769,6 +2769,116 @@
       ],
       "entry": "Closes out a full two-week gap with zero running: Jul 27 through today, 14 days, one cross-training walk (Aug 4) the only logged activity. CTL has come down from 30.0 to 21.7 \u2014 back near where it stood in early July \u2014 and today's recovery reading is the softest of the stretch (HRV 89, sleep score 71, steps down to 2,659, all consistent with a travel day rather than an active one). The clean part of this: nothing in fourteen days points to injury or illness, so the fitness lost here is fully recoverable, and the Labor Day checkpoint (Sep 5-7) is now meaningfully harder to hit on volume alone \u2014 worth naming plainly rather than assuming the block absorbs a two-week hole for free.",
       "note_next": "Mon Aug 10: if training resumes, start conservatively \u2014 true easy, well under HR ceiling, regardless of how fresh the legs feel. Two weeks off is real detraining even with HRV this good."
+    },
+    {
+      "date": "2026-08-10",
+      "dow": "Mon",
+      "status": "scored",
+      "reviewed": false,
+      "prediction": "1:36:15",
+      "prediction_prev": "1:36:00",
+      "planned": "Return from the 14-day gap: true easy only, HR kept well under the 148 ceiling regardless of how fresh the legs feel",
+      "plan_rationale": "Yesterday's note_next set the terms explicitly for the first run back \u2014 two weeks off is real detraining even with excellent recovery signals, so today was scripted as pure absorption, not a test.",
+      "wellness": {
+        "ctl": 22.0,
+        "atl": 11.2,
+        "form": 10.8,
+        "rampRate": -2.8,
+        "hrv": null,
+        "restingHR": 46,
+        "sleepSecs": null,
+        "sleepScore": null,
+        "sleepQuality": null,
+        "vo2max": 56.0,
+        "weight": null
+      },
+      "activity": {
+        "name": "San Mateo Running",
+        "km": 5.69,
+        "mi": 3.53,
+        "sec": 1574,
+        "pace_per_km": "4:37",
+        "hr": 161,
+        "max_hr": 180,
+        "intensity": 89.3,
+        "load": 36,
+        "cadence": 170,
+        "stride_m": 1.27,
+        "elev_gain_m": 29,
+        "decoupling_pct": 6.8,
+        "hr_zone_sec": [234, 67, 286, 588, 302, 99, 0]
+      },
+      "stream_read": {
+        "_method": "Segmented on recording gaps first: four gaps in the 't' channel (33s, 24s, 16s, 38s \u2014 111s total stopped, vs 1696s elapsed / 1574s moving), all short and uneven \u2014 the clustering test for deliberate recoveries (consistent length \u2265 1 min) fails, and Intervals.icu's own 'RECOVERY' auto-segment is a single second, not a jogged rest. So despite Intervals' auto-summary labeling this '5x 4m29s @167bpm,' this was one continuous run, not an interval set \u2014 the pauses read as street-crossing stops.",
+        "structure": "Continuous, unstructured \u2014 but with a clear, monotonic progression: pace and HR built steadily kilometre to kilometre from an easy opening to a near-maximal close, rather than alternating fast/slow blocks. Paces bunching faster toward the end (not alternating) is the signature of a progression, not intervals, per protocol.",
+        "prescribed_vs_executed": "Prescribed: true easy, HR ceiling 148 (yesterday's note_next, first run back after 14 days off). Executed: avg HR 161 (13 bpm over ceiling), peak HR 180 (94.7% of max, 32 bpm over ceiling), avg pace 4:37/km overall. Only km1 (4:54/km, HR131) sat near/under the ceiling; every kilometre after ran hotter: km2 4:45/km@HR159, km3 4:37/km@HR166, km4 4:31/km@HR170, km5 4:28/km@HR174 (peak 179), final 688m 4:35/km@HR169 (peak 180). Not a short hot blip inside an easy run \u2014 the back 80% of the run sat at or above Z4.",
+        "km_splits_pace_hr": [
+          "1: 4:54/km, HR 131 (peak 153)",
+          "2: 4:45/km, HR 159 (peak 163)",
+          "3: 4:37/km, HR 166 (peak 173)",
+          "4: 4:31/km, HR 170 (peak 173)",
+          "5: 4:28/km, HR 174 (peak 179)",
+          "5.69 (final 688m): 4:35/km, HR 169 (peak 180)"
+        ],
+        "finish_vs_body": "Quarters: Q1 4:59/km@HR138, Q2 4:40/km@HR163, Q3 4:33/km@HR170, Q4 4:34/km@HR172. No hidden hot finish in the usual sense \u2014 the run was already hot by Q2 and stayed there; the final kilometre eased marginally off the km5 peak (4:28\u21924:35/km) but still closed at Z4 with a 180 bpm spike, not a cooldown.",
+        "cadence_trend": "170.5\u2192169.7\u2192168.8\u2192166.7 spm across quarters (85.2\u219284.8\u219284.4\u219283.3 rpm, running samples only) \u2014 a 3.8 spm drop Q1\u2192Q4, at the mechanical-fatigue threshold, plausible for day one back from a 14-day layoff.",
+        "decoupling": "6.8% by pace:HR ratio (first half 4:49/km@HR150.5 \u2192 second half 4:33/km@HR170.8) \u2014 but this was a progression run (pace sped up throughout), so per protocol this reads mostly as the negative-split signature, not a clean base-deficit signal; duration (26.2 min) is only just over the 25-min floor, so treat as marginal.",
+        "ef_m_per_s_per_bpm": 0.0221,
+        "peak_hr": 180,
+        "pct_max_hr": 94.7,
+        "zone_pct": {
+          "z1": 15.6,
+          "z2": 4.2,
+          "z3": 18.0,
+          "z4": 37.0,
+          "z5": 19.0,
+          "z6": 6.2,
+          "z7": 0.0,
+          "pct_z5_plus": 25.2
+        },
+        "easy_purity_pct_z1_z2": 19.8,
+        "moving_vs_elapsed": "1696s elapsed vs 1574s moving (122s stopped) across 4 pauses \u2014 under the 5-min disclosure threshold alone but named for completeness.",
+        "pauses": "4 pauses totalling 111s (33/24/16/38s) \u2014 too uneven and short to be deliberate recoveries; read as street-crossing stops, not workout structure.",
+        "terrain_check": "Total elevation gain 29m over 5.69km, average grade -0.04% (min -3.3%, max +4.9%) \u2014 essentially flat rolling terrain. This does not explain the HR/pace progression; the run was run hard, not run hilly.",
+        "conclusion": "First run back after 14 days off was prescribed true-easy under a 148 HR ceiling and instead ran as a continuous, self-selected progression from an easy opening kilometre to a near-maximal close \u2014 avg HR 161 (89.3% intensity), peak 180 (94.7% of max), 62% of the time at Z4+, just 19.8% in Z1-Z2. Flat terrain rules out hills as the cause. This is the documented over-intensity pattern landing on the single riskiest day to repeat it: two weeks of detraining makes the same effort easier to reach by accident, and the cadence drop suggests the legs were already less prepared for it than they felt."
+      },
+      "score": 39,
+      "score_committed": 46,
+      "bar_phase": "base",
+      "delta_p": "lowered \u2014 continuity resumed cleanly (no injury/illness), but the return run itself ran as a near-max-effort progression against an explicit true-easy prescription",
+      "p_120": 0.0,
+      "p_125": 0.0,
+      "pred_half": "1:36:15",
+      "prob_note": "Current-fitness readout, nudged 15s worse (well inside the ~30s/day guardrail): today wasn't a controlled test \u2014 uncontrolled pacing, borderline 26-minute duration \u2014 so it isn't fitness evidence, and the small move reflects the mechanics/fatigue caution (cadence drop, an intensity spike onto detrained tissue) rather than any gain. Both P(1:20)/P(1:25) still round to 0%.",
+      "components": [
+        {
+          "label": "Training resumed after the 14-day gap with no injury/illness signal \u2014 continuity restored, a real if modest raiser after two weeks of forced inactivity",
+          "delta": 6,
+          "cat": "raiser"
+        },
+        {
+          "label": "Prescribed true-easy under a 148 HR ceiling; instead ran a continuous progression to 4:28/km@HR174 by km5 (peak HR180, 94.7% max) \u2014 the ceiling was cleared by km2 and never respected again",
+          "delta": -19,
+          "cat": "lowerer"
+        },
+        {
+          "label": "62% of the run at Z4+, 25% at Z5+, easy purity only 19.8% \u2014 flat terrain (net grade -0.04%, 29m gain) rules out hills as the explanation; this was run hard, not run hilly",
+          "delta": -6,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Cadence dropped ~3.8 spm across the run \u2014 a mechanical-fatigue tell inside 26 minutes, the load-spike/tissue-readiness risk pattern on exactly the day detraining makes it most costly",
+          "delta": -4,
+          "cat": "lowerer"
+        },
+        {
+          "label": "No injury signal and CTL/ATL still very fresh (form +10.8) \u2014 the body tolerated it today, but tolerance isn't evidence the choice was sound",
+          "delta": 2,
+          "cat": "context"
+        }
+      ],
+      "entry": "The 14-day gap ended with a run, which is the good news: no injury or illness signal, and the streak of forced zero days is over. The rest of the file is a caution flag. Yesterday's note_next was explicit \u2014 true easy, well under the 148 HR ceiling, regardless of how fresh the legs feel \u2014 and the stream shows that instruction held for almost exactly one kilometre. Km1 ran 4:54/km at HR131, comfortably under ceiling. From there the run built continuously and monotonically \u2014 km2 4:45/km@HR159, km3 4:37/km@HR166, km4 4:31/km@HR170, km5 4:28/km@HR174 \u2014 with peak HR touching 180 (94.7% of max) in the final kilometre. This wasn't a short hot surge inside an otherwise easy run: 62% of the total time sat at Z4 or above, a quarter of it at Z5+, and only 19.8% of the run was genuinely easy (Z1-Z2). The four recording gaps (33/24/16/38s, 111s total) are uneven street-crossing stops, not a deliberate rep structure, and Intervals.icu's own '5x 4m29s' auto-summary is misleading \u2014 there was no real recovery between the fast kilometres, just a continuous build. Terrain doesn't explain it either: the route is essentially flat (net grade -0.04%, 29m of gain over 5.7km). Cadence dropped ~3.8 spm from the first quarter to the last, a mechanical-fatigue signature that's notable inside a 26-minute run and consistent with detrained legs meeting real intensity for the first time in two weeks. Nothing here looks dangerous today \u2014 form is still +10.8, CTL/ATL show a fresh body, and there's no tendon or injury complaint \u2014 but it is exactly the pattern this athlete's plan exists to prevent, and it landed on the one day where the margin for it was smallest.",
+      "note_next": "Tue Aug 11 is the weekly template's protected club night, but today's stream is a direct warning against treating it as normal: day one back closed at 94.7% of max HR with a real cadence-fatigue tell, on legs two weeks detrained. Day two post-break is not the day to negotiate club night up to a max-effort track session \u2014 if it happens, keep it deliberately controlled (strides/technique work or an aerobic group run only), not a hard set. Check this morning's HRV/RHR/sleep first (yesterday's pull came back with no HRV or sleep data \u2014 get a real reading before deciding); if recovery reads anything less than clearly good, or legs still feel yesterday's session, downgrade club night to an easy jog or skip the hard portion entirely. The standing 148 easy-ceiling guidance still applies outside whatever structured portion (if any) is genuinely warranted."
     }
   ]
 }
