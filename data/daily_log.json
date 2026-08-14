@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-07-25",
+    "last_updated": "2026-08-14",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -456,6 +456,350 @@
       ],
       "entry": "The rest day was taken in full, and it did the job it was there to do. ATL came off 46.1 to 39.9, form moved from -17.8 — the worst reading of the block — to -12.3, and this morning's resting HR is back to 43, matching the block's floor. That is what a correctly-taken rest day looks like on the numbers. What it does not do is build: CTL slipped 28.3 to 27.6, and the week stands at 20.0 miles against a 20-28 target with the long run still owed. Against 1:20 that reads roughly flat — you protected the trajectory rather than advanced it. Against 1:24-1:27 it reads better, because what has ended every previous build in your log is a broken block, not a missed easy day. The soft spot was sleep: 7.2 hours at quality 3, the poorest of the week, so the recovery day was only partly banked.",
       "note_next": "Sat: easy 50-60 min @ 5:45-6:00/km, HR ceiling 148 — the tempo gates are not open yet (they need four straight weeks at 35+ mi/wk; you're at ~31). Sun: long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — repeat the Jul 18 formula exactly, it is the single most valuable session in this build."
+    },
+    {
+      "date": "2026-07-25", "dow": "Sat", "status": "scored", "reviewed": false,
+      "prediction": "1:33:30", "prediction_prev": "1:33:30",
+      "planned": "Easy 50-60 min @ 5:45-6:00/km, HR ceiling 148",
+      "plan_rationale": "Saturday easy volume; tempo gates still closed (need four straight weeks at 35+ mi/wk).",
+      "wellness": { "ctl": 27.8, "atl": 39.4, "form": -11.6, "rampRate": 1.8, "hrv": 89, "restingHR": 43, "sleepSecs": 26214, "sleepScore": 87, "sleepQuality": 2, "vo2max": 57, "weight": null },
+      "activity": { "name": "San Mateo Running — track session (wu / track / cd)", "km": 6.27, "mi": 3.90, "sec": 1681, "pace_per_km": "4:28", "hr": 158, "max_hr": 180, "intensity": 97.4, "load": 36, "cadence": 175, "stride_m": 1.31, "elev_gain_m": 27.2, "decoupling_pct": null, "hr_zone_sec": null },
+      "stream_read": {
+        "_method": "activity_detail_get + activity_intervals_get only — raw 1Hz streams unavailable this run (Intervals.icu connector hit its daily call quota mid-pull); segmentation and per-rep numbers come from Intervals' own auto-detected interval boundaries, computed on the athlete's real full-resolution data, not from raw stream slicing. Day-file has real meta+intervals but empty streams; a full backfill pass is still owed for this date.",
+        "structure": "3-file track session, 41:48 wall-clock / 28:01 moving. Warmup 6:02 (1.0 km @4:51 HR139, then a 248m pickup @4:46 HR155). Two untimed gaps (7:05, 6:39) between files. Main piece: continuous 12:39 / 3.21 km — a 97s build then 7 back-to-back ~400m laps at 3:54-3:58/km with ZERO recording gap between any of them (unusual for this athlete). Cooldown 9:23: sped up 5:20→5:01/km and drifted into Z3 (155 bpm) instead of settling — same unresolved pattern as Jul 21.",
+        "reps_main_set": [
+          {"rep":1,"dist_m":401.2,"pace":"3:57","hr":165,"max_hr":169,"zone":4},
+          {"rep":2,"dist_m":394.6,"pace":"3:58","hr":167,"max_hr":170,"zone":4},
+          {"rep":3,"dist_m":403.6,"pace":"3:55","hr":171,"max_hr":175,"zone":4},
+          {"rep":4,"dist_m":400.9,"pace":"3:57","hr":170,"max_hr":174,"zone":4},
+          {"rep":5,"dist_m":401.8,"pace":"3:54","hr":172,"max_hr":176,"zone":5},
+          {"rep":6,"dist_m":397.4,"pace":"3:57","hr":175,"max_hr":180,"zone":5},
+          {"rep":7,"dist_m":399.9,"pace":"3:58","hr":176,"max_hr":180,"zone":5}
+        ],
+        "set_total": "2.80 km in 11:02, average 3:57/km — trails recent 5K pace (3:52) by ~5 s/km, not a raced effort",
+        "peak_hr": 180, "pct_max_hr": 94.7, "pct_z5_plus": 19.6, "z7_secs": 0, "pct_z1_z2_easy_purity": 41.0,
+        "moving_s": 1681, "stopped_between_files_s": 827,
+        "cadence_trend": "88.2→86.3 rpm across the 7 reps — crosses the mechanical-fatigue threshold even though pace held",
+        "prescribed_vs_executed": "22-32 min short of the 50-60 min floor; core set ran 110-126 s/km faster than the 5:45-6:00 band; HR peaked 32 bpm over the 148 ceiling."
+      },
+      "score": 54, "score_committed": 59, "bar_phase": "base",
+      "delta_p": "mildly lowered (rule breach, floored by green recovery)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half unchanged at ~1:33:30; no race/breakthrough today to move it.",
+      "components": [
+        { "label": "7x~400m continuous at 3:54-3:58/km — real speed, held cleanly, HR climbing Z4 into Z5 without pace fading", "delta": 6, "cat": "raiser" },
+        { "label": "Green recovery (HRV 89, RHR 43) absorbed a hard, short session without apparent strain — floors a short hot run near neutral rather than the 40s", "delta": 2, "cat": "context" },
+        { "label": "Directly against yesterday's explicit call ('tempo gates not open yet') — self-initiated intensity on a day prescribed easy, HR peaked 32 bpm over the 148 ceiling", "delta": -6, "cat": "lowerer" },
+        { "label": "22-32 min short of the 50-60 min easy-volume floor; almost none of the day's actual easy-purity minutes got banked", "delta": -4, "cat": "lowerer" },
+        { "label": "Cooldown sped into Z3 instead of settling — the same unresolved habit flagged Jul 21", "delta": -2, "cat": "lowerer" }
+      ],
+      "entry": "Not the prescribed run. Instead of 50-60 easy minutes, this was a 6-minute warmup then 7x~400m run back-to-back with zero rest between any of them — a continuous ~2.8 km tempo/critical-speed piece at 3:54-3:58/km, HR climbing from Z4 into Z5 while pace never faded, then a cooldown that sped up instead of settling. It falls just short of a race (5 s/km slower than recent 5K pace, peak HR 95% of max vs 98% in a confirmed race), and the body absorbed it fine — HRV 89, RHR 43, both near the block's best. But it directly contradicts yesterday's explicit call that the tempo gates were not open, breached the HR ceiling by 32 bpm, and banked 22-32 fewer minutes of easy volume than the day needed. Real speed, wrong day, wrong call.",
+      "note_next": "Sun Jul 26: the long run as planned — 100-110 min @ 5:50-6:05/km, HR ceiling 148, repeat the Jul 18 formula. Today was a hot short session on a fresh body; tomorrow is a long run — it does not get a second hard day stacked on top."
+    },
+    {
+      "date": "2026-07-26", "dow": "Sun", "status": "scored", "reviewed": false,
+      "prediction": "1:33:00", "prediction_prev": "1:33:30",
+      "planned": "Long run 100-110 min @ 5:50-6:05/km, HR ceiling 148 — repeat the Jul 18 formula exactly",
+      "plan_rationale": "The week's priority long run; explicit ceiling reiterated given Saturday already ran hot.",
+      "wellness": { "ctl": 30.0, "atl": 50.0, "form": -20.0, "rampRate": 3.7, "hrv": 105, "restingHR": 47, "sleepSecs": 27480, "sleepScore": 86, "sleepQuality": 2, "vo2max": 57, "weight": null },
+      "activity": { "name": "Redwood City Running", "km": 20.01, "mi": 12.43, "sec": 6132, "pace_per_km": "5:07", "hr": 155, "max_hr": 168, "intensity": 83.6, "load": 119, "cadence": 174, "stride_m": 1.12, "elev_gain_m": 64.1, "decoupling_pct": 5.1, "hr_zone_sec": [259, 1626, 3916, 333, 0, 0, 0] },
+      "stream_read": {
+        "_method": "activity_detail_get + activity_intervals_get (20 auto-detected ~1000m/~307s segments) only — raw 1Hz streams unavailable this run (connector quota exhausted before activity_streams_get). Segment-weighted HR/pace reconcile cleanly with the official activity totals (155.2 vs 155 avg HR; 3.2606 vs 3.262 m/s avg speed), so this read is real data, not estimated — but the per-second day-file itself is still owed.",
+        "segmentation": "No recording gaps — moving 6132s vs elapsed 6133s, fully continuous. No clustered standing rests, no work/recovery alternation → unstructured long run.",
+        "thirds_by_moving_time": [
+          {"third": 1, "pace_per_km": "5:07", "hr": 149},
+          {"third": 2, "pace_per_km": "5:07", "hr": 156},
+          {"third": 3, "pace_per_km": "5:06", "hr": 161}
+        ],
+        "finish_check": "NO gear change — pace flat (<2 s/km) from first third to last quarter; only HR rose (153→161). Different shape from Jul 18, which had a genuine ≥20 s/km late surge — this run had no easy component to surge FROM.",
+        "zone_distribution_pct": {"z1": 4.2, "z2": 26.5, "z3": 63.8, "z4": 5.4, "pct_z5_plus": 0},
+        "peak_hr_pct_max": 88.4, "moving_vs_elapsed": "6132s / 6133s — essentially zero stoppage",
+        "prescribed_vs_executed": "Duration matched (102.2 min vs 100-110 prescribed) but pace did not (5:07/km executed vs 5:50-6:05 prescribed, 43-58 s/km hot throughout) and HR sat above the 148 ceiling almost the whole way (avg 155, only 30.7% of time in Z1-Z2). Used the time budget to cover ~20 km instead of the ~17-18 km an easy long run would have covered.",
+        "cadence_trend": "87.1→86.9 rpm, flat — no mechanical fatigue tell despite the pace",
+        "decoupling_pct": 5.1, "decoupling_note": "genuine cardiac drift from sustained too-hot pacing, not a negative-split artifact (pace range across the run was under 2 s/km)"
+      },
+      "score": 34, "score_committed": 42, "bar_phase": "base",
+      "delta_p": "lowered — fatigue-hole event, second straight day breaching an explicit ceiling",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half improved slightly to ~1:33:00 on real work banked (CTL 27.8→30.0); that is a fitness readout, not a risk readout — see score and components.",
+      "components": [
+        { "label": "20 km of real work banked — genuine endurance stimulus, CTL 27.8→30.0", "delta": 6, "cat": "raiser" },
+        { "label": "5.1% decoupling isn't severe for the distance and cadence held flat — no mechanical breakdown despite the pace", "delta": 2, "cat": "context" },
+        { "label": "Zero easy component: pace flat ~5:07/km, HR climbed 138→164 all the way, only 30.7% of the run in Z1-Z2 on a day whose entire point was easy aerobic volume", "delta": -12, "cat": "lowerer" },
+        { "label": "Explicit instruction was 'repeat the Jul 18 formula exactly' (easy body + controlled finish); instead ran hot from km 1 — a fuller miss of the plan than Jul 18 itself", "delta": -8, "cat": "lowerer" },
+        { "label": "Second consecutive day breaching an explicit HR ceiling. ATL spiked to 50.0 (block worst) and form crashed to -20.0 — past the fatigue-hole line DAY_SCORE flags as the boom-bust early warning", "delta": -12, "cat": "lowerer" }
+      ],
+      "entry": "Not a repeat of Jul 18. That run was 12 easy km then a distinct 4 km surge — a late gear change. This one shows no gear change at all: pace sat flat at ~5:07/km for all 20 km, run hot from kilometre one, HR climbing monotonically 138→164 as a textbook case of cardiac drift (5.1% decoupling) from pacing too hot rather than from a negative split. Only 30.7% of the run was even in Z1-Z2 against a run whose whole purpose was easy aerobic volume. This is the second consecutive day breaching an explicit HR ceiling, and it pushed ATL to a block-worst 50.0 and form through -20.0 — the fatigue-hole line this build's own model flags as the boom-bust early warning that preceded every prior crash. Real work was banked (CTL 27.8→30.0, a genuine fitness readout), but the way it was banked is exactly the pattern this plan exists to prevent.",
+      "note_next": "Mon Jul 27: OFF, no negotiation. Two days running have broken an explicit HR ceiling and pushed form through -20 — this is the exact fatigue-hole pattern that has preceded every prior crash (2022, 2023, 2024, Mar-Apr 2026). Absorb before anything else."
+    },
+    {
+      "date": "2026-07-27", "dow": "Mon", "status": "scored", "reviewed": false,
+      "prediction": "1:33:30", "prediction_prev": "1:33:00",
+      "planned": "Full rest — mandatory",
+      "plan_rationale": "Two consecutive days breached an explicit HR ceiling and pushed form through -20.0 (the fatigue-hole line) — absorption before anything else, non-negotiable.",
+      "wellness": { "ctl": 29.3, "atl": 43.4, "form": -14.1, "rampRate": 3.6, "hrv": 85, "restingHR": 49, "sleepSecs": 22440, "sleepScore": 73, "sleepQuality": 3, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 46, "score_committed": 52, "bar_phase": "base",
+      "delta_p": "mildly lowered (rest correctly taken, but reads as damage control after a real fatigue-hole event, not a clean absorption day)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:33:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half regressed slightly to ~1:33:30 as fitness begins to decay without a training stimulus.",
+      "components": [
+        { "label": "Rest taken exactly as prescribed after a two-day HR-ceiling breach", "delta": 6, "cat": "raiser" },
+        { "label": "HRV still under baseline (85 vs ~87) and RHR at 49, top of range — the body hadn't recovered by morning", "delta": -3, "cat": "context" },
+        { "label": "Sleep only 6.2 h at quality 3, the poorest since the crash began — recovery day only partly banked", "delta": -3, "cat": "lowerer" },
+        { "label": "No volume banked, and form (-14.1) is still well into the fatigue-hole range", "delta": -4, "cat": "lowerer" }
+      ],
+      "entry": "Full rest, correctly taken after two days that broke an explicit HR ceiling and pushed form through -20. HRV was still below baseline at 85 and RHR sat at 49, the top of the range, on only 6.2 hours of sleep — the body was clearly still digesting Friday and Saturday rather than starting fresh. Form improved to -14.1 from -20.0 but is not out of the fatigue-hole zone yet.",
+      "note_next": "No further prescription issued this week — see doc note on the training gap that follows."
+    },
+    {
+      "date": "2026-07-28", "dow": "Tue", "status": "scored", "reviewed": false,
+      "prediction": "1:34:00", "prediction_prev": "1:33:30",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 28.6, "atl": 37.6, "form": -9.0, "rampRate": 2.0, "hrv": 89, "restingHR": 46, "sleepSecs": 23760, "sleepScore": 77, "sleepQuality": 3, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 49, "score_committed": 54, "bar_phase": "base",
+      "delta_p": "~neutral to mildly lowered (no session logged; recovery continuing to improve)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:34:00, continuing to soften without a training stimulus.",
+      "components": [
+        { "label": "HRV back near baseline (89) and RHR down to 46 — form continuing to unwind toward neutral (-9.0)", "delta": 4, "cat": "raiser" },
+        { "label": "No session logged, second day running — no volume banked toward the base the trajectory needs", "delta": -6, "cat": "lowerer" }
+      ],
+      "entry": "No training logged. Recovery continues to improve — HRV 89, RHR 46, form back to -9.0 from the -20.0 low. This is the athlete's usual pattern for the second half of an intensity crash: the recovery numbers repair quickly, the running does not immediately resume.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-07-29", "dow": "Wed", "status": "scored", "reviewed": false,
+      "prediction": "1:34:30", "prediction_prev": "1:34:00",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 27.9, "atl": 32.6, "form": -4.7, "rampRate": 0.6, "hrv": null, "restingHR": 50, "sleepSecs": null, "sleepScore": null, "sleepQuality": null, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 51, "score_committed": 55, "bar_phase": "base",
+      "delta_p": "~neutral (no session logged)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:34:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:34:30.",
+      "components": [
+        { "label": "Third day with no training logged; form continues drifting toward neutral (-4.7)", "delta": -3, "cat": "lowerer" },
+        { "label": "HRV and sleep did not sync overnight (device gap, not a flag) — only load-derived fields and RHR (50, top of range) available today", "delta": 0, "cat": "note" }
+      ],
+      "entry": "No training logged; third day running. Overnight HRV and sleep did not sync (a device gap, not itself a finding) — RHR read 50, the top of the block's range. Form continues climbing toward neutral as fatigue from the Jul 25-26 block clears.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-07-30", "dow": "Thu", "status": "scored", "reviewed": false,
+      "prediction": "1:35:00", "prediction_prev": "1:34:30",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 27.3, "atl": 28.2, "form": -1.0, "rampRate": -1.0, "hrv": 93, "restingHR": 47, "sleepSecs": 8940, "sleepScore": 33, "sleepQuality": 4, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 45, "score_committed": 51, "bar_phase": "base",
+      "delta_p": "mildly lowered (very poor sleep night, fourth day with no session)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:35:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:35:00, base continuing to erode without a stimulus.",
+      "components": [
+        { "label": "HRV 93 and RHR 47 both fine — the sleep disruption isn't reading as illness or overreaching", "delta": 3, "cat": "context" },
+        { "label": "Sleep only 2h29m at score 33, quality 4 (poor) — the worst night of the build by a wide margin", "delta": -4, "cat": "lowerer" },
+        { "label": "Fourth consecutive day with no training logged; no volume banked", "delta": -4, "cat": "lowerer" }
+      ],
+      "entry": "No training logged. The number worth flagging is sleep: 2 hours 29 minutes, score 33, subjective quality 4 — by far the worst night on record this build. HRV (93) and RHR (47) don't show a stress or illness signature, so this reads as an isolated disrupted night rather than the start of something worse, but it's worth watching if it repeats.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-07-31", "dow": "Fri", "status": "scored", "reviewed": false,
+      "prediction": "1:35:30", "prediction_prev": "1:35:00",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 26.6, "atl": 24.5, "form": 2.1, "rampRate": -1.0, "hrv": 96, "restingHR": 42, "sleepSecs": 24900, "sleepScore": 88, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 53, "score_committed": 58, "bar_phase": "base",
+      "delta_p": "~neutral (fully recovered on paper; fifth day with no session, continuity risk now worth naming)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:35:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:35:30.",
+      "components": [
+        { "label": "Form turned positive (+2.1) for the first time since before Jul 25-26 — fully fresh, sleep and HRV both back to strong (96, 88/2)", "delta": 6, "cat": "raiser" },
+        { "label": "Fifth consecutive day with no running — the easy minutes this base phase needs are the ones being missed, and continuity (not intensity) is this athlete's #1 historical failure mode", "delta": -5, "cat": "lowerer" }
+      ],
+      "entry": "No training logged. On paper this is a fully recovered body — form positive for the first time since before the Jul 25-26 block, HRV 96, sleep back to 6.9 hours at score 88. Five days without a run is now the flag: this athlete's documented pattern is that recovery repairs quickly after a crash but the running doesn't resume on its own, and every prior collapse in the log began with exactly this kind of gap.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-08-01", "dow": "Sat", "status": "scored", "reviewed": false,
+      "prediction": "1:36:00", "prediction_prev": "1:35:30",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 26.0, "atl": 21.2, "form": 4.8, "rampRate": -1.8, "hrv": 95, "restingHR": 41, "sleepSecs": 34020, "sleepScore": 92, "sleepQuality": 1, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 52, "score_committed": 57, "bar_phase": "base",
+      "delta_p": "~neutral (excellent recovery, sixth day with no session)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:36:00, roughly back to the shape it was in mid-July.",
+      "components": [
+        { "label": "RHR 41 — a new low for the build — on 9h27m of sleep at score 92, quality 1", "delta": 4, "cat": "raiser" },
+        { "label": "Sixth consecutive day with no training; CTL now falling below where it was two weeks ago (26.0)", "delta": -4, "cat": "lowerer" }
+      ],
+      "entry": "No training logged. Recovery metrics keep improving in the absence of training — RHR 41 is a new low for the build, sleep was 9h27m at score 92. That combination (rising recovery quality, zero training load) reads as rest or life disruption rather than illness or overreaching; there's no elevated-RHR/suppressed-HRV signature anywhere in this stretch. CTL has now fallen back below where it stood two weeks ago.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-08-02", "dow": "Sun", "status": "scored", "reviewed": false,
+      "prediction": "1:36:30", "prediction_prev": "1:36:00",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 25.4, "atl": 18.4, "form": 7.0, "rampRate": -4.6, "hrv": 106, "restingHR": 43, "sleepSecs": 25080, "sleepScore": 84, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 47, "score_committed": 54, "bar_phase": "base",
+      "delta_p": "lowered (one full week now with zero training)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:36:30. Per RUNNER_CONTEXT §6, missed weeks move the projection backward fastest — this is now that case.",
+      "components": [
+        { "label": "HRV 106, well above the ~87 baseline — the body is not the constraint here", "delta": 2, "cat": "context" },
+        { "label": "One full week (Jul 27-Aug 2) with zero running logged — this is now a missed week, not a rest stretch, and the trajectory needed volume every one of these days", "delta": -9, "cat": "lowerer" }
+      ],
+      "entry": "No training logged — one full week, Jul 27 through today, with zero runs. HRV at 106 is nowhere near a limiter; whatever is keeping the mileage at zero, it isn't the body asking for it. A week of this size against a base phase that was supposed to be building toward 28-35 mi/wk is a real setback to the trajectory, independent of how well any single day scores.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-08-03", "dow": "Mon", "status": "scored", "reviewed": false,
+      "prediction": "1:37:00", "prediction_prev": "1:36:30",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 24.8, "atl": 15.9, "form": 8.8, "rampRate": -4.5, "hrv": 121, "restingHR": 41, "sleepSecs": 27660, "sleepScore": 94, "sleepQuality": 1, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 47, "score_committed": 53, "bar_phase": "base",
+      "delta_p": "lowered (eighth day with no training)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:37:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:37:00, back near early-July shape.",
+      "components": [
+        { "label": "HRV 121 — the highest reading of the entire build, well above the 77-99 baseline range — and RHR 41 matches the block floor", "delta": 3, "cat": "context" },
+        { "label": "Eighth consecutive day with no running; CTL (24.8) has given back three weeks of building", "delta": -7, "cat": "lowerer" }
+      ],
+      "entry": "No training logged. HRV read 121 this morning, the highest number anywhere in this build and well outside the usual 77-99 range — a striking recovery/readiness signal, though also a large enough jump from baseline that it's worth treating as a single data point rather than a new normal until confirmed. CTL has fallen to 24.8, giving back roughly three weeks of the base-building this block was working toward.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-08-04", "dow": "Tue", "status": "scored", "reviewed": false,
+      "prediction": "1:37:15", "prediction_prev": "1:37:00",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 24.4, "atl": 15.2, "form": 9.3, "rampRate": -4.2, "hrv": 107, "restingHR": 42, "sleepSecs": 27540, "sleepScore": 96, "sleepQuality": 1, "vo2max": null, "weight": null },
+      "activity": { "name": "Copenhagen Walking", "km": 4.23, "mi": 2.63, "sec": 3120, "pace_per_km": null, "hr": null, "max_hr": null, "intensity": null, "load": 10, "cadence": null, "stride_m": null, "elev_gain_m": null, "decoupling_pct": null, "hr_zone_sec": null },
+      "score": 51, "score_committed": 57, "bar_phase": "base",
+      "delta_p": "mildly raised (light cross-training, never a zero; first logged activity in 9 days)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:37:15",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:37:15.",
+      "components": [
+        { "label": "52-minute walk logged — the first activity in 9 days. Real aerobic maintenance, never scored as a zero, though far below run-equivalent value", "delta": 4, "cat": "raiser" },
+        { "label": "Named 'Copenhagen Walking' — the athlete was traveling, which is the first concrete data point explaining part of this gap", "delta": 0, "cat": "note" },
+        { "label": "Ninth day with no running; HR/pace/zone data for the walk itself unavailable this run (connector quota exhausted before the stream pull)", "delta": -3, "cat": "context" }
+      ],
+      "entry": "First logged activity in nine days: a 52-minute walk in Copenhagen — the athlete was traveling, which accounts for at least part of this stretch. A walk is real aerobic maintenance and is never scored as a zero, though it's a fraction of the run-equivalent value. HR/pace detail for the walk itself isn't available in this record (a data-pull limit was hit before it could be fetched) and should be filled in on a future pass if useful, though it carries little weight for a cross-training day.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-08-05", "dow": "Wed", "status": "scored", "reviewed": false,
+      "prediction": "1:37:30", "prediction_prev": "1:37:15",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 23.9, "atl": 13.1, "form": 10.7, "rampRate": -4.1, "hrv": 113, "restingHR": 41, "sleepSecs": 27840, "sleepScore": 91, "sleepQuality": 1, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 45, "score_committed": 51, "bar_phase": "base",
+      "delta_p": "lowered (tenth day with no running)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:37:30",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:37:30.",
+      "components": [
+        { "label": "HRV 113, RHR 41 — recovery still excellent", "delta": 2, "cat": "context" },
+        { "label": "Tenth consecutive day with no running logged", "delta": -6, "cat": "lowerer" }
+      ],
+      "entry": "No training logged, tenth day running. Recovery numbers remain excellent (HRV 113, RHR 41) — this stretch continues to show no illness or overreaching signature, just an extended gap in logged training.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-08-06", "dow": "Thu", "status": "scored", "reviewed": false,
+      "prediction": "1:37:45", "prediction_prev": "1:37:30",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 23.3, "atl": 11.4, "form": 11.9, "rampRate": -4.0, "hrv": 115, "restingHR": 41, "sleepSecs": 31380, "sleepScore": 94, "sleepQuality": 1, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 45, "score_committed": 51, "bar_phase": "base",
+      "delta_p": "lowered (eleventh day with no running)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:37:45",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:37:45, nearing the early-July floor.",
+      "components": [
+        { "label": "Sleep 8h43m at score 94, HRV 115 — another excellent recovery reading", "delta": 2, "cat": "context" },
+        { "label": "Eleventh consecutive day with no running; CTL (23.3) now below where it stood three weeks ago", "delta": -6, "cat": "lowerer" }
+      ],
+      "entry": "No training logged. Sleep and HRV remain strong (8h43m, score 94; HRV 115). CTL has fallen to 23.3, below where it stood three weeks before this entry — the base-building this block was doing in July has now mostly unwound.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-08-07", "dow": "Fri", "status": "scored", "reviewed": false,
+      "prediction": "1:38:00", "prediction_prev": "1:37:45",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 22.7, "atl": 9.9, "form": 12.9, "rampRate": -3.9, "hrv": 105, "restingHR": 42, "sleepSecs": 29340, "sleepScore": 87, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 44, "score_committed": 50, "bar_phase": "base",
+      "delta_p": "lowered (twelfth day with no running)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:38:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half ~1:38:00, matching the Jul 4 baseline (CTL 19, pred 1:38).",
+      "components": [
+        { "label": "Recovery still holding (HRV 105, RHR 42)", "delta": 1, "cat": "context" },
+        { "label": "Twelfth consecutive day with no running; projection has now regressed to the block's Jul 4 starting point", "delta": -7, "cat": "lowerer" }
+      ],
+      "entry": "No training logged. The projection has now regressed to roughly where it started this build (Jul 4, CTL 19, pred 1:38) — twelve days without a run has given back essentially the entire block's fitness gain, even though every recovery number logged through this stretch has stayed strong.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-08-08", "dow": "Sat", "status": "scored", "reviewed": false,
+      "prediction": "1:38:00", "prediction_prev": "1:38:00",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 22.2, "atl": 8.6, "form": 13.7, "rampRate": -3.8, "hrv": 103, "restingHR": 41, "sleepSecs": 31680, "sleepScore": 88, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 43, "score_committed": 50, "bar_phase": "base",
+      "delta_p": "lowered (thirteenth day with no running)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:38:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half held at ~1:38:00 (near the model's early-build floor; magnitude discipline caps further single-day regression without a race/TT).",
+      "components": [
+        { "label": "HRV 103, RHR 41 — still no fatigue or illness signature", "delta": 1, "cat": "context" },
+        { "label": "Thirteenth consecutive day with no running; the Labor Day checkpoint (Sep 5-7) is now three weeks out with zero of its consistency criteria being built", "delta": -8, "cat": "lowerer" }
+      ],
+      "entry": "No training logged. Thirteen days in, the number that matters now isn't today's score but the calendar: the Labor Day checkpoint that decides whether 1:20 stays alive is three weeks away, and its gates require 8+ consecutive interruption-free weeks and 35-38 mi/wk with routine 16-18 km long runs — none of which this stretch is building toward. See doc note.",
+      "note_next": "None logged."
+    },
+    {
+      "date": "2026-08-09", "dow": "Sun", "status": "scored", "reviewed": false,
+      "prediction": "1:38:00", "prediction_prev": "1:38:00",
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 21.7, "atl": 7.4, "form": 14.3, "rampRate": -3.7, "hrv": 89, "restingHR": 45, "sleepSecs": 24600, "sleepScore": 71, "sleepQuality": 3, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 43, "score_committed": 50, "bar_phase": "base",
+      "delta_p": "lowered (fourteenth and final day of the gap; CTL trough)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:38:00",
+      "prob_note": "current-fitness readout. ~0% now — projected half held at ~1:38:00, the low point of this build, essentially matching Jul 4 (CTL 19).",
+      "components": [
+        { "label": "HRV eased to 89 (still near baseline) and sleep dipped to score 71 — mild signs of the extended rest itself becoming a small stressor, not a red flag", "delta": -1, "cat": "context" },
+        { "label": "Fourteenth and final consecutive day with no running; CTL (21.7) is this build's low point since the Jul 4 baseline", "delta": -6, "cat": "lowerer" }
+      ],
+      "entry": "No training logged — the fourteenth and last day of this gap; training resumes the next day. CTL bottomed at 21.7, this block's lowest reading since the Jul 4 start. HRV eased slightly to 89 and sleep quality dipped, a soft sign that idle time has its own cost even when it isn't training load. Two full weeks of zero running, immediately following the Jul 25-26 rule-breach/fatigue-hole event, is this build's clearest boom-bust cycle yet — see the RUNNER_CONTEXT.md update.",
+      "note_next": "Training resumed Aug 10-12 (return-to-run, club, and a follow-up run) — full pace/HR data for those three sessions is still pending a connector-quota reset and is not yet scored in this log; see routine/LAST_RUN_ERROR.txt."
+    },
+    {
+      "date": "2026-08-13", "dow": "Thu", "status": "scored", "reviewed": false,
+      "prediction": "1:36:30", "prediction_prev": null,
+      "planned": null, "plan_rationale": null,
+      "wellness": { "ctl": 23.3, "atl": 20.4, "form": 2.9, "rampRate": 0.0, "hrv": 73, "restingHR": 49, "sleepSecs": 24420, "sleepScore": 76, "sleepQuality": 3, "vo2max": null, "weight": null },
+      "activity": null,
+      "score": 62, "score_committed": 65, "bar_phase": "base",
+      "delta_p": "mildly raised (correct rest after three days re-establishing training)",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:36:30",
+      "prob_note": "PROVISIONAL — CTL-anchored, not pace-confirmed. Aug 10, 11 (club) and 12 carry real activity/wellness records but their HR/pace streams haven't been pulled yet (connector quota exhausted this session — see routine/LAST_RUN_ERROR.txt). CTL rebuilt from 21.7 (Aug 9 trough) to 23.3, roughly matching mid-July shape (CTL ~23-24 → ~1:36:00-1:36:30 in this log's own history), so pred_half is set by that CTL analogy rather than fresh pace evidence. Re-confirm once the three pending dates are backfilled.",
+      "components": [
+        { "label": "Rest day after three consecutive days rebuilding the running habit (Aug 10-12) — the right call for a body three days back from a 2+ week layoff", "delta": 6, "cat": "raiser" },
+        { "label": "HRV dipped to 73, below baseline and the lowest reading since the Jul 25-26 crash, with RHR up to 49 — early sign the body is registering the reintroduction", "delta": -4, "cat": "context" },
+        { "label": "CTL rebuilding (21.7→23.3) confirms real training resumed, even without this run's pace/HR detail", "delta": 3, "cat": "raiser" }
+      ],
+      "entry": "Rest day, and a sensible one: three days back into training after a 15-day gap (a return run Aug 10, club Aug 11, another run Aug 12) is enough to justify a break, and this morning's numbers agree — HRV dipped to 73, the lowest reading since before the Jul 25-26 crash, and RHR ticked up to 49. CTL has rebuilt from the 21.7 trough to 23.3, confirming real training resumed even though this record doesn't yet have pace/HR detail for those three sessions (a data-pull limit was hit partway through this backfill). Treat this as a re-entry week: the athlete is essentially back at early-July fitness after the gap, and the base-building approach from that point in the plan applies again.",
+      "note_next": "Fri Aug 14: easy 30-40 min, HR ceiling ~145 — third week of a fresh re-entry, priority is re-establishing the habit and nothing else. See doc note on the Labor Day checkpoint."
+    },
+    {
+      "date": "2026-08-14", "dow": "Fri", "status": "prescribed", "reviewed": false, "provisional": false,
+      "planned": "Easy 30-40 min, HR ceiling 145",
+      "plan_rationale": "Re-entry week after a 2+ week layoff (Jul 27-Aug 9) followed by three rebuilding days (Aug 10-12) and one rest day. Fitness is essentially back to early-July shape (CTL 22.7, close to the Jul 4-8 CTL 19-21 range) — the same nearly-all-easy base-rebuild logic from that point in the plan applies again rather than resuming where the block left off in late July. This morning's recovery is green (HRV 88, back near the 87 baseline; sleep 8h at score 86) with no red-flag gate needed, but the prescription stays conservative given the training history of the last three weeks: two explicit-ceiling breaches followed by a two-week shutdown is the exact pattern that has preceded every prior collapse in this athlete's history, so priority is re-establishing an honestly-easy habit, not banking pace or duration.",
+      "wellness": { "ctl": 22.7, "atl": 17.7, "form": 5.0, "rampRate": 0.0, "hrv": 88, "restingHR": 49, "sleepSecs": 28800, "sleepScore": 86, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "note_next": "Score tomorrow from today's execution. If HR ceiling holds and no Achilles/soreness complaint, Sat/Sun continue easy-only re-entry volume (target 20-28 mi/wk before any quality returns, per RUNNER_CONTEXT §6's original base-re-entry logic). Aug 10-12 still need their pace/HR streams backfilled once the Intervals.icu connector quota resets."
     }
   ]
 }
