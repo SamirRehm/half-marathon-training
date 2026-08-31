@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-08-23",
+    "last_updated": "2026-08-31",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -479,6 +479,18 @@
       ],
       "entry": "Prescribed easy 50-60 min under HR 148; what happened was a 28-minute, three-file track session built around 8 continuous ~400m reps run back-to-back with no rest at all, 3:53-3:59/km — at or inside the critical-speed estimate (3:54/km) and within a few seconds of best-12-month 5K pace. HR climbed 135→180 with nothing to bring it back down between reps; 43% of the main set sat at Z5+, peak 180bpm (94.7% of max). The warm-up's closing pickup to 155bpm was clearly by design, but the cooldown was not: it accelerated from 5:12 to 5:01/km and finished at 155bpm, never touching Z1-Z2. This is the same conversion of an easy/recovery slot into a hard day that showed up Jul 23 — now repeated two days after a rest day that was taken specifically to break it. Recovery this morning was excellent (HRV 89, RHR 43, a block low) and the engine held its pace with flat cadence throughout, so nothing here signals a mechanical or fatigue problem — it signals a pattern: intensity is landing on the days that were supposed to be cheap, and the aerobic deficit this whole block exists to close isn't getting any of the minutes it needs.",
       "note_next": "Sun Jul 26: long run only if the legs are genuinely fresh — the last two easy/recovery slots (Jul 23, Jul 25) both turned hard. That pattern needs to stop before the weekend long run, or the week arrives at Sunday already spent with nothing banked."
+    },
+    {
+      "date": "2026-08-31", "dow": "Mon", "status": "prescribed", "reviewed": false, "provisional": true,
+      "prediction": null, "prediction_prev": null,
+      "planned": "OFF, or — only if the legs feel genuinely fresh on their own, not negotiated — a 20 min shakeout jog strictly HR ≤140. Default is rest.",
+      "plan_rationale": "Yesterday (Aug 30) was a 21.1 km effort at 162 avg HR / ~91% intensity, load 141 — the single biggest load day of the last month. It capped a week that was already dense: Tue club (a piece at ~95% intensity), Wed 12 km at 82%, Thu 12 km at 94%, Sat track (a piece at ~105%), then Sunday's long run. Fitness has also been climbing fast and hot: CTL rose from ~22 (Aug 10) to ~34.5 (Aug 30) — a sustained rampRate near or above +4/wk for two-plus weeks straight, the athlete's own injury-risk ramp threshold. Today's form (CTL-ATL) is -17.7, past the -15 deep-fatigue line. HRV and sleep haven't synced this morning; resting HR (45) is fine, at the good end of baseline, but that alone doesn't clear a day this loaded. Rest is the default; if HRV/sleep sync in and read anything other than clearly green, that only reinforces it, never overrides toward more. The five weeks before this (Jul 26 – Aug 30) are not yet reflected day-by-day in this log — the routine's Intervals connector hit its API quota and backfill is in progress — but this morning's wellness numbers and the load trend above are current and verified.",
+      "wellness": { "ctl": 33.7, "atl": 51.4, "form": -17.7, "rampRate": 4.0, "hrv": null, "restingHR": 45, "sleepSecs": null, "sleepScore": null, "sleepQuality": null, "vo2max": null, "weight": null },
+      "activity": null, "stream_read": null,
+      "score": null, "score_committed": null, "bar_phase": null, "delta_p": null,
+      "p_120": null, "p_125": null, "pred_half": null, "prob_note": null,
+      "components": null,
+      "entry": null, "note_next": null
     }
   ]
 }
