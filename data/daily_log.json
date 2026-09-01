@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-08-23",
+    "last_updated": "2026-09-01",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -479,6 +479,42 @@
       ],
       "entry": "Prescribed easy 50-60 min under HR 148; what happened was a 28-minute, three-file track session built around 8 continuous ~400m reps run back-to-back with no rest at all, 3:53-3:59/km — at or inside the critical-speed estimate (3:54/km) and within a few seconds of best-12-month 5K pace. HR climbed 135→180 with nothing to bring it back down between reps; 43% of the main set sat at Z5+, peak 180bpm (94.7% of max). The warm-up's closing pickup to 155bpm was clearly by design, but the cooldown was not: it accelerated from 5:12 to 5:01/km and finished at 155bpm, never touching Z1-Z2. This is the same conversion of an easy/recovery slot into a hard day that showed up Jul 23 — now repeated two days after a rest day that was taken specifically to break it. Recovery this morning was excellent (HRV 89, RHR 43, a block low) and the engine held its pace with flat cadence throughout, so nothing here signals a mechanical or fatigue problem — it signals a pattern: intensity is landing on the days that were supposed to be cheap, and the aerobic deficit this whole block exists to close isn't getting any of the minutes it needs.",
       "note_next": "Sun Jul 26: long run only if the legs are genuinely fresh — the last two easy/recovery slots (Jul 23, Jul 25) both turned hard. That pattern needs to stop before the weekend long run, or the week arrives at Sunday already spent with nothing banked."
+    },
+    {
+      "date": "2026-08-31", "dow": "Mon", "status": "scored", "reviewed": false,
+      "prediction": "1:32:30", "prediction_prev": "1:33:30",
+      "planned": "Rest, no run, no cross-training.",
+      "plan_rationale": "The day after the block's heaviest single session (21.1 km at load 141) — a full rest day was the plan, not an amendment.",
+      "wellness": {"ctl": 33.7, "atl": 51.4, "form": -17.7, "rampRate": 4.0, "hrv": 106, "restingHR": 45, "sleepSecs": 30060, "sleepScore": 80, "sleepQuality": 2, "vo2max": null, "weight": null},
+      "activity": null,
+      "stream_read": {"_method": "no activities recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-08-31 Pacific; the nearest activity either side is 2026-08-30T09:29 local (the 21.1 km run) and none until 2026-09-01. The day's wellness row carries atlLoad 0.0, corroborating zero training load.", "rest_day": true},
+      "score": 65, "score_committed": 70, "bar_phase": "build",
+      "delta_p": "raised — a correctly-timed rest day the morning after the block's biggest single training day",
+      "p_120": 0.0, "p_125": 0.0, "pred_half": "1:32:30",
+      "prob_note": "current-fitness readout; pred ~1:32:30 vs 1:20/1:25 targets, both still ~0% (rounds to zero). CTL is the highest of this build (33.7, up from 27.8 on Jul 25) and the Aug 30 run demonstrated the distance comfortably, but the estimate carries more uncertainty than usual: a 3-week near-total gap (Jul 26–Aug 15) sits behind it and the rebuild since has been almost entirely hard running rather than the aerobic volume the protocol credits most — no recent steady long run or TT to anchor the number cleanly, so this is a cautious +60s nudge from Jul 25, not a confident one.",
+      "components": [
+        { "label": "Full rest the day after 21.1 km at load 141 — the single heaviest day of the entire build, which pushed form to -17.7, the block's deepest reading", "delta": 10, "cat": "raiser" },
+        { "label": "HRV 106 (well above the 87 baseline) and RHR 45 confirm the body absorbed Sunday's load without red-flag stress", "delta": 3, "cat": "raiser" },
+        { "label": "Arrives inside a stretch where 9 of the last 13 training days (Aug 18-30) sat at ≥80% intensity, against a build-phase template calling for one threshold + one quality long run a week and everything else easy", "delta": -6, "cat": "lowerer" },
+        { "label": "Ramp rate has held +4.0 to +4.5 CTL/wk for two weeks, above the healthy +1-2.5 range, arriving right after the 21-day near-zero gap that preceded it — the boom-bust shape that has ended every previous block", "delta": -5, "cat": "lowerer" },
+        { "label": "No second consecutive down day, and the week's long run (21.1 km, longest of this build) is banked — continuity protected rather than compounding the fatigue hole", "delta": 3, "cat": "raiser" }
+      ],
+      "entry": "Full rest, taken the day after the block's biggest single day: 21.1 km at load 141, the longest run of this build. Overnight numbers look excellent — HRV 106, well above the 87 baseline, and RHR 45 — and form still bottomed at -17.7 before the rest could bring it back. Zoom out from today and the picture is less clean: nine of the last thirteen training days (Aug 18 through Aug 30) ran at 80%+ intensity, with only today and the odd short piece genuinely easy. Build phase calls for one threshold session and one quality long run a week with everything else easy; this stretch has run closer to all-quality. Ramp rate has held +4.0 to +4.5 CTL/wk for two weeks straight — above the healthy +1-2.5 range — arriving immediately after the 21-day near-zero gap (Jul 26–Aug 15) that preceded it. A broken block followed by a hammer-paced rebuild is the exact shape that has ended every previous build in this athlete's history. Today's rest was the right call; the pattern around it is what needs to change, starting now, not after the Labor Day checkpoint.",
+      "note_next": "Tue Sep 1 (club night slot): not a hard-night week. HR ceiling ~158 throughout, including any reps — jog the warmup, join the set only as long as it stays under that ceiling, and step out of anything that pulls past it. Wed/Thu/Sat: genuinely easy, HR ceiling 150-155 — the missing piece these two weeks has been easy volume, not intensity."
+    },
+    {
+      "date": "2026-09-01", "dow": "Tue", "status": "prescribed", "reviewed": false,
+      "planned": "Club night, run controlled: ~40-50 min total, HR ceiling 158 throughout including any reps. Warm up easy; join the set at club pace only as long as HR stays under 158, and drop out to jog the rest of any rep that pulls past it. No chasing the group.",
+      "plan_rationale": "Recovery this morning looks fine in isolation (HRV 86 near the 87 baseline, RHR 44 — a block low, sleep quality good) and CTL is at a build-phase high (32.9), which would normally argue for a normal club night. The load pattern argues otherwise: nine of the last thirteen training days have sat at ≥80% intensity, ramp rate has held +4.0-4.5/wk for two weeks (above the healthy +1-2.5), and form is still -11.7 despite yesterday's full rest. Build phase calls for ONE threshold session and ONE quality long run a week with everything else easy; this block has been running at closer to five hard days out of seven. The Labor Day checkpoint (Sep 5-7) already cannot pass on criterion (a) — the Jul 26–Aug 15 gap rules out any 8-consecutive-week window ending there — so there is no reason to spend more risk chasing a number the calendar has already foreclosed for this pass. Keep the social anchor, skip the empty-the-tank version of it.",
+      "wellness": {"ctl": 32.9, "atl": 44.6, "form": -11.7, "rampRate": 2.8, "hrv": 86, "restingHR": 44, "sleepSecs": 26280, "sleepScore": 80, "sleepQuality": 2, "vo2max": null, "weight": null},
+      "activity": null,
+      "score": null, "score_committed": null, "bar_phase": "build",
+      "delta_p": null,
+      "p_120": null, "p_125": null, "pred_half": "1:32:30",
+      "prob_note": null,
+      "components": [],
+      "entry": null,
+      "note_next": null
     }
   ]
 }
