@@ -122,6 +122,8 @@ Never raced a half fresh/tapered. 35:33 10K converts to ~1:18–1:19 HM with pro
 - Tomorrow (Tue Jul 7): **fully OFF** — Monday-quiet condition not met, interval session moves to Wed Jul 8 (15 min easy + 4–5×5 min @ 4:25–4:35/km, 90 s jog + 10 min easy). Tue homework: first weighted calf session (heavy slow, 3–4×8–10 straight-leg + bent-knee). Late-night run (ended ~10 PM) — protect sleep before quality day.
 - Doc changes: none.
 
+**Note (2026-09-02):** this narrative log was not maintained day-by-day past this point — `data/daily_log.json` is the canonical daily record from here on (see its schema note). The automated routine itself did not run between 2026-07-25 and 2026-08-31; training continued through that gap (CTL 28→34) but is not itemized anywhere. See the 2026-09-01 entry in `data/daily_log.json` for the pattern that gap obscured: a six-of-ten-days hard-or-harder fortnight culminating in a raced club night (100% max HR) on a form of −18, the same over-intensity/near-zero-easy-volume signature described in §3. Anyone assessing the Labor Day checkpoint (§6) against this document should cross-check Aug 2026 directly against Intervals.icu rather than assume this file has it.
+
 ---
 
 ## Appendix: full activity dataset (Jan 1, 2022 – Jul 4, 2026)
