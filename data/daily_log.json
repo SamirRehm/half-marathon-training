@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-08-23",
+    "last_updated": "2026-09-05",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -479,6 +479,42 @@
       ],
       "entry": "Prescribed easy 50-60 min under HR 148; what happened was a 28-minute, three-file track session built around 8 continuous ~400m reps run back-to-back with no rest at all, 3:53-3:59/km — at or inside the critical-speed estimate (3:54/km) and within a few seconds of best-12-month 5K pace. HR climbed 135→180 with nothing to bring it back down between reps; 43% of the main set sat at Z5+, peak 180bpm (94.7% of max). The warm-up's closing pickup to 155bpm was clearly by design, but the cooldown was not: it accelerated from 5:12 to 5:01/km and finished at 155bpm, never touching Z1-Z2. This is the same conversion of an easy/recovery slot into a hard day that showed up Jul 23 — now repeated two days after a rest day that was taken specifically to break it. Recovery this morning was excellent (HRV 89, RHR 43, a block low) and the engine held its pace with flat cadence throughout, so nothing here signals a mechanical or fatigue problem — it signals a pattern: intensity is landing on the days that were supposed to be cheap, and the aerobic deficit this whole block exists to close isn't getting any of the minutes it needs.",
       "note_next": "Sun Jul 26: long run only if the legs are genuinely fresh — the last two easy/recovery slots (Jul 23, Jul 25) both turned hard. That pattern needs to stop before the weekend long run, or the week arrives at Sunday already spent with nothing banked."
+    },
+    {
+      "date": "2026-09-04", "dow": "Fri", "status": "scored", "reviewed": false,
+      "prediction": "1:31:00", "prediction_prev": "1:33:30",
+      "planned": "Rest",
+      "plan_rationale": "Friday recovery slot ahead of Saturday's session and Sunday's long run, absorbing Tuesday's club plus two Wed/Thu runs on top of three straight weeks of rising volume since the early-August rebuild.",
+      "wellness": { "ctl": 34.8, "atl": 47.7, "form": -12.9, "rampRate": 3.4, "hrv": 93, "restingHR": 46, "sleepSecs": 27900, "sleepScore": 92, "sleepQuality": 1, "vo2max": null, "weight": null },
+      "activity": null,
+      "stream_read": { "_method": "no activities recorded for 2026-09-04 Pacific — nothing to segment", "activities": 0, "verified": "Intervals shows no activity between 2026-09-03T20:30 (previous run) and 2026-09-05 (today, none yet); the day's wellness row carries atlLoad 0.0, confirming zero training load.", "rest_day": true },
+      "score": 64, "score_committed": 68, "bar_phase": "base",
+      "delta_p": "mildly raised (protective rest before the weekend's key sessions)",
+      "p_120": 0.0, "p_125": 0.01, "pred_half": "1:31:00",
+      "prob_note": "current-fitness readout, re-anchored after a six-week logging gap — pred ~1:31:00 vs 1:20/1:25 targets, built from the CTL trend and cross-checked against the Nov 2025 benchmark (1:33:42 @ CTL 25), not from a fresh confirmed threshold/TT reading (none of the gap's sessions have had a deep stream read yet).",
+      "components": [
+        { "label": "Rest taken after three straight weeks of rising volume (31.6 -> 35.1 -> 39.3 mi/wk) plus this week's club and two runs; form was -12.9 and ramp +3.4 this morning, both flagged for caution", "delta": 8, "cat": "raiser" },
+        { "label": "Recovery was already green this morning (HRV 93, RHR 46, sleep 7h45m at quality 1) — this banks further freshness rather than repairing a red day", "delta": 2, "cat": "context" },
+        { "label": "No aerobic volume added on a day the base still wants, with the week's long run still ahead", "delta": -4, "cat": "lowerer" },
+        { "label": "Continuity holds: training has been consistent every week since the early-August stoppage — this is a planned rest inside an intact block, not a broken one", "delta": 3, "cat": "raiser" }
+      ],
+      "entry": "Full rest, the day before the weekend's session and the long run. Morning recovery was already green — HRV 93, resting HR 46, sleep 7h45m at quality 1 — so this banks further freshness rather than repairing a red morning; the case for it is the week's shape, not the body's distress. Tuesday's club plus two Wednesday/Thursday runs sit on top of three straight weeks of rising volume (31.6, 35.1, 39.3 mi/wk) since the early-August rebuild, and form sat at -12.9 with ramp +3.4 this morning. The daily log carries no entries between 2026-07-25 and today; Intervals shows training continued through the gap — a complete stoppage of roughly two weeks in late July/early August (a Copenhagen trip, per a walking activity logged Aug 4), followed by a clean rebuild from Aug 10 that has taken CTL from a post-stoppage low of 21.7 back to 34.8 by this morning. Wellness rows for the gap have been backfilled from Intervals so the fitness/fatigue trend is continuous; the day-by-day scored entries and stream files for those six weeks have not, and that backfill is a separate decision for the athlete to make. (doc: RUNNER_CONTEXT.md §6 — Labor Day checkpoint reassessed against this gap.)",
+      "note_next": "Sat Sep 5: easy only, 45-55 min, HR ceiling ~150. The Saturday-tempo gate is not open — only two of the last three weeks cleared 35+ mi/wk and the clock effectively restarted after the early-August stoppage. Protect Sunday's long run."
+    },
+    {
+      "date": "2026-09-05", "dow": "Sat", "status": "prescribed", "reviewed": false,
+      "planned": "Easy 45-55 min, HR ceiling ~150, pace roughly 5:45-6:10/km — let HR set the pace, not the reverse",
+      "plan_rationale": "The Saturday-tempo gate stays closed: it needs 4 consecutive weeks at 35+ mi/wk, and the clock only shows two (Aug 17-23: 35.1 mi, Aug 24-30: 39.3 mi) since the early-August stoppage reset it, with this week still building toward its own total. The last two Saturdays (Aug 22, Aug 29) were run as hard track sessions anyway (108% and 105% intensity) — today should not be a third. Recovery is excellent (HRV 93, RHR 43 — a block floor, sleep 7h59m at quality 1), but Tuesday's club already spent the week's quality slot and Sunday's long run is the priority session; fresh legs should protect that, not spend a second hard day.",
+      "wellness": { "ctl": 34.0, "atl": 41.4, "form": -7.4, "rampRate": 2.0, "hrv": 93, "restingHR": 43, "sleepSecs": 28740, "sleepScore": 99, "sleepQuality": 1, "vo2max": null, "weight": null },
+      "activity": null,
+      "prediction": null, "prediction_prev": null,
+      "score": null, "score_committed": null, "bar_phase": "base",
+      "delta_p": null,
+      "p_120": null, "p_125": null, "pred_half": null,
+      "prob_note": null,
+      "components": [],
+      "entry": null,
+      "note_next": "Sun Sep 6: long run. This week's quality was already banked at Tuesday's club, so keep it pure aerobic — no embedded tempo. Aim for the Aug 30 formula's duration without chasing its pace: 75-90 min easy, HR ceiling ~150-152."
     }
   ]
 }
