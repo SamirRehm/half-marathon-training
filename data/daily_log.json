@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-08-23",
+    "last_updated": "2026-09-07",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -479,6 +479,71 @@
       ],
       "entry": "Prescribed easy 50-60 min under HR 148; what happened was a 28-minute, three-file track session built around 8 continuous ~400m reps run back-to-back with no rest at all, 3:53-3:59/km — at or inside the critical-speed estimate (3:54/km) and within a few seconds of best-12-month 5K pace. HR climbed 135→180 with nothing to bring it back down between reps; 43% of the main set sat at Z5+, peak 180bpm (94.7% of max). The warm-up's closing pickup to 155bpm was clearly by design, but the cooldown was not: it accelerated from 5:12 to 5:01/km and finished at 155bpm, never touching Z1-Z2. This is the same conversion of an easy/recovery slot into a hard day that showed up Jul 23 — now repeated two days after a rest day that was taken specifically to break it. Recovery this morning was excellent (HRV 89, RHR 43, a block low) and the engine held its pace with flat cadence throughout, so nothing here signals a mechanical or fatigue problem — it signals a pattern: intensity is landing on the days that were supposed to be cheap, and the aerobic deficit this whole block exists to close isn't getting any of the minutes it needs.",
       "note_next": "Sun Jul 26: long run only if the legs are genuinely fresh — the last two easy/recovery slots (Jul 23, Jul 25) both turned hard. That pattern needs to stop before the weekend long run, or the week arrives at Sunday already spent with nothing banked."
+    },
+    {
+      "date": "2026-09-06", "dow": "Sun", "status": "scored", "reviewed": false,
+      "prediction": "1:28:30", "prediction_prev": "1:33:30",
+      "planned": null,
+      "plan_rationale": "No prescription is on record for this date — the daily log has no entries between 2026-07-25 and 2026-09-06 (six weeks; the routine did not run). This entry is built from Intervals.icu's wellness and activity history rather than a carried-forward plan, so executed-vs-planned cannot be judged for this day.",
+      "wellness": {"ctl": 37.4, "atl": 59.0, "form": -21.6, "rampRate": 2.9, "hrv": 99, "restingHR": 45, "sleepSecs": 25860, "sleepScore": 83, "sleepQuality": 2, "vo2max": 58, "weight": null},
+      "activity": {"name": "San Carlos hilly long run (AM) + San Mateo evening progression (PM) — two sessions", "km": 20.87, "mi": 12.97, "sec": 6572, "pace_per_km": "5:15", "hr": 149, "max_hr": 181, "intensity": null, "load": 115, "cadence": 85.4, "stride_m": 1.12, "elev_gain_m": 413.8, "decoupling_pct": null, "hr_zone_sec": [2142, 1306, 2072, 845, 107, 101, 0]},
+      "stream_read": {"_method": "Two separate activity files, each read independently. AM: recording-gap segmentation (11 gaps >20s, 29–427s, totalling 1447s) — uneven in length and not clustered, so this is a continuous hilly trail run with real standing time, not designed recoveries; reported as pauses, moving-time splits used. PM: near-continuous (one 25s gap only); Intervals' own 1km auto-splits used for structure, cross-checked against a monotonic pace progression — consistent with a deliberate progression/tempo run, not intervals with rest.", "am_san_carlos": {"distance_km": 10.85, "moving_s": 3792, "elapsed_s": 5271, "stopped_time_s": 1479, "stopped_note": "24.6 min stopped across 11 pauses (29–427s, largest near the end at ~78–85min elapsed) vs 63.2 min moving — elapsed/moving ratio well past the 5-min disclosure threshold; consistent with a technical hilly trail route (steep pitches, route-finding) rather than designed recoveries.", "elev_gain_m": 370.3, "elev_loss_m": 374.9, "vert_per_km": 34.1, "avg_hr": 143, "pct_max_hr_peak": 95.3, "peak_hr": 181, "peak_hr_note": "brief spike only — no interval average above 158bpm, so this is one steep pitch, not a sustained effort", "zone_pct": {"z1": 52.4, "z2": 17.2, "z3": 14.3, "z4": 11.2, "z5": 2.3, "z6": 2.7, "z7": 0.0}, "pct_z5_plus": 5.0, "z7_secs": 0, "easy_purity_pct_z1_2": 69.6, "km_splits_moving": ["5:29", "6:23", "5:49", "6:03", "5:59", "5:26", "5:17", "7:59", "5:20", "5:11"], "km_split_note": "swings track grade, not effort — km8 (7:59) is a climb, km9–10 (5:20, 5:11) a descent; GAP pace (5:12/km) is the fairer read of effort than raw pace (5:52/km) given 34 m/km of vert.", "cadence_first_half_rpm": 85.9, "cadence_second_half_rpm": 83.2, "cadence_note": "drop of 2.7 rpm (~5.4 spm) exceeds the 3 spm fatigue-tell threshold, but is confounded by terrain (steeper, more technical back half) and the frequent stops — not read as a clean fatigue signal.", "finish_vs_body": {"body_pace": "6:03/km", "body_hr": 142, "finish_pace": "5:24/km", "finish_hr": 144, "note": "finish 39s/km faster, but the final quarter is net downhill (km9–10 splits above) — terrain-driven, not read as a deliberate late push."}, "decoupling_pct": 0.9, "decoupling_note": "raw-pace decoupling on a 370m-vert trail run is not a clean signal (terrain and 11 stops both confound it) — reported for completeness only; the near-zero reading does not indicate meaningful aerobic drift either way.", "prescribed_vs_executed": "no prescription on record (see plan_rationale)"}, "pm_san_mateo": {"distance_km": 10.02, "moving_s": 2780, "elapsed_s": 2814, "stopped_time_s": 25, "avg_hr": 156, "intensity_pct": 83.9, "avg_pace": "4:38/km", "pct_max_hr_peak": 91.1, "peak_hr": 173, "peak_hr_note": "final ~2s only, at the finish/watch-stop", "zone_pct": {"z1": 5.6, "z2": 23.5, "z3": 55.0, "z4": 15.2, "z5": 0.7, "z6": 0.0, "z7": 0.0}, "easy_purity_pct_z1_2": 29.1, "km_splits_moving": ["5:05", "4:50", "4:39", "4:39", "4:35", "4:39", "4:42", "4:31", "4:26", "4:15"], "km_split_note": "monotonic progression, not a fade — opens conservative and steps down every couple km to a 4:15 close. Flat terrain (43m gain over 10km), so this is pacing, not grade.", "cadence_first_half_rpm": 86.5, "cadence_second_half_rpm": 86.7, "cadence_note": "stable through the progression — no mechanical fatigue tell despite the pace build.", "finish_vs_body": {"body_pace": "4:44/km", "body_hr": 154, "finish_pace": "4:24/km", "finish_hr": 160, "note": "finish 20s/km faster with HR +6–8bpm — a deliberate gear change (matches the km-split progression), not drift."}, "decoupling_pct": -0.5, "decoupling_note": "slightly negative, i.e. no drift — expected on a run that gets faster by design (per the negative-split caveat, high decoupling here would mean the split, not a base deficit; near-zero/negative confirms pacing rather than fade).", "efficiency_vs_baseline": "4:38/km @ 156bpm (83.9% intensity) vs the 2026-07-05 long-run baseline of 5:24/km @ 156bpm (84% intensity) — essentially identical relative effort, 46 s/km faster, 9 weeks apart. Real evidence of aerobic-fitness gain, not noise.", "prescribed_vs_executed": "no prescription on record (see plan_rationale)"}, "day_context": "Combined 20.87km / ~110min moving / ~154min total time out, load 115 — the largest single day visible in the log. Lands on a sustained hot ramp: CTL climbed from ~21.7 (Aug 9) to 37.4 today, rampRate holding 2.9–4.6/wk for roughly four straight weeks (DAY_SCORE's healthy build zone is ~+1...+2.5/wk). Form is -21.6 today, past the -20 deep-fatigue line. The trailing week (Sep 1–6) carried five load-bearing days against two true rest days (Aug 31, Sep 4): a club night with a near-max-HR piece (Sep 1), a moderate-hard 10.6km run at 86.5% intensity (Sep 3), a 2km-repeat interval session at 94% intensity (Sep 5), then this AM/PM double on Sep 6 — very little genuinely cheap volume banked across the week."},
+      "score": 47, "score_committed": 36, "bar_phase": "build",
+      "delta_p": "lowered — real fitness gained, but stacked onto a sustained hot ramp and a fatigue hole past the danger line",
+      "p_120": 0.01, "p_125": 0.15, "pred_half": "1:28:30",
+      "prob_note": "Large single-entry move (1:33:30 → 1:28:30) reflects six weeks of accumulated, data-grounded gain — CTL 27.6→37.4, and direct pace-at-HR evidence (4:38/km @156bpm today vs 5:24/km @156bpm on 2026-07-05, same ~84% relative intensity) — not a single day's training. Coarser than usual: no daily readings exist across the gap to check the trajectory step by step. sigma widened accordingly (~3.5% of pred_now).",
+      "components": [
+        {
+                "label": "PM run's pace-at-HR (4:38/km @156bpm, 83.9% intensity) is 46 s/km faster than the 2026-07-05 long-run baseline at matched relative effort — real evidence the aerobic gap is closing",
+                "delta": 16,
+                "cat": "raiser"
+        },
+        {
+                "label": "AM long run banked 10.85km of genuinely hilly volume (370m vert) at controlled effort — 69.6% Z1-2, no purity abuse, engine intact on real terrain",
+                "delta": 8,
+                "cat": "raiser"
+        },
+        {
+                "label": "CTL at a build-high 37.4, up from 21.7 just four weeks ago — unambiguous volume progress toward the goal",
+                "delta": 6,
+                "cat": "raiser"
+        },
+        {
+                "label": "Sustained hot ramp: rampRate has held 2.9-4.6/wk for ~4 straight weeks, above the healthy +1...+2.5/wk build zone — the exact early-warning pattern that preceded every prior crash (2022/2023/2024)",
+                "delta": -14,
+                "cat": "lowerer"
+        },
+        {
+                "label": "Form -21.6 today, past the -20 deep-fatigue line — a fatigue hole, not just a hard day",
+                "delta": -10,
+                "cat": "lowerer"
+        },
+        {
+                "label": "A second, moderately hard session (55% Z3, 15% Z4) stacked onto the long-run day itself, on a week that already carried a club night, a moderate-hard run, and an interval session — almost no cheap volume banked to absorb it",
+                "delta": -9,
+                "cat": "lowerer"
+        },
+        {
+                "label": "No prescription on record for this date (six-week gap in the log) — cannot credit or fault pacing discipline against a plan that isn't there",
+                "delta": 0,
+                "cat": "context"
+        }
+],
+      "entry": "The daily log has no entries between 2026-07-25 and 2026-09-06 — six weeks in which the routine did not run, despite the athlete training through them. This entry is reconstructed from Intervals.icu's wellness and activity history rather than day-by-day stream reads; treat pred_half and the score as a single large catch-up estimate, not a normal day-over-day move. Today itself: an AM hilly trail long run (10.85km, 370m vert, HR143/75% intensity, well controlled — 69.6% Z1-2, no meaningful drift) followed by a PM 10km evening progression that built from 5:05/km to a 4:15/km close at HR156 average (83.9% intensity, mostly Tempo zone). The PM pace-at-HR is the headline: 4:38/km at 156bpm matches the July 5 long run's relative effort (5:24/km at 156bpm) almost exactly, 46 seconds per kilometre faster nine weeks later — real, credible evidence of aerobic progress. But the day sits on top of a sustained hot ramp: CTL has climbed from 21.7 to 37.4 in four weeks at a rampRate that has not dropped below 2.9/wk and peaked at 4.6, and today's form (-21.6) is past the -20 line that marks a genuine fatigue hole. The trailing week held a club night, a moderate-hard run, and an interval session before this double — the volume is real, but so is the risk pattern: this is the same hot-ramp, low-cheap-volume shape that has ended every previous build. No prescription exists for today to compare against, so this reads on state and pattern rather than compliance.",
+      "note_next": "Mon Sep 7: protect this ahead of Tuesday club. Form is -21.6 and the ramp has run hot for a month — today needs to be a true down day regardless of this morning's green HRV/RHR (that reading is autonomic, not load; ATL/form say the load side still needs to unwind). OFF, or if compelled, ≤ 25 min genuinely easy under HR ~145. No exceptions for feeling good — that is exactly the day this pattern has converted into a hard run before (Jul 23, Jul 25)."
+    },
+    {
+      "date": "2026-09-07", "dow": "Mon", "status": "prescribed", "reviewed": false, "provisional": false,
+      "planned": "OFF, or if truly compelled to move, ≤ 25 min genuinely easy jog. HR ceiling 145. No strides, no pickups.",
+      "plan_rationale": "Yesterday was a 20.87km, load-115 double session (hilly AM long run + PM progression) on top of a ramp that has held 2.9-4.6/wk for roughly four weeks — CTL 21.7→37.4 since Aug 9. Form is -14.6 this morning (was -21.6 last night), still well into fatigue-hole territory. This morning's HRV (93, above the ~87 baseline) and resting HR (47, within the 46-48 floor) are both green, but that is an autonomic reading, not a load one — the ATL/form numbers say the legs and the training-load ledger still need to unwind before Tuesday's club session, the protected social anchor. Sleep quality 2 (good), 7.7h, also supports rest rather than requiring it as a downgrade trigger. The six-week gap in this log means there is no way to check whether easy days were actually landing easy through August — treat today as a hard reset on that discipline: true rest or a genuinely cheap jog, nothing that raises HR out of Z1.",
+      "wellness": {"ctl": 36.6, "atl": 51.2, "form": -14.6, "rampRate": 2.9, "hrv": 93, "restingHR": 47, "sleepSecs": 27660, "sleepScore": 89, "sleepQuality": 2, "vo2max": null, "weight": null},
+      "activity": null, "stream_read": null,
+      "prediction": null, "prediction_prev": "1:28:30",
+      "score": null, "score_committed": null, "bar_phase": null, "delta_p": null,
+      "p_120": null, "p_125": null, "pred_half": null, "prob_note": null,
+      "components": null,
+      "entry": null,
+      "note_next": null
     }
   ]
 }
