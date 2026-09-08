@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-08-23",
+    "last_updated": "2026-09-08",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -479,6 +479,34 @@
       ],
       "entry": "Prescribed easy 50-60 min under HR 148; what happened was a 28-minute, three-file track session built around 8 continuous ~400m reps run back-to-back with no rest at all, 3:53-3:59/km — at or inside the critical-speed estimate (3:54/km) and within a few seconds of best-12-month 5K pace. HR climbed 135→180 with nothing to bring it back down between reps; 43% of the main set sat at Z5+, peak 180bpm (94.7% of max). The warm-up's closing pickup to 155bpm was clearly by design, but the cooldown was not: it accelerated from 5:12 to 5:01/km and finished at 155bpm, never touching Z1-Z2. This is the same conversion of an easy/recovery slot into a hard day that showed up Jul 23 — now repeated two days after a rest day that was taken specifically to break it. Recovery this morning was excellent (HRV 89, RHR 43, a block low) and the engine held its pace with flat cadence throughout, so nothing here signals a mechanical or fatigue problem — it signals a pattern: intensity is landing on the days that were supposed to be cheap, and the aerobic deficit this whole block exists to close isn't getting any of the minutes it needs.",
       "note_next": "Sun Jul 26: long run only if the legs are genuinely fresh — the last two easy/recovery slots (Jul 23, Jul 25) both turned hard. That pattern needs to stop before the weekend long run, or the week arrives at Sunday already spent with nothing banked."
+    },
+    {
+      "date": "2026-09-07", "dow": "Mon", "status": "scored", "reviewed": false, "provisional": false,
+      "planned": null,
+      "plan_rationale": null,
+      "wellness": { "ctl": 36.6, "atl": 51.2, "form": -14.6, "rampRate": 2.9, "hrv": 93, "restingHR": 44, "sleepSecs": 27660, "sleepScore": 89, "sleepQuality": 2, "vo2max": null, "weight": null },
+      "activity": null,
+      "stream_read": { "_method": "no activities recorded — nothing to segment", "activities": 0, "verified": "activities_list returned zero rows for 2026-09-07 Pacific; the day's wellness row carries atlLoad 0.0, corroborating zero training load. Neighboring days (Sep 6, Sep 8) confirmed present.", "rest_day": true },
+      "prediction": "1:29:30", "prediction_prev": "1:33:30",
+      "score": 68, "score_committed": 74, "bar_phase": "build",
+      "delta_p": "held — correct rest inside a deep, unsupervised fatigue hole",
+      "p_120": 0.0, "p_125": 0.05, "pred_half": "1:29:30",
+      "prob_note": "Current-fitness readout, reconstructed after a 6-week logging gap (2026-07-26 to 2026-09-06): CTL rose from ~28 to ~37 on real workouts and long runs, but no entries were written while the daily routine was inactive. ~0% P(1:20), ~5% P(1:25) — projected half ~1:29:30 against the two targets, estimated from the CTL/volume trend and cross-checked against the Nov 2025 benchmark (1:33:42 @ CTL 25), not confirmed by a fresh time trial. Carries more uncertainty than a normal daily update; treat pred_half as provisional until the next clean effort confirms it.",
+      "components": [
+        { "label": "Rest taken the day after the block's deepest fatigue reading (form -21.6, Sep 6) — protects continuity exactly when it was needed", "delta": 8, "cat": "raiser" },
+        { "label": "Sleep 7.7h / score 89, HRV 93 (above ~87 baseline), RHR 44 — recovery mechanics still intact despite the load", "delta": 4, "cat": "raiser" },
+        { "label": "Sits inside an unsupervised ~3-week ramp (CTL 22→37 since Aug 10, rampRate at/above +4/wk for most of August) — one rest day doesn't undo the pattern", "delta": -4, "cat": "context" }
+      ],
+      "entry": "Rest day, and the right one. Form bottomed at -21.6 the day before (Sep 6, closing a stretch that included a 20.9 km double-run day and a 21.1 km \"long run\" run at 90.7% intensity on Aug 30), and today unwound it to -14.6. HRV 93, RHR 44, sleep 7.7h — the body is absorbing the load. But this is one day set against three weeks of a ramp that sat at or above the +4/wk injury-risk line for most of August, CTL 22→37 since Aug 10. No day-by-day entries exist for 2026-07-26 through 2026-09-06 — the daily routine did not run in that window (the last commit before today was an Aug 23 backfill of the Jul 25 entry, 16 days ago). Training continued and fitness genuinely rose, but none of it was reviewed for the over-intensity / boom-bust pattern this log exists to catch, and the Labor Day checkpoint (Sep 5-7) passed without evaluation. Checked now against the checkpoint's own five criteria: no 10K TT or race occurred anywhere in the window (criterion c fails outright — races_list and events_list are both empty back to Jul 25), and weight has still never been logged even once in wellness (criterion e unverifiable). On the record as it stands the checkpoint cannot be certified passed, so per the plan's own rule the race commits to 1:24-1:27 with zero regret on 1:20 unless the athlete can supply what's missing (a recent 10K effort, current weight). Prediction moved from 1:33:30 to an estimated 1:29:30 to reflect six weeks of real training, not one day's work — see prob_note; treat it as provisional until a controlled effort confirms it.",
+      "note_next": "Tue Sep 8: HRV dropped to 80 this morning (below the 87-93 range of the last two weeks) despite 8.4h of excellent sleep, and form is still -8.7 three days off the block's worst reading. The body is owed a real deload, not one rest day. Downgrading today's club slot to easy/social — see today's entry."
+    },
+    {
+      "date": "2026-09-08", "dow": "Tue", "status": "prescribed", "reviewed": false, "provisional": false,
+      "planned": "Easy 40-45 min, HR ceiling 148. If going to club, treat it as an easy/social jog only — no reps, no pace target beyond conversational.",
+      "plan_rationale": "Three days off the block's deepest fatigue reading (form -21.6, Sep 6) and HRV dropped to 80 this morning — below the 87-93 range of the last two weeks — despite 8.4h of excellent sleep; form is still -8.7. Tuesday is normally the protected club slot, but the last three weeks ran a sustained ramp at or above +4/wk (CTL 22→37 since Aug 10) with intensity most days and zero coaching oversight — the routine was down 2026-07-26 to 2026-09-06, so none of it was checked against the over-intensity / boom-bust pattern this build exists to prevent. Sleep and HRV can only downgrade a session, never upgrade one; today HRV downgrades club to easy. Gate: if HRV is back at/above 88 and form above -10 tomorrow, the next quality slot can resume Wed/Thu; if not, stay easy and treat this week as a deload.",
+      "wellness": { "ctl": 35.7, "atl": 44.4, "form": -8.7, "rampRate": 1.4, "hrv": 80, "restingHR": 44, "sleepSecs": 30235, "sleepScore": 93, "sleepQuality": 1, "vo2max": null, "weight": null },
+      "activity": null, "score": null, "score_committed": null,
+      "p_120": null, "p_125": null, "pred_half": null
     }
   ]
 }
