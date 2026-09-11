@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-07-31",
+    "last_updated": "2026-09-11",
     "scoring": "probability-change model (DAY_SCORE.md): score=\u0394P(1:20), score_committed=\u0394P(1:25) \u2014 INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN \u2014 the live signal is pred_half falling toward the goal lines.",
@@ -1906,7 +1906,7 @@
     },
     {
       "date": "2026-07-28",
-      "dow": "Mon",
+      "dow": "Tue",
       "status": "scored",
       "reviewed": false,
       "prediction": "1:33:00",
@@ -1941,7 +1941,7 @@
     },
     {
       "date": "2026-07-29",
-      "dow": "Tue",
+      "dow": "Wed",
       "status": "scored",
       "reviewed": false,
       "prediction": "1:33:00",
@@ -1976,7 +1976,7 @@
     },
     {
       "date": "2026-07-30",
-      "dow": "Wed",
+      "dow": "Thu",
       "status": "scored",
       "reviewed": false,
       "prediction": "1:33:00",
@@ -2011,7 +2011,7 @@
     },
     {
       "date": "2026-07-31",
-      "dow": "Thu",
+      "dow": "Fri",
       "status": "scored",
       "reviewed": false,
       "prediction": "1:33:00",
@@ -2043,6 +2043,36 @@
       "components": [],
       "entry": "Fifth day without a run; form now +2.1 (fully fresh) and sleep/HRV/RHR all recovered. Reads as a travel day rather than a fatigue-driven rest \u2014 the body has nothing left to recover from. No penalty beyond the continuity cost of a growing gap.",
       "note_next": "No session queued; likely traveling (Copenhagen activity logged Aug 4). Resume running opportunistically."
+    },
+    {
+      "date": "2026-09-11",
+      "dow": "Fri",
+      "status": "prescribed",
+      "reviewed": false,
+      "provisional": true,
+      "planned": "Easy 35-40 min, HR ceiling 148.",
+      "plan_rationale": "The routine was dark from Jul 26 through Sep 10 (Intervals.icu connector quota exhausted every run \u2014 see LAST_RUN_ERROR.txt); the historical backfill is still in progress for Aug 1-Sep 10. What's visible from wellness alone: CTL climbed from ~21.7 (Aug 9 trough, after a travel-driven near-total rest stretch) to ~37 (Sep 6) in under four weeks, with ramp rate sustained at +3 to +4.5 CTL/wk for most of that span \u2014 above the healthy build zone (+1...+2.5) and into the injury-risk band (>+4) documented in the plan. The last few days (Sep 7-10) show ramp decelerating on its own (now -0.4) and form back near neutral (+0.4) \u2014 the body correcting itself. Today should protect that correction, not re-open the hole. HRV/sleep haven't synced this morning; gate on them once they do.",
+      "wellness": {
+        "ctl": 34.4,
+        "atl": 34.0,
+        "form": 0.4,
+        "rampRate": -0.4,
+        "hrv": null,
+        "restingHR": 43,
+        "sleepSecs": null,
+        "sleepScore": null,
+        "sleepQuality": null,
+        "vo2max": null,
+        "weight": null
+      },
+      "activity": null,
+      "score": null,
+      "score_committed": null,
+      "p_120": null,
+      "p_125": null,
+      "pred_half": null,
+      "entry": null,
+      "note_next": "If HRV comes in under ~78 or sleep under 6h once it syncs, or the legs feel anything but fresh, take full rest instead. Sleep/HRV can only downgrade this, never upgrade it to more."
     }
   ]
 }
