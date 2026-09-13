@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-08-23",
+    "last_updated": "2026-09-13",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -479,6 +479,52 @@
       ],
       "entry": "Prescribed easy 50-60 min under HR 148; what happened was a 28-minute, three-file track session built around 8 continuous ~400m reps run back-to-back with no rest at all, 3:53-3:59/km — at or inside the critical-speed estimate (3:54/km) and within a few seconds of best-12-month 5K pace. HR climbed 135→180 with nothing to bring it back down between reps; 43% of the main set sat at Z5+, peak 180bpm (94.7% of max). The warm-up's closing pickup to 155bpm was clearly by design, but the cooldown was not: it accelerated from 5:12 to 5:01/km and finished at 155bpm, never touching Z1-Z2. This is the same conversion of an easy/recovery slot into a hard day that showed up Jul 23 — now repeated two days after a rest day that was taken specifically to break it. Recovery this morning was excellent (HRV 89, RHR 43, a block low) and the engine held its pace with flat cadence throughout, so nothing here signals a mechanical or fatigue problem — it signals a pattern: intensity is landing on the days that were supposed to be cheap, and the aerobic deficit this whole block exists to close isn't getting any of the minutes it needs.",
       "note_next": "Sun Jul 26: long run only if the legs are genuinely fresh — the last two easy/recovery slots (Jul 23, Jul 25) both turned hard. That pattern needs to stop before the weekend long run, or the week arrives at Sunday already spent with nothing banked."
+    },
+    {
+      "date": "2026-09-12", "dow": "Sat", "status": "scored", "reviewed": false,
+      "prediction": "1:32:00", "prediction_prev": "1:33:30",
+      "planned": null,
+      "plan_rationale": null,
+      "wellness": {"ctl": 34.4, "atl": 33.9, "form": 0.5, "rampRate": -1.2, "hrv": 87, "restingHR": 43, "sleepSecs": 23100, "sleepScore": 80, "sleepQuality": 2, "vo2max": 59, "weight": null},
+      "activity": {"name": "San Mateo Track Running — wu + continuous fast set (no recovery)", "km": 5.21, "mi": 3.24, "sec": 1267, "pace_per_km": "4:03", "hr": 166, "max_hr": 186, "intensity": 103.2, "load": 33, "cadence": 174, "stride_m": 1.47, "elev_gain_m": 16, "decoupling_pct": null, "hr_zone_sec": [158, 74, 183, 223, 130, 231, 271]},
+      "stream_read": {
+        "_method": "No recording gaps in either file (continuous t throughout); Intervals' own icu_intervals shows all nine laps of the main set as type WORK with no RECOVERY segment between them — confirming this was one continuous effort, not a paced interval set.",
+        "warmup": "1.61 km / 7:03, progressive 128→164 bpm with three stride pickups (avg 157 bpm), ending at 86% max HR. Zero Z5+. Normal prep.",
+        "main_set": "3.60 km continuous in 14:04 @ 3:54/km avg. HR climbed 140→186 across the 'laps' and never dropped below 85% max after the third — effectively one sustained near-maximal effort, not reps with recovery credit.",
+        "zone_dist_main_pct": {"z1": 4.5, "z2": 0.2, "z3": 1.9, "z4": 18.6, "z5": 15.4, "z6": 27.3, "z7": 32.1, "z5_plus": 74.8},
+        "peak_hr_pct_max": 97.9,
+        "pace_vs_recent_5k": "3:54/km avg for 14 min essentially matches the recent 12-month 5K race pace (3:51/km, 19:17) at a higher relative HR — this was run at race intensity, not a controlled tempo.",
+        "cadence_trend": "87.3 rpm mid-set → 85.8 rpm on the final lap (~3 spm drop doubled); the final lap was also the slowest (4:01/km vs 3:53-3:56/km for the body of the set) — a fatigue tell, not a planned gear change.",
+        "moving_vs_elapsed": "negligible stoppage, under 5s combined across both files.",
+        "easy_purity_pct_whole_day": 18.3,
+        "decoupling": "not computed — the main effort is 14 minutes, under the 25-minute steady-effort threshold.",
+        "threshold_est_check": "not re-tested since the Jul 4 estimate (4:10-4:15/km); today's laps (3:53-4:01/km) ran well inside that estimate, suggesting it is stale-slow, but no clean threshold test exists to confirm a current number.",
+        "prescribed_vs_executed": "no prescription on file to compare against — the coaching log has no entry between 2026-07-25 and 2026-09-11 (the routine did not run/commit in that window); this read is from raw Intervals data alone."
+      },
+      "score": 41, "score_committed": 49, "bar_phase": "build",
+      "delta_p": "lowered — red-line intensity on what should have been a controlled tempo, compounding a hot ramp stretch",
+      "p_120": 0.0, "p_125": 0.01, "pred_half": "1:32:00",
+      "prob_note": "current-fitness readout, reanchored after a 7-week gap in daily tracking (no log entries 2026-07-25–2026-09-11). pred_half ~1:32 from recent long-run and threshold-adjacent data — roughly midway between the Jul 4 baseline (1:38, CTL 19) and the Nov 2025 TT benchmark (1:33:42 moving, CTL 25), despite CTL now ~34; the late-July stoppage and the hot ramp that followed likely cost some of the gain the volume alone would suggest. Treat this as a re-baseline, not a continuous day-to-day delta.",
+      "components": [
+        {"label": "Continuous 3.6 km @ ~3:54/km, 75% of moving time Z5+ (32% Z7), peak HR 98% of max — essentially race intensity, not a controlled tempo", "delta": -12, "cat": "lowerer"},
+        {"label": "Zero recovery between laps — one sustained maximal effort, not a paced interval set earning recovery credit", "delta": -5, "cat": "lowerer"},
+        {"label": "Cadence and pace both faded on the final lap — a fatigue signature at the end of a red-line effort", "delta": -3, "cat": "lowerer"},
+        {"label": "Green morning (HRV at baseline, RHR 43, good sleep) — the body could absorb hard work; this is not a red-day violation", "delta": 5, "cat": "raiser"},
+        {"label": "Follows a sustained +4 to +4.6/wk ramp through mid-to-late August (above the injury-risk line) — another red-line day compounds an already-hot stretch", "delta": -3, "cat": "context"},
+        {"label": "No prescription on file to judge against (coaching-log gap Jul 26–Sep 11) — this read is reconstructed from Intervals data alone", "delta": 0, "cat": "context"}
+      ],
+      "entry": "Saturday's track session was not a controlled tempo. The 3.6 km main set ran continuous at ~3:54/km with zero recovery between its nine laps, 75% of the moving time in Z5 or above (32% in Z7), and a peak HR of 186 — 98% of max. That is essentially the athlete's recent 5K race pace held for 14 minutes at a higher relative HR, with both cadence and pace fading on the final lap. Recovery that morning was green (HRV at baseline, RHR 43, good sleep), so the body could take a hard day — the concern is how hard, not whether. It also lands on top of a ramp rate that sat above +4/wk for most of mid-to-late August. No prescription is on file to compare against: the daily coaching log has no entries between Jul 25 and Sep 11, so the Labor Day window (Sep 5-7) and the ramp through it were not scored day-by-day — this read and the reanchored prediction below are reconstructed from Intervals data alone, not a continuous trend.",
+      "note_next": "Sun: long run, easy effort only, HR ceiling ~148. After a near-max effort Saturday, protect the aerobic slot — do not let the weekend become two red-line days back to back."
+    },
+    {
+      "date": "2026-09-13", "dow": "Sun", "status": "prescribed", "reviewed": false, "provisional": true,
+      "planned": "Long run, 75–85 min at genuinely easy effort, HR ceiling 148 (Z1-Z2). No pace target — let the ceiling set the pace; expect roughly 5:45-6:15/km on the flat, slower on hills. Whatever distance that produces (likely 13-15 km) is the run. Optional 3-4 x 20s strides only if HR has settled under 140 in the final 10 minutes and the legs feel clean.",
+      "plan_rationale": "Yesterday's track session was a near-maximal continuous effort (98% of max HR, 75% of moving time Z5+, no recovery between laps). Today's job is recovery-priority long volume, not more quality — stacking a hot long run on top of that effort repeats the exact boom-bust pattern this build exists to correct, and the week has already had its red-line day. HRV and sleep have not synced yet this morning (both null), so this is provisional: sleep and HRV can only downgrade the plan below, never upgrade it. Gates — if HRV comes in under 78 or sleep under 6h once the device syncs: cut to 45 min easy. If resting HR stays elevated (48 this morning vs. the recent 43-46 floor) or the legs/Achilles feel off: take the day fully off instead.",
+      "wellness": {"ctl": 33.5, "atl": 29.4, "form": 4.2, "rampRate": -3.9, "hrv": null, "restingHR": 48, "sleepSecs": null, "sleepScore": null, "sleepQuality": null, "vo2max": null, "weight": null},
+      "activity": null,
+      "score": null, "score_committed": null,
+      "p_120": null, "p_125": null, "pred_half": null,
+      "note_next": null
     }
   ]
 }
