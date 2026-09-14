@@ -4,7 +4,8 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-08-23",
+    "last_updated": "2026-09-14",
+    "gap_note": "Routine did not commit between 2026-07-25 and 2026-09-13 (51 days) — root cause: the Intervals.icu connector in use is a third-party proxy ('Easy Intervals'), not Intervals.icu's own integration, and its free plan caps at 15 API calls/day, far below the 20-50+ one full daily run needs. Training continued throughout (CTL 27.8->34+) unmonitored; the Sep 5-7 Labor Day 1:20 gate was never evaluated (see RUNNER_CONTEXT.md addendum). 2026-09-13 was scored and 2026-09-14 prescribed to resume the log; 2026-07-26-2026-09-12 itself was not backfilled (out of scope for one run).",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -479,6 +480,45 @@
       ],
       "entry": "Prescribed easy 50-60 min under HR 148; what happened was a 28-minute, three-file track session built around 8 continuous ~400m reps run back-to-back with no rest at all, 3:53-3:59/km — at or inside the critical-speed estimate (3:54/km) and within a few seconds of best-12-month 5K pace. HR climbed 135→180 with nothing to bring it back down between reps; 43% of the main set sat at Z5+, peak 180bpm (94.7% of max). The warm-up's closing pickup to 155bpm was clearly by design, but the cooldown was not: it accelerated from 5:12 to 5:01/km and finished at 155bpm, never touching Z1-Z2. This is the same conversion of an easy/recovery slot into a hard day that showed up Jul 23 — now repeated two days after a rest day that was taken specifically to break it. Recovery this morning was excellent (HRV 89, RHR 43, a block low) and the engine held its pace with flat cadence throughout, so nothing here signals a mechanical or fatigue problem — it signals a pattern: intensity is landing on the days that were supposed to be cheap, and the aerobic deficit this whole block exists to close isn't getting any of the minutes it needs.",
       "note_next": "Sun Jul 26: long run only if the legs are genuinely fresh — the last two easy/recovery slots (Jul 23, Jul 25) both turned hard. That pattern needs to stop before the weekend long run, or the week arrives at Sunday already spent with nothing banked."
+    },
+    {
+      "date": "2026-09-13", "dow": "Sun", "status": "scored", "reviewed": false,
+      "prediction": "1:32:45", "prediction_prev": "1:33:30",
+      "planned": null,
+      "plan_rationale": null,
+      "wellness": {"ctl": 34.3, "atl": 33.3, "form": 1.0, "rampRate": -3.2, "hrv": 99, "restingHR": 43, "sleepSecs": 28800, "sleepScore": 94, "sleepQuality": 1, "vo2max": 59.0, "weight": null},
+      "activity": {"name": "Redwood City Running", "km": 5.67, "mi": 3.53, "sec": 1550, "pace_per_km": "4:33", "hr": 155, "max_hr": 176, "intensity": 83.4, "load": 30, "cadence": 173, "stride_m": 1.27, "elev_gain_m": 9.9, "decoupling_pct": null, "hr_zone_sec": [204, 371, 620, 340, 15, 0, 0]},
+      "stream_read": {"_method": "No recording gaps (elapsed 1552s vs moving 1550s) and no meaningful standing rest; the auto-detected 'intervals' are ~1 km waypoints whose pace/HR step up monotonically rather than alternating, and the one RECOVERY tag is a 1-second lap-boundary artifact with no real stop behind it. None of the structure criteria (clustered rests, alternating pace) fire, so this scores as a continuous run, not workout reps.", "structure": "Continuous, unbroken 5.67 km build from easy to sub-threshold effort, no rest", "km_splits": [{"km": 1, "pace": "4:50", "hr": 137, "cad_spm": 171}, {"km": 2, "pace": "4:36", "hr": 152, "cad_spm": 173}, {"km": 3, "pace": "4:31", "hr": 156, "cad_spm": 173}, {"km": 4, "pace": "4:31", "hr": 158, "cad_spm": 172}, {"km": 5, "pace": "4:27", "hr": 163, "cad_spm": 172}, {"km": "final 674m", "pace_equiv": "4:23/km", "hr": 168, "cad_spm": 172}], "zone_pct": {"z1": 13.2, "z2": 23.9, "z3": 40.0, "z4": 21.9, "z5": 1.0, "z6": 0.0, "z7": 0.0}, "pct_z5_plus": 1.0, "z7_secs": 0, "peak_hr": 176, "pct_max_hr": 92.6, "moving_vs_elapsed": "1550s / 1552s moving — negligible stopped time", "easy_purity_pct": 37.1, "prescribed_vs_executed": "No prescription on record for this date — daily_log has no entries between Jul 25 and Sep 12 (the routine did not run; see meta.gap_note). Cannot state a planned pace or HR ceiling to compare against.", "cadence_trend": "Flat, ~172 spm across both halves — no mechanical fade despite the pace/HR build", "finish_vs_body": "Last quarter 264.6 s/km vs body (first three-quarters) 276.6 s/km — 12 s/km quicker, a continuation of the same gradual per-km build rather than a discrete gear change (below the ≥20 s/km bar)", "decoupling_note": "Not a steady effort — pace and HR rose together by design or drift throughout, so decoupling doesn't isolate an aerobic-durability signal here; not computed", "note": "Sunday is the long-run slot in the weekly template, but 25:50 is far short of a long run. Whether the week's long run happened elsewhere, was skipped, or this was meant as a short shakeout is unknown — no note_next survives the logging gap to check against."},
+      "score": 58, "score_committed": 62, "bar_phase": "build",
+      "delta_p": "roughly neutral — floored by green recovery and a short run, but the pattern behind it is not neutral",
+      "p_120": 0.0, "p_125": 0.01, "pred_half": "1:32:45",
+      "prob_note": "current-fitness readout: ~0% vs 1:20, ~1% vs 1:25 — pred_half nudged from 1:33:30 (last recorded, Jul 25) to ~1:32:45. Soft update: CTL rose 27.8→34.3 over the gap, but the critical-speed estimate is essentially flat (4.273 m/s Jul vs 4.262 m/s now, ~3:54/km both times, confirmed again by Sep 12's 3.6 km rep at 3:54/km) and the gap's volume ran intensity-heavy rather than easy — the model credits little of that toward the endurance-specific number absent a clean recent test.",
+      "components": [
+        {"label": "Green recovery (HRV 99 vs ~87 baseline, RHR 43 — a block low, sleep excellent) absorbed the effort without red-day risk", "delta": 4, "cat": "raiser"},
+        {"label": "Short run (25:50) — low absolute fatigue and opportunity cost despite the pace creep", "delta": 2, "cat": "context"},
+        {"label": "Continuous build from Z1 (HR137, 4:50/km) to Z4 (HR163-176, 4:23-4:27/km) — only 37% of the run was easy-purity (Z1-2) on what, by the weekly template, should have been a cheap day", "delta": -6, "cat": "lowerer"},
+        {"label": "Multi-week context: essentially every run Aug 25-Sep 13 sat ≥80% intensity, including Aug 30's nominal 'long run' at 21.1 km / 90.7% intensity — the exact density pattern the model penalizes, running unmonitored through the routine's 7-week outage", "delta": -8, "cat": "lowerer"},
+        {"label": "No prescription on record to compare against — logging gap, not an execution question", "delta": 0, "cat": "context"},
+        {"label": "Green-recovery floor applied: a short run on a fresh, well-recovered body is 'didn't help as much as easy would have,' not 'hurt the race' — net held at the floor rather than the raw sum below it", "delta": 8, "cat": "context"}
+      ],
+      "entry": "5.67 km in 25:50, continuous, no stops. Km splits build the whole way: 4:50/km at HR137 (Z1) opening, stepping to 4:36, 4:31, 4:31, 4:27, and a 4:23/km-equivalent final 674 m at HR163-176 (Z4, 92.6% max). Cadence held flat (~172 spm) throughout — no mechanical fade, this was a paced build, not a struggle. Only 37% of the run sat in Z1-2. There is no prescription on record to judge this against: daily_log has no entries between Jul 25 and Sep 12, so whether Sunday's long run happened on a different day, was skipped, or this was meant as a short progression shakeout is unknown. Recovery this morning was excellent (HRV 99, RHR 43, sleep score 94), which caps the downside of a short run run hot — but the multi-week picture behind it is the real finding: activity from Aug 25 through Sep 13 shows almost no genuine easy running, including a 21.1 km 'long run' on Aug 30 at 90.7% intensity. That is the athlete's signature failure mode, and it has been running unchecked since the routine stopped committing after Jul 25.",
+      "note_next": "Today (Sep 14): genuinely easy, HR-capped — see today's entry. Beyond that: the multi-week intensity-density pattern (Aug 25-Sep 13) needs a deliberate look in the next review, not just a day-by-day fix — it matches every past boom-bust precedent in the record."
+    },
+    {
+      "date": "2026-09-14", "dow": "Mon", "status": "prescribed", "reviewed": false,
+      "prediction": null, "prediction_prev": "1:32:45",
+      "planned": "40 min easy, HR ceiling 145 — let pace fall out of the ceiling (expect roughly 5:15-5:45/km); no watch-pace chasing. If holding 145 means walking a hill, walk it.",
+      "plan_rationale": "Recovery is green (HRV 92 vs ~87 baseline, RHR 45, sleep score 91, form +4.5) and would normally support more. But density has been badly over-quota for weeks: activities from Aug 25 through yesterday sat ≥80% intensity almost without exception, including Aug 30's 21.1 km 'long run' at 90.7% intensity — the exact chronic over-intensity / boom-bust pattern documented as this athlete's recurring failure mode, running unmonitored through the seven-week gap in this log. Today isn't a quality slot in the weekly template regardless, and density is nowhere near in budget for one even if it were. The job today is the plain, repeatable thing: bank real aerobic minutes under a hard ceiling.",
+      "wellness": {"ctl": 33.4, "atl": 28.9, "form": 4.5, "rampRate": -3.1, "hrv": 92, "restingHR": 45, "sleepSecs": 27780, "sleepScore": 91, "sleepQuality": 1, "vo2max": null, "weight": null},
+      "activity": null,
+      "stream_read": null,
+      "score": null, "score_committed": null, "bar_phase": null,
+      "delta_p": null,
+      "p_120": null, "p_125": null, "pred_half": null,
+      "prob_note": null,
+      "components": [],
+      "entry": null,
+      "note_next": null
     }
   ]
 }
