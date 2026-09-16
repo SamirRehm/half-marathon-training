@@ -4,11 +4,12 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-08-23",
+    "last_updated": "2026-09-16",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
-    "model_version": "v8: two-invocation; full-resolution streams + Intervals interval structure; raced-today probability; Pacific tz"
+    "model_version": "v8: two-invocation; full-resolution streams + Intervals interval structure; raced-today probability; Pacific tz",
+    "known_gaps": "2026-07-26 through 2026-09-14 (51 days) are unscored: the routine went dark after the Intervals.icu connector hit its free-plan API-call quota mid-backfill (found 2026-08-23, see git history). Real training continued per Intervals (CTL 27.8->peak 37.4 on Sep 6, incl. a 21.1km run Aug 30) but has had no deep stream read, so it isn't scored, and the Labor Day 1:20-checkpoint (Sep 5-7) was never formally evaluated. Needs a resolved API quota + dedicated backfill session, not an incremental daily catch-up. Remove this note once closed."
   },
   "days": [
     {
@@ -479,6 +480,42 @@
       ],
       "entry": "Prescribed easy 50-60 min under HR 148; what happened was a 28-minute, three-file track session built around 8 continuous ~400m reps run back-to-back with no rest at all, 3:53-3:59/km — at or inside the critical-speed estimate (3:54/km) and within a few seconds of best-12-month 5K pace. HR climbed 135→180 with nothing to bring it back down between reps; 43% of the main set sat at Z5+, peak 180bpm (94.7% of max). The warm-up's closing pickup to 155bpm was clearly by design, but the cooldown was not: it accelerated from 5:12 to 5:01/km and finished at 155bpm, never touching Z1-Z2. This is the same conversion of an easy/recovery slot into a hard day that showed up Jul 23 — now repeated two days after a rest day that was taken specifically to break it. Recovery this morning was excellent (HRV 89, RHR 43, a block low) and the engine held its pace with flat cadence throughout, so nothing here signals a mechanical or fatigue problem — it signals a pattern: intensity is landing on the days that were supposed to be cheap, and the aerobic deficit this whole block exists to close isn't getting any of the minutes it needs.",
       "note_next": "Sun Jul 26: long run only if the legs are genuinely fresh — the last two easy/recovery slots (Jul 23, Jul 25) both turned hard. That pattern needs to stop before the weekend long run, or the week arrives at Sunday already spent with nothing banked."
+    },
+    {
+      "date": "2026-09-15", "dow": "Tue", "status": "scored", "reviewed": false,
+      "prediction": "1:29:00", "prediction_prev": "1:33:30",
+      "planned": "Not on record — no prescription exists for this day.",
+      "plan_rationale": "This is the first day scored after a 51-day gap in the log (2026-07-26 through 2026-09-14); yesterday's plan, if any, was never written down. See entry for what the gap is and why it exists.",
+      "wellness": {"ctl": 33.4, "atl": 28.9, "form": 4.5, "rampRate": -3.1, "hrv": 92, "restingHR": 45, "sleepSecs": 27780, "sleepScore": 91, "sleepQuality": 1, "vo2max": null, "weight": null},
+      "activity": null,
+      "stream_read": {"_method": "no activity recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-09-15 Pacific; nearest either side are 2026-09-13T09:30 (Redwood City Running) and none yet today. The day's wellness row carries atlLoad 0.0, corroborating zero training load.", "rest_day": true},
+      "score": 66, "score_committed": 70, "bar_phase": "build",
+      "delta_p": "slightly positive — a real fatigue dip got repaired; the bigger story is two undocumented months, not this one day",
+      "p_120": 0.0, "p_125": 0.08, "pred_half": "1:29:00",
+      "prob_note": "Recalibrated from Intervals' aggregate CTL/pace signals over the gap (CTL 27.8 on Jul 25 to a peak 37.4 on Sep 6; a 21.1 km run Aug 30; track/interval work Sep 5 and Sep 12), NOT from the day-by-day stream-verified method this log otherwise uses. Provisional — treat as directional, not exact, until 2026-07-26–2026-09-14 gets a proper backfill. P(1:25) ~8%, P(1:20) ~0%.",
+      "components": [
+        {"label": "Correctly-taken rest after an unusually heavy Sep 1–13 stretch, capped by two runs on Sep 6 (~19 km combined)", "delta": 7, "cat": "raiser"},
+        {"label": "Form repaired to +4.5 (CTL 33.4/ATL 28.9) from an estimated deep dip around Sep 6 — the rest did its job", "delta": 5, "cat": "raiser"},
+        {"label": "Green recovery: HRV 92 near baseline, sleep excellent (quality 1, score 91), RHR 45", "delta": 2, "cat": "raiser"},
+        {"label": "Second straight zero-training day, and the second Tuesday running-club night skipped in a row with no reason on record", "delta": -4, "cat": "lowerer"},
+        {"label": "rampRate negative three days running (-3.1) — fine short-term, only a real concern if it persists", "delta": -2, "cat": "context"},
+        {"label": "Scored from aggregate wellness/load only, not a verified stream read — the surrounding two months are still open", "delta": -1, "cat": "context"}
+      ],
+      "entry": "This is the first scored day after a 51-day hole in the log. The last entry before it closed 2026-07-24 (scored 2026-07-25); the routine went dark from 2026-07-26 through 2026-09-14 after the Intervals.icu connector hit its free-plan API-call cap mid-backfill (found and partly documented 2026-08-23). Training did not stop in the meantime — Intervals' own numbers show CTL climbing from 27.8 on Jul 25 to a peak of 37.4 on Sep 6, including a 21.1 km run on Aug 30 (the longest of this build) and track/interval sessions on Sep 5 and Sep 12 — but none of it has had the deep stream read this log requires, so none of it is scored, and the Labor Day 1:20-checkpoint window (Sep 5-7) passed with no formal gate evaluation on record. That backlog is still open; closing it needs a resolved API quota and a dedicated backfill pass, not a rushed pass inside one morning's run, so it was left alone today rather than done badly. Today itself: a rest day, the second straight after Sep 13's run, following a heavy Sep 1-13 stretch that peaked with two runs on Sep 6 (~19 km combined) and — by the aggregate CTL/ATL numbers — pushed form into the low -20s that day. Recovery has repaired well since: form is back to +4.5, HRV 92 sits near baseline, sleep was excellent (7h43m, quality 1, score 91). The rest did what it needed to. One open thread: Tuesday is the protected club night, and it has now gone unused two weeks running with no reason on record — worth asking about on review, not assuming.",
+      "note_next": "Wed Sep 16: this morning's numbers overrode anything the calendar would otherwise call for — see today's entry."
+    },
+    {
+      "date": "2026-09-16", "dow": "Wed", "status": "prescribed", "reviewed": false, "provisional": false,
+      "prediction": null, "prediction_prev": null,
+      "planned": "OFF — full rest day. Only if you check in again this afternoon and feel genuinely normal (no sore throat, chills, heavy legs), an optional easy jog is fine: ≤25 min, HR ceiling 145. Otherwise skip it entirely.",
+      "plan_rationale": "Both of your own downgrade gates fired at once: HRV 66 against a recent baseline in the 85-95 range (a drop of well over 25%), and sleep of 5h33m at quality 4 (poor — the scale's worst) with a sleep score of 49. Resting HR is also up to 48 against a recent floor of 41-46. That combination, arriving right after two already-easy/rest days (Mon, Tue), reads as more than routine training fatigue — it is the 'red morning, take the day' case your own convention describes. Sleep and HRV only ever downgrade a session, never upgrade one, and today both say downgrade all the way.",
+      "wellness": {"ctl": 31.9, "atl": 21.7, "form": 10.2, "rampRate": -4.2, "hrv": 66, "restingHR": 48, "sleepSecs": 19980, "sleepScore": 49, "sleepQuality": 4, "vo2max": null, "weight": null},
+      "activity": null, "stream_read": null,
+      "score": null, "score_committed": null, "bar_phase": null, "delta_p": null,
+      "p_120": null, "p_125": null, "pred_half": null, "prob_note": null,
+      "components": null,
+      "entry": null,
+      "note_next": "Reassess tomorrow morning on its own numbers. If HRV is back above ~80 and sleep is normal, resume the Wed/Thu easy-volume pattern the ramp needs. If the crash repeats or symptoms show up, treat it as illness and keep taking rest days until it clears — do not run through it."
     }
   ]
 }
