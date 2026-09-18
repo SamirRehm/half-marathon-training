@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-09-16",
+    "last_updated": "2026-09-18",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -505,17 +505,62 @@
       "note_next": "Wed Sep 16: this morning's numbers overrode anything the calendar would otherwise call for — see today's entry."
     },
     {
-      "date": "2026-09-16", "dow": "Wed", "status": "prescribed", "reviewed": false, "provisional": false,
-      "prediction": null, "prediction_prev": null,
+      "date": "2026-09-16", "dow": "Wed", "status": "scored", "reviewed": false, "provisional": false,
+      "prediction": "1:29:00", "prediction_prev": "1:29:00",
       "planned": "OFF — full rest day. Only if you check in again this afternoon and feel genuinely normal (no sore throat, chills, heavy legs), an optional easy jog is fine: ≤25 min, HR ceiling 145. Otherwise skip it entirely.",
       "plan_rationale": "Both of your own downgrade gates fired at once: HRV 66 against a recent baseline in the 85-95 range (a drop of well over 25%), and sleep of 5h33m at quality 4 (poor — the scale's worst) with a sleep score of 49. Resting HR is also up to 48 against a recent floor of 41-46. That combination, arriving right after two already-easy/rest days (Mon, Tue), reads as more than routine training fatigue — it is the 'red morning, take the day' case your own convention describes. Sleep and HRV only ever downgrade a session, never upgrade one, and today both say downgrade all the way.",
       "wellness": {"ctl": 31.9, "atl": 21.7, "form": 10.2, "rampRate": -4.2, "hrv": 66, "restingHR": 48, "sleepSecs": 19980, "sleepScore": 49, "sleepQuality": 4, "vo2max": null, "weight": null},
+      "activity": null,
+      "stream_read": {"_method": "no activity recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-09-16 Pacific; nearest either side are 2026-09-13T09:30 (Redwood City Running) and none yet as of this pull. The day's wellness row carries atlLoad 0.0, corroborating zero training load.", "rest_day": true},
+      "score": 60, "score_committed": 64, "bar_phase": "build",
+      "delta_p": "held, mildly negative — correct rest on a clear illness signal, but the block now has three straight zero days",
+      "p_120": 0.0, "p_125": 0.08, "pred_half": "1:29:00",
+      "prob_note": "Current-fitness readout, unchanged on a third straight zero-load day. Still provisional pending the open 2026-07-26–09-14 backfill; P(1:25) ~8%, P(1:20) ~0%.",
+      "components": [
+        {"label": "Full rest taken on a clear red-morning read (HRV 66, sleep 5h33m/quality 4/score 49, RHR 48) instead of negotiating the optional jog", "delta": 8, "cat": "raiser"},
+        {"label": "Restraint on a likely illness onset — no push-through to compound it", "delta": 3, "cat": "raiser"},
+        {"label": "Third straight zero-training day (Sep 14–16); the week is effectively empty so far", "delta": -6, "cat": "lowerer"},
+        {"label": "CTL easing 33.4 → 31.9 purely from detraining, not yet a build concern but worth watching", "delta": -3, "cat": "context"},
+        {"label": "Cause reads as illness, not a training choice — scored as an involuntary lost day, not a broken streak", "delta": -2, "cat": "context"}
+      ],
+      "entry": "Both downgrade gates fired and the day was taken as prescribed: no activity logged, full rest. HRV 66 against an 85–95 baseline, sleep 5h33m at quality 4 (poor) with a score of 49, and resting HR up to 48 — arriving after two already-easy days, that combination reads as more than routine fatigue, and the athlete's own convention calls it correctly: red morning, take the day. There is no push-through to penalize, so this scores as an involuntary lost day rather than a broken streak — but it is now the third straight zero-training day (Sep 14 through today), and CTL has started easing (33.4 → 31.9) purely from the absence of work. Worth tracking as a pattern, not just today's number, if it continues.",
+      "note_next": "Thu Sep 17: reassess on that morning's own numbers against the same gates. Recovered (HRV back near baseline, sleep normal) → resume the Wed/Thu easy pattern. Crash repeats → treat it as illness and keep resting, not a scheduled return."
+    },
+    {
+      "date": "2026-09-17", "dow": "Thu", "status": "scored", "reviewed": false,
+      "prediction": "1:29:00", "prediction_prev": "1:29:00",
+      "planned": "Continue rest per yesterday's gate — reassess and resume only if HRV is back near baseline and sleep reads normal; otherwise keep resting.",
+      "plan_rationale": "Yesterday's note_next set an explicit test: HRV back near the 85–95 baseline with normal sleep resumes the Wed/Thu easy pattern; a repeated crash means treat it as illness and keep resting. HRV fell again — 66 to 59 — instead of recovering, even though sleep partially improved (6h58m, quality 3, score 74) and resting HR held flat at 48. That is the crash repeating, not resolving, so the athlete's own convention calls for another full rest day.",
+      "wellness": {"ctl": 31.1, "atl": 18.8, "form": 12.3, "rampRate": -4.1, "hrv": 59, "restingHR": 48, "sleepSecs": 25080, "sleepScore": 74, "sleepQuality": 3, "vo2max": null, "weight": null},
+      "activity": null,
+      "stream_read": {"_method": "no activity recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-09-17 Pacific; nearest either side are 2026-09-13T09:30 (Redwood City Running) and none yet as of this pull. The day's wellness row carries atlLoad 0.0, corroborating zero training load.", "rest_day": true},
+      "score": 57, "score_committed": 61, "bar_phase": "build",
+      "delta_p": "held, mildly negative — the HRV crash repeated rather than resolved; correct rest continues, but this is now four straight zero-training days",
+      "p_120": 0.0, "p_125": 0.08, "pred_half": "1:29:00",
+      "prob_note": "Current-fitness readout, unchanged on a fourth straight zero-load day. Still provisional pending the open 2026-07-26–09-14 backfill; P(1:25) ~8%, P(1:20) ~0%.",
+      "components": [
+        {"label": "Second straight correct rest day on a repeated HRV crash (66→59) — no push-through, matches the athlete's own illness protocol", "delta": 7, "cat": "raiser"},
+        {"label": "Form now +12.3 (CTL 31.1/ATL 18.8), the cleanest fatigue reading of the stretch — training-load fatigue is well clear", "delta": 3, "cat": "raiser"},
+        {"label": "Sleep partially recovered (6h58m, quality 3, score 74) versus Wednesday's crisis night — a small positive, not yet green", "delta": 1, "cat": "context"},
+        {"label": "HRV crash repeated instead of resolving — 59 is further from the 85–95 baseline than yesterday's 66, RHR flat at 48", "delta": -6, "cat": "lowerer"},
+        {"label": "Fourth straight zero-training day (Sep 14–17) and a second Tuesday club night now gone with no reason on record", "delta": -6, "cat": "lowerer"},
+        {"label": "This is now a multi-day pattern, not a single bad night — the ongoing risk to the block is the real signal, flagged for tomorrow", "delta": -2, "cat": "context"}
+      ],
+      "entry": "HRV fell again — 66 to 59 — instead of recovering toward the 85–95 baseline, so yesterday's conditional test resolved in favor of illness, not routine fatigue: the crash repeated, which the athlete's own convention treats as sick, not tired. No activity was logged; the correct call was made again. Sleep moved the right direction (6h58m at quality 3, score 74, up from Tuesday night's 5h33m/quality 4/score 49) but resting HR held at 48, still off the 41–46 floor. Training-load fatigue is not the story — form is +12.3, the cleanest reading of the stretch — the story is four straight zero days (Sep 14 through today) with a recovery signal getting worse, not better, on the HRV axis specifically. That is a block risk worth tracking on its own, not just today's score: if it hasn't turned by the weekend, this stops being a rest day and becomes the kind of missed week the prediction model treats as a real regression.",
+      "note_next": "Fri Sep 18: same test again — resume only on a genuinely green morning (HRV back near baseline, sleep and RHR normal) and feeling physically well. Another red reading makes this a multi-day illness; the plan is rest until it clears, not a scheduled return."
+    },
+    {
+      "date": "2026-09-18", "dow": "Fri", "status": "prescribed", "reviewed": false, "provisional": true,
+      "prediction": null, "prediction_prev": null,
+      "planned": "OFF — full rest day, pending this morning's HRV/sleep syncing. If HRV comes back at or above ~80 with normal sleep AND you feel genuinely well (no fever, sore throat, chills, heavy legs), an easy jog is fine: ≤25 min, HR ceiling 145. Any red reading, or feeling under the weather, means rest — this is day 3 of the pattern.",
+      "plan_rationale": "HRV and sleep haven't synced yet this morning, but the one number that has — resting HR — is 49, the worst reading of this five-day stretch (45→46→48→48→49), arriving on the third straight day the HRV/sleep/RHR combination has read as more than training fatigue. Sep 16's HRV crashed to 66 (sleep 5h33m, quality 4, score 49); Sep 17 it fell further to 59 rather than recovering. Per the athlete's own convention, a repeated crash is treated as illness, not routine fatigue, and the rule is rest until it clears, not a scheduled return on a fixed day. Sleep and HRV can only downgrade a session, never upgrade one, so today defaults to rest and only moves off it if the full picture, plus how the athlete actually feels, comes back clean.",
+      "wellness": {"ctl": 30.4, "atl": 16.3, "form": 14.1, "rampRate": -4.0, "hrv": null, "restingHR": 49, "sleepSecs": null, "sleepScore": null, "sleepQuality": null, "vo2max": null, "weight": null},
       "activity": null, "stream_read": null,
       "score": null, "score_committed": null, "bar_phase": null, "delta_p": null,
       "p_120": null, "p_125": null, "pred_half": null, "prob_note": null,
       "components": null,
       "entry": null,
-      "note_next": "Reassess tomorrow morning on its own numbers. If HRV is back above ~80 and sleep is normal, resume the Wed/Thu easy-volume pattern the ramp needs. If the crash repeats or symptoms show up, treat it as illness and keep taking rest days until it clears — do not run through it."
+      "note_next": "Reassess this afternoon if HRV and sleep sync in, and again tomorrow morning. Three straight days of this pattern is a block risk to track, not a rest blip — don't resume the Wed/Thu easy-volume pattern until a morning reads clean."
     }
   ]
 }
