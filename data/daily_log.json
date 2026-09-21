@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-09-19",
+    "last_updated": "2026-09-21",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -572,17 +572,84 @@
       "note_next": "Reassess Saturday morning. Steps are the deciding signal now, more than HRV: if the day looks normal (movement back near baseline, no symptoms), an easy short jog is reasonable; if not, take the rest day and do not negotiate it down to 'just 20 minutes.'"
     },
     {
-      "date": "2026-09-19", "dow": "Sat", "status": "prescribed", "reviewed": false, "provisional": false,
-      "prediction": null, "prediction_prev": null,
+      "date": "2026-09-19", "dow": "Sat", "status": "scored", "reviewed": false, "provisional": false,
+      "prediction": "1:29:30", "prediction_prev": "1:29:30",
       "planned": "OFF — full rest. This is now six consecutive days without training.",
       "plan_rationale": "Resting heart rate is 50 this morning, the high end of the past week's climb (45→46→48→48→45→50) and above the established 46–48 floor. Steps are 13 as of this check, following 1,859 yesterday — two days running of near-zero daily movement, well below the ~6,000–7,500 typical for this athlete. HRV and sleep haven't synced yet this morning, but neither is needed to make this call: the five-day pattern already on record (HRV swinging 92→81→66→59→110, RHR climbing, daily activity collapsing) reads as an ongoing illness rather than training fatigue, and the response is unchanged from the last four days — full rest, no negotiated 'short jog.' If today passes with steps and energy back to normal and no symptoms, treat tomorrow as the first day back and restart at low volume, not from where the plan left off on Sep 13.",
-      "wellness": {"ctl": 29.7, "atl": 14.2, "form": 15.5, "rampRate": -4.7, "hrv": null, "restingHR": 50, "sleepSecs": null, "sleepScore": null, "sleepQuality": null, "vo2max": null, "weight": null},
+      "wellness": {"ctl": 29.7, "atl": 14.2, "form": 15.5, "rampRate": -4.7, "hrv": 88, "restingHR": 46, "sleepSecs": 33420, "sleepScore": 93, "sleepQuality": 1, "vo2max": null, "weight": null},
+      "activity": null,
+      "stream_read": {"_method": "no activity recorded — nothing to segment", "activities": 0, "verified": "Intervals returned no activity dated 2026-09-19 Pacific; nearest activities either side are 2026-09-13 (last run before the layoff) and 2026-09-20T19:23 (San Mateo Running, the return). The day's wellness row carries atlLoad 0.0, corroborating zero training load.", "rest_day": true},
+      "score": 62, "score_committed": 67, "bar_phase": "build",
+      "delta_p": "slightly positive — recovery fully normalized overnight, confirming the six-day layoff was illness and it has now cleared",
+      "p_120": 0.0, "p_125": 0.05, "pred_half": "1:29:30",
+      "prob_note": "Unchanged from Sep 18 — a rest day carries no new fitness evidence either way. P(1:25) ~5%, P(1:20) ~0%.",
+      "components": [
+        {"label": "HRV (88), RHR (46), sleep (9h17m, quality 1, score 93) and steps (8,306) all normalized overnight — the clearest confirmation yet the interruption was illness, and it has resolved", "delta": 8, "cat": "raiser"},
+        {"label": "Full rest correctly continued a sixth straight day, on a body that had not shown a clean recovery signal until today", "delta": 3, "cat": "raiser"},
+        {"label": "Form holding comfortably positive (+15.5) — no fatigue-hole risk from the layoff itself", "delta": 2, "cat": "raiser"},
+        {"label": "Sixth straight zero-training day; two Tuesday club nights and a full week's easy-volume ramp are now lost", "delta": -6, "cat": "lowerer"},
+        {"label": "CTL down to 29.7 from the Sep 6 peak of 37.4 — a real, if modest, fitness cost from the interruption", "delta": -5, "cat": "lowerer"}
+      ],
+      "entry": "Sixth straight zero-training day, and the last of the interruption. HRV 88 (essentially back to the ~87 baseline), resting HR 46 (at the floor), sleep 9h17m at quality 1/score 93, and steps back to 8,306 after two near-zero days (1,859, then 13) — every wellness axis normalized overnight. This confirms the illness read that has held since Sep 16 rather than training fatigue, and confirms it has now cleared. Full rest held again, correctly: nothing here called for a run. Form remains comfortably positive (+15.5); CTL has drifted from the Sep 6 peak of 37.4 to 29.7 over the interruption — a real but modest fitness cost. The open question was never whether recovery would happen; it's how the return gets handled starting tomorrow.",
+      "note_next": "Reassess Sunday morning, but the plan for the return itself is already set: an easy 20–30 min at HR ceiling ~145 first, not a resumption of Tuesday club or the long run, whatever the numbers say. If any respiratory or fever-type symptoms reappear, keep resting regardless of what HRV/RHR show."
+    },
+    {
+      "date": "2026-09-20", "dow": "Sun", "status": "scored", "reviewed": false, "provisional": false,
+      "prediction": "1:29:30", "prediction_prev": "1:29:30",
+      "planned": "Not on record — no prescription had been written specifically for this day beyond Sep 19's note_next (easy 20–30 min, HR ceiling ~145, on return).",
+      "plan_rationale": null,
+      "wellness": {"ctl": 30.2, "atl": 19.2, "form": 11.0, "rampRate": -4.0, "hrv": 94, "restingHR": 47, "sleepSecs": 26040, "sleepScore": 80, "sleepQuality": 2, "vo2max": 59.0, "weight": null},
+      "activity": {"name": "San Mateo Running", "km": 8.16, "mi": 5.07, "sec": 2198, "pace_per_km": "4:29", "hr": 162, "max_hr": 183, "intensity": 91.5, "load": 52, "cadence": 171, "stride_m": 1.30, "elev_gain_m": 33, "decoupling_pct": null, "hr_zone_sec": [281, 76, 473, 842, 273, 212, 42]},
+      "stream_read": {
+        "_method": "Continuous run — one incidental 25 s pause near the start (t=182–207, likely a crossing) and a single 9 s blip; no clustered standing-recovery structure and no jogged work/recovery alternation, so read via moving-time km splits rather than as a rep session.",
+        "segmentation": "Recording gaps checked first per protocol: only one gap >20 s (25 s at ~3:00 in) and one 9 s gap — isolated, not clustered or consistent in length, so not deliberate recoveries. Treated as one continuous effort.",
+        "structure_verdict": "No deliberate rep structure. Intervals' own auto-laps (icu_intervals, ~1 km each) show a monotonic build — pace and HR step up almost every kilometre without ever alternating back down — the signature of a progression run, not intervals.",
+        "km_splits": [
+          {"km": 1, "pace": "5:20", "hr": 133, "max_hr": 149},
+          {"km": 2, "pace": "4:40", "hr": 156, "max_hr": 159},
+          {"km": 3, "pace": "4:33", "hr": 161, "max_hr": 164},
+          {"km": 4, "pace": "4:31", "hr": 164, "max_hr": 169},
+          {"km": 5, "pace": "4:28", "hr": 167, "max_hr": 171},
+          {"km": 6, "pace": "4:27", "hr": 170, "max_hr": 178},
+          {"km": 7, "pace": "4:26", "hr": 172, "max_hr": 174},
+          {"km": 8, "pace": "4:16", "hr": 178, "max_hr": 183}
+        ],
+        "zone_pct": {"z1": 14.3, "z2": 3.4, "z3": 21.1, "z4": 37.6, "z5": 12.2, "z6": 9.5, "z7": 1.9, "pct_z5_plus": 23.6, "z7_secs": 42},
+        "peak_hr_pct_max": 96.3,
+        "moving_vs_elapsed": "2198 s moving vs 2237 s elapsed — 39 s of stops across two brief pauses, well below the 5-min reporting threshold; not a material factor.",
+        "prescribed_vs_executed": "Sep 19's note_next called for 'an easy 20–30 min at HR ceiling ~145' on return. Executed: 36:38 continuous, with the HR ceiling gone almost immediately — only 16.5% of the run sat at or under 153 bpm (Z1–Z2), average HR 162, climbing without a plateau to a 96%-max finish. Duration (37 min) landed close to the prescribed range; effort did not.",
+        "cadence_trend": "Stable at ~170 spm (85 rpm per leg) start to finish — no mechanical fatigue tell despite the escalating pace and HR.",
+        "finish_vs_body": "Last quarter (final ~9 min) averaged 4:19/km at 175 bpm vs 4:40/km at 158 bpm for the first three-quarters — a 21 s/km gear change — capped by a 37 s surge at 182 bpm (96% of max) in the final minute. This was not a kick at the end of an easy run; the session had already climbed into threshold territory well before the finish.",
+        "easy_purity_pct": 16.5,
+        "decoupling": "Not computed — pace and HR both climbed continuously throughout, so this was a progression rather than a steady effort, and decoupling doesn't apply.",
+        "verdict": "First run back after a 7-day, illness-driven layoff, delivered as an unplanned, unbroken progression from an easy opening (133 bpm) to a near-max finish (183 bpm, 96% of max) — not the prescribed easy 20–30 min at HR≤145. Load 52 in 36 minutes is a real unaccustomed-load spike onto a body untrained for the prior week."
+      },
+      "score": 30, "score_committed": 36, "bar_phase": "build",
+      "delta_p": "negative — the return broke the prescribed easy re-entry with an unplanned progression to a near-max finish",
+      "p_120": 0.0, "p_125": 0.05, "pred_half": "1:29:30",
+      "prob_note": "Unchanged from Sep 18 — this wasn't a clean fitness test (a continuous progression, not a steady effort or a TT), so it isn't used as a pred_half data point in either direction. The pace-at-HR reached by km 8 (4:16/km at 177 bpm) doesn't suggest fitness collapsed over the layoff, but it isn't evidence of a gain either. P(1:25) ~5%, P(1:20) ~0%.",
+      "components": [
+        {"label": "First run back after 7 days off delivered as an unbroken progression to 96% max HR, not the prescribed easy 20–30 min at HR≤145 — the documented over-intensity pattern reasserting itself on day one back", "delta": -24, "cat": "lowerer"},
+        {"label": "Unaccustomed load spike (52 TSS in 36 min) onto a body with zero training the prior week — the exact pattern behind every prior boom-bust collapse", "delta": -13, "cat": "lowerer"},
+        {"label": "Cadence held rock-steady (~170 spm) even as pace and HR climbed — no mechanical breakdown, so the session cost less than a ragged effort would have", "delta": 4, "cat": "raiser"},
+        {"label": "Continuity itself was protected — the layoff ended today rather than extending further", "delta": 3, "cat": "raiser"},
+        {"label": "Recovery going in was genuinely green (HRV 94, RHR 47, steps normalized) — the body could likely absorb this load; the failure was the choice, not the state", "delta": 0, "cat": "context"}
+      ],
+      "entry": "First run back after a seven-day illness layoff, and it broke the return protocol from the first kilometre. Sep 19's plan called for 20–30 min easy at HR≤145; instead: 36:38 continuous, HR climbing without a plateau from 133 to a 96%-max finish (183 bpm), only 16.5% of the run at or under 153 bpm, pace tightening from 5:20/km to 4:16/km by the last kilometre plus a 37 s surge at 182 bpm. Load 52 in 36 minutes is a real unaccustomed-load spike onto a body that had done nothing for a week — this is the documented over-intensity pattern, not a one-off. Cadence stayed rock-steady (~170 spm) throughout, so the mechanics held and nothing here reads as an acute injury signal, but the discipline failure is the point: the return was supposed to be deliberate, and it wasn't. Recovery was genuinely green going in (HRV 94, RHR 47, steps normalized), which is the only reason this isn't scored lower. Note also: the device's VO2max estimate jumped to 59 on this day's wellness row — a known artifact of a hard near-max effort, not a fitness gain; it is not read as progress here. (doc: §5 updated — interruption resolution + restart-discipline note.)",
+      "note_next": "Today (Mon Sep 21) has to be genuine recovery, not a second load day stacked on an unaccustomed spike: 20–25 min truly easy, HR ceiling 145 — the same ceiling that failed yesterday, held this time. No strides, no 'just a bit faster.' Tuesday's club is conditional on today feeling clean (no Achilles or calf awareness, no residual heaviness) — reassess Tuesday morning, not before."
+    },
+    {
+      "date": "2026-09-21", "dow": "Mon", "status": "prescribed", "reviewed": false, "provisional": false,
+      "prediction": null, "prediction_prev": null,
+      "planned": "Easy 20–25 min, genuinely easy — HR ceiling 145 (the same ceiling yesterday didn't hold). By feel that's roughly 5:45–6:00/km, but the ceiling governs, not the watch face. Walk breaks are fine, and preferred over pushing HR up a hill to hold pace. If any Achilles or calf awareness shows up, stop and walk it in — the day after a load-52 unaccustomed effort is exactly when that would surface. No strides, no pickups, no 'just a bit faster.'",
+      "plan_rationale": "Yesterday's return from the 7-day illness layoff was a continuous progression to a 96%-max finish (183 bpm) — not the easy 20–30 min at HR≤145 that had been prescribed — and a real unaccustomed-load spike (52 TSS) onto a week of zero training. This morning's numbers are green in isolation (HRV 99, at the top of the 77–99 baseline range; RHR 47, near the 46–48 floor; sleep 7h36m at quality 1, score 91) and would ordinarily support a quality slot, but readiness data doesn't capture connective-tissue load, and stacking a second hard day on an unaccustomed spike is the exact sequencing that has preceded prior breakdowns. The call here is about sequencing, not today's fatigue: absorb yesterday's load with a genuinely easy day before anything is decided about Tuesday's club. CTL 29.5, ATL 16.6, form +12.9 — fitness is intact and not under threat; the risk being managed is mechanical, not aerobic.",
+      "wellness": {"ctl": 29.5, "atl": 16.6, "form": 12.9, "rampRate": -3.9, "hrv": 99, "restingHR": 47, "sleepSecs": 27360, "sleepScore": 91, "sleepQuality": 1, "vo2max": null, "weight": null},
       "activity": null, "stream_read": null,
       "score": null, "score_committed": null, "bar_phase": null, "delta_p": null,
       "p_120": null, "p_125": null, "pred_half": null, "prob_note": null,
       "components": null,
       "entry": null,
-      "note_next": "Reassess Sunday morning. This is now a six-day interruption — the block needs the return handled deliberately: an easy 20–30 min at HR ceiling ~145 first, not a resumption of Tuesday club or the long run, whatever the numbers say. If any respiratory or fever-type symptoms are present, keep resting regardless of what HRV/RHR show."
+      "note_next": "Reassess Tuesday morning specifically on how the legs and Achilles feel, not just the wellness numbers — club is back in play only if today was genuinely easy and nothing feels off. If it does, treat club as skipped again rather than negotiated down."
     }
   ]
 }
