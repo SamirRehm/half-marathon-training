@@ -4,12 +4,12 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-09-19",
+    "last_updated": "2026-10-17",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
     "model_version": "v8: two-invocation; full-resolution streams + Intervals interval structure; raced-today probability; Pacific tz",
-    "known_gaps": "2026-07-26 through 2026-09-14 (51 days) are unscored: the routine went dark after the Intervals.icu connector hit its free-plan API-call quota mid-backfill (found 2026-08-23, see git history). Real training continued per Intervals (CTL 27.8->peak 37.4 on Sep 6, incl. a 21.1km run Aug 30) but has had no deep stream read, so it isn't scored, and the Labor Day 1:20-checkpoint (Sep 5-7) was never formally evaluated. Needs a resolved API quota + dedicated backfill session, not an incremental daily catch-up. Remove this note once closed."
+    "known_gaps": "2026-07-26 through 2026-09-14 (51 days) are unscored: the routine went dark after the Intervals.icu connector hit its free-plan API-call quota mid-backfill (found 2026-08-23, see git history). Real training continued per Intervals (CTL 27.8->peak 37.4 on Sep 6, incl. a 21.1km run Aug 30) but has had no deep stream read, so it isn't scored, and the Labor Day 1:20-checkpoint (Sep 5-7) was never formally evaluated. Needs a resolved API quota + dedicated backfill session, not an incremental daily catch-up. Remove this note once closed. | 2026-09-19 through 2026-10-15 (27 days) are likewise unscored: the routine did not run. Intervals shows 17 run activities and one cross-training session in that window (including a hard club session on Oct 13), none stream-read; the Sep 19 entry is left as a stale prescription. Wellness rows for the whole window were filled from Intervals. Needs a dedicated backfill session — the daily run only closes the previous day."
   },
   "days": [
     {
@@ -583,6 +583,106 @@
       "components": null,
       "entry": null,
       "note_next": "Reassess Sunday morning. This is now a six-day interruption — the block needs the return handled deliberately: an easy 20–30 min at HR ceiling ~145 first, not a resumption of Tuesday club or the long run, whatever the numbers say. If any respiratory or fever-type symptoms are present, keep resting regardless of what HRV/RHR show."
+    },
+    {
+      "date": "2026-10-16",
+      "dow": "Fri",
+      "status": "scored",
+      "reviewed": false,
+      "provisional": false,
+      "prediction": "1:30:00",
+      "prediction_prev": "1:29:30",
+      "planned": "Not on record — no prescription was written for this day.",
+      "plan_rationale": "No prescription exists; the routine was not running between Sep 19 and Oct 17.",
+      "wellness": {
+        "ctl": 22.8,
+        "atl": 12.7,
+        "form": 10.1,
+        "rampRate": -2.0,
+        "hrv": 88,
+        "restingHR": 47,
+        "sleepSecs": 27180,
+        "sleepScore": 91,
+        "sleepQuality": 1,
+        "vo2max": null,
+        "weight": null
+      },
+      "activity": null,
+      "stream_read": {
+        "_method": "no activity recorded — nothing to segment",
+        "activities": 0,
+        "verified": "Intervals returned no activity dated 2026-10-16 Pacific; the latest activities on record are the 2026-10-13 evening runs. The day's wellness row carries atlLoad 0.0, corroborating zero training load.",
+        "rest_day": true
+      },
+      "score": 58,
+      "score_committed": 60,
+      "bar_phase": "taper",
+      "delta_p": "held — a green-recovery rest day, third straight day off after Tuesday's session",
+      "p_120": 0.0,
+      "p_125": 0.03,
+      "pred_half": "1:30:00",
+      "prob_note": "Raced-today readout: no new fitness evidence today, and CTL has drifted from 37.4 (Sep 6) to 22.8, so the projection is held at 1:30 rather than the 1:29:30 of Sep 18. The Oct 13 club session has not yet had its stream read and may move this. P(1:25) ~3%, P(1:20) ~0%.",
+      "components": [
+        {
+          "label": "Rest on a fully green body (HRV 88, RHR 47, sleep 91 / quality 1) — nothing lowered the odds, floor applies",
+          "delta": 0,
+          "cat": "context"
+        },
+        {
+          "label": "Recovery from Tuesday's hard session is complete: HRV 92 → 88 → 88, RHR 46 → 45 → 47, form +10",
+          "delta": 3,
+          "cat": "raiser"
+        },
+        {
+          "label": "Third zero-run day in a row with 15 days to race and CTL at 22.8 — little aerobic volume banked this week outside Tuesday",
+          "delta": -3,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Ramp -2.0/wk: fitness is bleeding slowly, not a fatigue hole",
+          "delta": -1,
+          "cat": "context"
+        }
+      ],
+      "entry": "No run. Recovery is green across the board: HRV 88 (baseline ~87), resting HR 47, sleep 7h33m at score 91 and quality 1. Three days have passed since Tuesday's club session (a 7.5 km block of 1 km reps near 4:00/km at avg HR 176, not yet stream-read) and the body has fully absorbed it. The cost of the layoff is volume, not health: CTL is 22.8 against a 37.4 peak on Sep 6, and the week holds one run. With 15 days to the race that is a freshness asset more than a deficit, but it means there is no fitness cushion to spend — the race is run on what is already banked.",
+      "note_next": "Saturday: easy run, HR-capped, to reintroduce the legs; Sunday: one last easy long run. Nothing with intent between now and the race except the Tuesday club session, shortened."
+    },
+    {
+      "date": "2026-10-17",
+      "dow": "Sat",
+      "status": "prescribed",
+      "reviewed": false,
+      "provisional": true,
+      "prediction": null,
+      "prediction_prev": null,
+      "planned": "Easy 45 min, flat route. Pace 5:50–6:10/km, HR ceiling 148 — walk 30 s when you cross it, don't push through. Optional 4 × 15 s relaxed strides at the very end only if the legs feel springy; skip them otherwise. Gates (apply them yourself on waking): HRV under 78, sleep under 6 h, or resting HR 52+ → cut to 25 min at HR ≤140 or take the day off. Sleep and HRV can only downgrade this session, never upgrade it.",
+      "plan_rationale": "Fifteen days to the race, form +11, three clean days since Tuesday's session with HRV 88–92 and resting HR 45–47. This morning's HRV and sleep haven't synced yet (the only values present are a partial resting HR of 49 and 14 steps), so the call rests on the trend and carries gates instead. Easy volume is what the thin base still needs and it costs nothing against Sunday's long run; the ceiling is stated as HR because easy pace erodes 20–30 s/km as a run goes on, and there is no fitness left to gain from running it faster. Do not turn this into a test of the legs.",
+      "wellness": {
+        "ctl": 22.3,
+        "atl": 11.1,
+        "form": 11.2,
+        "rampRate": -2.0,
+        "hrv": null,
+        "restingHR": 49,
+        "sleepSecs": null,
+        "sleepScore": null,
+        "sleepQuality": null,
+        "vo2max": null,
+        "weight": null
+      },
+      "activity": null,
+      "stream_read": null,
+      "score": null,
+      "score_committed": null,
+      "bar_phase": null,
+      "delta_p": null,
+      "p_120": null,
+      "p_125": null,
+      "pred_half": null,
+      "prob_note": null,
+      "components": null,
+      "entry": null,
+      "note_next": "Sunday: last easy long run, 70–80 min, HR ceiling 150, no pace target — it is the final run over an hour before the race. Tuesday club shortened to a modest effort. Race-week volume drops from Oct 26."
     }
   ]
 }
