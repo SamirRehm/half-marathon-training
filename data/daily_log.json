@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-10-17",
+    "last_updated": "2026-10-18",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -650,11 +650,11 @@
     {
       "date": "2026-10-17",
       "dow": "Sat",
-      "status": "prescribed",
+      "status": "scored",
       "reviewed": false,
-      "provisional": true,
-      "prediction": null,
-      "prediction_prev": null,
+      "provisional": false,
+      "prediction": "1:30:00",
+      "prediction_prev": "1:30:00",
       "planned": "Easy 45 min, flat route. Pace 5:50–6:10/km, HR ceiling 148 — walk 30 s when you cross it, don't push through. Optional 4 × 15 s relaxed strides at the very end only if the legs feel springy; skip them otherwise. Gates (apply them yourself on waking): HRV under 78, sleep under 6 h, or resting HR 52+ → cut to 25 min at HR ≤140 or take the day off. Sleep and HRV can only downgrade this session, never upgrade it.",
       "plan_rationale": "Fifteen days to the race, form +11, three clean days since Tuesday's session with HRV 88–92 and resting HR 45–47. This morning's HRV and sleep haven't synced yet (the only values present are a partial resting HR of 49 and 14 steps), so the call rests on the trend and carries gates instead. Easy volume is what the thin base still needs and it costs nothing against Sunday's long run; the ceiling is stated as HR because easy pace erodes 20–30 s/km as a run goes on, and there is no fitness left to gain from running it faster. Do not turn this into a test of the legs.",
       "wellness": {
@@ -662,8 +662,72 @@
         "atl": 11.1,
         "form": 11.2,
         "rampRate": -2.0,
+        "hrv": 84,
+        "restingHR": 50,
+        "sleepSecs": 23700,
+        "sleepScore": 72,
+        "sleepQuality": 3,
+        "vo2max": null,
+        "weight": null
+      },
+      "activity": null,
+      "stream_read": {
+        "_method": "no activity recorded — nothing to segment",
+        "activities": 0,
+        "verified": "Intervals returned no activity dated 2026-10-17 Pacific (window 2026-10-10 to 2026-10-19 checked; the latest activities on record are the 2026-10-13 evening runs). The day's wellness row carries atlLoad 0.0, corroborating zero training load.",
+        "rest_day": true,
+        "prescribed_vs_executed": "Prescribed 45 min easy at HR ceiling 148 with recovery gates; not run. Gate readings that arrived later: HRV 84 (gate <78, not tripped), sleep 6 h 35 m (gate <6 h, not tripped), resting HR 50 (gate 52+, not tripped) — no gate explains the skip. The reason is not on record."
+      },
+      "score": 54,
+      "score_committed": 57,
+      "bar_phase": "taper",
+      "delta_p": "held, slightly lower — the easy session did not happen and the reason is not on record",
+      "p_120": 0.0,
+      "p_125": 0.03,
+      "pred_half": "1:30:00",
+      "prob_note": "Raced-today readout held at 1:30:00: no new fitness evidence, and the Oct 13 club session has not been stream-read. Four zero-run days have let CTL drift to 22.3, which costs nothing measurable this close to the race but earns nothing either. P(1:25) ~3%, P(1:20) ~0%.",
+      "components": [
+        {
+          "label": "Prescribed 45 min easy not run; no reason on record — ~45 min of absorbable volume not banked",
+          "delta": -4,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Body was mildly off, so rest was defensible: resting HR 50 (floor 46–48), sleep 6 h 35 m, score 72, quality 3, HRV 84 vs baseline ~87",
+          "delta": 3,
+          "cat": "raiser"
+        },
+        {
+          "label": "Fourth straight zero-run day since Oct 13; CTL 22.3, ramp -2.0/wk",
+          "delta": -3,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Form +11, no fatigue hole — nothing here threatens the race, so the cost is small",
+          "delta": -2,
+          "cat": "context"
+        }
+      ],
+      "entry": "No run. The prescribed 45 min easy was not done and no reason is on record. None of its gates tripped (HRV 84, sleep 6 h 35 m, resting HR 50), though the morning read slightly off: resting HR sat 3–4 bpm over the 46–48 floor and sleep scored 72 at quality 3, so skipping was a defensible call. It is the fourth straight day without a run since Tuesday's club session. With 13 days to the race the cost is a few minutes of easy volume, not fitness: CTL 22.3 and form +11 mean you arrive fresh. The risk now is not too little running, it is trying to make it up.",
+      "note_next": "Sunday: one easy run of 60–70 min at HR ceiling 150, gated on that morning's HRV, sleep and resting HR. Tuesday club at modest effort. Race-week volume drops from Oct 26."
+    },
+    {
+      "date": "2026-10-18",
+      "dow": "Sun",
+      "status": "prescribed",
+      "reviewed": false,
+      "provisional": true,
+      "prediction": null,
+      "prediction_prev": null,
+      "planned": "Easy 60–70 min, flat or rolling, no pace target. HR ceiling 150 — walk 30 s when you cross it, don't push through. Final run over an hour before the race. Gates (apply them yourself on waking): HRV under 78, sleep under 6 h, resting HR 52+, or any sore-throat, chest or fever-type symptom → cut to 30 min at HR ≤140, or take the day off. Sleep and HRV can only downgrade this session, never upgrade it. Do not extend past 70 min to make up for the last four days.",
+      "plan_rationale": "Thirteen days to the race, form +12, CTL 22. This morning's HRV and sleep have not synced (the only value present is a partial resting HR of 50, 3–4 bpm over the 46–48 floor), so the call rests on the trend and carries gates. Yesterday's resting HR was also 50 with sleep quality 3, so the resting-HR gate matters. One hour of genuinely easy running is the last aerobic dose that can still be absorbed before the taper; longer buys nothing with 13 days left and adds risk. The ceiling is HR rather than pace because easy pace erodes 20–30 s/km as a run goes on.",
+      "wellness": {
+        "ctl": 21.8,
+        "atl": 9.6,
+        "form": 12.2,
+        "rampRate": -1.9,
         "hrv": null,
-        "restingHR": 49,
+        "restingHR": 50,
         "sleepSecs": null,
         "sleepScore": null,
         "sleepQuality": null,
@@ -682,7 +746,7 @@
       "prob_note": null,
       "components": null,
       "entry": null,
-      "note_next": "Sunday: last easy long run, 70–80 min, HR ceiling 150, no pace target — it is the final run over an hour before the race. Tuesday club shortened to a modest effort. Race-week volume drops from Oct 26."
+      "note_next": "Tuesday: club at a modest effort, no racing the group. Race-week volume drops from Oct 26."
     }
   ]
 }
