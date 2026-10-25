@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-10-24",
+    "last_updated": "2026-10-25",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -1117,11 +1117,10 @@
     {
       "date": "2026-10-24",
       "dow": "Sat",
-      "status": "prescribed",
+      "status": "scored",
       "reviewed": false,
-      "provisional": true,
-      "prediction": null,
-      "prediction_prev": null,
+      "prediction": "1:31:30",
+      "prediction_prev": "1:31:30",
       "planned": "Easy 30 min, flat route — the first run since Oct 13. Pace 6:00–6:20/km, HR ceiling 145 — walk 30 s when you cross it. If the legs feel springy after 25 min, 4 × 15 s relaxed strides at the end; otherwise none. Gates (apply on waking, before you go): HRV under 78, sleep under 6 h, or resting HR 50+ once your watch has synced → cut to 25 min at HR ≤140, no strides; sore throat, chest tightness or a fever feel → no run, full rest. Sleep and HRV can only downgrade this session, never upgrade it.",
       "plan_rationale": "Seven days to the race and fitness cannot be added now; what is left is turning the legs over once or twice before race week and arriving healthy. This morning's HRV, resting HR and sleep have not synced (the row carries only load figures), so the call rests on the trend and carries gates: HRV 77 → 84 over the last two mornings, resting HR 48, sleep 7h41m last night (score 85), form +14.9, and no run since Oct 13. Eleven idle days cost rhythm, not fitness, so 30 min easy is the right dose — long enough to feel like running, short enough to cost nothing. The ceiling is stated as HR because easy pace erodes 20–30 s/km as a run goes on, and there is no fitness left to gain from running it faster.",
       "wellness": {
@@ -1129,6 +1128,76 @@
         "atl": 3.7,
         "form": 14.9,
         "rampRate": -3.4,
+        "hrv": 94,
+        "restingHR": 47,
+        "sleepSecs": 25860,
+        "sleepScore": 84,
+        "sleepQuality": 2,
+        "vo2max": null,
+        "weight": null
+      },
+      "activity": null,
+      "score": 57,
+      "score_committed": 59,
+      "bar_phase": "taper",
+      "delta_p": "held — a green-recovery rest day; the 30-min easy run was available and not taken",
+      "p_120": 0.0,
+      "p_125": 0.01,
+      "pred_half": "1:31:30",
+      "prob_note": "Raced-today readout: no new fitness evidence, projection held at 1:31:30. CTL 18.6 against the 37.4 peak on Sep 6, eleven days since the last run. P(1:25) ~1%, P(1:20) ~0%.",
+      "entry": "No run, though the prescription was 30 min easy. Every gate was open: HRV 94 against the ~87 baseline, resting HR 47, sleep 7h11m (score 84), steps a normal 6,990. This is the eleventh day without a run: the last was the Oct 13 club night, CTL is 18.6 and form +14.9. Six days out that is freshness, not damage, and the body is as ready as it has been all month. The cost is rhythm: the legs have not turned over in a week and a half, so the next easy run matters more than any fitness it could add.",
+      "note_next": "Sunday Oct 25: easy 30–35 min, HR ≤145, pace 6:00–6:20/km — the last run over half an hour. Race week: Tuesday Oct 27 easy 20–25 min with 4 × 20 s relaxed strides; Thursday Oct 29 easy 15–20 min shakeout, last run before the race; Friday rest. Same gates throughout; nothing new.",
+      "provisional": false,
+      "stream_read": {
+        "_method": "no activity recorded — nothing to segment",
+        "activities": 0,
+        "verified": "Intervals returned no activity for 2026-10-24 Pacific (window 2026-10-22 to 2026-10-26 checked, both UTC neighbours included); the latest run on record is the 2026-10-13 club night. The day's wellness row carries atlLoad 0.0 and steps 6,990, so ordinary movement with no training load.",
+        "rest_day": true,
+        "gates_vs_prescription": "HRV 94 (gate 78), resting HR 47 (gate 50+), sleep 7h11m (score 84, quality 2; gate 6 h) — no gate tripped. The prescription was 30 min easy at HR ≤145; it was not taken and no reason is on record."
+      },
+      "components": [
+        {
+          "label": "Rest on a green body (HRV 94, RHR 47, sleep 7h11m / score 84) — nothing lowered the odds, green-recovery floor applies",
+          "delta": 0,
+          "cat": "context"
+        },
+        {
+          "label": "HRV back at 94 and resting HR 47 — fully recovered, no illness signal; the Oct 22 dip did not persist",
+          "delta": 2,
+          "cat": "raiser"
+        },
+        {
+          "label": "Prescribed 30 min easy not taken, third straight green morning — rhythm only, no fitness is added this close to the race",
+          "delta": -3,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Eleventh day since the last run (Oct 13); CTL 18.6, ramp -3.4/wk",
+          "delta": -2,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Steps 6,990, in the normal range — health intact",
+          "delta": 0,
+          "cat": "context"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "dow": "Sun",
+      "status": "prescribed",
+      "reviewed": false,
+      "provisional": true,
+      "prediction": null,
+      "prediction_prev": null,
+      "planned": "Easy 30–35 min, flat route — the first run since Oct 13 and the last run over half an hour before the race. Pace 6:00–6:20/km, HR ceiling 145 — walk 30 s when you cross it. If the legs feel springy after 25 min, 4 × 15 s relaxed strides at the end; otherwise none. Gates (apply on waking, before you go): HRV under 78, sleep under 6 h, or resting HR 51+ once your watch has synced → cut to 25 min at HR ≤140, no strides; sore throat, chest tightness or a fever feel → no run, full rest. Sleep and HRV can only downgrade this session, never upgrade it.",
+      "plan_rationale": "Six days to the race and fitness cannot be added now; what is left is turning the legs over once before race week and arriving healthy. This morning's HRV and sleep have not synced and the resting HR showing (50) is an early partial reading, so the call rests on the trend and carries gates: HRV 94 yesterday after 84 and 77, resting HR 47, sleep 7h11m last night (score 84), form +15, and no run since Oct 13. Twelve idle days cost rhythm, not fitness, so 30–35 min easy is the right dose — long enough to feel like running, short enough to cost nothing in race week. The ceiling is stated as HR because easy pace erodes 20–30 s/km as a run goes on, and there is no fitness left to gain from running it faster.",
+      "wellness": {
+        "ctl": 18.2,
+        "atl": 3.2,
+        "form": 15.0,
+        "rampRate": -3.3,
         "hrv": null,
         "restingHR": null,
         "sleepSecs": null,
@@ -1147,7 +1216,7 @@
       "pred_half": null,
       "prob_note": null,
       "entry": null,
-      "note_next": "Sunday Oct 25: easy 30–40 min, HR ≤145, or rest — the last run over half an hour. Race week: Tuesday Oct 27 easy 20–25 min with 4 × 20 s relaxed strides; Thursday Oct 29 easy 15–20 min shakeout, last run before the race; Friday rest. Same gates throughout; nothing new."
+      "note_next": "Monday Oct 26: rest. Tuesday Oct 27: easy 20–25 min, HR ≤145, with 4 × 20 s relaxed strides. Wednesday: rest or 15 min jog. Thursday Oct 29: easy 15–20 min shakeout, last run before the race; Friday rest. Same gates throughout; nothing new."
     }
   ]
 }
