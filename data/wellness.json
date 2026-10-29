@@ -84,5 +84,6 @@
 {"d":"2026-10-25","ctl":18.2,"atl":3.2,"ramp":-3.3,"hrv":85,"rhr":50,"sleepSecs":30120,"sleepScore":88,"sleepQ":2,"vo2max":58,"steps":12093},
 {"d":"2026-10-26","ctl":17.8,"atl":2.8,"ramp":-3.2,"hrv":73,"rhr":52,"sleepSecs":27600,"sleepScore":85,"sleepQ":2,"steps":4857},
 {"d":"2026-10-27","ctl":17.3,"atl":2.4,"ramp":-3.1,"hrv":81,"rhr":50,"sleepSecs":26700,"sleepScore":84,"sleepQ":2,"vo2max":58.0,"steps":16126},
-{"d":"2026-10-28","ctl":16.9,"atl":2.1,"ramp":-3.1,"hrv":61,"rhr":52,"sleepSecs":20640,"sleepScore":60,"sleepQ":3,"steps":242}
+{"d":"2026-10-28","ctl":16.9,"atl":2.1,"ramp":-3.1,"hrv":61,"rhr":52,"sleepSecs":20640,"sleepScore":60,"sleepQ":3,"steps":5392},
+{"d":"2026-10-29","ctl":16.5,"atl":1.8,"ramp":-3.0,"hrv":75,"rhr":49,"sleepSecs":29040,"sleepScore":88,"sleepQ":2,"steps":37}
 ]}
