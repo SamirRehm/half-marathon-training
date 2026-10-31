@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-10-29",
+    "last_updated": "2026-10-31",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -1408,9 +1408,8 @@
     {
       "date": "2026-10-29",
       "dow": "Thu",
-      "status": "prescribed",
+      "status": "scored",
       "reviewed": false,
-      "provisional": false,
       "planned": "Rest — no run. Walk normally, steps near your usual 6,000–7,500, feet up where you can. Friday Oct 30: rest, or at most 10 min of walking with 3 × 15 s relaxed strides only if HRV is 78+ and resting HR is 49 or lower that morning; otherwise nothing. Any sore throat, chest tightness, fever feel or unusual fatigue → no run, and decide Saturday on how you feel at warm-up. Sleep and HRV can only downgrade a session, never upgrade it.",
       "plan_rationale": "Two days to the race and the body is rebounding but not through the gate: HRV 75 (gate 78, up from 61), resting HR 49 (inside the 49-or-lower limit, down from 52), sleep 8h04m (score 88, quality 2). Two of three gates pass and the trend is the right way, but the shakeout was set to need all three, and HRV 75 is the one that does not clear. A 15-minute jog cannot add fitness (CTL 16.5, form +15) and its only effect is risk, so the gate decides: rest. Another night like the last one is what moves HRV over the line for race morning.",
       "wellness": {
@@ -1426,6 +1425,140 @@
         "vo2max": null,
         "weight": null
       },
+      "prediction": "1:31:30",
+      "activity": null,
+      "score": 60,
+      "score_committed": 60,
+      "bar_phase": "taper",
+      "delta_p": "held — rest taken as prescribed on a partly recovered morning",
+      "p_120": 0.0,
+      "p_125": 0.01,
+      "pred_half": "1:31:30",
+      "prob_note": "Raced-today readout: no new fitness evidence, projection held at 1:31:30. CTL 16.5 against the 37.4 peak on Sep 6, sixteen days since the last run. P(1:25) ~1%, P(1:20) ~0%.",
+      "entry": "Rest, as prescribed. The morning was the best of the taper but short of the gate: HRV 75 against 78, resting HR 49, sleep 8h04m (score 88). Steps were 9,395 with 15 floors, a little more than the target but nothing like the 16,126 day. Nothing was added and nothing lost: CTL 16.5, form +15. Sixteen days without a run, so the legs are fresh and the rhythm is untested.",
+      "note_next": "Friday Oct 30: rest, early night, carbs, nothing new; strides only on a clean reading. Saturday Oct 31: race — start at 4:05–4:10/km and let HR, not the 1:24 line, decide the second half.",
+      "prediction_prev": "1:31:30",
+      "stream_read": {
+        "_method": "no activity recorded — nothing to segment",
+        "activities": 0,
+        "verified": "Intervals returned no activity for 2026-10-29 Pacific (window 2026-10-28 to 2026-10-31 checked, both UTC neighbours included). The day carried atlLoad 0.0, 9,395 steps and 15 floors.",
+        "rest_day": true,
+        "gates_vs_prescription": "Prescription was rest with steps near 6,000–7,500. Rest taken; steps ran about 2,000 above that band, still well under the 16,126 of Oct 27."
+      },
+      "components": [
+        {
+          "label": "Full rest taken on a partly recovered morning (HRV 75 under the 78 gate)",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "Sleep 8h04m, score 88 — the best night of the taper",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "Steps 9,395 and 15 floors — above the 6,000–7,500 band, below the 16,126 day",
+          "delta": 0,
+          "cat": "context"
+        },
+        {
+          "label": "Sixteenth day since the last run; CTL 16.5 — freshness, rhythm is the cost",
+          "delta": 0,
+          "cat": "context"
+        },
+        {
+          "label": "HRV still under gate two days out; resting HR back to 49",
+          "delta": -2,
+          "cat": "lowerer"
+        }
+      ],
+      "provisional": false
+    },
+    {
+      "date": "2026-10-30",
+      "dow": "Fri",
+      "status": "scored",
+      "reviewed": false,
+      "provisional": false,
+      "planned": "Rest, or at most 10 min of walking with 3 × 15 s relaxed strides only on a clean reading (HRV 78+, resting HR 49 or lower); otherwise nothing. Early night, carbs, nothing new.",
+      "plan_rationale": "The day before the race. Fitness cannot be added; the only job is arriving healthy. Strides were conditional on a clean morning.",
+      "wellness": {
+        "ctl": 16.1,
+        "atl": 1.6,
+        "form": 14.6,
+        "rampRate": -2.9,
+        "hrv": 65,
+        "restingHR": 51,
+        "sleepSecs": 26160,
+        "sleepScore": 76,
+        "sleepQuality": 3,
+        "vo2max": null,
+        "weight": null
+      },
+      "prediction": "1:31:30",
+      "prediction_prev": "1:31:30",
+      "activity": null,
+      "stream_read": {
+        "_method": "no activity recorded — nothing to segment",
+        "activities": 0,
+        "verified": "Intervals returned no activity for 2026-10-30 Pacific (window 2026-10-28 to 2026-10-31 checked, both UTC neighbours included). The day carried atlLoad 0.0, 5,986 steps and 5 floors.",
+        "rest_day": true,
+        "gates_vs_prescription": "The morning was not clean (HRV 65, resting HR 51), so the strides option was off and rest was the correct call. Steps 5,986, inside the 6,000–7,500 band."
+      },
+      "score": 60,
+      "score_committed": 59,
+      "bar_phase": "taper",
+      "delta_p": "held — rest on a non-clean morning, legs off their feet the day before the race",
+      "p_120": 0.0,
+      "p_125": 0.01,
+      "pred_half": "1:31:30",
+      "prob_note": "Raced-today readout: no new fitness evidence, projection held at 1:31:30. CTL 16.1 against the 37.4 peak on Sep 6, seventeen days since the last run. P(1:25) ~1%, P(1:20) ~0%.",
+      "components": [
+        {
+          "label": "Full rest the day before the race, steps 5,986 and 5 floors",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "Strides correctly skipped on a non-clean morning",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "Seventeenth day since the last run; CTL 16.1 — freshness, not damage",
+          "delta": 0,
+          "cat": "context"
+        },
+        {
+          "label": "HRV fell back to 65 from 75 and resting HR rose to 51 on the eve of the race",
+          "delta": -3,
+          "cat": "lowerer"
+        }
+      ],
+      "entry": "Rest, correctly. HRV slipped back to 65 from 75 and resting HR rose to 51 (floor 46–48), with sleep 7h16m (score 76, quality 3). That is the third amber reading in five mornings, so the strides were not earned. Steps 5,986 with 5 floors: the legs were off their feet. CTL 16.1, form +15. Fitness is what it is; what is left is the pacing decision on race morning.",
+      "note_next": "Saturday Oct 31: race. HR governs pace, not the clock; do not race with a sore throat, chest tightness or fever feel."
+    },
+    {
+      "date": "2026-10-31",
+      "dow": "Sat",
+      "status": "prescribed",
+      "reviewed": false,
+      "provisional": true,
+      "planned": "RACE DAY — half marathon. Warm-up: 10 min easy jog at HR ≤140 plus 3 × 15 s relaxed strides, finishing 10 min before the gun. Pacing by heart rate, not the goal line: km 1–3 at 4:18–4:25/km (HR ≤160 — it will feel too easy); km 4–15 at 4:12–4:20/km with HR settling 162–168, never above 170 before km 15 (LTHR 172); from km 15 hold or release only if HR is still ≤170 and the pace feels in hand. Take a gel around 40 and 75 min with water. Gates before the start: any sore throat, chest tightness or fever feel → do not race, easy walk only. If HR is 10+ bpm above the pace's norm inside the first 3 km (e.g. ≥170 at 4:20), drop 10 s/km immediately and do not chase.",
+      "plan_rationale": "The device has not yet synced race-morning HRV or sleep (the row carries only load figures), so this is provisional on the last real reading: HRV 65, resting HR 51, sleep 7h16m (score 76) yesterday, the third amber morning in five. Sleep and HRV can only downgrade a session, never upgrade it, so if today's HRV lands under ~65 or the night was under 6 h, take 5–10 s/km off every band above. Fitness context: CTL 15.8 (peak 37.4 on Sep 6), form +14, no run for 18 days, and the projection is 1:31:30 (4:20/km), against a Nov 2025 benchmark of 1:33:42 at CTL 25. The 1:24–1:27 window needs 3:58–4:07/km, which is 10–20 s/km faster than anything the current fitness supports; it stays alive only if the first 10 km at 4:10–4:12 sits at HR ≤165, and that is the test, not an assumption. The failure mode is the opening 5 km: a fresh body after a long taper runs 15–20 s/km too fast and pays after km 15, so the first three km are deliberately slow and the HR ceiling is explicit. A sub-1:31 is a fresh-legs half marathon PR, which the 1:30:11 training-run best never was.",
+      "wellness": {
+        "ctl": 15.8,
+        "atl": 1.4,
+        "form": 14.4,
+        "rampRate": -2.9,
+        "hrv": null,
+        "restingHR": null,
+        "sleepSecs": null,
+        "sleepScore": null,
+        "sleepQuality": null,
+        "vo2max": null,
+        "weight": null
+      },
       "prediction": null,
       "activity": null,
       "score": null,
@@ -1437,7 +1570,7 @@
       "pred_half": null,
       "prob_note": null,
       "entry": null,
-      "note_next": "Friday Oct 30: rest, early night, carbs, nothing new; strides only on a clean reading. Saturday Oct 31: race — start at 4:05–4:10/km and let HR, not the 1:24 line, decide the second half; if sore throat, chest or fever feel appears beforehand, do not race."
+      "note_next": "Sunday Nov 1: full rest or an easy 20–30 min walk. Report the finish time, splits and how km 15–21 felt; the race closes the build and sets the baseline for what comes next."
     }
   ]
 }
