@@ -93,5 +93,6 @@
 {"d":"2026-11-03","ctl":14.7,"atl":0.9,"ramp":-2.7,"rhr":49,"hrv":92,"sleepSecs":26520,"sleepScore":80,"sleepQ":2,"steps":12767},
 {"d":"2026-11-04","ctl":14.3,"atl":0.8,"ramp":-2.6,"hrv":88,"rhr":50,"sleepSecs":25200,"sleepScore":83,"sleepQ":2,"steps":10749},
 {"d":"2026-11-05","ctl":14.0,"atl":0.7,"ramp":-2.5,"hrv":87,"rhr":50,"sleepSecs":23760,"sleepScore":80,"sleepQ":2,"steps":6683},
-{"d":"2026-11-06","ctl":13.7,"atl":0.6,"ramp":-2.5}
+{"d":"2026-11-06","ctl":13.7,"atl":0.6,"ramp":-2.5,"hrv":93,"rhr":48,"sleepSecs":29040,"sleepScore":90,"sleepQ":1,"steps":5366},
+{"d":"2026-11-07","ctl":13.3,"atl":0.5,"ramp":-2.4}
 ]}
