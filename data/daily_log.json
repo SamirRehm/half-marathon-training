@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-11-07",
+    "last_updated": "2026-11-08",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -1972,15 +1972,80 @@
     {
       "date": "2026-11-07",
       "dow": "Sat",
-      "status": "prescribed",
+      "status": "scored",
       "reviewed": false,
-      "provisional": true,
+      "provisional": false,
       "planned": "Easy 25 min, flat, pace 6:15–6:45/km, HR ceiling 140 — walk 30 s when you cross it. No strides, no pickups, no hills. Gates (apply before you go): resting HR above 50, HRV under 78, sleep under 7 h, or any sore throat, chest tightness, fever feel or sore Achilles/calf → cut to 15 min at HR ≤135 or take the day. Sleep and HRV can only downgrade this session, never upgrade it. Finish feeling you could do the same again tomorrow.",
-      "plan_rationale": "This morning's HRV and sleep have not synced (the row carries load figures, a resting HR of 54 and 29 steps, which is a stub rather than a reading), so this is a provisional plan with gates. Yesterday's final reading was green on every gate — HRV 93, resting HR 48, sleep 8h04m — and the last run was Oct 13, so CTL is 13.3 with form +13: no fatigue to respect, only rhythm to rebuild. 25 minutes at an HR ceiling of 140 turns the legs over without a spike; the ceiling is an HR rather than a pace because easy pace erodes 20–30 s/km as a run goes on.",
+      "plan_rationale": "Yesterday's final reading was green on every gate — HRV 93, resting HR 48, sleep 8h04m — and the last run was Oct 13, so CTL was 13.3 with form +13: no fatigue to respect, only rhythm to rebuild. 25 minutes at an HR ceiling of 140 turns the legs over without a spike; the ceiling is an HR rather than a pace because easy pace erodes 20–30 s/km as a run goes on.",
       "wellness": {
         "ctl": 13.3,
         "atl": 0.5,
         "form": 12.8,
+        "rampRate": -2.4,
+        "hrv": 99,
+        "restingHR": 42,
+        "sleepSecs": 22140,
+        "sleepScore": 78,
+        "sleepQuality": 3,
+        "vo2max": 58.0,
+        "weight": null
+      },
+      "activity": null,
+      "score": 58,
+      "score_committed": 58,
+      "bar_phase": "taper",
+      "delta_p": "held — no run, mixed morning (sleep gate failed), no new evidence",
+      "p_120": 0.0,
+      "p_125": 0.01,
+      "pred_half": "1:31:30",
+      "prob_note": "Raced-today readout: no new fitness evidence, projection held at 1:31:30. CTL 13.3 against the 37.4 peak on Sep 6, 25 days since the last run. P(1:25) ~1%, P(1:20) ~0%.",
+      "entry": "No run recorded; twenty-fifth day since the last run. The morning split: HRV 99 (top of your 77–99 range) and resting HR 42 (below your 46–48 floor) were clean, but sleep was 6h09m, score 78, quality 3 — under the 7 h gate, so the prescription was already downgraded to 15 minutes at HR ≤135 or the day off. Steps 13,745 and 84 floors climbed show a very active day on foot, with no activity logged to explain it; the data cannot say whether it was unrecorded movement. The VO2max reading of 58.0 is a watch estimate with no run behind it and is not a fitness signal. CTL 13.3, form +13: fully rested, and the restart is still waiting on the first step.",
+      "note_next": "Sunday Nov 8: restart with 25 easy minutes at HR ≤140 if the morning clears the gates; otherwise 15 minutes at ≤135. Tell me what happened on Oct 31 and what the next goal is so the plan can be reset.",
+      "prediction": "1:31:30",
+      "prediction_prev": "1:31:30",
+      "components": [
+        {
+          "label": "No run — restart slot passed again, with sleep 6h09m below the 7 h gate (cut session was still available)",
+          "delta": -1,
+          "cat": "lowerer"
+        },
+        {
+          "label": "HRV 99 and resting HR 42 — recovery markers at or beyond the top of your range",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "Twenty-fifth day since the last run; CTL 13.3",
+          "delta": -1,
+          "cat": "lowerer"
+        },
+        {
+          "label": "No race or time-trial evidence — projection held",
+          "delta": 0,
+          "cat": "context"
+        }
+      ],
+      "stream_read": {
+        "_method": "no activity recorded — nothing to segment",
+        "activities": 0,
+        "verified": "Intervals returned no activity for 2026-11-07 Pacific (window 2026-10-25 to 2026-11-09 checked, UTC neighbours included); the latest run on record is the 2026-10-13 club night.",
+        "rest_day": true,
+        "steps": 13745,
+        "gates_vs_prescription": "HRV 99 and resting HR 42 met the gates; sleep 6h09m failed the 7 h gate; no activity was recorded."
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "dow": "Sun",
+      "status": "prescribed",
+      "reviewed": false,
+      "provisional": true,
+      "planned": "Easy 25 min, flat, pace 6:15–6:45/km, HR ceiling 140 — walk 30 s when you cross it. No strides, no pickups, no hills. Gates (apply before you go): resting HR above 50, HRV under 78, sleep under 7 h, or any sore throat, chest tightness, fever feel or sore Achilles/calf → cut to 15 min at HR ≤135 or take the day. Sleep and HRV can only downgrade this session, never upgrade it. Finish feeling you could do the same again tomorrow.",
+      "plan_rationale": "This morning's HRV and sleep have not synced (the row carries load figures and a resting HR of 51 only, which is a stub rather than a reading), so this is a provisional plan with gates. Yesterday's final reading was HRV 99 and resting HR 42 but only 6h09m of sleep, and the last run was Oct 13, so CTL is 13.0 with form +12.6: no fatigue to respect, only rhythm to rebuild. 25 minutes at an HR ceiling of 140 turns the legs over without a spike; the ceiling is an HR rather than a pace because easy pace erodes 20–30 s/km as a run goes on.",
+      "wellness": {
+        "ctl": 13.0,
+        "atl": 0.4,
+        "form": 12.6,
         "rampRate": -2.4,
         "hrv": null,
         "restingHR": null,
@@ -2000,7 +2065,7 @@
       "pred_half": null,
       "prob_note": null,
       "entry": null,
-      "note_next": "Sunday Nov 8: second easy run only if today's left no Achilles or calf flag; same ceiling, 30 min at most. Tell me what happened on Oct 31 and what the next goal is so the plan can be reset."
+      "note_next": "Monday Nov 9: second easy run only if Sunday's left no Achilles or calf flag; same ceiling, 30 min at most. Tell me what happened on Oct 31 and what the next goal is so the plan can be reset."
     }
   ]
 }

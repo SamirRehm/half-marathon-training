@@ -1,4 +1,4 @@
-{"_note":"Daily wellness from Intervals.icu wellness_recent_list (renamed/compacted, nulls dropped). Window starts 2026-06-15 (lead-in to the Oct 31 HM build); the daily routine upserts yesterday + today each run. sleepQ scale: 1=excellent 2=good 3=fair 4=poor (LOWER IS BETTER). ctl/atl are Intervals' all-sport load EWMA (42d/7d); ramp = CTL change per week.","updated":"2026-11-06","days":[
+{"_note":"Daily wellness from Intervals.icu wellness_recent_list (renamed/compacted, nulls dropped). Window starts 2026-06-15 (lead-in to the Oct 31 HM build); the daily routine upserts yesterday + today each run. sleepQ scale: 1=excellent 2=good 3=fair 4=poor (LOWER IS BETTER). ctl/atl are Intervals' all-sport load EWMA (42d/7d); ramp = CTL change per week.","updated":"2026-11-08","days":[
 {"d":"2026-06-15","ctl":14.0,"atl":17.8,"ramp":1.1,"hrv":88,"rhr":49,"sleepSecs":29400,"sleepScore":87,"sleepQ":2,"vo2max":53,"steps":12133},
 {"d":"2026-06-16","ctl":13.6,"atl":15.4,"ramp":1.1,"hrv":90,"rhr":48,"sleepSecs":28260,"sleepScore":94,"sleepQ":1,"steps":3716},
 {"d":"2026-06-17","ctl":14.3,"atl":19.1,"ramp":2.1,"hrv":84,"rhr":46,"sleepSecs":28980,"sleepScore":82,"sleepQ":2,"vo2max":53,"steps":7057},
@@ -94,5 +94,6 @@
 {"d":"2026-11-04","ctl":14.3,"atl":0.8,"ramp":-2.6,"hrv":88,"rhr":50,"sleepSecs":25200,"sleepScore":83,"sleepQ":2,"steps":10749},
 {"d":"2026-11-05","ctl":14.0,"atl":0.7,"ramp":-2.5,"hrv":87,"rhr":50,"sleepSecs":23760,"sleepScore":80,"sleepQ":2,"steps":6683},
 {"d":"2026-11-06","ctl":13.7,"atl":0.6,"ramp":-2.5,"hrv":93,"rhr":48,"sleepSecs":29040,"sleepScore":90,"sleepQ":1,"steps":5366},
-{"d":"2026-11-07","ctl":13.3,"atl":0.5,"ramp":-2.4}
+{"d":"2026-11-07","ctl":13.3,"atl":0.5,"ramp":-2.4,"hrv":99,"rhr":42,"sleepSecs":22140,"sleepScore":78,"sleepQ":3,"vo2max":58.0,"steps":13745},
+{"d":"2026-11-08","ctl":13.0,"atl":0.4,"ramp":-2.4}
 ]}
