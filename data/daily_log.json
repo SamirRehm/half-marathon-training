@@ -4,7 +4,7 @@
     "goal_time": "1:24-1:27 committed (1:20 dream, 1:22 stretch)",
     "race_date": "2026-10-31",
     "schema_note": "One object per day. `wellness` and `activity` are pulled metrics; `score`+`components` per DAY_SCORE.md; `entry` is the coach's read; `prediction`/`pred_half` is the projected half time. reviewed=false means routine-drafted, not yet human-amended.",
-    "last_updated": "2026-11-22",
+    "last_updated": "2026-11-24",
     "scoring": "probability-change model (DAY_SCORE.md): score=ΔP(1:20), score_committed=ΔP(1:25) — INDEPENDENT trajectories that diverge (neither always higher); 60=neutral; equal-100 ceilings; magnitude discipline; green-recovery floor; decoupling weighted by run type; Pacific tz",
     "timezone": "athlete US Pacific (UTC-8/-7); Intervals stores UTC but start_date_local is Pacific; evening runs cross midnight UTC",
     "prob_model": "p_120/p_125 = P(hit goal if raced TODAY at current fitness) per DAY_SCORE.md. Both round to ~0% through base phase BY DESIGN — the live signal is pred_half falling toward the goal lines.",
@@ -3338,9 +3338,9 @@
     {
       "date": "2026-11-22",
       "dow": "Sun",
-      "status": "prescribed",
+      "status": "scored",
       "reviewed": false,
-      "provisional": true,
+      "provisional": false,
       "planned": "Rest: no running, no strides, no long run, and no walking for exercise beyond ordinary daily movement. This morning's resting HR of 54 is above the 52 line, so rest is set whatever the rest of the night shows. If you have not been seen by a doctor, book it for this week; if you feel unwell at all (fever, sore throat, chest tightness, breathlessness, palpitations, unusual tiredness), do not wait for an appointment and rest fully. Gates when the night syncs: sleep and HRV can only downgrade this, never upgrade it. Today counts as a clean morning only if resting HR finalises at 50 or lower, HRV reads 78 or higher and sleep is 7 h or more. If resting HR finalises above 52 or HRV is under 64, the improvement is not holding: keep resting and get seen sooner. The first run comes only after you are cleared and have two consecutive clean mornings. The earliest is Monday Nov 23, if today and Monday both clear, and it is 20 min easy, flat, at 6:15–6:45/km with an HR ceiling of 140, walking 30 s whenever you cross it.",
       "plan_rationale": "This morning's HRV and sleep have not synced yet. The row carries load figures and a resting HR of 54, so this plan is provisional, with gates. Morning reads have finalised lower after sync three times this week (Tuesday 57 to 49, Thursday 51 to 48, Saturday 53 to 49), so 54 is not yet a reversal. But a gate that fails at the moment of deciding means no run, and the restart could not start today anyway: Saturday was not a clean morning (HRV 65 against the 78 gate), so today is the first of the two at best. HRV has cleared 78 once in ten days and is the marker holding things up. CTL 9.3, form +9.3, last run Oct 13: there is no fitness to defend, and rest costs nothing.",
       "wellness": {
@@ -3348,11 +3348,221 @@
         "atl": 0.1,
         "form": 9.3,
         "rampRate": -1.7,
-        "hrv": null,
-        "restingHR": 54,
-        "sleepSecs": null,
-        "sleepScore": null,
-        "sleepQuality": null,
+        "hrv": 76,
+        "restingHR": 50,
+        "sleepSecs": 6540,
+        "sleepScore": 29,
+        "sleepQuality": 4,
+        "vo2max": null,
+        "weight": null
+      },
+      "activity": null,
+      "score": 57,
+      "score_committed": 58,
+      "bar_phase": "taper",
+      "delta_p": "held: correct rest, resting HR finalised at 50 and HRV up to 76, but a 1h49m night failed the sleep gate and left the restart count at zero",
+      "p_120": 0.0,
+      "p_125": 0.01,
+      "pred_half": "1:31:30",
+      "prob_note": "Raced-today readout: no new fitness evidence, projection held at 1:31:30. CTL 9.3 against the 37.4 peak on Sep 6, 40 days since the last run. P(1:25) ~1%, P(1:20) ~0%. The hold reflects missing evidence, not a measurement: with every week off the true number keeps getting slower, and the next run is what re-anchors it.",
+      "entry": "No run recorded; fortieth day since the last run. Rest was the prescription and the data matches it: 2,730 steps. Resting HR finalised at 50, down from 54 at the morning read, so it cleared the ≤50 gate and stayed under the 52 line. HRV read 76, up 11 from Saturday's 65 and the best reading since Wednesday's 78, but still under the 78 gate and 13% under your ~87 baseline. The night is the outlier: 1h49m recorded, score 29, quality 4, the shortest night in the wellness file. The data cannot tell a genuinely sleepless night from a watch that was off for part of it; either way it fails the 7 h gate, so this was not a clean morning and the two-in-a-row count did not start. Ten-day HRV: 76, 74, 69, 50, 64, 78, 71, 58, 65, 76. ATL 0.1: none of this is training. CTL 9.3, form +9.3.",
+      "note_next": "Monday Nov 23: rest. Sunday was not a clean morning (sleep 1h49m, HRV 76 against the 78 gate), so Monday can only be the first of the two clean mornings the restart needs. If Monday and Tuesday both clear (resting HR ≤50, HRV ≥78, sleep ≥7 h) and you have been checked and cleared, the first run is Tuesday Nov 24: 20 min easy, flat, at 6:15–6:45/km, HR ceiling 140, walking 30 s whenever you cross it. Tell me what the check found, what happened on Oct 31, and what the next goal is so the plan can be reset.",
+      "stream_read": {
+        "_method": "no activity recorded — nothing to segment",
+        "activities": 0,
+        "verified": "Intervals returned no activity for 2026-11-22 Pacific (window 2026-11-20 to 2026-11-25 checked, UTC neighbours included); the latest run on record is the 2026-10-13 club night.",
+        "rest_day": true,
+        "steps": 2730,
+        "gates_vs_prescription": "Prescription was rest with ordinary daily movement only; no activity was recorded. Steps were 2,730, under the ~6,000–7,500 baseline: a quiet day or the watch off for part of it. Whether the doctor's check happened cannot be told from the data.",
+        "late_sync": "HRV 76 and sleep 1h49m (score 29, quality 4) synced after the morning prescription; resting HR finalised at 50, down from 54 at the morning read.",
+        "restart_gates": "resting HR 50 (gate ≤50) cleared; HRV 76 (gate ≥78) and sleep 1h49m (gate ≥7 h) failed. Not a clean morning.",
+        "holding_check": "HRV 76 above the 64 line and resting HR 50 under the 52 line, so the improvement held.",
+        "hrv_trend": [
+          76,
+          74,
+          69,
+          50,
+          64,
+          78,
+          71,
+          58,
+          65,
+          76
+        ],
+        "rhr_trend": [
+          50,
+          50,
+          56,
+          55,
+          49,
+          50,
+          48,
+          51,
+          49,
+          50
+        ],
+        "trend_dates": "2026-11-13 to 2026-11-22"
+      },
+      "prediction": "1:31:30",
+      "prediction_prev": "1:31:30",
+      "components": [
+        {
+          "label": "No run — rest was the prescription, and the data matches it",
+          "delta": 0,
+          "cat": "context"
+        },
+        {
+          "label": "Correct rest: 2,730 steps, ordinary daily movement only",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "Resting HR finalised at 50 — clears the ≤50 gate, down from 54 at the morning read",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "HRV 76 — up 11 from 65, best since Nov 18, still under the 78 gate",
+          "delta": 0,
+          "cat": "context"
+        },
+        {
+          "label": "Sleep 1h49m, score 29, quality 4 — the shortest night on file; fails the 7 h gate",
+          "delta": -3,
+          "cat": "lowerer"
+        },
+        {
+          "label": "Fortieth day since the last run; CTL 9.3",
+          "delta": -2,
+          "cat": "lowerer"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-23",
+      "dow": "Mon",
+      "status": "scored",
+      "reviewed": false,
+      "provisional": false,
+      "planned": "Rest: no running, no strides and no walking for exercise beyond ordinary daily movement. Sunday was not a clean morning (sleep 1h49m, HRV 76 against the 78 gate), so under the restart rule Monday could only be the first of the two consecutive clean mornings needed, and there was no run whatever it showed.",
+      "plan_rationale": "No separate morning prescription was published for this day; the standing rule from Saturday's and Sunday's plans applied. The restart needs medical clearance plus two consecutive clean mornings (resting HR ≤50, HRV ≥78, sleep ≥7 h). Sunday failed on sleep and HRV, which made Monday a rest day and, at best, the first of the two clean mornings. CTL 9.1, form +9.1, last run Oct 13.",
+      "wellness": {
+        "ctl": 9.1,
+        "atl": 0.1,
+        "form": 9.1,
+        "rampRate": -1.7,
+        "hrv": 98,
+        "restingHR": 46,
+        "sleepSecs": 35880,
+        "sleepScore": 91,
+        "sleepQuality": 1,
+        "vo2max": null,
+        "weight": null
+      },
+      "activity": null,
+      "score": 63,
+      "score_committed": 64,
+      "bar_phase": "taper",
+      "delta_p": "slightly raised: correct rest and the first fully clean morning in five days, with HRV 98 above baseline and resting HR 46 on the floor",
+      "p_120": 0.0,
+      "p_125": 0.01,
+      "pred_half": "1:31:30",
+      "prob_note": "Raced-today readout: no new fitness evidence, projection held at 1:31:30. CTL 9.1 against the 37.4 peak on Sep 6, 41 days since the last run. P(1:25) ~1%, P(1:20) ~0%. The hold reflects missing evidence, not a measurement: with every week off the true number keeps getting slower, and the next run is what re-anchors it.",
+      "entry": "No run recorded; forty-first day since the last run. Rest was the prescription and the data matches it: 1,767 steps, a very quiet day or the watch off for part of it. The morning cleared every restart gate by a margin for the first time in this stretch: HRV 98, up 22 from Sunday's 76, above your ~87 baseline and the highest reading since Nov 7; resting HR 46, back on your 46–48 floor and the lowest since Nov 7; sleep 9h58m, score 91, quality 1, the longest night in the wellness file. One caution: it came straight after a 1h49m night, and a long recovery sleep after a short one can lift HRV on its own, so a single 98 is not yet proof the markers are back. Tuesday's read decides that. Ten-day HRV: 74, 69, 50, 64, 78, 71, 58, 65, 76, 98; resting HR 50, 56, 55, 49, 50, 48, 51, 49, 50, 46. ATL 0.1. CTL 9.1, form +9.1.",
+      "note_next": "Tuesday Nov 24: if the morning clears again (resting HR ≤50, HRV ≥78, sleep ≥7 h) and you have been checked and cleared, the first run: 20 min easy, flat, at 6:15–6:45/km, HR ceiling 140, walking 30 s whenever you cross it. No strides and no club session. If you have not been cleared, rest and get the check booked. Tell me what the check found, what happened on Oct 31, and what the next goal is so the plan can be reset.",
+      "stream_read": {
+        "_method": "no activity recorded — nothing to segment",
+        "activities": 0,
+        "verified": "Intervals returned no activity for 2026-11-23 Pacific (window 2026-11-20 to 2026-11-25 checked, UTC neighbours included); the latest run on record is the 2026-10-13 club night.",
+        "rest_day": true,
+        "steps": 1767,
+        "gates_vs_prescription": "Prescription was rest with ordinary daily movement only; no activity was recorded. Steps were 1,767, well under the ~6,000–7,500 baseline: a very quiet day or the watch off for much of it, and the data cannot tell which. Whether the doctor's check happened cannot be told from the data.",
+        "restart_gates": "resting HR 46 (gate ≤50), HRV 98 (gate ≥78) and sleep 9h58m (gate ≥7 h) all cleared. First clean morning of the two needed.",
+        "rebound_caveat": "The clean morning followed a 1h49m night; long recovery sleep after a short night can raise HRV by itself, so this reading needs confirming by the next morning.",
+        "hrv_trend": [
+          74,
+          69,
+          50,
+          64,
+          78,
+          71,
+          58,
+          65,
+          76,
+          98
+        ],
+        "rhr_trend": [
+          50,
+          56,
+          55,
+          49,
+          50,
+          48,
+          51,
+          49,
+          50,
+          46
+        ],
+        "trend_dates": "2026-11-14 to 2026-11-23"
+      },
+      "prediction": "1:31:30",
+      "prediction_prev": "1:31:30",
+      "components": [
+        {
+          "label": "No run — rest was the prescription, and the data matches it",
+          "delta": 0,
+          "cat": "context"
+        },
+        {
+          "label": "Correct rest: no activity recorded",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "HRV 98 — above the ~87 baseline for the first time since Nov 7; clears the 78 gate",
+          "delta": 2,
+          "cat": "raiser"
+        },
+        {
+          "label": "Resting HR 46 — back on the 46–48 floor, lowest since Nov 7",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "Sleep 9h58m, score 91, quality 1 — a full recovery night",
+          "delta": 1,
+          "cat": "raiser"
+        },
+        {
+          "label": "…but it followed a 1h49m night; a rebound reading until the next morning confirms it",
+          "delta": 0,
+          "cat": "context"
+        },
+        {
+          "label": "Forty-first day since the last run; CTL 9.1",
+          "delta": -2,
+          "cat": "lowerer"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-24",
+      "dow": "Tue",
+      "status": "prescribed",
+      "reviewed": false,
+      "provisional": false,
+      "planned": "First run back, only if you have been checked by a doctor and cleared, and feel completely well: 20 min easy, flat, at 6:15–6:45/km with an HR ceiling of 140. Walk 30 s whenever HR crosses 140, and let the ceiling win over the pace: after six weeks off, 140 may arrive slower than 6:45, and that is fine. No strides, no hills and no club session tonight; if you go to club for the company, run your own 20 min at the ceiling and skip the workout. Stop and walk home if you feel chest tightness, unusual breathlessness, palpitations or dizziness, or if HR will not settle under 140 even while walking. If you have not been cleared, today is rest and the check gets booked this week; the markers being back does not replace it.",
+      "plan_rationale": "Two consecutive clean mornings, which is the restart rule's marker test: Monday HRV 98, resting HR 46, sleep 9h58m; this morning HRV 81, resting HR 47, sleep 9h08m (score 94, quality 1). Today's 81 is above the 7-day average of ~73 and within your 77–99 baseline range, though 6 ms under the ~87 centre, so it confirms Monday's reading was not only a rebound from Sunday's 1h49m night. Resting HR has read 46 and 47, back on your floor after mornings of 55–57 last week. The remaining gate is medical clearance, which the data cannot show; it was set because resting HR sat 8–10 bpm high and HRV fell to 50 with no training load behind either, and that is what a doctor should see before running resumes. CTL 8.9, form +8.9, 42 days since the Oct 13 run: there is no fitness to protect and no hurry. Twenty minutes at a 140 ceiling is the smallest dose that answers the two questions that matter now: what HR this pace costs, and whether Wednesday's resting HR and HRV hold. If Wednesday's resting HR is above 52 or HRV under 64, the run cost too much and rest resumes.",
+      "wellness": {
+        "ctl": 8.9,
+        "atl": 0.0,
+        "form": 8.9,
+        "rampRate": -1.6,
+        "hrv": 81,
+        "restingHR": 47,
+        "sleepSecs": 32880,
+        "sleepScore": 94,
+        "sleepQuality": 1,
         "vo2max": null,
         "weight": null
       },
